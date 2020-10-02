@@ -1,0 +1,59 @@
+body{
+  width:100%;
+  margin: 0;
+}
+
+.header{
+  width:100%;
+  height: 80px;
+  background-color: rgb(153, 172, 208);
+  color:white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.content{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.content_left{
+  flex-grow: 1;
+  width: 500px;
+  min-height: 800px;
+}
+
+.content_right{
+  flex-grow: 0;
+  width: 800px;
+  min-height: 800px;
+}
+
+#map{
+  width:100%;
+  height: 700px;
+}
+
+#dust-pie{
+  width:500px;
+  height: 400px;
+  display:inline-block;
+}
+
+.dust-pie-desc{
+  display:inline-block;
+  width:290px;
+  height: 400px;
+  position: absolute;
+}
+
+#dust-bar{
+  width:100%;
+  height: 400px;
+}
+
+#dust-line{
+  width:100%;
+  height: 400px;
+}

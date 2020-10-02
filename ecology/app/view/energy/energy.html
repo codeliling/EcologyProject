@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怀化市能源可视化系统</title>
+    <link rel="stylesheet" href="/public/css/src/energy/energy.css" />
+</head>
+<body>
+  <div class="header">怀化市能源可视化平台</div>
+  <div class="content">
+    <div class="content_left"></div>
+    <div id="main" class="content_center"></div>
+    <div class="content_right"></div>
+  </div>
+
+</body>
+<script src="/public/js/lib/jquery.min.js"></script>
+<script src="/public/js/lib/echarts.min.js"></script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.showLoading();
+    $.get('/public/assets/huaihua.json', function (geoJson) {
+        myChart.hideLoading();
+        echarts.registerMap('HH', geoJson);
+        myChart.setOption(option = {
+            title: {
+              text: '',
+              subtext: '各区县能耗图',
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}<br/>{c} (kWh/d)'
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    dataView: {readOnly: false},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            visualMap: {
+                min: 100000000,
+                max: 1000000000,
+                text: ['High', 'Low'],
+                realtime: false,
+                calculable: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'bottom',
+                inRange: {
+                    color: ['lightskyblue', 'yellow', 'orangered']
+                }
+            },
+            series: [
+                {
+                    name: '怀化市生态矿山',
+                    type: 'map',
+                    mapType: 'HH', // 自定义扩展图表类型
+                    label: {
+                        show: true
+                    },
+                    roam:true,
+                    data: [
+                        {name: '沅陵县', value: 530000000.00},
+                        {name: '溆浦县', value: 590000000.00},
+                        {name: '辰溪县', value: 320000000.00},
+                        {name: '麻阳苗族自治县', value: 235000000.00},
+                        {name: '鹤城区', value: 680000000.00},
+                        {name: '中方县', value: 330000000.00 },
+                        {name: '芷江侗族自治县', value: 315000000.00},
+                        {name: '新晃侗族自治县', value: 155000000.00},
+                        {name: '洪江市', value: 480000000.00},
+                        {name: '会同县', value: 220000000.00},
+                        {name: '靖州苗族侗族自治县', value:180000000.00 },
+                        {name: '通道侗族自治县', value: 150000000.00},
+                    ],
+
+                }
+            ]
+        });
+        myChart.on('click', function (params) {
+           window.location.href = '/energy/country?name=' + params.name;
+        });
+    });
+
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热力图</title>
+    <link rel="stylesheet" href="/public/css/src/energy/hot.css" />
+</head>
+<body>
+  <div class="header">怀化市能源可视化平台</div>
+  <div class="content">
+    <div class="content_left"></div>
+    <div id="main" class="content_center"></div>
+    <div class="content_right"></div>
+  </div>
+</body>
+<script src="/public/js/lib/jquery.min.js"></script>
+<script src="/public/js/lib/echarts.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=DD279b2a90afdf0ae7a3796787a0742e"></script>
+<script src="/public/js/lib/extension/bmap.min.js"></script>
+<script src="/public/js/lib/extension/dataTool.min.js"></script>
+<script src="/public/js/src/util.js"></script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.showLoading();
+
+    $.get('/public/assets/hot3.json', function (data) {
+
+      var points = [].concat.apply([], data.map(function (track) {
+          return track.map(function (seg) {
+              return seg.coord.concat(seg.elevation);
+          });
+      }));
+      myChart.setOption(option = {
+          animation: false,
+          bmap: {
+              center: [109.97212399999996, 27.537940352363537],
+              zoom: 13,
+              roam: true
+          },
+          visualMap: {
+              show: false,
+              top: 'top',
+              min: -20,
+              max: 100,
+              seriesIndex: 0,
+              calculable: true,
+              inRange: {
+                  color: ['blue', 'blue', 'green', 'yellow', 'red']
+              }
+          },
+          series: [{
+              type: 'heatmap',
+              coordinateSystem: 'bmap',
+              data: points,
+              pointSize: 5,
+              blurSize: 6
+          }]
+      });
+      // 添加百度地图插件
+      var bmap = myChart.getModel().getComponent('bmap').getBMap();
+      bmap.addControl(new BMap.MapTypeControl());
+      myChart.hideLoading();
+
+      myChart.on('click', function (params) {
+         console.log(params);
+         //逻辑控制
+      });
+  });
+</script>
+</html>

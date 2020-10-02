@@ -1,0 +1,106 @@
+body{
+  width:100%;
+  margin: 0;
+}
+
+.header{
+  width:100%;
+  height: 80px;
+  background-color: rgb(153, 172, 208);
+  color:white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.content{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.content_left{
+  flex-grow: 0;
+  width: 500px;
+  min-height: 800px;
+  background-color: white;
+}
+
+.content_right{
+  flex-grow: 0;
+  width: 500px;
+  min-height: 800px;
+  background-color: white;
+}
+
+.content_center{
+  flex-grow: 1;
+  min-height: 800px;
+  height: 900px;
+  justify-content: center;
+}
+
+#map{
+  width:100%;
+  min-height:700px;
+  margin:15px;
+}
+
+.production{
+  width:100%;
+  height:500px;
+}
+
+.moniter{
+  width:100%;
+  height:400px;
+}
+
+.price{
+  width:100%;
+  height:300px;
+}
+
+.evaluate{
+  width:100%;
+  height:300px;
+}
+
+.restore{
+  width:100%;
+  height:300px;
+}
+
+#confidence-band{
+  width:100%;
+  height:230px;
+}
+
+#bar-graphic{
+  width:100%;
+  height:230px;
+}
+
+#disaster-gauge{
+  width:100%;
+  height:330px;
+}
+
+#disaster-line{
+  width:100%;
+  height:330px;
+}
+
+#price-line{
+  width:100%;
+  height:330px;
+}
+
+#evaluate-gauge{
+  width:100%;
+  height:330px;
+}
+
+#restore-bar{
+  width:100%;
+  height:330px;
+}
