@@ -1,0 +1,76 @@
+body{
+  width:100%;
+  margin: 0;
+}
+
+.header{
+  width:100%;
+  height: 80px;
+  background-color: rgb(153, 172, 208);
+  color:white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.content{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.content_left{
+  flex-grow: 0;
+  width: 500px;
+  min-height: 800px;
+  background-color: white;
+}
+
+.content_right{
+  flex-grow: 0;
+  width: 500px;
+  min-height: 800px;
+  background-color: white;
+}
+
+.content_center{
+  flex-grow: 1;
+  min-height: 800px;
+  height: 900px;
+  justify-content: center;
+}
+
+#line-graphic{
+  width:80%;
+  height: 300px;
+}
+
+#debris-flow{
+  width:80%;
+  height: 300px;
+}
+
+#sedimentation-settlement{
+  width:80%;
+  height: 300px;
+}
+
+#safety-gauge{
+  width:80%;
+  height: 300px;
+}
+
+
+#confidence-band{
+  width:80%;
+  height: 300px;
+}
+
+#rain-bar{
+  width:80%;
+  height: 300px;
+}
+
+#map{
+  width: 100%;
+  height: calc(100vh - 130px);
+}

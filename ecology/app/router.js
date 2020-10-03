@@ -16,4 +16,8 @@ module.exports = app => {
   router.get('/mine/air', controller.home.air);
   router.get('/mine/dust', controller.home.dust);
   router.get('/mine/noise', controller.home.noise);
+  router.get('/mine/safetyproduction', controller.home.safetyproduction);
+  router.get('/mine/geologicaldisaster', controller.home.geologicaldisaster);
+  router.get('/mine/dynamicevaluate', controller.home.dynamicevaluate);
+  router.get('/mine/envprotect', controller.home.envprotect);
 };

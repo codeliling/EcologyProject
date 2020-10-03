@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>矿山动态评估</title>
+  <link rel="stylesheet" href="/public/css/lib/iview.css" />
+  <link rel="stylesheet" href="/public/css/src/mine/dynamic-evaluate.css" />
+</head>
+<body>
+  <div class="header">
+    怀化市矿山资源
+  </div>
+    <div class="content" id="content">
+      <div class="content_left">
+        <div class="left-sub-area1">
+          <div class="count-area">
+            <div class="index-box"></div>
+            <span>影响人口</span>
+          </div>
+          <div class="count-area">
+            <div class="index-box"></div>
+            <span>覆盖面积</span>
+          </div>
+          <div class="count-area">
+            <div class="index-box"></div>
+            <span>监测矿区</span>
+          </div>
+        </div>
+        <div>
+          <p>具体指数</p>
+          <div>
+            <p>安全生产</p>
+            <div>
+              <i-progress :percent="25" :stroke-width="20" text-inside />
+            </div>
+          </div>
+          <div>
+            <p>环境质量</p>
+            <div>
+              <i-progress :percent="35" :stroke-width="20" text-inside />
+            </div>
+          </div>
+          <div>
+            <p>灾害管理</p>
+            <div>
+              <i-progress :percent="65" :stroke-width="20" text-inside />
+            </div>
+          </div>
+          <div>
+            <p>废料利用</p>
+            <div>
+              <i-progress :percent="85" :stroke-width="20" text-inside />
+            </div>
+          </div>
+          <div>
+            <p>绿化覆盖</p>
+            <div>
+              <i-progress :percent="75" :stroke-width="20" text-inside />
+            </div>
+          </div>
+          <div>
+            <p>建筑维护</p>
+            <div>
+              <i-progress :percent="85" :stroke-width="20" text-inside />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main" class="center">
+        <div>
+          <div id="radar"></div>
+        </div>
+        <div>
+          <p>近日评价趋势</p>
+          <div id="tendency-bar">
+
+          </div>
+        </div>
+      </div>
+      <div class="content_right">
+        <div class="safety">
+          <p>评分</p>
+          <div id="safety-gauge"></div>
+        </div>
+        <div class="evaluate">
+          <p>评价方法</p>
+          <div></div>
+        </div>
+        <div class="restore">
+          <p>评估报告</p>
+          <div></div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="/public/js/lib/jquery.min.js"></script>
+<script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/lib/vue.min.js"></script>
+<script src="/public/js/lib/iview.min.js"></script>
+<script src="/public/js/src/util.js"></script>
+<script src="/public/js/src/mine/dynamic-evaluate.js"></script>
+</html>

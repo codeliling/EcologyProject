@@ -71,7 +71,7 @@ $.get('/public/assets/huaihua.json', function (geoJson) {
 
 //---------------------------------------------------------------------------
 var airPieGraphic = echarts.init(document.getElementById('air-pie'));
-airPieOption = {
+var airPieOption = {
 
     tooltip: {
         trigger: 'item',
@@ -132,7 +132,7 @@ airPieGraphic.setOption(airPieOption);
 
 //---------------------------------------------------------------------------
 var airBarGraphic = echarts.init(document.getElementById('air-bar'));
-airBarOption = {
+var airBarOption = {
     title: {
         text: '某地区蒸发量和降水量',
         subtext: '纯属虚构'

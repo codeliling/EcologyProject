@@ -1,0 +1,90 @@
+body{
+  width:100%;
+  margin: 0;
+}
+
+.header{
+  width:100%;
+  height: 80px;
+  background-color: rgb(153, 172, 208);
+  color:white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#sunburst-graphic{
+  width:40%;
+  height: 400px;
+}
+
+.monitor-area{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.moniter-box{
+  width: 22%;
+  height: auto;
+  display: inline-block;
+}
+
+#air-monitor{
+  width:100%;
+  height: 400px;
+}
+
+#air-monitor-graphic1{
+  width:100%;
+  height: 200px;
+}
+
+#air-monitor-graphic2{
+  width:100%;
+  height: 200px;
+}
+
+#water-monitor{
+  width:100%;
+  height: 400px;
+}
+
+#water-monitor-graphic1{
+  width:100%;
+  height: 200px;
+}
+
+#water-monitor-graphic2{
+  width:100%;
+  height: 200px;
+}
+
+#noise-monitor{
+  width:100%;
+  height: 400px;
+}
+
+#noise-monitor-graphic1{
+  width:100%;
+  height: 200px;
+}
+
+#noise-monitor-graphic2{
+  width:100%;
+  height: 200px;
+}
+
+#dust-monitor{
+  width:100%;
+  height: 400px;
+}
+
+#dust-monitor-graphic1{
+  width:100%;
+  height: 200px;
+}
+
+#dust-monitor-graphic2{
+  width:100%;
+  height: 200px;
+}

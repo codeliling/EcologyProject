@@ -47,6 +47,26 @@ class HomeController extends Controller {
     const { ctx } = this;
     await ctx.render('/mine/noise.html',{});
   }
+
+  async safetyproduction(){
+    const { ctx } = this;
+    await ctx.render('/mine/safety-production.html',{});
+  }
+
+  async geologicaldisaster(){
+    const { ctx } = this;
+    await ctx.render('/mine/geological-disaster.html',{});
+  }
+
+  async dynamicevaluate(){
+    const { ctx } = this;
+    await ctx.render('/mine/dynamic-evaluate.html',{});
+  }
+
+  async envprotect(){
+    const { ctx } = this;
+    await ctx.render('/mine/env-protect.html',{});
+  }
 }
 
 module.exports = HomeController;

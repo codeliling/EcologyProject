@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>地质灾害</title>
+  <link rel="stylesheet" href="/public/css/src/mine/geological-disaster.css" />
+</head>
+<body>
+  <div class="header">
+    怀化市矿山资源
+  </div>
+    <div class="content">
+      <div class="content_left">
+        <div class="production">
+
+          <div>
+            <p>滑坡监测(X轴时间，Y轴位移变化)</p>
+            <div id="line-graphic">
+
+            </div>
+          </div>
+          <div>
+            <p>泥石流监测(X主滑带、位移、降雨，Y轴数量)</p>
+            <div id="debris-flow">
+
+            </div>
+          </div>
+          <div id="sedimentation-settlement">
+
+          </div>
+        </div>
+
+      </div>
+      <div id="main" class="content_center">
+        <div>
+          <div id="map"></div>
+        </div>
+        <div></div>
+      </div>
+      <div class="content_right">
+        <div class="safety">
+          <p>安全概况</p>
+          <div id="safety-gauge"></div>
+        </div>
+        <div class="evaluate">
+          <p>总体趋势(x轴日期，y轴安全程度)</p>
+          <div id="confidence-band"></div>
+        </div>
+        <div class="restore">
+          <p>降雨量</p>
+          <div id="rain-bar"></div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="/public/js/lib/jquery.min.js"></script>
+<script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/src/util.js"></script>
+<script src="/public/js/src/mine/geological-disaster.js"></script>
+</html>
