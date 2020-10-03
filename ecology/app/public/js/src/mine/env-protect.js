@@ -112,18 +112,18 @@ var airMonitorOption1 = {
                     text:"总监测点",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:30
+                    fontSize:22
                 }
         },
         {
             type:"text",
                 left:"center",
-                top:"50%",
+                top:"52%",
                 style:{
                     text:"100",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:26
+                    fontSize:18
                 }
         }
     ],
@@ -202,18 +202,18 @@ var waterMonitorOption1 = {
                     text:"总监测点",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:30
+                    fontSize:22
                 }
         },
         {
             type:"text",
                 left:"center",
-                top:"50%",
+                top:"52%",
                 style:{
                     text:"100",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:26
+                    fontSize:18
                 }
         }
     ],
@@ -303,18 +303,18 @@ var noiseMonitorOption1 = {
                     text:"总监测点",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:30
+                    fontSize:22
                 }
         },
         {
             type:"text",
                 left:"center",
-                top:"50%",
+                top:"52%",
                 style:{
                     text:"100",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:26
+                    fontSize:18
                 }
         }
     ],
@@ -453,18 +453,18 @@ var dustMonitorOption1 = {
                     text:"总监测点",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:30
+                    fontSize:22
                 }
         },
         {
             type:"text",
                 left:"center",
-                top:"50%",
+                top:"52%",
                 style:{
                     text:"100",
                     textAlign:"center",
                     fill:"#000",
-                    fontSize:26
+                    fontSize:18
                 }
         }
     ],

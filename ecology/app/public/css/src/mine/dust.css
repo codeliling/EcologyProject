@@ -57,3 +57,54 @@ body{
   width:100%;
   height: 400px;
 }
+
+caption {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  width: 13%;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/*模拟对角线*/
+
+.out {
+  border-top: 50px #ffffff solid;
+  width: 100%;
+  height: 0px;
+  border-left: 80px #ffffff solid;
+  position: relative;
+}
+
+table b {
+  font-style: normal;
+  display: block;
+  position: absolute;
+  top: -55px;
+  left: 10px;
+  width: 50px;
+}
+
+table em {
+  font-style: normal;
+  display: block;
+  position: absolute;
+  top: -35px;
+  left: -85px;
+  width: 55px;
+}
+
+.slash{
+  width:220%;
+  height:1px;
+  background-color: lightgray;
+  position:absolute;
+  top:-25px;
+  left: -87px;
+  transform:rotate(18deg);
+}

@@ -5,17 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>空气监测</title>
+  <link rel="stylesheet" href="/public/css/lib/iview.css" />
   <link rel="stylesheet" href="/public/css/src/mine/air.css" />
 </head>
 <body>
   <div class="header">
     怀化市矿山资源
   </div>
-    <div class="content">
+    <div class="content"  id="content">
       <div class="content_left">
         <div id="map"></div>
         <div>
-
+          <table>
+            <caption>我是标题</caption>
+            <thead>
+                <tr>
+                    <th>矿名</th>
+                    <th>NO2</th>
+                    <th>SO2</th>
+                    <th>O3</th>
+                    <th>CO</th>
+                    <th>温度</th>
+                    <th>湿度</th>
+                    <th>风向</th>
+                    <th>风力</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>鹤城区</td>
+                    <td>60</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>鹤城区</td>
+                    <td>60</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>鹤城区</td>
+                    <td>60</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>鹤城区</td>
+                    <td>60</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+        </table>
         </div>
       </div>
       <div class="content_right">
@@ -37,6 +99,8 @@
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/lib/vue.min.js"></script>
+<script src="/public/js/lib/iview.min.js"></script>
 <script src="/public/js/src/util.js"></script>
 <script src="/public/js/src/mine/air.js"></script>
 </html>
