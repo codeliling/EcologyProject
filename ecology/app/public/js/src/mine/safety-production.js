@@ -120,7 +120,9 @@ var app = new Vue({
     seriesWaterData:[],
     seriesElecData:[],
     //--------------------------------------------------------------------------------
-    //挖掘机运行数据
+    //公告数据
+    noticeData:[],
+    currentNoticeData:[],
   },
   methods: {
 
@@ -453,6 +455,10 @@ var app = new Vue({
     });
 
     //-----------------------------------------------------------------------
+    $.getJSON('/public/assets/notice.json',function(data){
+      that.noticeData = data;
+      console.log(that.noticeData);
+    });
   },
   created() {
     let that = this;
@@ -545,5 +551,17 @@ var app = new Vue({
         }
       }
     },1000);
+    //-----------------------------------------------------------------------------
+    let noticeDataInterval = 0;
+    setInterval(function(){
+      that.currentNoticeData = [];
+      that.currentNoticeData.push(that.noticeData[noticeDataInterval]);
+      that.currentNoticeData.push(that.noticeData[noticeDataInterval + 1]);
+      that.currentNoticeData.push(that.noticeData[noticeDataInterval + 2]);
+      noticeDataInterval = noticeDataInterval + 3;
+      if(noticeDataInterval == 24){
+        noticeDataInterval = 0;
+      }
+    },30000);
   }
 })

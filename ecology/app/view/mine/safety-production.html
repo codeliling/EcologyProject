@@ -58,10 +58,7 @@
         </div>
         <div>
             <p>公告</p>
-            <p>公告1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-            <p>公告2:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-            <p>公告3:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-            <p>公告4:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            <p v-for="elem in currentNoticeData">公告1:${elem.data1},<span>${elem.data2}</span></p>
         </div>
       </div>
     </div>

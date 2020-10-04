@@ -16,15 +16,15 @@
       <div class="content_left">
         <div class="left-sub-area1">
           <div class="count-area">
-            <div class="index-box"></div>
+            <div class="index-box">${currentPeopleData}</div>
             <span>影响人口</span>
           </div>
           <div class="count-area">
-            <div class="index-box"></div>
+            <div class="index-box">${currentAreaData}</div>
             <span>覆盖面积</span>
           </div>
           <div class="count-area">
-            <div class="index-box"></div>
+            <div class="index-box">21</div>
             <span>监测矿区</span>
           </div>
         </div>
@@ -32,38 +32,40 @@
           <p>具体指数</p>
           <div>
             <p>安全生产</p>
-            <div>
-              <i-progress :percent="25" :stroke-width="20" text-inside />
+            <p>${currentSafetyProductData}</p>
+            <div id="hor-bar-graphic1">
+
             </div>
           </div>
           <div>
             <p>环境质量</p>
-            <div>
-              <i-progress :percent="35" :stroke-width="20" text-inside />
+            <p>${currentEnvData}</p>
+            <div id="hor-bar-graphic2">
+
             </div>
           </div>
           <div>
-            <p>灾害管理</p>
+            <p>灾害管理<span>${currentDisasterData}分</span></p>
             <div>
-              <i-progress :percent="65" :stroke-width="20" text-inside />
+              报警信息<span>${currentAlarmData}条</span>
             </div>
           </div>
           <div>
-            <p>废料利用</p>
+            <p>废料利用<span>${currentWasteData}分</span></p>
             <div>
-              <i-progress :percent="85" :stroke-width="20" text-inside />
+              废料利用率<span>43.4%</span>
             </div>
           </div>
           <div>
-            <p>绿化覆盖</p>
+            <p>绿化覆盖<span>87<span></p>
             <div>
-              <i-progress :percent="75" :stroke-width="20" text-inside />
+              覆盖面积<span>8.9km²</span>
             </div>
           </div>
           <div>
-            <p>建筑维护</p>
+            <p>建筑维护<span>${currentMainData}<span></p>
             <div>
-              <i-progress :percent="85" :stroke-width="20" text-inside />
+              安置建筑<span>43420</span>
             </div>
           </div>
         </div>
@@ -77,6 +79,9 @@
           <div id="tendency-bar">
 
           </div>
+          <i-button @click="dayBtnClick">日</i-button>
+          <i-button @click="monthBtnClick">月</i-button>
+          <i-button @click="yearBtnClick">年</i-button>
         </div>
       </div>
       <div class="content_right">
@@ -84,13 +89,20 @@
           <p>评分</p>
           <div id="safety-gauge"></div>
         </div>
+        <div class="synthesis">
+          <p>综合评分</p>
+          <div id="synthesis-graphic"></div>
+        </div>
         <div class="evaluate">
           <p>评价方法</p>
           <div></div>
         </div>
         <div class="restore">
           <p>评估报告</p>
-          <div></div>
+          <div>层次分析法AHP<br>因子分析</div>
+        </div>
+        <div class="restore">
+          <p v-for="elem in currentEvaluateReportData">${elem.name}:${elem.rank},${elem.time}</p>
         </div>
       </div>
     </div>
