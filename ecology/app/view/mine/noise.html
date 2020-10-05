@@ -27,36 +27,21 @@
                               <em>地区</em>
                           </div>
                       </th>
-                      <th>分贝</th>
-                      <th>影响面积</th>
-                      <th>持续时长</th>
+                      <th>最大声级（db）昼间</th>
+                      <th>最大声级（db）夜间</th>
+                      <th>背景噪声（db）</th>
+                      <th>持续时长占比（min）</th>
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>鹤城区</td>
-                      <td>60</td>
-                      <td>18</td>
-                      <td>30</td>
+                  <tr v-for="elem in data1">
+                      <td style="width:170px;">${elem.name}</td>
+                      <td>${elem.noise1}</td>
+                      <td>${elem.noise2}</td>
+                      <td>${elem.noise3}</td>
+                      <td>${elem.percent}</td>
                   </tr>
-                  <tr>
-                      <td>鹤城区</td>
-                      <td>60</td>
-                      <td>18</td>
-                      <td>30</td>
-                  </tr>
-                  <tr>
-                      <td>鹤城区</td>
-                      <td>60</td>
-                      <td>18</td>
-                      <td>30</td>
-                  </tr>
-                  <tr>
-                      <td>鹤城区</td>
-                      <td>60</td>
-                      <td>18</td>
-                      <td>30</td>
-                  </tr>
+
               </tbody>
           </table>
         </div>
@@ -74,7 +59,12 @@
         <div id="noise-bar">
 
         </div>
+        <div>
+          <i-button @click="dayBtnclick">日</i-button>
+          <i-button @click="weekBtnClick">周</i-button>
+        </div>
         <div id="noise-line"></div>
+
       </div>
     </div>
 </body>

@@ -1,10 +1,86 @@
 var app = new Vue({
   el: '#content',
+  delimiters: ['${', '}'],
   data: {
-
+    noiseTableData:[],
+    data1:[],
+    noiseLineGraphic:{},
+    noiseLineOption:{},
+    noiseBarGraphic:{},
+    noiseBarOption:{},
+    noiseBarDayData:[],
+    noiseBarWeekData:[],
+    noiseBarxAxisData:[],
+    noiseBarxSameData:[],
+    noiseBarxChainData:[],
+    noiseBarInterval:null,
+    noisePieData:[],
+    currentNoisePieData:[],
+    legendNoisePieData:[],
+    dayTimeDataArray:[["2020/6/1",135],["2020/6/8",156],["2020/6/15",158],["2020/6/22",209],["2020/6/29",231],["2020/7/6",288],["2020/7/13",187],["2020/7/20",130],
+      ["2020/7/27",121],["2020/8/3",100],["2020/8/10",98],["2020/8/17",79],["2020/8/24",65],["2020/8/31",57],["2020/9/7",46],["2020/9/14",43],["2020/9/21",56],
+      ["2020/9/28",42],["2020/10/5",43],["2020/10/12",32]],
+    currentDayTimeDataArray:[],
   },
   methods:{
+    dayBtnclick:function(){
+      if(this.noiseBarInterval != null){
+        clearInterval(this.noiseBarInterval);
+      }
+      let interval = 0;
+      let that = this;
+      if(this.noiseBarDayData.length > 0){
+        this.noiseBarInterval = setInterval(function(){
+          that.noiseBarxAxisData = [];
+          that.noiseBarxSameData = [];
+          that.noiseBarxChainData = [];
+          for (let index = interval; index < interval + 10; index++){
+            let obj = that.noiseBarDayData[index];
+            that.noiseBarxAxisData.push(obj.time);
+            that.noiseBarxSameData.push(obj.same);
+            that.noiseBarxChainData.push(obj.chain);
+          }
 
+          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
+          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
+          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
+          that.noiseBarGraphic.setOption(that.noiseBarOption);
+          interval = interval + 10;
+          if(interval == that.noiseBarDayData.length){
+            interval = 0;
+          }
+        },1000);
+      }
+    },
+    weekBtnClick:function(){
+      if(this.noiseBarInterval != null){
+        clearInterval(this.noiseBarInterval);
+      }
+      let interval = 0;
+      let that = this;
+      if(this.noiseBarWeekData.length > 0){
+        this.noiseBarInterval = setInterval(function(){
+          that.noiseBarxAxisData = [];
+          that.noiseBarxSameData = [];
+          that.noiseBarxChainData = [];
+          for (let index = interval; index < interval + 10; index++){
+            let obj = that.noiseBarWeekData[index];
+            that.noiseBarxAxisData.push(obj.time);
+            that.noiseBarxSameData.push(obj.same);
+            that.noiseBarxChainData.push(obj.chain);
+          }
+
+          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
+          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
+          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
+          that.noiseBarGraphic.setOption(that.noiseBarOption);
+          interval = interval + 10;
+          if(interval == that.noiseBarWeekData.length){
+            interval = 0;
+          }
+        },1000);
+      }
+    }
   },
   mounted() {
     var myChart = echarts.init(document.getElementById('map'));
@@ -79,42 +155,19 @@ var app = new Vue({
     });
 
     //---------------------------------------------------------------------------
-    var noisePieGraphic = echarts.init(document.getElementById('noise-pie'));
-    noisePieOption = {
+    this.noisePieGraphic = echarts.init(document.getElementById('noise-pie'));
+    this.noisePieOption = {
 
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
+            formatter: '{a} <br/>{b}: {c} '
         },
+
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: this.legendNoisePieData
         },
-        graphic:[
-            {
-                type:"text",
-                    left:"center",
-                    top:"40%",
-                    style:{
-                        text:"总监测点",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:30
-                    }
-            },
-            {
-                type:"text",
-                    left:"center",
-                    top:"50%",
-                    style:{
-                        text:"100",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:26
-                    }
-            }
-        ],
         series: [
             {
 
@@ -126,31 +179,25 @@ var app = new Vue({
                 labelLine: {
                     show: false
                 },
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+                data: this.currentNoisePieData
+
             }
         ]
     };
 
-    noisePieGraphic.setOption(noisePieOption);
+    this.noisePieGraphic.setOption(this.noisePieOption);
 
     //---------------------------------------------------------------------------
-    var noiseBarGraphic = echarts.init(document.getElementById('noise-bar'));
-    noiseBarOption = {
+    this.noiseBarGraphic = echarts.init(document.getElementById('noise-bar'));
+    this.noiseBarOption = {
         title: {
             text: '某地区蒸发量和降水量',
-            subtext: '纯属虚构'
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['蒸发量', '降水量']
+            data: ['同比', '环比']
         },
         toolbox: {
             show: true,
@@ -165,7 +212,7 @@ var app = new Vue({
         xAxis: [
             {
                 type: 'category',
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                data: this.noiseBarxAxisData,
             }
         ],
         yAxis: [
@@ -175,9 +222,9 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '蒸发量',
+                name: '同比',
                 type: 'bar',
-                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                data: this.noiseBarxSameData,
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -191,14 +238,14 @@ var app = new Vue({
                 }
             },
             {
-                name: '降水量',
+                name: '环比',
                 type: 'bar',
-                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                data: this.noiseBarxChainData,
                 markPoint: {
-                    data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
-                    ]
+                  data: [
+                      {type: 'max', name: '最大值'},
+                      {type: 'min', name: '最小值'}
+                  ]
                 },
                 markLine: {
                     data: [
@@ -209,21 +256,19 @@ var app = new Vue({
         ]
     };
 
-    noiseBarGraphic.setOption(noiseBarOption);
+    this.noiseBarGraphic.setOption(this.noiseBarOption);
 
     //------------------------------------------------------------------------------------
-    var noiseLineGraphic = echarts.init(document.getElementById('noise-line'));
+    this.noiseLineGraphic = echarts.init(document.getElementById('noise-line'));
 
-    var data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
-
-    var dateList = data.map(function (item) {
+    var dateList = this.currentDayTimeDataArray.map(function (item) {
         return item[0];
     });
-    var valueList = data.map(function (item) {
+    var valueList = this.currentDayTimeDataArray.map(function (item) {
         return item[1];
     });
 
-    noiseLineOption = {
+    this.noiseLineOption = {
 
         // Make gradient line here
         visualMap: [{
@@ -233,11 +278,9 @@ var app = new Vue({
             min: 0,
             max: 400
         }],
-
-
         title: [{
             left: 'center',
-            text: 'Gradient along the y axis'
+            text: '噪声污染度走势'
         }],
         tooltip: {
             trigger: 'axis'
@@ -260,10 +303,112 @@ var app = new Vue({
         }]
     };
 
-    noiseLineGraphic.setOption(noiseLineOption);
+    this.noiseLineGraphic.setOption(this.noiseLineOption);
   },
   created() {
     //do something after creating vue instance
+    let that = this;
+    $.getJSON('/public/assets/5-1.json',function(data){
+      that.noiseTableData = data;
+    });
 
+    $.getJSON('/public/assets/5-2.json',function(data){
+      that.noisePieData = data;
+    });
+
+    $.getJSON('/public/assets/5-3-1.json',function(data){
+      that.noiseBarDayData = data;
+    });
+
+    $.getJSON('/public/assets/5-3-2.json',function(data){
+      that.noiseBarWeekData = data;
+    });
+
+    let noiseTableDataInterval = 0;
+    setInterval(function(){
+      if(that.noiseTableData.length > 0){
+        that.data1 = [];
+        that.data1.push(that.noiseTableData[noiseTableDataInterval]);
+        that.data1.push(that.noiseTableData[noiseTableDataInterval + 1]);
+        that.data1.push(that.noiseTableData[noiseTableDataInterval + 2]);
+        noiseTableDataInterval = noiseTableDataInterval + 3;
+        if(noiseTableDataInterval == that.noiseTableData.length){
+          noiseTableDataInterval = 0;
+        }
+      }
+
+    },1000);
+
+    let noisePieDataInterval = 0;
+    setInterval(function(){
+      if(that.noisePieData.length > 0){
+        that.currentNoisePieData = [];
+        that.legendNoisePieData = [],
+        that.currentNoisePieData.push(that.noisePieData[noisePieDataInterval]);
+        that.legendNoisePieData.push(that.noisePieData[noisePieDataInterval].name);
+        that.currentNoisePieData.push(that.noisePieData[noisePieDataInterval + 1]);
+        that.legendNoisePieData.push(that.noisePieData[noisePieDataInterval + 1].name);
+        that.currentNoisePieData.push(that.noisePieData[noisePieDataInterval + 2]);
+        that.legendNoisePieData.push(that.noisePieData[noisePieDataInterval + 2].name);
+        that.noisePieOption.legend.data = that.legendNoisePieData;
+        that.noisePieOption.series[0].data = that.currentNoisePieData;
+        that.noisePieGraphic.setOption(that.noisePieOption);
+        noisePieDataInterval = noisePieDataInterval + 3;
+        if(noisePieDataInterval == that.noisePieData.length){
+          noisePieDataInterval = 0;
+        }
+      }
+    },1000);
+
+    let interval = 0;
+
+    this.noiseBarInterval = setInterval(function(){
+        if(that.noiseBarDayData.length > 0){
+          that.noiseBarxAxisData = [];
+          that.noiseBarxSameData = [];
+          that.noiseBarxChainData = [];
+          for (let index = interval; index < interval + 10; index++){
+            let obj = that.noiseBarDayData[index];
+            that.noiseBarxAxisData.push(obj.time);
+            that.noiseBarxSameData.push(obj.same);
+            that.noiseBarxChainData.push(obj.chain);
+          }
+
+          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
+          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
+          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
+          that.noiseBarGraphic.setOption(that.noiseBarOption);
+          interval = interval + 10;
+          if(interval == that.noiseBarDayData.length){
+            interval = 0;
+          }
+      }
+    },1000);
+
+
+    let noiseLineInterval = 0;
+    setInterval(function(){
+      if(that.dayTimeDataArray.length > 0){
+        that.currentDayTimeDataArray = [];
+        for(let index = noiseLineInterval; index < noiseLineInterval + 10; index++)
+        {
+          that.currentDayTimeDataArray.push(that.dayTimeDataArray[index]);
+        }
+        var dateList = that.currentDayTimeDataArray.map(function (item) {
+            return item[0];
+        });
+        var valueList = that.currentDayTimeDataArray.map(function (item) {
+            return item[1];
+        });
+        that.noiseLineOption.xAxis[0].data = dateList;
+        that.noiseLineOption.series[0].data = valueList;
+        that.noiseLineGraphic.setOption(that.noiseLineOption);
+        noiseLineInterval = noiseLineInterval + 10;
+        if(noiseLineInterval == that.dayTimeDataArray.length){
+          noiseLineInterval = 0;
+        }
+
+      }
+    },1000);
   }
 })

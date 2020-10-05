@@ -1,10 +1,97 @@
 var app = new Vue({
   el: '#content',
+  delimiters: ['${', '}'],
   data: {
+    data1:[],
+    dustTableData:[],
 
+    dustBarGraphic:{},
+    dustBarOption:{},
+    dustBarData:{},
+    dustBarAddressData:[],
+    dustBarSeriesSameData:[],
+    dustBarSeriesChainData:[],
+
+    yearxAxis:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月'],
+    yearData:[
+      {"name":"PM1","value":[33,28,37,32,29,22,41,35,28,26]},
+      {"name":"PM2.5","value":[39,31,35,54,69,42,40,74,52,41]},
+      {"name":"PM10","value":[62,59,48,52,70,88,62,63,76,70]},
+      {"name":"TSP","value":[121,132,116,147,185,162,150,141,183,109]},
+      {"name":"AQI","value":[50,63,80,82,93,78,56,48,50,47]}
+    ],
+    monthxAxis:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+    monthData:[
+      {"name":"PM1","value":[33,28,37,32,29,22,41,35,28,26,22,32,29,28,26,28,35]},
+      {"name":"PM2.5","value":[39,31,35,54,69,42,40,74,52,41,42,54,69,31,41,31,74]},
+      {"name":"PM10","value":[62,59,48,52,70,88,62,63,76,70,88,52,70,59,70,59,63]},
+      {"name":"TSP","value":[121,132,116,147,185,162,150,141,183,109,162,147,185,132,109,132,141]},
+      {"name":"AQI","value":[50,63,80,82,93,78,56,48,50,47,78,82,93,63,47,63,48]},
+    ],
+    weekxAxis:[1,2,3,4,5,6,7],
+    weekData:[
+      {"name":"PM1","value":[26,41,35,32,28,29,28]},
+      {"name":"PM2.5","value":[41,40,74,54,52,69,52]},
+      {"name":"PM10","value":[70,62,63,52,76,70,76]},
+      {"name":"TSP","value":[109,150,141,147,183,185,183]},
+      {"name":"AQI","value":[47,56,48,82,50,93,50]},
+    ],
+    lineInterval:null,
+    dustLineGraphic:{},
+    dustLineOption:{},
   },
   methods:{
+    yearBtnclick:function(){
+      if(this.lineInterval != null){
+        clearInterval(this.lineInterval);
+      }
 
+      let dustLineDataInterval = 0;
+      this.lineInterval = setInterval(function(){
+        that.dustLineOption.xAxis[0].data = that.yearxAxis;
+        that.dustLineOption.series[0].data = that.yearData[dustLineDataInterval].value;
+        that.dustLineOption.title[0].subtext = that.yearData[dustLineDataInterval].name;
+        that.dustLineGraphic.setOption(that.dustLineOption);
+        dustLineDataInterval = dustLineDataInterval + 1;
+        if(dustLineDataInterval == that.yearData.length){
+            dustLineDataInterval = 0;
+        }
+      },1000);
+    },
+    monthBtnclick:function(){
+      if(this.lineInterval != null){
+        clearInterval(this.lineInterval);
+      }
+
+      let dustLineDataInterval = 0;
+      this.lineInterval = setInterval(function(){
+        that.dustLineOption.xAxis[0].data = that.weekxAxis;
+        that.dustLineOption.series[0].data = that.monthData[dustLineDataInterval].value;
+        that.dustLineOption.title[0].subtext = that.monthData[dustLineDataInterval].name;
+        that.dustLineGraphic.setOption(that.dustLineOption);
+        dustLineDataInterval = dustLineDataInterval + 1;
+        if(dustLineDataInterval == that.monthData.length){
+          dustLineDataInterval = 0;
+        }
+      },1000);
+    },
+    weekBtnClick:function(){
+      if(this.lineInterval != null){
+        clearInterval(this.lineInterval);
+      }
+
+      let dustLineDataInterval = 0;
+      this.lineInterval = setInterval(function(){
+        that.dustLineOption.xAxis[0].data = that.yearxAxis;
+        that.dustLineOption.series[0].data = that.weekData[dustLineDataInterval].value;
+        that.dustLineOption.title[0].subtext = that.weekData[dustLineDataInterval].name;
+        that.dustLineGraphic.setOption(that.dustLineOption);
+        dustLineDataInterval = dustLineDataInterval + 1;
+        if(dustLineDataInterval == that.weekData.length){
+          dustLineDataInterval = 0;
+        }
+      },1000);
+    },
   },
   mounted() {
     var myChart = echarts.init(document.getElementById('map'));
@@ -81,7 +168,9 @@ var app = new Vue({
     //---------------------------------------------------------------------------
     var dustPieGraphic = echarts.init(document.getElementById('dust-pie'));
     dustPieOption = {
-
+      title: {
+          text: '粉尘概况',
+      },
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -89,32 +178,8 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['一级', '二级', '三级', '四级', '五级']
         },
-        graphic:[
-            {
-                type:"text",
-                    left:"center",
-                    top:"40%",
-                    style:{
-                        text:"总监测点",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:30
-                    }
-            },
-            {
-                type:"text",
-                    left:"center",
-                    top:"50%",
-                    style:{
-                        text:"100",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:26
-                    }
-            }
-        ],
         series: [
             {
 
@@ -127,11 +192,11 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                    {value: 14, name: '一级'},
+                    {value: 77, name: '二级'},
+                    {value: 9, name: '三级'},
+                    {value: 0, name: '四级'},
+                    {value: 0, name: '五级'}
                 ]
             }
         ]
@@ -140,17 +205,16 @@ var app = new Vue({
     dustPieGraphic.setOption(dustPieOption);
 
     //---------------------------------------------------------------------------
-    var dustBarGraphic = echarts.init(document.getElementById('dust-bar'));
-    dustBarOption = {
+    this.dustBarGraphic = echarts.init(document.getElementById('dust-bar'));
+    this.dustBarOption = {
         title: {
-            text: '某地区蒸发量和降水量',
-            subtext: '纯属虚构'
+            text: '粉尘同比环比图',
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['蒸发量', '降水量']
+            data: ['同比', '环比']
         },
         toolbox: {
             show: true,
@@ -165,7 +229,7 @@ var app = new Vue({
         xAxis: [
             {
                 type: 'category',
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                data: this.dustBarAddressData
             }
         ],
         yAxis: [
@@ -175,9 +239,9 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '蒸发量',
+                name: '同比',
                 type: 'bar',
-                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                data: this.dustBarSeriesSameData,
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -191,9 +255,9 @@ var app = new Vue({
                 }
             },
             {
-                name: '降水量',
+                name: '环比',
                 type: 'bar',
-                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                data: this.dustBarSeriesChainData,
                 markPoint: {
                     data: [
                         {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
@@ -209,21 +273,11 @@ var app = new Vue({
         ]
     };
 
-    dustBarGraphic.setOption(dustBarOption);
+    this.dustBarGraphic.setOption(this.dustBarOption);
 
     //------------------------------------------------------------------------------------
-    var dustLineGraphic = echarts.init(document.getElementById('dust-line'));
-
-    var data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
-
-    var dateList = data.map(function (item) {
-        return item[0];
-    });
-    var valueList = data.map(function (item) {
-        return item[1];
-    });
-
-    dustLineOption = {
+    this.dustLineGraphic = echarts.init(document.getElementById('dust-line'));
+    this.dustLineOption = {
 
         // Make gradient line here
         visualMap: [{
@@ -237,13 +291,13 @@ var app = new Vue({
 
         title: [{
             left: 'center',
-            text: 'Gradient along the y axis'
+            text: '粉尘污染走势'
         }],
         tooltip: {
             trigger: 'axis'
         },
         xAxis: [{
-            data: dateList
+            data: this.yearxAxis
         }],
         yAxis: [{
             splitLine: {show: false}
@@ -256,15 +310,70 @@ var app = new Vue({
         series: [{
             type: 'line',
             showSymbol: false,
-            data: valueList
+            data: this.yearData[0].value
         }]
     };
 
-    dustLineGraphic.setOption(dustLineOption);
-
+    this.dustLineGraphic.setOption(this.dustLineOption);
   },
   created() {
     //do something after creating vue instance
+    let that = this;
+    $.getJSON('/public/assets/6-1.json',function(data){
+      that.dustTableData = data;
+    });
+    let dustTableDataInterval = 0;
+    setInterval(function(){
+      if(that.dustTableData.length > 0){
+        that.data1 = [];
+        that.data1.push(that.dustTableData[dustTableDataInterval]);
+        that.data1.push(that.dustTableData[dustTableDataInterval + 1]);
+        that.data1.push(that.dustTableData[dustTableDataInterval + 2]);
+        dustTableDataInterval = dustTableDataInterval + 3;
+        if(dustTableDataInterval == that.dustTableData.length){
+          dustTableDataInterval = 0;
+        }
+      }
 
+    },1000);
+
+    $.getJSON('/public/assets/6-3.json',function(data){
+      that.dustBarData = data;
+    });
+    let dustBarDataInterval = 0;
+    setInterval(function(){
+      if(that.dustBarData.length > 0){
+        that.dustBarAddressData = [];
+        that.dustBarSeriesSameData = [];
+        that.dustBarSeriesChainData = [];
+        for(let index = dustBarDataInterval; index < dustBarDataInterval + 7; index++){
+          that.dustBarAddressData.push(that.dustBarData[index].name);
+          that.dustBarSeriesSameData.push(0);
+          that.dustBarSeriesChainData.push(that.dustBarData[index].value);
+        }
+        that.dustBarOption.xAxis[0].data = that.dustBarAddressData;
+        that.dustBarOption.series[0].data = that.dustBarSeriesSameData;
+        that.dustBarOption.series[1].data = that.dustBarSeriesChainData;
+        that.dustBarGraphic.setOption(that.dustBarOption);
+        dustBarDataInterval = dustBarDataInterval + 7;
+        if(dustBarDataInterval == that.dustBarData.length){
+          dustBarDataInterval = 0;
+        }
+      }
+
+    },1000);
+
+    let dustLineDataInterval = 0;
+    this.lineInterval = setInterval(function(){
+      that.dustLineOption.xAxis[0].data = that.yearxAxis;
+      that.dustLineOption.series[0].data = that.yearData[dustLineDataInterval].value;
+      that.dustLineOption.title[0].subtext = that.yearData[dustLineDataInterval].name;
+      that.dustLineGraphic.setOption(that.dustLineOption);
+      dustLineDataInterval = dustLineDataInterval + 1;
+      if(dustLineDataInterval == that.yearData.length){
+        dustLineDataInterval = 0;
+      }
+
+    },1000);
   }
 })

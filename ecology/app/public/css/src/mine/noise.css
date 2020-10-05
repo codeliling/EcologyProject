@@ -93,7 +93,7 @@ table b {
   display: block;
   position: absolute;
   top: -55px;
-  left: 10px;
+  left: 40px;
   width: 50px;
 }
 
@@ -107,11 +107,11 @@ table em {
 }
 
 .slash{
-  width:220%;
+  width:140%;
   height:1px;
   background-color: lightgray;
   position:absolute;
   top:-25px;
-  left: -87px;
-  transform:rotate(18deg);
+  left: -80px;
+  transform:rotate(12deg);
 }

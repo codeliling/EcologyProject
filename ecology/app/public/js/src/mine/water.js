@@ -1,10 +1,100 @@
 var app = new Vue({
   el: '#content',
+  delimiters: ['${', '}'],
   data: {
-
+    columns1: [
+        {
+          title: '矿名',
+          key: 'name'
+        },
+        {
+          title: '目标值（I类-V类）',
+          key: 'indicator1'
+        },
+        {
+          title: '水质类别（I类-V类）',
+          key: 'indicator2'
+        },
+        {
+          title: '水质类别（I类-V类）',
+          key: 'indicator3'
+        },
+        {
+          title: '重金属含量	NH3-N',
+          key: 'indicator4'
+        },
+        {
+          title: '酸碱度（pH）',
+          key: 'indicator5'
+        },
+        {
+          title: '化学需氧量（COD）',
+          key: 'indicator6'
+        },
+        {
+          title: '总磷（TP）',
+          key: 'indicator7'
+        },
+        {
+          title: '总氮（TN）',
+          key: 'indicator8'
+        },
+        {
+          title: '高锰酸盐指数',
+          key: 'indicator9'
+        },
+        {
+          title: '监测时间',
+          key: 'time'
+        }
+    ],
+    data1:[],
+    waterTableData:[],
+    waterLineGraphic:{},
+    waterLineOption:{},
+    dayTimeDataArray:[["星期天(11号)",83],["星期一(12号)",81],["星期二(13号)",86],["星期三(14号)",88],["星期四(15号)",90],["星期五(16号)",83],["星期六(17号)",85]],
+    monthTimeDataArray:[["1号",83],["2号",84],["3号",88],["4号",87],["5号",86],["6号",87],["7号",90],["8号",89],["9号",84],["10号",84],["11号",83],["12号",81],["13号",86],["14号",88],["15号",90],["16号",83],["17号",85]],
+    yearTimeDataArray:[["1月",82],["2月",81],["3月",82],["4月",82],["5月",84],["6月",83],["7月",84],["8月",84],["9月",85],["10月",86]],
+    waterBarGraphic:{},
+    waterBarOption:{},
+    waterBarAddressData:[],
+    waterBarChainData:[],
+    currentWaterBarChainData:[],
   },
   methods:{
-
+    dayBtnclick:function(){
+      let dateList = this.dayTimeDataArray.map(function (item) {
+          return item[0];
+      });
+      let valueList = this.dayTimeDataArray.map(function (item) {
+          return item[1];
+      });
+      this.waterLineOption.xAxis[0].data = dateList;
+      this.waterLineOption.series[0].data = valueList;
+      this.waterLineGraphic.setOption(this.waterLineOption);
+    },
+    monthBtnClick:function(){
+      let dateList = this.monthTimeDataArray.map(function (item) {
+          return item[0];
+      });
+      let valueList = this.monthTimeDataArray.map(function (item) {
+          return item[1];
+      });
+      this.waterLineOption.xAxis[0].data = dateList;
+      this.waterLineOption.series[0].data = valueList;
+      this.waterLineGraphic.setOption(this.waterLineOption);
+    },
+    yearBtnClick:function(){
+      let dateList = this.yearTimeDataArray.map(function (item) {
+          return item[0];
+      });
+      let valueList = this.yearTimeDataArray.map(function (item) {
+          return item[1];
+      });
+      this.waterLineOption.xAxis[0].data = dateList;
+      this.waterLineOption.series[0].data = valueList;
+      this.waterLineGraphic.setOption(this.waterLineOption);
+    }
   },
   mounted() {
     var myChart = echarts.init(document.getElementById('map'));
@@ -89,7 +179,7 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['I-II类', 'III类', 'IV类', 'V类', '劣V类']
         },
         graphic:[
             {
@@ -108,7 +198,7 @@ var app = new Vue({
                     left:"center",
                     top:"50%",
                     style:{
-                        text:"100",
+                        text:"204",
                         textAlign:"center",
                         fill:"#000",
                         fontSize:26
@@ -127,11 +217,11 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                    {value: 76.19, name: 'I-II类'},
+                    {value: 19.05, name: 'III类'},
+                    {value: 4.76, name: 'IV类'},
+                    {value: 0, name: 'V类'},
+                    {value: 0, name: '劣V类'}
                 ]
             }
         ]
@@ -140,17 +230,16 @@ var app = new Vue({
     waterPieGraphic.setOption(waterPieOption);
 
     //---------------------------------------------------------------------------
-    var waterBarGraphic = echarts.init(document.getElementById('water-bar'));
-    waterBarOption = {
+    this.waterBarGraphic = echarts.init(document.getElementById('water-bar'));
+    this.waterBarOption = {
         title: {
-            text: '某地区蒸发量和降水量',
-            subtext: '纯属虚构'
+            text: '水质同比环比结构图',
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['蒸发量', '降水量']
+            data: ['同比', '环比']
         },
         toolbox: {
             show: true,
@@ -165,7 +254,7 @@ var app = new Vue({
         xAxis: [
             {
                 type: 'category',
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                data: this.waterBarAddressData,
             }
         ],
         yAxis: [
@@ -175,9 +264,9 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '蒸发量',
+                name: '同比',
                 type: 'bar',
-                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                data: [0,0,0,0,0,0,0],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -191,13 +280,13 @@ var app = new Vue({
                 }
             },
             {
-                name: '降水量',
+                name: '环比',
                 type: 'bar',
-                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                data: this.currentBarChainData,
                 markPoint: {
                     data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                      {type: 'max', name: '最大值'},
+                      {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -209,21 +298,20 @@ var app = new Vue({
         ]
     };
 
-    waterBarGraphic.setOption(waterBarOption);
+    this.waterBarGraphic.setOption(this.waterBarOption);
 
     //------------------------------------------------------------------------------------
-    var waterLineGraphic = echarts.init(document.getElementById('water-line'));
+    this.waterLineGraphic = echarts.init(document.getElementById('water-line'));
 
-    var data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
 
-    var dateList = data.map(function (item) {
+    var dateList = this.dayTimeDataArray.map(function (item) {
         return item[0];
     });
-    var valueList = data.map(function (item) {
+    var valueList = this.dayTimeDataArray.map(function (item) {
         return item[1];
     });
 
-    waterLineOption = {
+    this.waterLineOption = {
 
         // Make gradient line here
         visualMap: [{
@@ -260,11 +348,64 @@ var app = new Vue({
         }]
     };
 
-    waterLineGraphic.setOption(waterLineOption);
+    this.waterLineGraphic.setOption(this.waterLineOption);
 
   },
   created() {
     //do something after creating vue instance
+    let that = this;
+    $.getJSON('/public/assets/4-1.json',function(data){
+      that.waterTableData = data;
+    });
 
+    let waterTableDataInterval = 0;
+    setInterval(function(){
+      if(that.waterTableData.length > 0){
+        that.data1 = [];
+        that.data1.push(that.waterTableData[waterTableDataInterval]);
+        that.data1.push(that.waterTableData[waterTableDataInterval + 1]);
+        that.data1.push(that.waterTableData[waterTableDataInterval + 2]);
+        waterTableDataInterval = waterTableDataInterval + 3;
+        if(waterTableDataInterval == that.waterTableData.length){
+          waterTableDataInterval = 0;
+        }
+      }
+
+    },1000);
+
+    $.getJSON('/public/assets/4-3.json',function(data){
+      that.waterBarChainData = data;
+    });
+
+    let waterBarChainDataInterval = 0;
+    setInterval(function(){
+      if(that.waterBarChainData.length > 0){
+        that.currentBarChainData = [];
+        that.waterBarAddressData = [];
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 1].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 1].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 2].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 2].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 3].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 3].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 4].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 4].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 5].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 5].percent);
+        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 6].name);
+        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 6].percent);
+        console.log(that.currentBarChainData);
+        that.waterBarOption.xAxis[0].data = that.waterBarAddressData;
+        that.waterBarOption.series[1].data = that.currentBarChainData;
+        that.waterBarGraphic.setOption(that.waterBarOption);
+        waterBarChainDataInterval = waterBarChainDataInterval + 7;
+        if(waterBarChainDataInterval == that.waterBarChainData.length){
+          waterBarChainDataInterval = 0;
+        }
+      }
+
+    },1000);
   }
 })

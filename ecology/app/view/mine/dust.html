@@ -27,46 +27,22 @@
                             <em>地区</em>
                         </div>
                     </th>
-                    <th>PM1</th>
-                    <th>PM2.5</th>
-                    <th>PM5</th>
-                    <th>PM10</th>
-                    <th>TSP</th>
+                    <th>PM1（μg/m³）</th>
+                    <th>PM2.5（μg/m³）</th>
+                    <th>PM10（μg/m³）</th>
+                    <th>TSP（μg/m³）</th>
+                    <th>AQI</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>鹤城区</td>
-                    <td>60</td>
-                    <td>18</td>
-                    <td>30</td>
-                    <td>18</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>鹤城区</td>
-                    <td>60</td>
-                    <td>18</td>
-                    <td>30</td>
-                    <td>18</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>鹤城区</td>
-                    <td>60</td>
-                    <td>18</td>
-                    <td>30</td>
-                    <td>18</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>鹤城区</td>
-                    <td>60</td>
-                    <td>18</td>
-                    <td>30</td>
-                    <td>18</td>
-                    <td>30</td>
-                </tr>
+              <tr v-for="elem in data1">
+                  <td style="width:170px;">${elem.name}</td>
+                  <td>${elem.indicator1}</td>
+                  <td>${elem.indicator2}</td>
+                  <td>${elem.indicator3}</td>
+                  <td>${elem.indicator4}</td>
+                  <td>${elem.indicator5}</td>
+              </tr>
             </tbody>
         </table>
         </div>
@@ -77,7 +53,7 @@
           <div class="dust-pie-desc">
             <p>更新时间：2020年09月01日 19:13:36</p>
             <p>达标率：96%</p>
-            <p>总评分：96</p>
+            <p>总评分：91</p>
           </div>
         </div>
 
@@ -85,6 +61,11 @@
 
         </div>
         <div id="dust-line"></div>
+        <div>
+          <i-button @click="yearBtnclick">年</i-button>
+          <i-button @click="monthBtnclick">月</i-button>
+          <i-button @click="weekBtnClick">周</i-button>
+        </div>
       </div>
     </div>
 </body>
