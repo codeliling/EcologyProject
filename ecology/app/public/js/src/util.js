@@ -35,3 +35,15 @@ function getSafetyLineGraphicTimeArray(){
   array.push(reduceTwoS(currentDate,4));
   return array;
 }
+
+function formatLongitudeAndLatitude(value){
+  var split1 = value.indexOf('度')
+  var split2 = value.indexOf('分')
+  var split3 = value.indexOf('秒')
+  let duValue = value.substring(0,split1);
+  let fenValue = value.substring(split1 + 1,split2);
+  let miaoValue = value.substring(split2 + 1,split3);
+  var f = parseFloat(fenValue) + parseFloat(miaoValue/60);
+  var du = parseFloat(f/60) + parseFloat(duValue);
+  return du;
+}
