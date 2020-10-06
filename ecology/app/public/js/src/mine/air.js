@@ -1,10 +1,102 @@
 var app = new Vue({
   el: '#content',
+  delimiters: ['${', '}'],
   data: {
+    columns1: [
+        {
+          title: '矿名',
+          key: 'name'
+        },
+        {
+          title: 'SO2（μg/m3）',
+          key: 'indicator1'
+        },
+        {
+          title: 'NO2（μg/m3）',
+          key: 'indicator2'
+        },
+        {
+          title: 'CO（μg/m3）',
+          key: 'indicator3'
+        },
+        {
+          title: 'O3（μg/m3）',
+          key: 'indicator4'
+        },
+        {
+          title: '温度（°C）',
+          key: 'indicator5'
+        },
+        {
+          title: '湿度（%rh）',
+          key: 'indicator6'
+        },
+        {
+          title: '风向',
+          key: 'indicator7'
+        },
+        {
+          title: '风力',
+          key: 'indicator8'
+        }
+    ],
+    data1:[],
+    airTableData:[],
+    airBarGraphic:{},
+    airBarOption:{},
+
+    dayAirBarData:[],
+    weekAirBarData:[],
+    monthAirBarData:[],
+    yearAirBarData:[],
 
   },
   methods:{
+    dayBtnclick:function(){
+      this.airBarOption.xAxis[0].data = [];
+      this.airBarOption.series[0].data = [];
+      this.airBarOption.series[1].data = [];
+      for(let i = 0; i < this.dayAirBarData.length; i++){
+        this.airBarOption.xAxis[0].data.push(this.dayAirBarData[i].name);
+        this.airBarOption.series[0].data.push(this.dayAirBarData[i].score);
+        this.airBarOption.series[1].data.push(this.dayAirBarData[i].rank);
+      }
 
+      this.airBarGraphic.setOption(this.airBarOption);
+    },
+    weekBtnclick:function(){
+      this.airBarOption.xAxis[0].data = [];
+      this.airBarOption.series[0].data = [];
+      this.airBarOption.series[1].data = [];
+      for(let i = 0; i < this.weekAirBarData.length; i++){
+        this.airBarOption.xAxis[0].data.push(this.weekAirBarData[i].name);
+        this.airBarOption.series[0].data.push(this.weekAirBarData[i].score);
+        this.airBarOption.series[1].data.push(this.weekAirBarData[i].rank);
+      }
+      this.airBarGraphic.setOption(this.airBarOption);
+    },
+    monthBtnClick:function(){
+      this.airBarOption.xAxis[0].data = [];
+      this.airBarOption.series[0].data = [];
+      this.airBarOption.series[1].data = [];
+      for(let i = 0; i < this.monthAirBarData.length; i++){
+        this.airBarOption.xAxis[0].data.push(this.monthAirBarData[i].name);
+        this.airBarOption.series[0].data.push(this.monthAirBarData[i].score);
+        this.airBarOption.series[1].data.push(this.monthAirBarData[i].rank);
+      }
+      this.airBarGraphic.setOption(this.airBarOption);
+    },
+    yearBtnClick:function(){
+      this.airBarOption.xAxis[0].data = [];
+      this.airBarOption.series[0].data = [];
+      this.airBarOption.series[1].data = [];
+      for(let i = 0; i < this.yearAirBarData.length; i++){
+        this.airBarOption.xAxis[0].data.push(this.yearAirBarData[i].name);
+        this.airBarOption.series[0].data.push(this.yearAirBarData[i].score);
+        this.airBarOption.series[1].data.push(this.yearAirBarData[i].rank);
+      }
+      this.airBarGraphic.setOption(this.airBarOption);
+    },
   },
   mounted() {
     var myChart = echarts.init(document.getElementById('map'));
@@ -89,7 +181,7 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['I类', 'II类', 'III类', 'IV类', 'V类','VI类']
         },
         graphic:[
             {
@@ -127,11 +219,12 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                    {value: 90.47, name: 'I类'},
+                    {value: 9.53, name: 'II类'},
+                    {value: 0, name: 'III类'},
+                    {value: 0, name: 'IV类'},
+                    {value: 0, name: 'V类'},
+                    {value: 0, name: 'VI类'}
                 ]
             }
         ]
@@ -140,20 +233,18 @@ var app = new Vue({
     airPieGraphic.setOption(airPieOption);
 
     //---------------------------------------------------------------------------
-    var airBarGraphic = echarts.init(document.getElementById('air-bar'));
-    var airBarOption = {
-        title: {
-            text: '某地区蒸发量和降水量',
-            subtext: '纯属虚构'
-        },
+    this.airBarGraphic = echarts.init(document.getElementById('air-bar'));
+    this.airBarOption = {
         tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['蒸发量', '降水量']
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            }
         },
         toolbox: {
-            show: true,
             feature: {
                 dataView: {show: true, readOnly: false},
                 magicType: {show: true, type: ['line', 'bar']},
@@ -161,55 +252,82 @@ var app = new Vue({
                 saveAsImage: {show: true}
             }
         },
-        calculable: true,
+        legend: {
+            data: ['当日总评分', '排名']
+        },
         xAxis: [
             {
                 type: 'category',
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                data: [],
+                axisPointer: {
+                    type: 'shadow'
+                },
+                axisLabel: {
+                  formatter: function(params) {
+          					var newParamsName = "";
+          					var paramsNameNumber = params.length;
+          					var provideNumber = 2;
+          					var rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+          					if (paramsNameNumber > provideNumber) {
+          						for (var p = 0; p < rowNumber; p++) {
+          							var tempStr = ""; // 表示每一次截取的字符串
+          							var start = p * provideNumber; // 开始截取的位置
+          							var end = start + provideNumber; // 结束截取的位置
+          							// 此处特殊处理最后一行的索引值
+          							if (p == rowNumber - 1) {
+          								tempStr = params.substring(start, paramsNameNumber);
+          							} else {
+          								tempStr = params.substring(start, end) + "\n";
+          							}
+          							newParamsName += tempStr; // 最终拼成的字符串
+          						}
+
+          					} else {
+          						newParamsName = params;
+          					}
+          					return newParamsName
+          				}
+                }
+
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                name: '总评分',
+                min: 0,
+                max: 100,
+                interval: 50,
+                axisLabel: {
+                    formatter: '{value} 分'
+                }
+            },
+            {
+                type: 'value',
+                name: '排名',
+                min: 0,
+                max: 25,
+                interval: 5,
+                axisLabel: {
+                    formatter: '{value} 位'
+                }
             }
         ],
         series: [
             {
-                name: '蒸发量',
+                name: '当日总评分',
                 type: 'bar',
-                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
+                data: []
             },
             {
-                name: '降水量',
+                name: '排名',
                 type: 'bar',
-                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-                markPoint: {
-                    data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
+                data: []
             }
         ]
     };
 
-    airBarGraphic.setOption(airBarOption);
+    this.airBarGraphic.setOption(this.airBarOption);
 
     //------------------------------------------------------------------------------------
     var airLineGraphic = echarts.init(document.getElementById('air-line'));
@@ -265,6 +383,47 @@ var app = new Vue({
   },
   created() {
     //do something after creating vue instance
+    let that = this;
+    $.getJSON('/public/assets/8-1.json',function(data){
+      that.airTableData = data;
+    });
 
+    let airTableDataInterval = 0;
+    setInterval(function(){
+      if(that.airTableData.length > 0){
+        that.data1 = [];
+        that.data1.push(that.airTableData[airTableDataInterval]);
+        that.data1.push(that.airTableData[airTableDataInterval + 1]);
+        that.data1.push(that.airTableData[airTableDataInterval + 2]);
+        airTableDataInterval = airTableDataInterval + 3;
+        if(airTableDataInterval == that.airTableData.length){
+          airTableDataInterval = 0;
+        }
+      }
+
+    },1000);
+
+    $.getJSON('/public/assets/8-3-1.json',function(data){
+      that.yearAirBarData = data;
+      for(let i = 0; i < that.yearAirBarData.length; i++){
+        that.airBarOption.xAxis[0].data.push(that.yearAirBarData[i].name);
+        that.airBarOption.series[0].data.push(that.yearAirBarData[i].score);
+        that.airBarOption.series[1].data.push(that.yearAirBarData[i].rank);
+      }
+
+      that.airBarGraphic.setOption(that.airBarOption);
+    });
+
+    $.getJSON('/public/assets/8-3-2.json',function(data){
+      that.monthAirBarData = data;
+    });
+
+    $.getJSON('/public/assets/8-3-3.json',function(data){
+      that.weekAirBarData = data;
+    });
+
+    $.getJSON('/public/assets/8-3-4.json',function(data){
+      that.dayAirBarData = data;
+    });
   }
 })
