@@ -10,6 +10,7 @@ module.exports = app => {
   router.get('/energy', controller.home.energy);
   router.get('/energy/country', controller.home.country);
   router.get('/energy/hotgraphic', controller.home.hotgraphic);
+  router.get('/energy/basecompare', controller.home.basecompare);
 
   router.get('/mine', controller.home.mine);
   router.get('/mine/water', controller.home.water);
