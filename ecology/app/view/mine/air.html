@@ -9,45 +9,47 @@
   <link rel="stylesheet" href="/public/css/src/mine/air.css" />
 </head>
 <body>
-  <div class="header">
-    怀化市矿山资源
-  </div>
-    <div class="content"  id="content">
-      <div class="content_left">
-        <div id="map"></div>
-        <div>
-            <i-table border :columns="columns1" :data="data1"></i-table>
-        </div>
-      </div>
-      <div class="content_right">
-        <div style="width:100%;position:relative">
-          <div id="air-pie"></div>
-          <div class="air-pie-desc">
-            <p>更新时间：2020/10/17 9:50</p>
-            <p>总监测点：204</p>
-            <p>总体评分：90</p>
-            <p>等级：优</p>
-            <p>空气质量指数AQI：29</p>
+  <div id="content">
+    <div class="header">
+      怀化市矿山资源
+    </div>
+      <div class="main-content"  >
+        <div class="content_left">
+          <div id="map"></div>
+          <div>
+              <i-table border :columns="columns1" :data="data1"></i-table>
           </div>
         </div>
+        <div class="content_right">
+          <div style="width:100%;position:relative">
+            <div id="air-pie"></div>
+            <div class="air-pie-desc">
+              <p>更新时间：2020/10/17 9:50</p>
+              <p>总监测点：204</p>
+              <p>总体评分：90</p>
+              <p>等级：优</p>
+              <p>空气质量指数AQI：29</p>
+            </div>
+          </div>
 
-        <div id="air-bar">
+          <div id="air-bar">
 
-        </div>
-        <div>
-          <i-button type="default" @click="dayBtnclick">日</i-button>
-          <i-button @click="weekBtnclick">周</i-button>
-          <i-button @click="monthBtnClick">月</i-button>
-          <i-button @click="yearBtnClick">年</i-button>
-        </div>
-        <div id="air-line"></div>
-        <div>
-          <i-button type="default"  @click="lineWeekBtnclick">周</i-button>
-          <i-button @click="lineMonthBtnClick">月</i-button>
-          <i-button @click="lineYearBtnClick">年</i-button>
+          </div>
+          <div>
+            <i-button type="default" @click="dayBtnclick">日</i-button>
+            <i-button @click="weekBtnclick">周</i-button>
+            <i-button @click="monthBtnClick">月</i-button>
+            <i-button @click="yearBtnClick">年</i-button>
+          </div>
+          <div id="air-line"></div>
+          <div>
+            <i-button type="default"  @click="lineWeekBtnclick">周</i-button>
+            <i-button @click="lineMonthBtnClick">月</i-button>
+            <i-button @click="lineYearBtnClick">年</i-button>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>

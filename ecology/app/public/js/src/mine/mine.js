@@ -64,7 +64,18 @@ var app = new Vue({
     chengjiangData:[97.3,99.7,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.8,99.6,99.6,99.2,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2],
   },
   methods:{
-
+    dinaymicEvaluateClick:function(){
+      window.location.href = "/mine/dynamicevaluate";
+    },
+    disasterClick:function(){
+      window.location.href = "/mine/geologicaldisaster";
+    },
+    envProtectClick:function(){
+      window.location.href = "/mine/envprotect";
+    },
+    safetyProductClick:function(){
+        window.location.href = "/mine/safetyproduction";
+    }
   },
   mounted() {
     let that = this;
@@ -786,6 +797,9 @@ var app = new Vue({
         ]
     };
     envLine.setOption(envLineOption);
+
+    //----------------------------------------------------------
+
   },
   created() {
     let that = this;
@@ -852,7 +866,7 @@ var app = new Vue({
         that.priceOption.series[2].data = that.chengjiangData.slice(hncDataInterval, hncDataInterval + 5);
         that.priceLine.setOption(that.priceOption);
         hncDataInterval = hncDataInterval + 5;
-        if(hncDataInterval == that.moniterTableData.length){
+        if(hncDataInterval == that.dateData.length){
           hncDataInterval = 0;
         }
     },5000);

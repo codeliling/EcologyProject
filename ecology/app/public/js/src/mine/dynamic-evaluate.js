@@ -105,6 +105,9 @@ var vueApp = new Vue({
       this.tendencyBarOption.series[5].data = this.yearBuildingData;
       this.tendencyBar.setOption(this.tendencyBarOption);
     },
+    backClick:function(){
+      window.location.href = "/mine/";
+    },
   },
   mounted() {
     let that = this;

@@ -15,7 +15,7 @@
     <div class="content" id="content">
 
       <div class="content_left">
-        <div class="assessment-block"><p>动态评估</p></div>
+        <div class="assessment-block" @click="dinaymicEvaluateClick"><p>动态评估</p></div>
         <div class="box2">
           <div class="box-bg box-bg-1"></div>
           <div class="image-border image-border1"></div>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="production">
-          <div class="assessment-block"><p>灾害预警</p></div>
+          <div class="assessment-block" @click="disasterClick"><p>灾害预警</p></div>
           <div class="box2">
             <div class="box-bg box-bg-2"></div>
             <div class="image-border image-border1"></div>
@@ -107,7 +107,7 @@
         </div>
       </div>
       <div class="content_right">
-        <div class="assessment-block"><p>灾害预警</p></div>
+        <div class="assessment-block" @click="safetyProductClick"><p>灾害预警</p></div>
         <div class="box2">
           <div class="box-bg box-bg-3"></div>
           <div class="image-border image-border1"></div>
@@ -121,7 +121,7 @@
             <div id="price-line"></div>
           </div>
         </div>
-        <div class="assessment-block"><p>环境保护</p></div>
+        <div class="assessment-block" @click="envProtectClick"><p>环境保护</p></div>
         <div class="box2">
           <div class="box-bg box-bg-4"></div>
           <div class="image-border image-border1"></div>

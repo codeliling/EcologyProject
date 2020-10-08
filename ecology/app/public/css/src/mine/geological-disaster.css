@@ -6,13 +6,33 @@ body{
 .header{
   width:100%;
   height: 80px;
-  background-color: rgb(153, 172, 208);
-  color:white;
+  color:#A5D9E1;
   font-size: 32px;
   font-weight: bold;
+  background-image: url('/public/images/mine/header-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.content{
+.header-title{
+  width: 100%;
+  height: 80px;
+  text-align: center;
+}
+
+.header-back{
+  position: absolute;
+  left:15px;
+  width: 60px;
+  height: 60px;
+  top:10px;
+  background-image: url('/public/images/mine/back.png');
+  background-size: cover;
+  cursor:pointer;
+}
+
+.main-content{
   display:flex;
   flex-direction: row;
   flex-wrap: nowrap;

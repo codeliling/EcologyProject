@@ -9,50 +9,56 @@
   <link rel="stylesheet" href="/public/css/src/mine/geological-disaster.css" />
 </head>
 <body>
-  <div class="header">
-    怀化市矿山资源
-  </div>
-    <div class="content">
-      <div class="content_left">
-        <div class="production">
-
-          <div>
-            <div id="line-graphic">
-
-            </div>
-          </div>
-          <div>
-            <div id="debris-flow">
-
-            </div>
-          </div>
-          <div id="sedimentation-settlement">
-
-          </div>
-        </div>
-
-      </div>
-      <div id="main" class="content_center">
-        <div>
-          <div id="map"></div>
-        </div>
-        <div></div>
-      </div>
-      <div class="content_right">
-        <div class="safety">
-          <p>安全概况</p>
-          <div id="safety-gauge"></div>
-        </div>
-        <div class="evaluate">
-          <p>总体趋势(x轴日期，y轴安全程度)</p>
-          <div id="confidence-band"></div>
-        </div>
-        <div class="restore">
-          <p>降雨量</p>
-          <div id="rain-bar"></div>
-        </div>
+  <div id="content">
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>地址灾害监测</p>
       </div>
     </div>
+      <div class="main-content">
+        <div class="content_left">
+          <div class="production">
+
+            <div>
+              <div id="line-graphic">
+
+              </div>
+            </div>
+            <div>
+              <div id="debris-flow">
+
+              </div>
+            </div>
+            <div id="sedimentation-settlement">
+
+            </div>
+          </div>
+
+        </div>
+        <div id="main" class="content_center">
+          <div>
+            <div id="map"></div>
+          </div>
+          <div></div>
+        </div>
+        <div class="content_right">
+          <div class="safety">
+            <p>安全概况</p>
+            <div id="safety-gauge"></div>
+          </div>
+          <div class="evaluate">
+            <p>总体趋势(x轴日期，y轴安全程度)</p>
+            <div id="confidence-band"></div>
+          </div>
+          <div class="restore">
+            <p>降雨量</p>
+            <div id="rain-bar"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>

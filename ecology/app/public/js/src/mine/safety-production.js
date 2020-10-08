@@ -125,7 +125,9 @@ var app = new Vue({
     currentNoticeData:[],
   },
   methods: {
-
+    backClick:function(){
+      window.location.href = "/mine/";
+    },
   },
   mounted() {
     let that = this;

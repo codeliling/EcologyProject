@@ -88,6 +88,10 @@ var app = new Vue({
         }
         return res;
     },
+
+    backClick:function(){
+      window.location.href = "/mine/";
+    },
   },
   mounted(){
     let that = this;

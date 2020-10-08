@@ -4,7 +4,9 @@ var app = new Vue({
   data: {
   },
   methods:{
-
+    backClick:function(){
+      window.location.href = "/mine/";
+    },
   },
   mounted() {
     //-----------------------------------------------------------------------

@@ -4,54 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>矿山动态评估</title>
+  <title>环境监测</title>
   <link rel="stylesheet" href="/public/css/lib/iview.css" />
   <link rel="stylesheet" href="/public/css/src/mine/env-protect.css" />
 </head>
 <body>
-  <div class="header">
-    怀化市矿山资源
+  <div id="content">
+
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>环境监测</p>
+      </div>
+    </div>
+      <div class="main-content" >
+
+        <div class="content_left">
+          <p>概况总览</p>
+          <div id="sunburst-graphic"></div>
+        </div>
+        <div class="content_right">
+
+        </div>
+      </div>
+      <div class="monitor-area">
+        <div class="moniter-box">
+          <p>大气监测</p>
+          <div id="air-monitor">
+            <div id="air-monitor-graphic1"></div>
+            <div id="air-monitor-graphic2"></div>
+          </div>
+        </div>
+        <div class="moniter-box">
+          <p>水质监测</p>
+          <div id="water-monitor">
+            <div id="water-monitor-graphic1"></div>
+            <div id="water-monitor-graphic2"></div>
+          </div>
+        </div>
+        <div class="moniter-box">
+          <p>噪音监测</p>
+          <div id="noise-monitor">
+            <div id="noise-monitor-graphic1"></div>
+            <div id="noise-monitor-graphic2"></div>
+          </div>
+        </div>
+        <div class="moniter-box">
+          <p>粉尘监测</p>
+          <div id="dust-monitor">
+            <div id="dust-monitor-graphic1"></div>
+            <div id="dust-monitor-graphic2"></div>
+          </div>
+        </div>
+      </div>
   </div>
-    <div class="content" id="content">
 
-      <div class="content_left">
-        <p>概况总览</p>
-        <div id="sunburst-graphic"></div>
-      </div>
-      <div class="content_right">
-
-      </div>
-    </div>
-    <div class="monitor-area">
-      <div class="moniter-box">
-        <p>大气监测</p>
-        <div id="air-monitor">
-          <div id="air-monitor-graphic1"></div>
-          <div id="air-monitor-graphic2"></div>
-        </div>
-      </div>
-      <div class="moniter-box">
-        <p>水质监测</p>
-        <div id="water-monitor">
-          <div id="water-monitor-graphic1"></div>
-          <div id="water-monitor-graphic2"></div>
-        </div>
-      </div>
-      <div class="moniter-box">
-        <p>噪音监测</p>
-        <div id="noise-monitor">
-          <div id="noise-monitor-graphic1"></div>
-          <div id="noise-monitor-graphic2"></div>
-        </div>
-      </div>
-      <div class="moniter-box">
-        <p>粉尘监测</p>
-        <div id="dust-monitor">
-          <div id="dust-monitor-graphic1"></div>
-          <div id="dust-monitor-graphic2"></div>
-        </div>
-      </div>
-    </div>
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>

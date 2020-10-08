@@ -9,36 +9,39 @@
   <link rel="stylesheet" href="/public/css/src/mine/water.css" />
 </head>
 <body>
-  <div class="header">
-    怀化市矿山资源
-  </div>
-    <div class="content"  id="content">
-      <div class="content_left">
-        <div id="map"></div>
-        <div>
-          <i-table border :columns="columns1" :data="data1"></i-table>
-        </div>
-      </div>
-      <div class="content_right">
-        <div style="width:100%;position:relative">
-          <div id="water-pie"></div>
-          <div class="water-pie-desc">
-            <p>更新时间：2020/10/17 9:50</p>
-            <p>总监测点：204</p>
-            <p>达标率：95.24%</p>
-            <p>总评分：85</p>
+  <div  id="content">
+    <div class="header">
+      怀化市矿山资源
+    </div>
+      <div class="main-content" >
+        <div class="content_left">
+          <div id="map"></div>
+          <div>
+            <i-table border :columns="columns1" :data="data1"></i-table>
           </div>
         </div>
+        <div class="content_right">
+          <div style="width:100%;position:relative">
+            <div id="water-pie"></div>
+            <div class="water-pie-desc">
+              <p>更新时间：2020/10/17 9:50</p>
+              <p>总监测点：204</p>
+              <p>达标率：95.24%</p>
+              <p>总评分：85</p>
+            </div>
+          </div>
 
-        <div id="water-bar">
+          <div id="water-bar">
 
+          </div>
+          <div id="water-line"></div>
+          <i-button @click="dayBtnclick">日</i-button>
+          <i-button @click="monthBtnClick">月</i-button>
+          <i-button @click="yearBtnClick">年</i-button>
         </div>
-        <div id="water-line"></div>
-        <i-button @click="dayBtnclick">日</i-button>
-        <i-button @click="monthBtnClick">月</i-button>
-        <i-button @click="yearBtnClick">年</i-button>
       </div>
-    </div>
+  </div>
+
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>

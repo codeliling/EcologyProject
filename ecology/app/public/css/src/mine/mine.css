@@ -27,6 +27,7 @@ body{
   margin: 15px 30px;
   position:relative;
   display:inline-block;
+  cursor: pointer;
 }
 
 .assessment-block::after{

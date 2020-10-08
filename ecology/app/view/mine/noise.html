@@ -9,64 +9,67 @@
   <link rel="stylesheet" href="/public/css/src/mine/noise.css" />
 </head>
 <body>
-  <div class="header">
-    怀化市矿山资源
-  </div>
-    <div class="content" id="content">
-      <div class="content_left">
-        <div id="map"></div>
-        <div>
-            <table>
-              <caption>我是标题</caption>
-              <thead>
-                  <tr>
-                      <th>
-                          <div class="out">
-                              <b>勘测项</b>
-                              <div class="slash"></div>
-                              <em>地区</em>
-                          </div>
-                      </th>
-                      <th>最大声级（db）昼间</th>
-                      <th>最大声级（db）夜间</th>
-                      <th>背景噪声（db）</th>
-                      <th>持续时长占比（min）</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr v-for="elem in data1">
-                      <td style="width:170px;">${elem.name}</td>
-                      <td>${elem.noise1}</td>
-                      <td>${elem.noise2}</td>
-                      <td>${elem.noise3}</td>
-                      <td>${elem.percent}</td>
-                  </tr>
+  <div  id="content">
+    <div class="header">
+      怀化市矿山资源
+    </div>
+      <div class="main-content">
+        <div class="content_left">
+          <div id="map"></div>
+          <div>
+              <table>
+                <caption>我是标题</caption>
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="out">
+                                <b>勘测项</b>
+                                <div class="slash"></div>
+                                <em>地区</em>
+                            </div>
+                        </th>
+                        <th>最大声级（db）昼间</th>
+                        <th>最大声级（db）夜间</th>
+                        <th>背景噪声（db）</th>
+                        <th>持续时长占比（min）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="elem in data1">
+                        <td style="width:170px;">${elem.name}</td>
+                        <td>${elem.noise1}</td>
+                        <td>${elem.noise2}</td>
+                        <td>${elem.noise3}</td>
+                        <td>${elem.percent}</td>
+                    </tr>
 
-              </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="content_right">
-        <div style="width:100%;position:relative">
-          <div id="noise-pie"></div>
-          <div class="noise-pie-desc">
-            <p>更新时间：2020年09月01日 19:13:36</p>
-            <p>达标率：96%</p>
-            <p>总评分：96</p>
+                </tbody>
+            </table>
           </div>
         </div>
+        <div class="content_right">
+          <div style="width:100%;position:relative">
+            <div id="noise-pie"></div>
+            <div class="noise-pie-desc">
+              <p>更新时间：2020年09月01日 19:13:36</p>
+              <p>达标率：96%</p>
+              <p>总评分：96</p>
+            </div>
+          </div>
 
-        <div id="noise-bar">
+          <div id="noise-bar">
+
+          </div>
+          <div>
+            <i-button @click="dayBtnclick">日</i-button>
+            <i-button @click="weekBtnClick">周</i-button>
+          </div>
+          <div id="noise-line"></div>
 
         </div>
-        <div>
-          <i-button @click="dayBtnclick">日</i-button>
-          <i-button @click="weekBtnClick">周</i-button>
-        </div>
-        <div id="noise-line"></div>
-
       </div>
-    </div>
+  </div>
+
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>
