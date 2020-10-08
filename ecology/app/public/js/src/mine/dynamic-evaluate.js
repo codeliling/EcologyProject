@@ -65,6 +65,14 @@ var vueApp = new Vue({
 
     evaluateReportData:[],
     currentEvaluateReportData:[],
+
+    synthesisData:[
+      {"item":"绿化覆盖","name":"鹰嘴界国家级自然保护区","score":97},
+      {"item":"废料利用","name":"沅陵县盘古乡石家寨矿区磷矿","score":96},
+      {"item":"绿化覆盖","name":"怀化中坡保护区","score":94},
+      {"item":"灾害管理","name":"通道侗族自治县锅冲矿区硅石矿","score":93},
+      {"item":"安全生产","name":"会同县淘金冲矿区","score":92}
+    ]
   },
   methods: {
     dayBtnClick:function(){
@@ -103,19 +111,25 @@ var vueApp = new Vue({
     that.radarGraphic = echarts.init(document.getElementById('radar'));
     that.radarOption = {
         title: {
-            text: '基础雷达图'
+            text: ''
         },
         tooltip: {},
         legend: {
-            data: ['数据指标']
+            data: ['数据指标'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color: ['#dfc73d','#E6951D','#A5D9E1','#3074B1','#B691C1', '#7D57A1'],
         radar: {
             // shape: 'circle',
             name: {
                 textStyle: {
-                    color: '#fff',
-                    backgroundColor: '#999',
-                    borderRadius: 3,
+                    color: '#A5D9E1',
+                    fontSize: 16, // 字体大小
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
                     padding: [3, 5]
                 }
             },
@@ -131,7 +145,8 @@ var vueApp = new Vue({
         series: [{
             name: '数据指标',
             type: 'radar',
-            // areaStyle: {normal: {}},
+            areaStyle: {normal: {color:'#3074B1'}},
+            lineStyle:{normal: {color:'#A5D9E1'}},
             data: [
                 {
                     value: that.currentRadarData,
@@ -148,17 +163,31 @@ var vueApp = new Vue({
         tooltip: {
             formatter: '{a} <br/>{b} : {c}%'
         },
-        toolbox: {
-            feature: {
-                restore: {},
-                saveAsImage: {}
+        visualMap: {
+            type: 'piecewise',
+            categories: [
+                 '有待提升','达标', '良好', '优秀',
+            ],
+            inRange: {
+                color: ['#e6951d','#dfc73d','#85c154', '#5FA731']
+            },
+            right:"10px",
+            bottom:"50px",
+            align:"left",
+            textStyle: {
+             color: '#A5D9E1'
             }
         },
         series: [
             {
                 name: '业务指标',
                 type: 'gauge',
-                detail: {formatter: '{value}%'},
+                detail: {formatter: '{value}'},
+                axisLine: {            // 坐标轴线
+                       lineStyle: {       // 属性lineStyle控制线条样式
+                           color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
+                       }
+                },
                 data: [{value: 50, name: '评分'}]
             }
         ]
@@ -169,33 +198,59 @@ var vueApp = new Vue({
 
     that.tendencyBar = echarts.init(document.getElementById('tendency-bar'));
     that.tendencyBarOption = {
-        title: {
-            text: '近日评价趋势'
-        },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['安全生产', '环境质量', '灾害管理', '废料利用', '绿化覆盖','建筑维护']
+            icon:'rectangle',
+            data: ['安全生产', '环境质量', '灾害管理', '废料利用', '绿化覆盖','建筑维护'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:[
+          '#DFC73D','#E6951D','#A5D9E1','#3074B1','#B691C1','#7D57A1',
+        ],
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
             containLabel: true
         },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
             data: that.weekData,
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         series: [
             {
@@ -240,6 +295,17 @@ var vueApp = new Vue({
     //--------------------------------------------------------------------------
     this.horBarGraphic1 = echarts.init(document.getElementById('hor-bar-graphic1'));
     this.horBarOption1 = {
+        title: {
+            text: '安全生产',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 15, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -247,20 +313,44 @@ var vueApp = new Vue({
             }
         },
         legend: {
-            data: ['正常', '故障', '修理中']
+            data: ['正常', '故障', '修理中'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
+        color:['#5FA731','#E6951D','#A5D9EE'],
         xAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         yAxis: {
             type: 'category',
-            data: ['当前日']
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         series: [
             {
@@ -299,6 +389,17 @@ var vueApp = new Vue({
     //--------------------------------------------------------------------------
     this.horBarGraphic2 = echarts.init(document.getElementById('hor-bar-graphic2'));
     this.horBarOption2 = {
+        title: {
+            text: '环境质量',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 15, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -308,18 +409,39 @@ var vueApp = new Vue({
         legend: {
             data: ['大气', '水质', '噪音', '粉尘']
         },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
+        color:['#7D57A1','#B691C1','#A5D9E1','#85C154'],
+
         xAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         yAxis: {
             type: 'category',
-            data: ['当前日']
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         series: [
             {
@@ -366,65 +488,7 @@ var vueApp = new Vue({
     };
     this.horBarGraphic2.setOption(this.horBarOption2);
 
-    //---------------------------------------------------------------------------
-    let synthesisGraphic = echarts.init(document.getElementById('synthesis-graphic'));
-    let synthesisOption = {
-      title: {
-          text: '综合评分',
-      },
-      tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-              type: 'shadow'
-          }
-      },
-      legend: {
-          data: ['绿化覆盖1', '废料利用','绿化覆盖2','灾害管理','安全生产']
-      },
-      grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
-      },
-      xAxis: {
-          type: 'value',
-          boundaryGap: [0, 0.01]
-      },
 
-      yAxis: {
-          type: 'category',
-          data: ['鹰嘴界国家级自然保护区', '沅陵县盘古乡石家寨矿区磷矿', '怀化中坡保护区', '通道侗族自治县锅冲矿区硅石矿', '会同县淘金冲矿区']
-      },
-      series: [
-          {
-              name: '绿化覆盖1',
-              type: 'bar',
-              data: [97,0,0,0,0]
-          },
-          {
-              name: '废料利用',
-              type: 'bar',
-              data: [0,96,0,0,0]
-          },
-          {
-              name: '绿化覆盖2',
-              type: 'bar',
-              data: [0,0,94,0,0]
-          },
-          {
-              name: '灾害管理',
-              type: 'bar',
-              data: [0,0,0,93,0]
-          },
-          {
-              name: '安全生产',
-              type: 'bar',
-              data: [0,0,0,0,92]
-          },
-        ]
-    };
-    synthesisGraphic.setOption(synthesisOption);
     //--------------------------------------------------------------------------
     $.getJSON('/public/assets/3-1-1.json',function(data){
       that.peopleCountData = data;
@@ -580,7 +644,7 @@ var vueApp = new Vue({
         if(alarmDataInterval == that.alarmData.length){
           alarmDataInterval = 0;
         }
-      }      
+      }
     },that.frequency2);
 
     let wasteDataInterval = 0;

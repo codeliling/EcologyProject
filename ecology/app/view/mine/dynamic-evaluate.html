@@ -4,105 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>矿山动态评估</title>
+  <title>动态评估</title>
   <link rel="stylesheet" href="/public/css/lib/iview.css" />
   <link rel="stylesheet" href="/public/css/src/mine/dynamic-evaluate.css" />
 </head>
 <body>
   <div class="header">
-    怀化市矿山资源
+    <p>动态评估</p>
   </div>
     <div class="content" id="content">
       <div class="content_left">
         <div class="left-sub-area1">
           <div class="count-area">
-            <div class="index-box">${currentPeopleData}</div>
-            <span>影响人口</span>
+            <div class="index-box">
+              <p class="p1">${currentPeopleData}</p>
+              <p class="p2">人</p>
+            </div>
+            <p class="count-area-subtitle">影响人口</p>
           </div>
           <div class="count-area">
-            <div class="index-box">${currentAreaData}</div>
-            <span>覆盖面积</span>
+            <div class="index-box index-box-ratate1">
+              <p class="p1 p1-rotate1">${currentAreaData}</p>
+              <p class="p2 p2-rotate1">台</p>
+            </div>
+            <p class="count-area-subtitle">运作设备</p>
           </div>
           <div class="count-area">
-            <div class="index-box">21</div>
-            <span>监测矿区</span>
+            <div class="index-box index-box-ratate2">
+              <p class="p1 p1-rotate2">21</p>
+              <p class="p2 p2-rotate2">个</p>
+            </div>
+            <p class="count-area-subtitle">监测矿区</p>
           </div>
         </div>
         <div>
-          <p>具体指数</p>
-          <div>
-            <p>安全生产</p>
-            <p>${currentSafetyProductData}</p>
-            <div id="hor-bar-graphic1">
+          <div class="assessment-block"><p>评估指数</p></div>
+          <div class="box">
+            <div class="box-bg box-bg-1"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div style="padding:15px;">
+              <div class="eva-box">
+                <p class="eva-index">${currentSafetyProductData}</p>
+                <div id="hor-bar-graphic1">
 
-            </div>
-          </div>
-          <div>
-            <p>环境质量</p>
-            <p>${currentEnvData}</p>
-            <div id="hor-bar-graphic2">
+                </div>
+              </div>
+              <div class="eva-box">
+                <p class="eva-index">${currentEnvData}</p>
+                <div id="hor-bar-graphic2">
 
+                </div>
+              </div>
+              <div class="eva-box">
+                <p class="eva-box-title" id="eva-box-title1">灾害管理</p>
+                <p class="eva-index">${currentDisasterData}</p>
+                <div class="eva-box-content">
+                  <span>预警信息<span><span style="margin-left:30px">${currentAlarmData}条</span>
+                </div>
+              </div>
+              <div class="eva-box">
+                <p class="eva-box-title" id="eva-box-title2">废料利用</p>
+                <p class="eva-index">${currentWasteData}</p>
+                <div class="eva-box-content">
+                  <span>途径种类<span><span style="margin-left:30px">43种</span>
+                </div>
+              </div>
+              <div class="eva-box">
+                <p class="eva-box-title" id="eva-box-title3">绿化覆盖</p>
+                <p  class="eva-index">87<p>
+                <div class="eva-box-content">
+                  <span>覆盖面积<span><span style="margin-left:30px">8.9km²</span>
+                </div>
+              </div>
+              <div class="eva-box">
+                <p class="eva-box-title" id="eva-box-title4">建筑维护</p>
+                <p class="eva-index">${currentMainData}<p>
+                <div class="eva-box-content">
+                  <span>安置建筑<span><span style="margin-left:30px">43420</span>
+                </div>
+              </div>
             </div>
+
           </div>
-          <div>
-            <p>灾害管理<span>${currentDisasterData}分</span></p>
-            <div>
-              报警信息<span>${currentAlarmData}条</span>
-            </div>
-          </div>
-          <div>
-            <p>废料利用<span>${currentWasteData}分</span></p>
-            <div>
-              废料利用率<span>43.4%</span>
-            </div>
-          </div>
-          <div>
-            <p>绿化覆盖<span>87<span></p>
-            <div>
-              覆盖面积<span>8.9km²</span>
-            </div>
-          </div>
-          <div>
-            <p>建筑维护<span>${currentMainData}<span></p>
-            <div>
-              安置建筑<span>43420</span>
-            </div>
-          </div>
+
         </div>
       </div>
       <div id="main" class="center">
         <div>
           <div id="radar"></div>
         </div>
-        <div>
-          <p>近日评价趋势</p>
-          <div id="tendency-bar">
+        <div style="position:relative">
+          <div class="assessment-block"><p>近日评价趋势</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-6"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div id="tendency-bar">
 
+            </div>
+            <div style="position:absolute;right:100px;top:100px;">
+              <div class="period" @click="dayBtnClick">日</div>
+              <div class="period" @click="monthBtnClick">月</div>
+              <div class="period" @click="yearBtnClick">年</div>
+            </div>
           </div>
-          <i-button @click="dayBtnClick">日</i-button>
-          <i-button @click="monthBtnClick">月</i-button>
-          <i-button @click="yearBtnClick">年</i-button>
         </div>
       </div>
       <div class="content_right">
         <div class="safety">
-          <p>评分</p>
-          <div id="safety-gauge"></div>
+          <div class="assessment-block"><p>实时评分</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-2"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div id="safety-gauge"></div>
+          </div>
+
         </div>
         <div class="synthesis">
-          <p>综合评分</p>
-          <div id="synthesis-graphic"></div>
+          <div class="assessment-block"><p>综合评分Top5</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-3"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div id="synthesis-graphic">
+              <div class="sg-block">
+                <p class="sg-name">鹰嘴界国家级自然保护区</p>
+                <p class="sg-item">绿化覆盖</p>
+                <div class="progress-bg"></div>
+                <div class="progress-front1"></div>
+              </div>
+              <div class="sg-block">
+                <p class="sg-name">沅陵县盘古乡石家寨矿区磷矿</p>
+                <p class="sg-item">废料利用</p>
+                <div class="progress-bg"></div>
+                <div class="progress-front2"></div>
+              </div>
+              <div class="sg-block">
+                <p class="sg-name">怀化中坡保护区</p>
+                <p class="sg-item">绿化覆盖</p>
+                <div class="progress-bg"></div>
+                <div class="progress-front3"></div>
+              </div>
+              <div class="sg-block">
+                <p class="sg-name">通道侗族自治县锅冲矿区硅石矿</p>
+                <p class="sg-item">灾害管理</p>
+                <div class="progress-bg"></div>
+                <div class="progress-front4"></div>
+              </div>
+              <div class="sg-block">
+                <p class="sg-name">会同县淘金冲矿区</p>
+                <p class="sg-item">安全生产</p>
+                <div class="progress-bg"></div>
+                <div class="progress-front5"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="evaluate">
-          <p>评价方法</p>
-          <div></div>
+          <p class="evaluate-title">评估方法</p>
+          <div class="box2">
+            <div class="box-bg box-bg-4"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div style="width:100%;text-align:center;">
+              <div class="eva-method">
+                <p class="eva-method-left">因子<br>分析<p>
+                <p class="eva-method-right">层次<br>分析法<p>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="restore">
-          <p>评估报告</p>
-          <div>层次分析法AHP<br>因子分析</div>
-        </div>
-        <div class="restore">
-          <p v-for="elem in currentEvaluateReportData">${elem.name}:${elem.rank},${elem.time}</p>
+          <div class="assessment-block"><p>动态评估</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-5"></div>
+            <div class="image-border image-border1"></div>
+    				<div class="image-border image-border2"></div>
+    				<div class="image-border image-border3"></div>
+    				<div class="image-border image-border4"></div>
+            <div class="dynamic-eva">
+              <p class="dynamic-eva-content" v-for="elem in currentEvaluateReportData">${elem.name}:&nbsp;${elem.rank}, &nbsp;&nbsp;评估时间：${elem.time}</p>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
