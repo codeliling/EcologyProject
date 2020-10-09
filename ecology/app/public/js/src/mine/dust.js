@@ -92,6 +92,21 @@ var app = new Vue({
         }
       },1000);
     },
+    backClick:function(){
+
+    },
+    airMonitorClick:function(){
+      window.location.href = "/mine/air";
+    },
+    waterMonitorClick:function(){
+      window.location.href = "/mine/water";
+    },
+    noiseMonitorClick:function(){
+      window.location.href = "/mine/noise";
+    },
+    dustMonitorClick:function(){
+      window.location.href = "/mine/dust";
+    }
   },
   mounted() {
     var myChart = echarts.init(document.getElementById('map'));
@@ -103,7 +118,7 @@ var app = new Vue({
         myChart.setOption(option = {
             title: {
               text: '',
-              subtext: '矿山水质监测大图',
+              subtext: '',
             },
             tooltip: {
                 trigger: 'item',
@@ -130,16 +145,35 @@ var app = new Vue({
                 left: 'right',
                 top: 'bottom',
                 inRange: {
-                    color: ['lightskyblue', 'yellow', 'orangered']
-                }
+                    color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                },
+                textStyle: {
+                  color: '#A5D9E1'
+                },
             },
             series: [
                 {
-                    name: '怀化市生态矿山',
+                    name: '',
                     type: 'map',
                     mapType: 'HH', // 自定义扩展图表类型
                     label: {
-                        show: true
+                        show: true,
+                        textStyle:{
+                    			fontSize:12,
+                    			color:'#ffffff'
+                    		}
+                    },
+                    itemStyle: {
+                        normal: {
+                          borderWidth: .5, //区域边框宽度
+                          borderColor: '#009fe8', //区域边框颜色
+                          areaColor: "#ffefd5", //区域颜色
+                        },
+                        emphasis: {
+                          borderWidth: .5,
+                          borderColor: '#192A54',
+                          areaColor: "#5FA731",
+                        }
                     },
                     roam:true,
                     data: [
@@ -168,18 +202,41 @@ var app = new Vue({
     //---------------------------------------------------------------------------
     var dustPieGraphic = echarts.init(document.getElementById('dust-pie'));
     dustPieOption = {
-      title: {
-          text: '粉尘概况',
-      },
+
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
             orient: 'vertical',
-            left: 10,
+            right: 10,
             data: ['一级', '二级', '三级', '四级', '五级']
         },
+        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D'],
+        graphic:[
+            {
+                type:"text",
+                    left:"center",
+                    top:"40%",
+                    style:{
+                        text:"总监测点",
+                        textAlign:"center",
+                        fill:"#E6951D",
+                        fontSize:26
+                    }
+            },
+            {
+                type:"text",
+                    left:"center",
+                    top:"50%",
+                    style:{
+                        text:"204",
+                        textAlign:"center",
+                        fill:"#3074B1",
+                        fontSize:20
+                    }
+            }
+        ],
         series: [
             {
 
@@ -207,34 +264,53 @@ var app = new Vue({
     //---------------------------------------------------------------------------
     this.dustBarGraphic = echarts.init(document.getElementById('dust-bar'));
     this.dustBarOption = {
-        title: {
-            text: '粉尘同比环比图',
-        },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['同比', '环比']
-        },
-        toolbox: {
-            show: true,
-            feature: {
-                dataView: {show: true, readOnly: false},
-                magicType: {show: true, type: ['line', 'bar']},
-                restore: {show: true},
-                saveAsImage: {show: true}
+            data: ['同比', '环比'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
             }
         },
+        color:['#A5D9E1','#7D57A1'],
         calculable: true,
         xAxis: [
             {
                 type: 'category',
-                data: this.dustBarAddressData
+                data: this.dustBarAddressData,
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
             }
         ],
         series: [
@@ -287,30 +363,50 @@ var app = new Vue({
             min: 0,
             max: 400
         }],
-
-
-        title: [{
-            left: 'center',
-            text: '粉尘污染走势'
-        }],
         tooltip: {
             trigger: 'axis'
         },
         xAxis: [{
-            data: this.yearxAxis
+            data: this.yearxAxis,
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         }],
         yAxis: [{
-            splitLine: {show: false}
-        }],
-        grid: [{
-            bottom: '60%'
-        }, {
-            top: '60%'
+            splitLine: {show: false},
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         }],
         series: [{
             type: 'line',
             showSymbol: false,
-            data: this.yearData[0].value
+            data: this.yearData[0].value,
+            itemStyle: {
+      				normal: {
+      					color: '#7D57A1', //改变折线点的颜色
+      					lineStyle: {
+      						color: '#7D57A1' //改变折线颜色
+      					}
+      				}
+      			},
         }]
     };
 

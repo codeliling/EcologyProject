@@ -97,34 +97,63 @@ var app = new Vue({
     let that = this;
     this.lineGraphic = echarts.init(document.getElementById('line-graphic'));
     this.lineOption = {
-        title: {
-            text: '滑坡监测',
-            subtext:'X轴时间，Y轴位移变化'
-        },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
+            icon:"rectangle",
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            },
             data: ['CNSS-1', 'CNSS-2', 'CNSS-3', 'CNSS-4', 'CNSS-5', 'CNSS-6', 'CNSS-7']
         },
+        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
             containLabel: true
         },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: this.currentLineXAxisData
+            data: this.currentLineXAxisData,
+            axisPointer: {
+                type: 'shadow'
+            },
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            },
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            axisPointer: {
+                type: 'shadow'
+            },
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            },
         },
         series: [
             {
@@ -177,8 +206,8 @@ var app = new Vue({
     this.debrisFlow = echarts.init(document.getElementById('debris-flow'));
     this.debrisFlowOption = {
         title: {
-            text: '泥石流监测',
-            subtext: 'X主滑带、位移、降雨，Y轴数量'
+            text: '',
+            subtext: ''
         },
         tooltip: {
             trigger: 'axis',
@@ -187,8 +216,13 @@ var app = new Vue({
             }
         },
         legend: {
-            data: ['水平位移变化量', '平面变形量']
+            data: ['水平位移变化量', '平面变形量'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:['#A5D9E1','#7D57A1'],
         grid: {
             left: '3%',
             right: '4%',
@@ -197,10 +231,39 @@ var app = new Vue({
         },
         xAxis: {
             type: 'value',
-            boundaryGap: [0, 0.01]
+            boundaryGap: [0, 0.01],
+            axisPointer: {
+                type: 'shadow'
+            },
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            },
         },
         yAxis: {
             type: 'category',
+            splitLine:{
+  　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            },
             data: ['深孔监测点1', '深孔监测点2', '深孔监测点3', '深孔监测点4', '深孔监测点5', '深孔监测点6']
         },
         series: [
@@ -222,10 +285,6 @@ var app = new Vue({
     //------------------------------------------------------------------------------
     this.sedimentationSettlement = echarts.init(document.getElementById('sedimentation-settlement'));
     this.sedimentationSettlementOption = {
-        title: {
-            text: '地面沉降',
-            subtext:'X轴时间，Y轴沉降变化'
-        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -236,13 +295,13 @@ var app = new Vue({
             }
         },
         legend: {
-            data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6']
+          textStyle: {
+              fontSize: 12,
+              color: '#A5D9E1'
+          },
+          data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6']
         },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
+        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#5FA731'],
         grid: {
             left: '3%',
             right: '4%',
@@ -253,12 +312,44 @@ var app = new Vue({
             {
                 type: 'category',
                 boundaryGap: false,
-                data: []
+                data: [],
+                axisPointer: {
+                    type: 'shadow'
+                },
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                },
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                },
             }
         ],
         series: [
@@ -317,20 +408,54 @@ var app = new Vue({
     let safetyGaugeData = [97,96,99,98,100,197,102,97,94,98,96,99];
     var safetyGauge = echarts.init(document.getElementById('safety-gauge'));
     safetyOption = {
+      title: {
+           text: '实时评分',
+           subtext:'',
+           textStyle: {
+                fontFamily: "sans-serif", // 主标题文字的字体系列。
+                fontSize: 14, // 字体大小
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                color:'#A5D9E1',
+                lineHeight:"12",
+            },
+            subtextStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 12, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
+        visualMap: {
+            type: 'piecewise',
+            categories: [
+                 '有待提升','达标', '良好', '优秀',
+            ],
+            inRange: {
+                color: ['#e6951d','#dfc73d','#85c154', '#5FA731']
+            },
+            right:"10px",
+            bottom:"50px",
+            align:"left",
+            textStyle: {
+             color: '#A5D9E1'
+            }
+        },
         tooltip: {
             formatter: '{a} <br/>{b} : {c}%'
-        },
-        toolbox: {
-            feature: {
-                restore: {},
-                saveAsImage: {}
-            }
         },
         series: [
             {
                 name: '业务指标',
                 type: 'gauge',
                 detail: {formatter: '{value}'},
+                axisLine: {            // 坐标轴线
+                       lineStyle: {       // 属性lineStyle控制线条样式
+                           color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
+                       }
+                },
                 data: [{value: 50, name: '评分'}]
             }
         ]
@@ -350,7 +475,7 @@ var app = new Vue({
     var dom = document.getElementById("confidence-band");
     this.tendencyLine = echarts.init(dom);
     this.tendencyOption = {
-        color: ['#003366', '#006699', '#4cabce'],
+        color: ['#e6951d','#dfc73d','#85c154'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -358,19 +483,49 @@ var app = new Vue({
             }
         },
         legend: {
-            data: ['滑坡(%)', '泥石流(%)', '地面沉降(%)']
+            data: ['滑坡(%)', '泥石流(%)', '地面沉降(%)'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
 
         xAxis: [
             {
                 type: 'category',
                 axisTick: {show: false},
-                data: []
+                data: [],
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
             }
         ],
         series: [
@@ -398,33 +553,57 @@ var app = new Vue({
     this.rainBar = echarts.init(document.getElementById('rain-bar'));
 
     this.rainOption = {
-        title: {
-            text: '折线图堆叠'
-        },
+
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6', '监测点7']
+            data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6', '监测点7'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#5FA731','#85C154'],
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
             containLabel: true
         },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: []
+            data: [],
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
         series: [
             {
@@ -489,44 +668,47 @@ var app = new Vue({
           myChart.hideLoading();
           echarts.registerMap('HH', geoJson);
           myChart.setOption(option = {
-              title: {
-                text: '',
-                subtext: '怀化市矿区分布图',
-              },
               tooltip: {
                   trigger: 'item',
                   formatter: '{b}<br/>{c} (kWh/d)'
               },
-              toolbox: {
-                  show: true,
+              visualMap: {
+                  min: 10000,
+                  max: 100000,
+                  text: ['High', 'Low'],
+                  realtime: false,
+                  calculable: true,
                   orient: 'vertical',
                   left: 'right',
-                  top: 'center',
-                  feature: {
-                      dataView: {readOnly: false},
-                      restore: {},
-                      saveAsImage: {}
-                  }
+                  top: 'bottom',
+                  inRange: {
+                      color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                  },
+                  textStyle: {
+                    color: '#A5D9E1'
+                  },
               },
               geo: {
                  show: true,
                  map: 'HH',
                  label: {
-                   normal: {
-                     show: false
-                   },
-                   emphasis: {
-                     show: true
-                   }
+                     show: true,
+                     textStyle:{
+                       fontSize:12,
+                       color:'#ffffff'
+                     }
                  },
                  roam: true,
                  itemStyle: {
                    normal: {
-                     areaColor: '#FFFFFF',
-                     borderColor: '#3B5077'
+                     borderWidth: .5, //区域边框宽度
+                     borderColor: '#009fe8', //区域边框颜色
+                     areaColor: "#ffefd5", //区域颜色
                    },
                    emphasis: {
-                     areaColor: '#FFFFFF'
+                     borderWidth: .5,
+                     borderColor: '#192A54',
+                     areaColor: "#5FA731",
                    }
                  },
                  zoom: 0.8
@@ -614,7 +796,7 @@ var app = new Vue({
     setInterval(function(){
       that.debrisFlowOption.series[0].data = [];
       that.debrisFlowOption.series[1].data = [];
-      that.debrisFlowOption.title.subtext = 'X主滑带、位移、降雨，Y轴数量  ' + that.debrisFlowxAxisData[debrisFlowInterval];
+
       that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor1[debrisFlowInterval]);
       that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor2[debrisFlowInterval]);
       that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor3[debrisFlowInterval]);

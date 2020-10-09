@@ -5,7 +5,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .header{
@@ -24,6 +24,9 @@ body{
   width: 100%;
   height: 80px;
   text-align: center;
+}
+.header-title p{
+  line-height: 80px;
 }
 
 .header-back{
@@ -142,10 +145,10 @@ body{
 }
 
 .assessment-block{
-  width: 90%;
+  width: 95%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 15px 30px;
+  margin: 5px 10px;
   position:relative;
   display:inline-block;
 }
@@ -178,7 +181,7 @@ body{
 
 #safety-gauge{
   width:100%;
-  height:260px;
+  height:230px;
 }
 
 #tendency-bar{
@@ -423,6 +426,7 @@ body{
   color:#A5D9E1;
   font-size: 16px;
   font-weight: bold;
+  margin: 0px 20px;
 }
 
 .dynamic-eva-content{
@@ -441,7 +445,7 @@ body{
   color: 172952;
   display: inline-block;
   margin-left: 15px;
-
+  cursor:pointer;
 }
 
 .box{
@@ -451,7 +455,7 @@ body{
 
 .box2{
   position: relative;
-  margin: 20px;
+  margin: 10px 10px;
 }
 
 .box-bg{
@@ -466,7 +470,7 @@ body{
 }
 
 .box-bg-2{
-  height:260px;
+  height:230px;
 }
 
 .box-bg-3{
@@ -484,7 +488,6 @@ body{
 .box-bg-6{
   height:300px;
 }
-
 
 .image-border{
   position: absolute;
@@ -522,4 +525,8 @@ body{
 
 .dynamic-eva{
   position: relative;
+}
+
+.date-box{
+  position:absolute;right:50px;top:40px;
 }

@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>动态评估</title>
   <link rel="stylesheet" href="/public/css/lib/iview.css" />
-  <link rel="stylesheet" href="/public/css/src/mine/dynamic-evaluate.css" />
+  <link rel="stylesheet" href="/public/css/src/mine/dynamic-evaluate-1920x1080.css" media="(max-width:1920px)"/>
+  <link rel="stylesheet" href="/public/css/src/mine/dynamic-evaluate-2560x1440.css" media="screen and (max-width:2560px) and (min-width:1930px)"/>
 </head>
 <body>
   <div id="content">
@@ -112,7 +113,7 @@
               <div id="tendency-bar">
 
               </div>
-              <div style="position:absolute;right:100px;top:100px;">
+              <div class="date-box">
                 <div class="period" @click="dayBtnClick">日</div>
                 <div class="period" @click="monthBtnClick">月</div>
                 <div class="period" @click="yearBtnClick">年</div>

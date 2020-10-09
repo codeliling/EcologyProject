@@ -2,44 +2,6 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
-    columns1: [
-        {
-          title: '矿名',
-          key: 'name'
-        },
-        {
-          title: 'SO2（μg/m3）',
-          key: 'indicator1'
-        },
-        {
-          title: 'NO2（μg/m3）',
-          key: 'indicator2'
-        },
-        {
-          title: 'CO（μg/m3）',
-          key: 'indicator3'
-        },
-        {
-          title: 'O3（μg/m3）',
-          key: 'indicator4'
-        },
-        {
-          title: '温度（°C）',
-          key: 'indicator5'
-        },
-        {
-          title: '湿度（%rh）',
-          key: 'indicator6'
-        },
-        {
-          title: '风向',
-          key: 'indicator7'
-        },
-        {
-          title: '风力',
-          key: 'indicator8'
-        }
-    ],
     data1:[],
     airTableData:[],
     airBarGraphic:{},
@@ -119,6 +81,21 @@ var app = new Vue({
       this.airLineOption.xAxis[0].data = this.lineYearTimeData;
       this.airLineOption.series[0].data = this.lineYearData;
       this.airLineGraphic.setOption(this.airLineOption);
+    },
+    backClick:function(){
+
+    },
+    airMonitorClick:function(){
+      window.location.href = "/mine/air";
+    },
+    waterMonitorClick:function(){
+      window.location.href = "/mine/water";
+    },
+    noiseMonitorClick:function(){
+      window.location.href = "/mine/noise";
+    },
+    dustMonitorClick:function(){
+      window.location.href = "/mine/dust";
     }
   },
   mounted() {
@@ -129,24 +106,9 @@ var app = new Vue({
         myChart.hideLoading();
         echarts.registerMap('HH', geoJson);
         myChart.setOption(option = {
-            title: {
-              text: '',
-              subtext: '矿山水质监测大图',
-            },
             tooltip: {
                 trigger: 'item',
                 formatter: '{b}<br/>{c} (kWh/d)'
-            },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
             },
             visualMap: {
                 min: 10000,
@@ -158,16 +120,36 @@ var app = new Vue({
                 left: 'right',
                 top: 'bottom',
                 inRange: {
-                    color: ['lightskyblue', 'yellow', 'orangered']
-                }
+                    color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                },
+                textStyle: {
+                  color: '#A5D9E1'
+                },
             },
+
             series: [
                 {
                     name: '怀化市生态矿山',
                     type: 'map',
                     mapType: 'HH', // 自定义扩展图表类型
                     label: {
-                        show: true
+                        show: true,
+                        textStyle:{
+                    			fontSize:12,
+                    			color:'#ffffff'
+                    		}
+                    },
+                    itemStyle: {
+                        normal: {
+                          borderWidth: .5, //区域边框宽度
+                          borderColor: '#009fe8', //区域边框颜色
+                          areaColor: "#ffefd5", //区域颜色
+                        },
+                        emphasis: {
+                          borderWidth: .5,
+                          borderColor: '#192A54',
+                          areaColor: "#5FA731",
+                        }
                     },
                     roam:true,
                     data: [
@@ -196,16 +178,27 @@ var app = new Vue({
     //---------------------------------------------------------------------------
     var airPieGraphic = echarts.init(document.getElementById('air-pie'));
     var airPieOption = {
-
+        title: {
+            text: '噪音情况',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 15, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
             orient: 'vertical',
-            left: 10,
+            right: 10,
             data: ['I类', 'II类', 'III类', 'IV类', 'V类','VI类']
         },
+        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D'],
         graphic:[
             {
                 type:"text",
@@ -214,8 +207,8 @@ var app = new Vue({
                     style:{
                         text:"总监测点",
                         textAlign:"center",
-                        fill:"#000",
-                        fontSize:30
+                        fill:"#E6951D",
+                        fontSize:26
                     }
             },
             {
@@ -225,8 +218,8 @@ var app = new Vue({
                     style:{
                         text:"100",
                         textAlign:"center",
-                        fill:"#000",
-                        fontSize:26
+                        fill:"#3074B1",
+                        fontSize:20
                     }
             }
         ],
@@ -267,23 +260,33 @@ var app = new Vue({
                 }
             }
         },
-        toolbox: {
-            feature: {
-                dataView: {show: true, readOnly: false},
-                magicType: {show: true, type: ['line', 'bar']},
-                restore: {show: true},
-                saveAsImage: {show: true}
+        legend: {
+            data: ['当日总评分', '排名'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
             }
         },
-        legend: {
-            data: ['当日总评分', '排名']
-        },
+        color:['#A5D9E1','#7D57A1'],
         xAxis: [
             {
                 type: 'category',
                 data: [],
                 axisPointer: {
                     type: 'shadow'
+                },
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
                 },
                 axisLabel: {
                   formatter: function(params) {
@@ -322,7 +325,8 @@ var app = new Vue({
                 max: 100,
                 interval: 50,
                 axisLabel: {
-                    formatter: '{value} 分'
+                    formatter: '{value} 分',
+                    color: '#ffffff'
                 }
             },
             {
@@ -332,7 +336,8 @@ var app = new Vue({
                 max: 25,
                 interval: 5,
                 axisLabel: {
-                    formatter: '{value} 位'
+                    formatter: '{value} 位',
+                    color: '#ffffff'
                 }
             }
         ],
@@ -366,29 +371,52 @@ var app = new Vue({
             max: 400
         }],
 
-
-        title: [{
-            left: 'center',
-            text: '大气总体趋势图'
-        }],
         tooltip: {
             trigger: 'axis'
         },
         xAxis: [{
-            data: this.lineWeekTimeData
+            data: this.lineWeekTimeData,
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         }],
         yAxis: [{
-            splitLine: {show: false}
-        }],
-        grid: [{
-            bottom: '60%'
-        }, {
-            top: '60%'
+          splitLine:{
+　　　　        show:false
+          },
+          axisLine:{
+            lineStyle:{
+              color: '#A5D9E1'
+            }
+          },
+          axisLabel:{
+            textStyle:{
+              color: '#ffffff'
+            }
+          }
         }],
         series: [{
             type: 'line',
             showSymbol: false,
-            data: this.lineWeekData
+            data: this.lineWeekData,
+            itemStyle: {
+      				normal: {
+      					color: '#7D57A1', //改变折线点的颜色
+      					lineStyle: {
+      						color: '#7D57A1' //改变折线颜色
+      					}
+      				}
+      			},
         }]
     };
 

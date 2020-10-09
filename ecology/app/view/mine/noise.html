@@ -6,28 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>噪音监测</title>
   <link rel="stylesheet" href="/public/css/lib/iview.css" />
-  <link rel="stylesheet" href="/public/css/src/mine/noise.css" />
+  <link rel="stylesheet" href="/public/css/src/mine/noise-1920x1080.css" media="(max-width:1920px)"/>
+  <link rel="stylesheet" href="/public/css/src/mine/noise-2560x1440.css" media="screen and (max-width:2560px) and (min-width:1930px)"/>
 </head>
 <body>
   <div  id="content">
     <div class="header">
-      怀化市矿山资源
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>环境保护</p>
+      </div>
+      <div class="left-menu">
+        <div class="menu" @click="airMonitorClick">大气监测</div>
+        <div class="menu" @click="waterMonitorClick">水质监测</div>
+
+      </div>
+      <div class="right-menu">
+        <div class="menu" @click="noiseMonitorClick">噪音监测</div>
+        <div class="menu" @click="dustMonitorClick">粉尘监测</div>
+        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
+      </div>
+
     </div>
       <div class="main-content">
         <div class="content_left">
           <div id="map"></div>
           <div>
+            <div class="assessment-block"><p>数据详情</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-1"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
               <table>
-                <caption>我是标题</caption>
                 <thead>
                     <tr>
-                        <th>
-                            <div class="out">
-                                <b>勘测项</b>
-                                <div class="slash"></div>
-                                <em>地区</em>
-                            </div>
-                        </th>
+                        <th>地区</th>
                         <th>最大声级（db）昼间</th>
                         <th>最大声级（db）夜间</th>
                         <th>背景噪声（db）</th>
@@ -37,34 +52,69 @@
                 <tbody>
                     <tr v-for="elem in data1">
                         <td style="width:170px;">${elem.name}</td>
-                        <td>${elem.noise1}</td>
-                        <td>${elem.noise2}</td>
-                        <td>${elem.noise3}</td>
-                        <td>${elem.percent}</td>
+                        <td class="table-td">${elem.noise1}</td>
+                        <td class="table-td">${elem.noise2}</td>
+                        <td class="table-td">${elem.noise3}</td>
+                        <td class="table-td">${elem.percent}</td>
                     </tr>
 
                 </tbody>
             </table>
+            </div>
+
           </div>
         </div>
         <div class="content_right">
-          <div style="width:100%;position:relative">
-            <div id="noise-pie"></div>
-            <div class="noise-pie-desc">
-              <p>更新时间：2020年09月01日 19:13:36</p>
-              <p>达标率：96%</p>
-              <p>总评分：96</p>
+          <div style="width:100%;position:relative;margin-top:10px">
+            <div class="assessment-block"><p>水质概况</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-2"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div style="position:relative;">
+                <div id="noise-pie"></div>
+                <div class="noise-pie-desc">
+                  <p class="noise-pie-desc-title">综合评分</p>
+                  <div class="noise-pie-data-area">
+                    <div class="noise-pie-data-area-content">
+                      <p class="noise-pie-data-area-content3">更新时间：2020年10月11日 19:13:36</p>
+                      <p class="noise-pie-data-area-content1">达标率：</p>
+                      <p class="noise-pie-data-area-content2">96%</p>
+                    </div>
+                    <div class="noise-pie-data-area-score"><p>96<p><span>分</span></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+            <div class="assessment-block"><p>同比环比</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-3"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div id="noise-bar"></div>
             </div>
           </div>
 
-          <div id="noise-bar">
-
+          <div style="position:relative">
+            <div class="assessment-block"><p>噪声污染度走势图</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-4"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div id="noise-line"></div>
+            </div>
           </div>
-          <div>
-            <i-button @click="dayBtnclick">日</i-button>
-            <i-button @click="weekBtnClick">周</i-button>
-          </div>
-          <div id="noise-line"></div>
 
         </div>
       </div>
