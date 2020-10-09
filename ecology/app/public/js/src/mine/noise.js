@@ -82,7 +82,7 @@ var app = new Vue({
       }
     },
     backClick:function(){
-
+      window.location.href = "/mine/envprotect";
     },
     airMonitorClick:function(){
       window.location.href = "/mine/air";

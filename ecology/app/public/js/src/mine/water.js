@@ -50,7 +50,7 @@ var app = new Vue({
       this.waterLineGraphic.setOption(this.waterLineOption);
     },
     backClick:function(){
-
+      window.location.href = "/mine/envprotect";
     },
     airMonitorClick:function(){
       window.location.href = "/mine/air";

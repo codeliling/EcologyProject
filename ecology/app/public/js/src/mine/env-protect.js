@@ -14,6 +14,18 @@ var app = new Vue({
     backClick:function(){
       window.location.href = "/mine/";
     },
+    airBtnClick:function(){
+      window.location.href = "/mine/air";
+    },
+    waterBtnClick:function(){
+      window.location.href = "/mine/water";
+    },
+    dustBtnClick:function(){
+      window.location.href = "/mine/dust";
+    },
+    noiseBtnClick:function(){
+      window.location.href = "/mine/noise";
+    },
   },
   mounted() {
     //-----------------------------------------------------------------------

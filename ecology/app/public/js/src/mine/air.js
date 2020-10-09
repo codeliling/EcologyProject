@@ -83,7 +83,7 @@ var app = new Vue({
       this.airLineGraphic.setOption(this.airLineOption);
     },
     backClick:function(){
-
+      window.location.href = "/mine/envprotect";
     },
     airMonitorClick:function(){
       window.location.href = "/mine/air";
