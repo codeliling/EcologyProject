@@ -2,6 +2,13 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
+    noiseAddressData:['湖南西奥矿业有限公司官庄金矿','沅陵县沃溪金锑钨矿','中国黄金集团柳林汊矿区桐树面金矿','沅陵县盘古乡石家寨矿区磷矿',
+    '沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','米贝金矿','中方黄岩铀矿限制开采区','中方县泸阳镇八活岩矿区石灰石',
+    '辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿','新晃县贡溪重晶石矿区','溆浦思蒙国家湿地公园保护区','怀化中坡保护区',
+    '靖州飞山苗乡侗寨风景名胜区','排牙山省级森林公园保护区','芷江县西晃山省级森林公园','鹰嘴界国家级自然保护区','雪峰山金锰矿'],
+    noiseData:[-14,29,-13,28,-19,26,-11,-15,-13,24,-18,0,19,-46,29,-37,-25,-14,18,-25,0],
+    dustMonitorGraphic2:{},
+    dustMonitorOption2:{},
   },
   methods:{
     backClick:function(){
@@ -11,92 +18,44 @@ var app = new Vue({
   mounted() {
     //-----------------------------------------------------------------------
     var sunburstGraphic = echarts.init(document.getElementById('sunburst-graphic'));
-    var sunburstData = [{
-        name: 'Grandpa',
-        children: [{
-            name: 'Uncle Leo',
-            value: 15,
-            children: [{
-                name: 'Cousin Jack',
-                value: 2
-            }, {
-                name: 'Cousin Mary',
-                value: 5,
-                children: [{
-                    name: 'Jackson',
-                    value: 2
-                }]
-            }, {
-                name: 'Cousin Ben',
-                value: 4
-            }]
-        }, {
-            name: 'Aunt Jane',
-            children: [{
-                name: 'Cousin Kate',
-                value: 4
-            }]
-        }, {
-            name: 'Father',
-            value: 10,
-            children: [{
-                name: 'Me',
-                value: 5,
-                itemStyle: {
-                    color: 'red'
-                }
-            }, {
-                name: 'Brother Peter',
-                value: 1
-            }]
-        }]
-    }, {
-        name: 'Mike',
-        children: [{
-            name: 'Uncle Dan',
-            children: [{
-                name: 'Cousin Lucy',
-                value: 3
-            }, {
-                name: 'Cousin Luck',
-                value: 4,
-                children: [{
-                    name: 'Nephew',
-                    value: 2
-                }]
-            }]
-        }]
-    }, {
-        name: 'Nancy',
-        children: [{
-            name: 'Uncle Nike',
-            children: [{
-                name: 'Cousin Betty',
-                value: 1
-            }, {
-                name: 'Cousin Jenny',
-                value: 2
-            }]
-        }]
-    }];
 
     sunburstOption = {
-        visualMap: {
-            type: 'continuous',
-            min: 0,
-            max: 10,
-            inRange: {
-                color: ['#2D5F73', '#538EA6', '#F2D1B3', '#F2B8A2', '#F28C8C']
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} '
+        },
+        legend: {
+            orient: 'vertical',
+            x:'80px',
+            y:'300px',
+            data: ['大气', '水质', '粉尘', '噪声'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
             }
         },
-        series: {
-            type: 'sunburst',
-            data: sunburstData,
-            radius: [0, '90%'],
-            label: {
-                rotate: 'radial'
+        color:['#5FA731','#3074B1','#E6951D','#7D57A1',],
+        series: [
+            {
+                name: '数据',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '30%'],
+                data: [
+                    {value: 90, name: '大气'},
+                    {value: 85, name: '水质'},
+                    {value: 91, name: '粉尘'},
+                    {value: 91, name: '噪声'},
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
             }
-        }
+        ]
     };
 
     sunburstGraphic.setOption(sunburstOption);
@@ -112,8 +71,13 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['I类', 'II类','III类', 'IV类', 'V类', 'VI类'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:['#A5D9E1','#3074B1','#5FA731','#85C154','#B691C1','#7D57A1'],
         graphic:[
             {
                 type:"text",
@@ -122,7 +86,7 @@ var app = new Vue({
                     style:{
                         text:"总监测点",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:22
                     }
             },
@@ -131,9 +95,9 @@ var app = new Vue({
                     left:"center",
                     top:"52%",
                     style:{
-                        text:"100",
+                        text:"204",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:18
                     }
             }
@@ -150,11 +114,12 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                    {value: 90.47, name: 'I类'},
+                    {value: 9.53, name: 'II类'},
+                    {value: 0, name: 'III类'},
+                    {value: 0, name: 'IV类'},
+                    {value: 0, name: 'V类'},
+                    {value: 0, name: 'VI类'}
                 ]
             }
         ]
@@ -164,30 +129,63 @@ var app = new Vue({
     //-----------------------------------------------------------------------
     var airMonitorGraphic2 = echarts.init(document.getElementById('air-monitor-graphic2'));
     airMonitorOption2 = {
-            legend: {},
-            tooltip: {
-                trigger: 'axis',
-                showContent: false
+        title: {
+            text: '本周趋势',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 15, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
+        color:['#7D57A1'],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['星期天(11号)','星期一(12号)','星期二(13号)','星期三(14号)','星期四(15号)','星期五(16号)','星期六(17号)'],
+            splitLine:{
+　　　　        show:false
             },
-            dataset: {
-                source: [
-                    ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-                    ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-                    ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-                    ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-                    ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
-                ]
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
             },
-            xAxis: {type: 'category'},
-            yAxis: {gridIndex: 0},
-            series: [
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-
-            ]
-        };
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
+        },
+        yAxis: {
+            type: 'value',splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
+        },
+        series: [
+            {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                data: [88,91,90,89,89,91,90]
+            }
+        ]
+    };
 
     airMonitorGraphic2.setOption(airMonitorOption2);
 
@@ -202,8 +200,13 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['I-II类','III类', 'IV类', 'V类', 'VI类'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:['#A5D9E1','#5FA731','#85C154','#B691C1','#7D57A1'],
         graphic:[
             {
                 type:"text",
@@ -212,7 +215,7 @@ var app = new Vue({
                     style:{
                         text:"总监测点",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:22
                     }
             },
@@ -221,9 +224,9 @@ var app = new Vue({
                     left:"center",
                     top:"52%",
                     style:{
-                        text:"100",
+                        text:"204",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:18
                     }
             }
@@ -240,11 +243,11 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                  {value: 76.19, name: 'I-II类'},
+                  {value: 19.05, name: 'III类'},
+                  {value: 4.76, name: 'IV类'},
+                  {value: 0, name: 'V类'},
+                  {value: 0, name: 'VI类'}
                 ]
             }
         ]
@@ -254,39 +257,60 @@ var app = new Vue({
     //-----------------------------------------------------------------------
     var waterMonitorGraphic2 = echarts.init(document.getElementById('water-monitor-graphic2'));
     waterMonitorOption2 = {
-        color: ['#3398DB'],
+        title: {
+            text: '本周趋势',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 15, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
+        color:['#7D57A1'],
         tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['星期天(11号)','星期一(12号)','星期二(13号)','星期三(14号)','星期四(15号)','星期五(16号)','星期六(17号)'],
+            splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
             }
         },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
+        yAxis: {
+            type: 'value',splitLine:{
+　　　　        show:false
+            },
+            axisLine:{
+              lineStyle:{
+                color: '#A5D9E1'
+              }
+            },
+            axisLabel:{
+              textStyle:{
+                color: '#ffffff'
+              }
+            }
         },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                axisTick: {
-                    alignWithLabel: true
-                }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
         series: [
             {
-                name: '直接访问',
-                type: 'bar',
-                barWidth: '60%',
-                data: [10, 52, 200, 334, 390, 330, 220]
+                name: '水质',
+                type: 'line',
+                stack: '总量',
+                data: [83,81,86,88,90,83,85]
             }
         ]
     };
@@ -303,8 +327,13 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['一级', '二级', '三级', '四级', '五级'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
+        color:['#A5D9E1','#5FA731','#85C154','#B691C1','#7D57A1'],
         graphic:[
             {
                 type:"text",
@@ -313,7 +342,7 @@ var app = new Vue({
                     style:{
                         text:"总监测点",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:22
                     }
             },
@@ -324,7 +353,7 @@ var app = new Vue({
                     style:{
                         text:"100",
                         textAlign:"center",
-                        fill:"#000",
+                        fill:"#A5D9E1",
                         fontSize:18
                     }
             }
@@ -341,11 +370,11 @@ var app = new Vue({
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
+                    {value: 14, name: '一级'},
+                    {value: 77, name: '二级'},
+                    {value: 9, name: '三级'},
+                    {value: 0, name: '四级'},
+                    {value: 0, name: '五级'}
                 ]
             }
         ]
@@ -354,173 +383,198 @@ var app = new Vue({
 
     //-----------------------------------------------------------------------
     var noiseMonitorGraphic2 = echarts.init(document.getElementById('noise-monitor-graphic2'));
-    $.get('/public/assets/aqi-beijing.json', function (data) {
-        noiseMonitorGraphic2.setOption(option = {
-            title: {
-                text: 'Beijing AQI'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            xAxis: {
-                data: data.map(function (item) {
-                    return item[0];
-                })
-            },
-            yAxis: {
-                splitLine: {
-                    show: false
-                }
-            },
-            toolbox: {
-                left: 'center',
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
-            dataZoom: [{
-                startValue: '2014-06-01'
-            }, {
-                type: 'inside'
-            }],
-            visualMap: {
-                top: 10,
-                right: 10,
-                pieces: [{
-                    gt: 0,
-                    lte: 50,
-                    color: '#096'
-                }, {
-                    gt: 50,
-                    lte: 100,
-                    color: '#ffde33'
-                }, {
-                    gt: 100,
-                    lte: 150,
-                    color: '#ff9933'
-                }, {
-                    gt: 150,
-                    lte: 200,
-                    color: '#cc0033'
-                }, {
-                    gt: 200,
-                    lte: 300,
-                    color: '#660099'
-                }, {
-                    gt: 300,
-                    color: '#7e0023'
-                }],
-                outOfRange: {
-                    color: '#999'
-                }
-            },
-            series: {
-                name: 'Beijing AQI',
-                type: 'line',
-                data: data.map(function (item) {
-                    return item[1];
-                }),
-                markLine: {
-                    silent: true,
-                    data: [{
-                        yAxis: 50
-                    }, {
-                        yAxis: 100
-                    }, {
-                        yAxis: 150
-                    }, {
-                        yAxis: 200
-                    }, {
-                        yAxis: 300
-                    }]
-                }
-            }
-        });
-    });
-
-    //-----------------------------------------------------------------------
-    var dustMonitorGraphic1 = echarts.init(document.getElementById('dust-monitor-graphic1'));
-    var dustMonitorOption1 = {
-
+    var noiseMonitorOption2 = {
         tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
+            trigger: 'axis'
         },
         legend: {
-            orient: 'vertical',
-            left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['同比', '环比'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
-        graphic:[
+        color:['#A5D9E1','#7D57A1'],
+        calculable: true,
+        xAxis: [
             {
-                type:"text",
-                    left:"center",
-                    top:"40%",
-                    style:{
-                        text:"总监测点",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:22
-                    }
-            },
+                type: 'category',
+                data: ['沅陵县盘古乡石家寨矿区磷矿','沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿','新晃县贡溪重晶石矿区'],
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+            }
+        ],
+        yAxis: [
             {
-                type:"text",
-                    left:"center",
-                    top:"52%",
-                    style:{
-                        text:"100",
-                        textAlign:"center",
-                        fill:"#000",
-                        fontSize:18
-                    }
+                type: 'value',
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
             }
         ],
         series: [
             {
-
-                name: '',
-                type: 'pie',
-                radius: ['50%', '80%'],
-                avoidLabelOverlap: false,
-
-                labelLine: {
-                    show: false
+                name: '同比',
+                type: 'bar',
+                data: [-46,19,-6,12,13,21,-19,-46],
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
                 },
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name: '环比',
+                type: 'bar',
+                data: [0,0,0,0,0,0,0],
+                markPoint: {
+                    data: [
+                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
+                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
             }
         ]
     };
-    dustMonitorGraphic1.setOption(dustMonitorOption1);
+    noiseMonitorGraphic2.setOption(noiseMonitorOption2);
 
     //-----------------------------------------------------------------------
-    var dustMonitorGraphic2 = echarts.init(document.getElementById('dust-monitor-graphic2'));
-    dustMonitorOption2 = {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+    //-----------------------------------------------------------------------
+    this.dustMonitorGraphic2 = echarts.init(document.getElementById('dust-monitor-graphic2'));
+    this.dustMonitorOption2 = {
+        tooltip: {
+            trigger: 'axis'
         },
-        yAxis: {
-            type: 'value'
+        legend: {
+            data: ['同比', '环比'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
+        color:['#A5D9E1','#7D57A1'],
+        calculable: true,
+        xAxis: [
+            {
+                type: 'category',
+                data: ['沅陵县盘古乡石家寨矿区磷矿','沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿'],
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+            }
+        ],
+        series: [
+            {
+                name: '同比',
+                type: 'bar',
+                data: [-14,29,-13,28,-19,26,-11],
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name: '环比',
+                type: 'bar',
+                data: [0,0,0,0,0,0,0],
+                markPoint: {
+                    data: [
+                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
+                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            }
+        ]
     };
-    dustMonitorGraphic2.setOption(dustMonitorOption2);
+    this.dustMonitorGraphic2.setOption(this.dustMonitorOption2);
 
   },
   created() {
-
+    let that = this;
+    let dustDataInterval = 0;
+    setInterval(function(){
+      if(that.noiseAddressData.length > 0){
+        that.dustMonitorOption2.xAxis[0].data = that.noiseAddressData.slice(dustDataInterval,dustDataInterval + 7);
+        that.dustMonitorOption2.series[0].data = that.noiseData.slice(dustDataInterval,dustDataInterval + 7);
+        that.dustMonitorGraphic2.setOption(that.dustMonitorOption2);
+        dustDataInterval = dustDataInterval + 7;
+        if(dustDataInterval == that.noiseAddressData.length){
+          dustDataInterval = 0;
+        }
+      }
+    },5000);
   }
 });
