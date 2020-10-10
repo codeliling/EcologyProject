@@ -4,33 +4,33 @@ var app = new Vue({
   data: {
     //值班信息数据
     dutyData:[
-      {"count":126000,"worker":112500,"leader":11232,"researcher":2241},
-      {"count":125979,"worker":112458,"leader":11236,"researcher":2245},
-      {"count":125919,"worker":112433,"leader":11223,"researcher":2238},
-      {"count":125877,"worker":112400,"leader":11210,"researcher":2235},
-      {"count":125940,"worker":112442,"leader":11231,"researcher":2237},
-      {"count":125961,"worker":112447,"leader":11229,"researcher":2246},
-      {"count":126003,"worker":112500,"leader":11231,"researcher":2242},
-      {"count":125963,"worker":112448,"leader":11231,"researcher":2247},
-      {"count":126023,"worker":112500,"leader":11235,"researcher":2250},
-      {"count":125973,"worker":112466,"leader":11243,"researcher":2239},
-      {"count":126036,"worker":112489,"leader":11247,"researcher":2250},
-      {"count":126063,"worker":112500,"leader":11250,"researcher":2250},
-      {"count":126000,"worker":112500,"leader":11235,"researcher":2244},
-      {"count":125979,"worker":112458,"leader":11236,"researcher":2245},
-      {"count":125919,"worker":112433,"leader":11223,"researcher":2238},
-      {"count":125877,"worker":112400,"leader":11210,"researcher":2235},
-      {"count":125940,"worker":112442,"leader":11231,"researcher":2237},
-      {"count":125961,"worker":112447,"leader":11229,"researcher":2246},
-      {"count":126003,"worker":112500,"leader":11231,"researcher":2242},
-      {"count":125963,"worker":112448,"leader":11231,"researcher":2247},
-      {"count":126023,"worker":112500,"leader":11235,"researcher":2250},
-      {"count":125973,"worker":112466,"leader":11243,"researcher":2239},
-      {"count":126036,"worker":112489,"leader":11247,"researcher":2250},
-      {"count":126063,"worker":112500,"leader":11250,"researcher":2250},
-      {"count":126000,"worker":112500,"leader":11235,"researcher":2243},
+    {"count":126000,"worker":112500,"leader":11232,"researcher":2241,"onwork":125973,"absence":27},
+    {"count":125979,"worker":112458,"leader":11236,"researcher":2245,"onwork":125939,"absence":40},
+    {"count":125919,"worker":112433,"leader":11223,"researcher":2238,"onwork":125894,"absence":25},
+    {"count":125877,"worker":112400,"leader":11210,"researcher":2235,"onwork":125845,"absence":32},
+    {"count":125940,"worker":112442,"leader":11231,"researcher":2237,"onwork":125910,"absence":30},
+    {"count":125961,"worker":112447,"leader":11229,"researcher":2246,"onwork":125922,"absence":39},
+    {"count":126003,"worker":112500,"leader":11231,"researcher":2242,"onwork":125973,"absence":30},
+    {"count":125963,"worker":112448,"leader":11231,"researcher":2247,"onwork":125926,"absence":37},
+    {"count":126023,"worker":112500,"leader":11235,"researcher":2250,"onwork":125985,"absence":38},
+    {"count":125973,"worker":112466,"leader":11243,"researcher":2239,"onwork":125948,"absence":25},
+    {"count":126036,"worker":112489,"leader":11247,"researcher":2250,"onwork":125986,"absence":50},
+    {"count":126063,"worker":112500,"leader":11250,"researcher":2250,"onwork":126000,"absence":63},
+    {"count":126000,"worker":112500,"leader":11235,"researcher":2244,"onwork":125979,"absence":21},
+    {"count":125979,"worker":112458,"leader":11236,"researcher":2245,"onwork":125939,"absence":40},
+    {"count":125919,"worker":112433,"leader":11223,"researcher":2238,"onwork":125894,"absence":25},
+    {"count":125877,"worker":112400,"leader":11210,"researcher":2235,"onwork":125845,"absence":32},
+    {"count":125940,"worker":112442,"leader":11231,"researcher":2237,"onwork":125910,"absence":30},
+    {"count":125961,"worker":112447,"leader":11229,"researcher":2246,"onwork":125922,"absence":39},
+    {"count":126003,"worker":112500,"leader":11231,"researcher":2242,"onwork":125973,"absence":30},
+    {"count":125963,"worker":112448,"leader":11231,"researcher":2247,"onwork":125926,"absence":37},
+    {"count":126023,"worker":112500,"leader":11235,"researcher":2250,"onwork":125985,"absence":38},
+    {"count":125973,"worker":112466,"leader":11243,"researcher":2239,"onwork":125948,"absence":25},
+    {"count":126036,"worker":112489,"leader":11247,"researcher":2250,"onwork":125986,"absence":50},
+    {"count":126063,"worker":112500,"leader":11250,"researcher":2250,"onwork":126000,"absence":63},
+    {"count":126000,"worker":112500,"leader":11235,"researcher":2243,"onwork":125978,"absence":22}
     ],
-    currentDutyData:{"count":126000,"worker":112500,"leader":11232,"researcher":2241},
+    currentDutyData:{"count":126000,"worker":112500,"leader":11232,"researcher":2241,"onwork":125973,"absence":27},
     //--------------------------------------------------------------------------------
     //挖掘机运行数据
     diggerData:[
@@ -69,8 +69,7 @@ var app = new Vue({
       {"work":87,"leisure":10,"repaire":3,"count":100},
     ],
     currentDrillingData:{"work":84,"leisure":16,"repaire":0,"count":100},
-    horBarOption4 : {},
-    horBarGraphic4 : {},
+
     //--------------------------------------------------------------------------------
     //破碎机运行数据
     crusherData:[
@@ -89,8 +88,7 @@ var app = new Vue({
       {"work":169,"leisure":38,"repaire":3,"count":210},
     ],
     currentCrusherData:{"work":168,"leisure":42,"repaire":0,"count":210},
-    horBarOption2 : {},
-    horBarGraphic2 : {},
+
     //--------------------------------------------------------------------------------
     //自卸汽车运行数据
     dumperData:[
@@ -109,12 +107,12 @@ var app = new Vue({
       {"work":335,"leisure":62,"repaire":3,"count":400},
     ],
     currentDumperData:{"work":315,"leisure":85,"repaire":0,"count":400},
-    horBarOption3 : {},
-    horBarGraphic3 : {},
+
     //--------------------------------------------------------------------------------
     //水电用量数据
     waterElecData:[],
-    safetyLineOption:{},
+    waterOption:{},
+    elecOption:{},
     safetyLineGraphic:{},
     waterElecXAxisData:[],
     seriesWaterData:[],
@@ -128,247 +126,145 @@ var app = new Vue({
     backClick:function(){
       window.location.href = "/mine/";
     },
+    waterBtnClick:function(){
+      window.location.href = "/mine/water";
+    }
   },
   mounted() {
     let that = this;
+
+    var myChart = echarts.init(document.getElementById('map'));
+
+    myChart.showLoading();
+    $.get('/public/assets/huaihua.json', function (geoJson) {
+        myChart.hideLoading();
+        echarts.registerMap('HH', geoJson);
+        myChart.setOption(option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}<br/>{c} (kWh/d)'
+            },
+            visualMap: {
+                min: 10000,
+                max: 100000,
+                text: ['High', 'Low'],
+                realtime: false,
+                calculable: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'bottom',
+                inRange: {
+                    color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                },
+                textStyle: {
+                  color: '#A5D9E1'
+                },
+            },
+
+            series: [
+                {
+                    name: '怀化市生态矿山',
+                    type: 'map',
+                    mapType: 'HH', // 自定义扩展图表类型
+                    label: {
+                        show: true,
+                        textStyle:{
+                    			fontSize:12,
+                    			color:'#ffffff'
+                    		}
+                    },
+                    itemStyle: {
+                        normal: {
+                          borderWidth: .5, //区域边框宽度
+                          borderColor: '#009fe8', //区域边框颜色
+                          areaColor: "#ffefd5", //区域颜色
+                        },
+                        emphasis: {
+                          borderWidth: .5,
+                          borderColor: '#192A54',
+                          areaColor: "#5FA731",
+                        }
+                    },
+                    roam:true,
+                    data: [
+                        {name: '沅陵县', value: 53000.00},
+                        {name: '溆浦县', value: 59000.00},
+                        {name: '辰溪县', value: 32000.00},
+                        {name: '麻阳苗族自治县', value: 23500.00},
+                        {name: '鹤城区', value: 68000.00},
+                        {name: '中方县', value: 33000.00 },
+                        {name: '芷江侗族自治县', value: 31500.00},
+                        {name: '新晃侗族自治县', value: 15500.00},
+                        {name: '洪江市', value: 48000.00},
+                        {name: '会同县', value: 22000.00},
+                        {name: '靖州苗族侗族自治县', value:18000.00 },
+                        {name: '通道侗族自治县', value: 15000.00},
+                    ],
+
+                }
+            ]
+        });
+        myChart.on('click', function (params) {
+
+        });
+    });
+
     this.horBarGraphic1 = echarts.init(document.getElementById('hor-bar-graphic1'));
+    let horBarSource = [
+        ['product', '工作中', '空闲', '修理中',],
+        ['挖掘机', that.currentDiggerData.work, that.currentDiggerData.leisure, that.currentDiggerData.repaire],
+        ['钻机', that.currentDrillingData.work, that.currentDrillingData.leisure, that.currentDrillingData.repaire],
+        ['破碎机', that.currentCrusherData.work, that.currentCrusherData.leisure, that.currentCrusherData.repaire],
+        ['自卸汽车', that.currentDumperData.work, that.currentDumperData.leisure, that.currentDumperData.repaire]
+    ];
     this.horBarOption1 = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data: ['工作中', '空闲', '修理中']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
+        legend: {},
+        tooltip: {},
+        color:['#E6951D','#5FA731','#3074B1','#7D57A1'],
+        dataset: {
+            source: horBarSource
         },
         xAxis: {
-            type: 'value'
+            type: 'category',
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
         },
         yAxis: {
-            type: 'category',
-            data: ['当前日']
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
         },
+        // Declare several bar series, each will be mapped
+        // to a column of dataset.source by default.
         series: [
-            {
-                name: '工作中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDiggerData.work]
-            },
-            {
-                name: '空闲',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDiggerData.leisure]
-            },
-            {
-                name: '修理中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDiggerData.repaire]
-            }
+            {type: 'bar'},
+            {type: 'bar'},
+            {type: 'bar'},
+            {type: 'bar'}
         ]
     };
     this.horBarGraphic1.setOption(this.horBarOption1);
-
-    //-----------------------------------------------------------------------
-    this.horBarGraphic2 = echarts.init(document.getElementById('hor-bar-graphic2'));
-    this.horBarOption2 = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data: ['工作中', '空闲', '修理中']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'value'
-        },
-        yAxis: {
-            type: 'category',
-            data: ['当前日']
-        },
-        series: [
-            {
-                name: '工作中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentCrusherData.work]
-            },
-            {
-                name: '空闲',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentCrusherData.leisure]
-            },
-            {
-                name: '修理中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentCrusherData.repaire]
-            }
-        ]
-    };
-    this.horBarGraphic2.setOption(this.horBarOption2);
-
-    //-----------------------------------------------------------------------
-    this.horBarGraphic3 = echarts.init(document.getElementById('hor-bar-graphic3'));
-    this.horBarOption3 = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data: ['工作中', '空闲', '修理中']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'value'
-        },
-        yAxis: {
-            type: 'category',
-            data: ['当前日']
-        },
-        series: [
-            {
-                name: '工作中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDumperData.work]
-            },
-            {
-                name: '空闲',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDumperData.leisure]
-            },
-            {
-                name: '修理中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDumperData.repaire]
-            }
-        ]
-    };
-    this.horBarGraphic3.setOption(this.horBarOption3);
-
-    //-----------------------------------------------------------------------
-    this.horBarGraphic4 = echarts.init(document.getElementById('hor-bar-graphic4'));
-    this.horBarOption4 = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data: ['工作中', '空闲', '修理中']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'value'
-        },
-        yAxis: {
-            type: 'category',
-            data: ['当前日']
-        },
-        series: [
-            {
-                name: '工作中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDrillingData.work]
-            },
-            {
-                name: '空闲',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDrillingData.leisure]
-            },
-            {
-                name: '修理中',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight'
-                },
-                data: [this.currentDrillingData.repaire]
-            }
-        ]
-    };
-    this.horBarGraphic4.setOption(this.horBarOption4);
 
     //-------------------------------------------------------------------
     var safetyBarGraphic = echarts.init(document.getElementById('safety-bar-graphic'));
@@ -376,90 +272,194 @@ var app = new Vue({
     var safetyBarOption = {
       xAxis: {
           type: 'category',
-          data: ['烟雾','排水','粉尘','瓦斯']
+          data: ['烟雾','排水','粉尘','瓦斯'],
+          splitLine:{
+  　　　　        show:false
+              },
+              axisLine:{
+                lineStyle:{
+                  color: '#A5D9E1'
+                }
+              },
+              axisLabel:{
+                textStyle:{
+                  color: '#ffffff'
+                }
+              }
       },
+      color:['#E6951D','#5FA731','#3074B1'],
       yAxis: {
-          type: 'value'
+          type: 'value',
+          splitLine:{
+  　　　　        show:false
+              },
+              axisLine:{
+                lineStyle:{
+                  color: '#A5D9E1'
+                }
+              },
+              axisLabel:{
+                textStyle:{
+                  color: '#ffffff'
+                }
+              }
       },
       series: [
-        {
-          type: 'bar',
-          itemStyle: {
-              color: 'rgba(0,0,0,0.05)'
-          },
-          barGap: '-100%',
-          barCategoryGap: '40%',
-          data: [100,100,100,100],
-          animation: false
-        },
         {
           data: [0, 40, 40, 20],
           type: 'bar',
           showBackground: true,
-          backgroundStyle: {
-              color: 'rgba(220, 220, 220, 0.8)'
-        }
+
       }]
     };
     safetyBarGraphic.setOption(safetyBarOption);
 
     //-------------------------------------------------------------------
-    that.safetyLineGraphic = echarts.init(document.getElementById('safety-line-graphic'));
-    $.getJSON('/public/assets/water-elec.json',function(data){
-
-        that.waterElecData = data;
-        that.safetyLineOption = {
-            title: {
-                text: '折线图堆叠'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data: ['用水量(L)', '用电量(度)']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: that.waterElecXAxisData
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name: '用电量',
-                    type: 'line',
-                    stack: '总量',
-                    data: that.seriesElecData,
+    that.waterLineGraphic = echarts.init(document.getElementById('water-line-graphic'));
+    that.elecLineGraphic = echarts.init(document.getElementById('elec-line-graphic'));
+    that.waterOption = {
+        title: {
+            text: '用水量(L)',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 14, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20px',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: that.waterElecXAxisData,
+            splitLine:{
+    　　　　        show:false
                 },
-                {
-                    name: '用水量',
-                    type: 'line',
-                    stack: '总量',
-                    data: that.seriesWaterData,
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
                 }
+        },
+        yAxis: {
+            type: 'value',
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+        },
+        series: [
+            {
+                name: '用电量',
+                type: 'line',
+                stack: '总量',
+                data: that.seriesElecData
+            }
+        ]
+    };
 
-            ]
-        };
-        that.safetyLineGraphic.setOption(that.safetyLineOption);
+    that.elecOption = {
+        title: {
+            text: '用电量(度)',
+            textStyle: {
+                 fontFamily: "sans-serif", // 主标题文字的字体系列。
+                 fontSize: 14, // 字体大小
+                 fontStyle: 'normal',
+                 fontWeight: 'normal',
+                 color:'#A5D9E1',
+                 lineHeight:"12",
+             },
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '20px',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: that.waterElecXAxisData,
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+        },
+        yAxis: {
+            type: 'value',
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+        },
+        series: [
+            {
+                name: '用水量',
+                type: 'line',
+                stack: '总量',
+                data: that.seriesWaterData
+            }
+        ]
+    };
+
+
+    that.waterLineGraphic.setOption(that.waterOption);
+    that.elecLineGraphic.setOption(that.elecOption);
+
+    $.getJSON('/public/assets/water-elec.json',function(data){
+        that.waterElecData = data;
     });
 
     //-----------------------------------------------------------------------
     $.getJSON('/public/assets/notice.json',function(data){
       that.noticeData = data;
-      console.log(that.noticeData);
     });
   },
   created() {
@@ -472,84 +472,57 @@ var app = new Vue({
       if(dutyDataInterval == 24){
         dutyDataInterval = 0;
       }
-    },300000);
+    },5000);
     //-----------------------------------------------------------------------
+
+
     let diggerDataInterval = 0;
     setInterval(function(){
       that.currentDiggerData = that.diggerData[diggerDataInterval];
-      that.horBarOption1.series[0].data = [that.currentDiggerData.work];
-      that.horBarOption1.series[1].data = [that.currentDiggerData.leisure];
-      that.horBarOption1.series[2].data = [that.currentDiggerData.repaire];
+      that.currentDrillingData = that.drillingData[diggerDataInterval];
+      that.currentCrusherData = that.crusherData[diggerDataInterval];
+      that.currentDumperData = that.dumperData[diggerDataInterval];
+      let horBarSource1 = [
+          ['product', '工作中', '空闲', '修理中',],
+          ['挖掘机', that.currentDiggerData.work, that.currentDiggerData.leisure, that.currentDiggerData.repaire],
+          ['钻机', that.currentDrillingData.work, that.currentDrillingData.leisure, that.currentDrillingData.repaire],
+          ['破碎机', that.currentCrusherData.work, that.currentCrusherData.leisure, that.currentCrusherData.repaire],
+          ['自卸汽车', that.currentDumperData.work, that.currentDumperData.leisure, that.currentDumperData.repaire]
+      ];
+      that.horBarOption1.dataset.source = horBarSource1;
+
       that.horBarGraphic1.setOption(that.horBarOption1);
       diggerDataInterval = diggerDataInterval + 1;
-      if(diggerDataInterval == 13){
+      if(diggerDataInterval == that.diggerData.length){
         diggerDataInterval = 0;
       }
-    },600000);
+    },1000);
+
     //-----------------------------------------------------------------------
-    let crusherDataInterval = 0;
+    let weDataInterval = 0;
     setInterval(function(){
-      that.currentCrusherData = that.crusherData[crusherDataInterval];
-      that.horBarOption2.series[0].data = [that.currentCrusherData.work];
-      that.horBarOption2.series[1].data = [that.currentCrusherData.leisure];
-      that.horBarOption2.series[2].data = [that.currentCrusherData.repaire];
-      that.horBarGraphic2.setOption(that.horBarOption2);
-      crusherDataInterval = crusherDataInterval + 1;
-      if(crusherDataInterval == 13){
-        crusherDataInterval = 0;
-      }
-    },600000);
-    //-----------------------------------------------------------------------
-    let dumperDataInterval = 0;
-    setInterval(function(){
-      that.currentDumperData = that.dumperData[dumperDataInterval];
-      that.horBarOption3.series[0].data = [that.currentDumperData.work];
-      that.horBarOption3.series[1].data = [that.currentDumperData.leisure];
-      that.horBarOption3.series[2].data = [that.currentDumperData.repaire];
-      that.horBarGraphic3.setOption(that.horBarOption3);
-      dumperDataInterval = dumperDataInterval + 1;
-      if(dumperDataInterval == 13){
-        dumperDataInterval = 0;
-      }
-    },600000);
-    //-----------------------------------------------------------------------
-    let drillingDataInterval = 0;
-    setInterval(function(){
-      that.currentDrillingData = that.drillingData[drillingDataInterval];
-      that.horBarOption4.series[0].data = [that.currentDrillingData.work];
-      that.horBarOption4.series[1].data = [that.currentDrillingData.leisure];
-      that.horBarOption4.series[2].data = [that.currentDrillingData.repaire];
-      that.horBarGraphic4.setOption(that.horBarOption4);
-      drillingDataInterval = drillingDataInterval + 1;
-      if(drillingDataInterval == 13){
-        drillingDataInterval = 0;
-      }
-    },600000);
-    //-----------------------------------------------------------------------
-    let weDataInterval = 4;
-    setInterval(function(){
-      if(that.waterElecData.length > 4){
+      if(that.waterElecData.length > 0){
         that.waterElecXAxisData = getSafetyLineGraphicTimeArray();
         that.seriesWaterData = [];
         that.seriesElecData = [];
         that.seriesWaterData.push(that.waterElecData[weDataInterval].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval - 1].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval - 2].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval - 3].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval - 4].water);
-        that.seriesElecData.push(that.waterElecData[weDataInterval].electricity * 10);
-        that.seriesElecData.push(that.waterElecData[weDataInterval - 1].electricity * 10);
-        that.seriesElecData.push(that.waterElecData[weDataInterval - 2].electricity * 10);
-        that.seriesElecData.push(that.waterElecData[weDataInterval - 3].electricity * 10);
-        that.seriesElecData.push(that.waterElecData[weDataInterval - 4].electricity * 10);
-        that.safetyLineOption.xAxis.data = that.waterElecXAxisData;
-        that.safetyLineOption.series[1].data = that.seriesWaterData;
-        that.safetyLineOption.series[0].data = that.seriesElecData;
-        that.safetyLineGraphic.setOption(that.safetyLineOption);
-        weDataInterval = weDataInterval + 1;
+        that.seriesWaterData.push(that.waterElecData[weDataInterval + 1].water);
+        that.seriesWaterData.push(that.waterElecData[weDataInterval + 2].water);
+        that.seriesWaterData.push(that.waterElecData[weDataInterval + 3].water);
+        that.seriesElecData.push(that.waterElecData[weDataInterval].electricity);
+        that.seriesElecData.push(that.waterElecData[weDataInterval + 1].electricity);
+        that.seriesElecData.push(that.waterElecData[weDataInterval + 2].electricity);
+        that.seriesElecData.push(that.waterElecData[weDataInterval + 3].electricity);
+        that.waterOption.xAxis.data = that.waterElecXAxisData;
+        that.elecOption.xAxis.data = that.waterElecXAxisData;
+        that.waterOption.series[0].data = that.seriesWaterData;
+        that.elecOption.series[0].data = that.seriesElecData;
+        that.waterLineGraphic.setOption(that.waterOption);
+        that.elecLineGraphic.setOption(that.elecOption);
+        weDataInterval = weDataInterval + 4;
 
         if(weDataInterval == 7200){
-          weDataInterval = 4;
+          weDataInterval = 0;
         }
       }
     },1000);
@@ -564,6 +537,6 @@ var app = new Vue({
       if(noticeDataInterval == 24){
         noticeDataInterval = 0;
       }
-    },30000);
+    },2000);
   }
 })

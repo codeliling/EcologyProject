@@ -64,6 +64,9 @@ var app = new Vue({
     chengjiangData:[97.3,99.7,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.8,99.6,99.6,99.2,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2],
   },
   methods:{
+    backClick:function(){
+      window.location.href = "/";
+    },
     dinaymicEvaluateClick:function(){
       window.location.href = "/mine/dynamicevaluate";
     },

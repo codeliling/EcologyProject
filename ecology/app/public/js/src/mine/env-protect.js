@@ -28,6 +28,82 @@ var app = new Vue({
     },
   },
   mounted() {
+    //---------------------------------------------------------------------
+    var myChart = echarts.init(document.getElementById('map'));
+
+    myChart.showLoading();
+    $.get('/public/assets/huaihua.json', function (geoJson) {
+        myChart.hideLoading();
+        echarts.registerMap('HH', geoJson);
+        myChart.setOption(option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}<br/>{c} (kWh/d)'
+            },
+            visualMap: {
+                min: 10000,
+                max: 100000,
+                text: ['High', 'Low'],
+                realtime: false,
+                calculable: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'bottom',
+                inRange: {
+                    color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                },
+                textStyle: {
+                  color: '#A5D9E1'
+                },
+            },
+
+            series: [
+                {
+                    name: '怀化市生态矿山',
+                    type: 'map',
+                    mapType: 'HH', // 自定义扩展图表类型
+                    label: {
+                        show: true,
+                        textStyle:{
+                    			fontSize:12,
+                    			color:'#ffffff'
+                    		}
+                    },
+                    itemStyle: {
+                        normal: {
+                          borderWidth: .5, //区域边框宽度
+                          borderColor: '#009fe8', //区域边框颜色
+                          areaColor: "#ffefd5", //区域颜色
+                        },
+                        emphasis: {
+                          borderWidth: .5,
+                          borderColor: '#192A54',
+                          areaColor: "#5FA731",
+                        }
+                    },
+                    roam:true,
+                    data: [
+                        {name: '沅陵县', value: 53000.00},
+                        {name: '溆浦县', value: 59000.00},
+                        {name: '辰溪县', value: 32000.00},
+                        {name: '麻阳苗族自治县', value: 23500.00},
+                        {name: '鹤城区', value: 68000.00},
+                        {name: '中方县', value: 33000.00 },
+                        {name: '芷江侗族自治县', value: 31500.00},
+                        {name: '新晃侗族自治县', value: 15500.00},
+                        {name: '洪江市', value: 48000.00},
+                        {name: '会同县', value: 22000.00},
+                        {name: '靖州苗族侗族自治县', value:18000.00 },
+                        {name: '通道侗族自治县', value: 15000.00},
+                    ],
+
+                }
+            ]
+        });
+        myChart.on('click', function (params) {
+
+        });
+    });
     //-----------------------------------------------------------------------
     var sunburstGraphic = echarts.init(document.getElementById('sunburst-graphic'));
 
@@ -38,7 +114,7 @@ var app = new Vue({
         },
         legend: {
             orient: 'vertical',
-            x:'80px',
+            x:'10px',
             y:'300px',
             data: ['大气', '水质', '粉尘', '噪声'],
             textStyle: {

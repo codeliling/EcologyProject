@@ -10,142 +10,148 @@
   <link rel="stylesheet" href="/public/css/src/mine/mine-2560x1440.css" media="screen and (max-width:2560px) and (min-width:1930px)"/>
 </head>
 <body>
-  <div class="header">
-    <p>怀化市资源监控平台<p>
-  </div>
-    <div class="content" id="content">
+  <div id="content">
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>怀化市资源监控平台</p>
+      </div>
+    </div>
+      <div class="main-content" >
 
-      <div class="content_left">
-        <div class="assessment-block" @click="dinaymicEvaluateClick"><p>动态评估</p></div>
-        <div class="box2">
-          <div class="box-bg box-bg-1"></div>
-          <div class="image-border image-border1"></div>
-          <div class="image-border image-border2"></div>
-          <div class="image-border image-border3"></div>
-          <div class="image-border image-border4"></div>
-          <div class="moniter">
-            <div id="disaster-gauge"></div>
-            <div id="disaster-line"></div>
-          </div>
-        </div>
-        <div class="production">
-          <div class="assessment-block" @click="disasterClick"><p>灾害预警</p></div>
+        <div class="content_left">
+          <div class="assessment-block" @click="dinaymicEvaluateClick"><p>动态评估</p></div>
           <div class="box2">
-            <div class="box-bg box-bg-2"></div>
+            <div class="box-bg box-bg-1"></div>
             <div class="image-border image-border1"></div>
             <div class="image-border image-border2"></div>
             <div class="image-border image-border3"></div>
             <div class="image-border image-border4"></div>
-            <div id="confidence-band">
-
-            </div>
-            <div id="bar-graphic">
-
+            <div class="moniter">
+              <div id="disaster-gauge"></div>
+              <div id="disaster-line"></div>
             </div>
           </div>
-        </div>
+          <div class="production">
+            <div class="assessment-block" @click="disasterClick"><p>灾害预警</p></div>
+            <div class="box2">
+              <div class="box-bg box-bg-2"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div id="confidence-band">
 
-      </div>
-      <div id="main" class="content_center">
-        <div class="info-area1">
-          <div class="info1">
-            <div>
-              <div class="info-block">
-                <p class="info-block-p1" id="dot1">矿物种类</p>
-                <p class="info-block-p2">${var1}<span>&nbsp;种</span></p>
               </div>
-              <div class="info-block">
-                <p class="info-block-p1" id="dot2">监测矿点</p>
-                <p class="info-block-p2">${var2}<span>&nbsp;个</span></p>
+              <div id="bar-graphic">
+
               </div>
+            </div>
+          </div>
+
+        </div>
+        <div id="main" class="content_center">
+          <div class="info-area1">
+            <div class="info1">
+              <div>
+                <div class="info-block">
+                  <p class="info-block-p1" id="dot1">矿物种类</p>
+                  <p class="info-block-p2">${var1}<span>&nbsp;种</span></p>
+                </div>
+                <div class="info-block">
+                  <p class="info-block-p1" id="dot2">监测矿点</p>
+                  <p class="info-block-p2">${var2}<span>&nbsp;个</span></p>
+                </div>
+              </div>
+              <div class="info-block info-block-width">
+                <p class="info-block-p1" id="dot3">开采规模</p>
+                <p class="info-block-p2">${var3}<span>&nbsp;万吨/年</span></p>
+              </div>
+            </div>
+
+          </div>
+          <div class="info-area2">
+            <div class="info-block info-block-width">
+              <p class="info-block-p1" id="dot4">运作设备</p>
+              <p class="info-block-p2">${var4}<span>&nbsp;台</span></p>
             </div>
             <div class="info-block info-block-width">
-              <p class="info-block-p1" id="dot3">开采规模</p>
-              <p class="info-block-p2">${var3}<span>&nbsp;万吨/年</span></p>
+              <p class="info-block-p1" id="dot5">在矿人数</p>
+              <p class="info-block-p2">${var5}<span>&nbsp;人</span></p>
             </div>
           </div>
-
-        </div>
-        <div class="info-area2">
-          <div class="info-block info-block-width">
-            <p class="info-block-p1" id="dot4">运作设备</p>
-            <p class="info-block-p2">${var4}<span>&nbsp;台</span></p>
-          </div>
-          <div class="info-block info-block-width">
-            <p class="info-block-p1" id="dot5">在矿人数</p>
-            <p class="info-block-p2">${var5}<span>&nbsp;人</span></p>
-          </div>
-        </div>
-        <div id="monitor-mine">
-          <p>监测矿点</p>
-          <table>
-            <thead>
-                <tr>
-                    <th>位置</th>
-                    <th>名称</th>
+          <div id="monitor-mine">
+            <p>监测矿点</p>
+            <table>
+              <thead>
+                  <tr>
+                      <th>位置</th>
+                      <th>名称</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr v-for="elem in currentMoniterTableData">
+                    <td style="width:100px;text-align:center;vertical-align:middle;">${elem.location}</td>
+                    <td style="width:200px;text-align:center;vertical-align:middle;">${elem.name}</td>
                 </tr>
-            </thead>
-            <tbody>
-              <tr v-for="elem in currentMoniterTableData">
-                  <td style="width:100px;text-align:center;vertical-align:middle;">${elem.location}</td>
-                  <td style="width:200px;text-align:center;vertical-align:middle;">${elem.name}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="report-area">
-          <div class="assessment-block"><p>评估报告</p></div>
-          <table style="margin:0px 30px;width:100%;text-align:center">
-            <tbody>
-              <tr v-for="elem in currentReportArea">
-                  <td style="width:100px;text-align:center;vertical-align:middle;">${elem.name}</td>
-                  <td style="width:60px;text-align:center;vertical-align:middle;">${elem.score}</td>
-                  <td style="width:60px;text-align:center;vertical-align:middle;">${elem.rank}</td>
-                  <td style="width:100px;text-align:center;vertical-align:middle;">${elem.time}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="content_right">
-        <div class="assessment-block" @click="safetyProductClick"><p>灾害预警</p></div>
-        <div class="box2">
-          <div class="box-bg box-bg-3"></div>
-          <div class="image-border image-border1"></div>
-          <div class="image-border image-border2"></div>
-          <div class="image-border image-border3"></div>
-          <div class="image-border image-border4"></div>
-          <div class="evaluate">
-            <div id="evaluate-gauge"></div>
+              </tbody>
+            </table>
           </div>
-          <div class="price">
-            <div id="price-line"></div>
+          <div class="report-area">
+            <div class="assessment-block"><p>评估报告</p></div>
+            <table style="margin:0px 30px;width:100%;text-align:center">
+              <tbody>
+                <tr v-for="elem in currentReportArea">
+                    <td style="width:100px;text-align:center;vertical-align:middle;">${elem.name}</td>
+                    <td style="width:60px;text-align:center;vertical-align:middle;">${elem.score}</td>
+                    <td style="width:60px;text-align:center;vertical-align:middle;">${elem.rank}</td>
+                    <td style="width:100px;text-align:center;vertical-align:middle;">${elem.time}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="assessment-block" @click="envProtectClick"><p>环境保护</p></div>
-        <div class="box2">
-          <div class="box-bg box-bg-4"></div>
-          <div class="image-border image-border1"></div>
-          <div class="image-border image-border2"></div>
-          <div class="image-border image-border3"></div>
-          <div class="image-border image-border4"></div>
-          <div class="restore">
-            <div>
-              <div id="restore-bar"></div>
-              <div class="eva-desc">
-                <p>通过植树造林利用环境的自净能力可以改善矿区的大气污染情况。</p>
-                <p>除TP质量浓度明显上升外，其他污染物浓度呈下降趋势，水质状况在逐渐改善。</p>
-                <p>BSD泡沫抑尘系统的耗水量低，对可吸入性粉尘的抑制率高达85%，除尘效果好。</p>
-                <p>采用高质量的风机、空压机、电机及球磨机能减少噪声对职工身心健康的影响。</p>
-              </div>
+        <div class="content_right">
+          <div class="assessment-block" @click="safetyProductClick"><p>安全警示</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-3"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div class="evaluate">
+              <div id="evaluate-gauge"></div>
             </div>
-
-            <div id="env-line"></div>
+            <div class="price">
+              <div id="price-line"></div>
+            </div>
           </div>
-        </div>
+          <div class="assessment-block" @click="envProtectClick"><p>环境保护</p></div>
+          <div class="box2">
+            <div class="box-bg box-bg-4"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div class="restore">
+              <div>
+                <div id="restore-bar"></div>
+                <div class="eva-desc">
+                  <p>1.通过植树造林利用环境的自净能力可以改善矿区的大气污染情况。</p>
+                  <p>2.除TP质量浓度明显上升外，其他污染物浓度呈下降趋势，水质状况在逐渐改善。</p>
+                  <p>3.BSD泡沫抑尘系统的耗水量低，对可吸入性粉尘的抑制率高达85%，除尘效果好。</p>
+                  <p>4.采用高质量的风机、空压机、电机及球磨机能减少噪声对职工身心健康的影响。</p>
+                </div>
+              </div>
 
+              <div id="env-line"></div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+  </div>
+
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>

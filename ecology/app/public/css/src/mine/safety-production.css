@@ -1,6 +1,11 @@
 body{
   width:100%;
   margin: 0;
+  background-image: url('/public/images/mine/dynamic-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .header{
@@ -13,6 +18,10 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+
+.header p{
+  line-height: 80px;
 }
 
 .header-title{
@@ -42,68 +51,243 @@ body{
   flex-grow: 0;
   width: 500px;
   min-height: 800px;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
 .content_right{
   flex-grow: 0;
   width: 500px;
   min-height: 800px;
+  margin-right: 15px;
 }
 
 .center{
   flex-grow: 1;
   min-height: 800px;
-  height: 900px;
   justify-content: center;
   margin: 10px;
 }
 
 .center-content{
   width: 100%;
-  height: 700px;
-  background-color: lightgray;
-
+  height: 600px;
 }
 
 #hor-bar-graphic1{
-  width:80%;
-  height:100px;
+  width:90%;
+  height:360px;
 }
 
-#hor-bar-graphic2{
-  width:80%;
-  height:100px;
+
+#safety-line-graphic{
+  width:46%;
+  height: 320px;
+  display: inline-block;
+  margin:0px 10px;
 }
 
-#hor-bar-graphic3{
-  width:80%;
-  height:100px;
-}
-
-#hor-bar-graphic4{
-  width:80%;
-  height:100px;
-}
-
-#hor-bar-graphic5{
-  width:80%;
-  height:100px;
+#safety-bar-graphic-box{
+  width:46%;
+  height: 300px;
+  display: inline-block;
+  margin:0px 10px;
 }
 
 #safety-bar-graphic{
-  width:45%;
-  height: 200px;
-  display: inline-block;
+  width:100%;
+  height: 300px;
 }
 
-#safety-line-graphic{
-  width:45%;
-  height: 200px;
-  display: inline-block;
+#water-line-graphic{
+  width:100%;
+  height: 150px;
+}
+
+#elec-line-graphic{
+  width:100%;
+  height: 150px;
 }
 
 .video-list{
   width: 100%;
-  height: calc(100vh - 130px);
-  background-color: red;
+  height: auto;
+}
+
+.video{
+  width: 90%;
+  height: 160px;
+  border-radius: 10px;
+  border: 1px solid #A5D9E1;
+  margin: 10px 20px;
+}
+
+
+.assessment-block{
+  width: 95%;
+  height:30px;
+  background: linear-gradient(to right,#0E3774, #3074B1);
+  margin: 5px 15px;
+  position:relative;
+  display:inline-block;
+}
+
+.arrow{
+
+}
+.arrow::after{
+  content: "";
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background: url(/public/images/mine/right-arrow.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+
+.assessment-block::before{
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 20px;
+  background: url(/public/images/mine/left-slash-block.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  left: -10px;
+  top: 0px;
+}
+
+.assessment-block p{
+  margin-left: 15px;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: bold;
+  color:#A5D9E1;
+  display: inline-block;
+}
+
+.duty-box{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.duty-item{
+  width:100px;
+  height: 60px;
+  justify-content: center;
+}
+
+.duty-item p{
+  color:white;
+  font-size: 14px;
+}
+
+.duty-item span{
+  color:#E6951D;
+  font-size: 12px;
+}
+
+.right-box{
+  margin: 10px 0px 10px;
+}
+.box{
+  position: relative;
+  margin-top: 5px;
+}
+
+.box-bg{
+  width: 100%;
+  position: absolute;
+  top:0px;
+  background: rgba(14, 55, 116, 0.7);
+  z-index: -10;
+}
+
+.box-bg-1{
+  height:300px;
+}
+
+.box-bg-2{
+  height:120px;
+}
+
+.box-bg-3{
+  height:360px;
+}
+
+.box-bg-4{
+  height:435px;
+}
+
+.box-bg-5{
+  height:880px;
+}
+
+.image-border{
+  position: absolute;
+	width: 20px;
+	height: 20px;
+}
+
+.image-border1 {
+	top: 0;
+	left: 0;
+	border-left: 1px solid #A5D9E1;
+	border-top: 1px solid #A5D9E1;
+}
+
+.image-border2 {
+	top: 0;
+	right: -2px;
+	border-right: 1px solid #A5D9E1;
+	border-top: 1px solid #A5D9E1;
+}
+
+.image-border3 {
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid #A5D9E1;
+	border-left: 1px solid #A5D9E1;
+}
+
+.image-border4 {
+	bottom: 0;
+	right: -2px;
+	border-right: 1px solid #A5D9E1;
+	border-bottom: 1px solid #A5D9E1;
+}
+
+table{
+  color:#A5D9E1;
+  margin: 5px auto;
+  border:1px dashed;
+  min-height: 300px;
+  padding-top: 15px;
+}
+.table-td{
+  width:80px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.table-td1{
+  width:30px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.table-td4{
+  width:200px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+#map{
+  width:100%;
+  height:100%;
 }

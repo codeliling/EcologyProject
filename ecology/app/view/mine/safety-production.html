@@ -18,51 +18,145 @@
     </div>
       <div class="main-content">
         <div class="content_left">
-          <p>视频缩略图</p>
+          <div class="assessment-block"><p>视频缩略图</p></div>
           <div class="video-list">
-
+            <div class="box">
+              <div class="box-bg box-bg-5"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div style="padding:10px">
+                <div class="video"></div>
+                <div class="video"></div>
+                <div class="video"></div>
+                <div class="video"></div>
+                <div class="video"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="center">
           <div class="center-content">
-
+            <div id="map"></div>
           </div>
-          <div>
-            <div id="safety-bar-graphic"></div>
-            <div id="safety-line-graphic"></div>
+          <div style="width:100%">
+            <div id="safety-line-graphic">
+              <div class="assessment-block arrow" @click="waterBtnClick"><p>水电情况</p></div>
+              <div class="box">
+                <div class="box-bg box-bg-1"></div>
+                <div class="image-border image-border1"></div>
+                <div class="image-border image-border2"></div>
+                <div class="image-border image-border3"></div>
+                <div class="image-border image-border4"></div>
+                <div >
+                  <div id="water-line-graphic"></div>
+                  <div id="elec-line-graphic"></div>
+                </div>
+              </div>
+
+            </div>
+            <div id="safety-bar-graphic-box">
+              <div class="assessment-block"><p>今日预警情况</p></div>
+              <div class="box">
+                <div class="box-bg box-bg-1"></div>
+                <div class="image-border image-border1"></div>
+                <div class="image-border image-border2"></div>
+                <div class="image-border image-border3"></div>
+                <div class="image-border image-border4"></div>
+                <div id="safety-bar-graphic"></div>
+              </div>
+
+            </div>
           </div>
         </div>
         <div class="content_right">
-          <div>
-            <p>值班</p>
-            <p>今日在岗工作总共<span>${currentDutyData.count}</span>人</p>
-            <p>其中，工人<span>${currentDutyData.worker}</span>人，领导<sapn>${currentDutyData.leader}</span>人,研究员<span>${currentDutyData.researcher}</span>人</p>
+          <div class="right-box">
+            <div class="assessment-block"><p>值班</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-2"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div style="width:100%;text-align:center">
+                <div class="duty-box">
+                  <div class="duty-item">
+                    <p>总人数</p>
+                    <span>${currentDutyData.count}</span>
+                  </div>
+                  <div class="duty-item">
+                    <p>到岗</p>
+                    <span>${currentDutyData.onwork}</span>
+                  </div>
+                  <div class="duty-item">
+                    <p>缺勤</p>
+                    <span>${currentDutyData.absence}</span>
+                  </div>
+                </div>
+                <div class="duty-box">
+                  <div class="duty-item">
+                    <p>工人</p>
+                    <span>${currentDutyData.worker}</span>
+                  </div>
+                  <div class="duty-item">
+                    <p>管理人员</p>
+                    <span>${currentDutyData.leader}</span>
+                  </div>
+                  <div class="duty-item">
+                    <p>科研人员</p>
+                    <span>${currentDutyData.researcher}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
-          <div>
-            <p>工况</p>
-            <div>
-              <p>挖掘机运行情况</p>
-              <div id="hor-bar-graphic1"></div>
+          <div class="right-box">
+            <div class="assessment-block"><p>工况</p></div>
+            <div class="box">
+              <div class="box-bg box-bg-3"></div>
+              <div class="image-border image-border1"></div>
+              <div class="image-border image-border2"></div>
+              <div class="image-border image-border3"></div>
+              <div class="image-border image-border4"></div>
+              <div>
+                <div id="hor-bar-graphic1"></div>
+              </div>
             </div>
-            <div>
-              <p>破碎机运行情况</p>
-              <div id="hor-bar-graphic2"></div>
-            </div>
-
-            <div>
-              <p>自卸汽车运行情况</p>
-              <div id="hor-bar-graphic3"></div>
-            </div>
-
-            <div>
-              <p>钻机运行情况</p>
-              <div id="hor-bar-graphic4"></div>
-            </div>
-
           </div>
-          <div>
-              <p>公告</p>
-              <p v-for="elem in currentNoticeData">公告1:${elem.data1},<span>${elem.data2}</span></p>
+          <div class="right-box">
+              <div class="assessment-block"><p>公告</p></div>
+              <div class="box">
+                <div class="box-bg box-bg-1"></div>
+                <div class="image-border image-border1"></div>
+                <div class="image-border image-border2"></div>
+                <div class="image-border image-border3"></div>
+                <div class="image-border image-border4"></div>
+                <div style="color:#A5D9E1;min-height:300px;">
+                  <table>
+                    <thead>
+                        <tr>
+                            <th class="table-td1">序号</th>
+                            <th class="table-td">危险危害因素</th>
+                            <th class="table-td">后果</th>
+                            <th class="table-td4">事故预防及应对措施</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="elem in currentNoticeData">
+                          <td class="table-td1">${elem.data1}</td>
+                          <td class="table-td">${elem.data2}</td>
+                          <td class="table-td">${elem.data3}</td>
+                          <td class="table-td4">${elem.data4}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+
           </div>
         </div>
       </div>
