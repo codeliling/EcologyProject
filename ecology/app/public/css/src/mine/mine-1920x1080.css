@@ -3,7 +3,7 @@ body{
   margin: 0;
   background-image: url('/public/images/mine/mine-bg.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -37,14 +37,15 @@ body{
   cursor:pointer;
 }
 
+
 .assessment-block{
-  width: 90%;
+  width: 95%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 10px 30px;
+  margin: 5px 10px;
   position:relative;
   display:inline-block;
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .assessment-block::after{
@@ -96,6 +97,7 @@ body{
   flex-grow: 0;
   width: 30%;
   min-height: 800px;
+  margin: 5px 15px;
 }
 
 .content_right{

@@ -148,10 +148,19 @@ body{
   width: 95%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 5px 10px;
+  margin: 5px 15px;
   position:relative;
   display:inline-block;
 }
+
+.assessment-block2{
+  width: 97%;
+}
+
+.assessment-block3{
+  width: 92%;
+}
+
 
 .assessment-block::before{
   content: "";

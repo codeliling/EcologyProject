@@ -142,10 +142,10 @@ body{
 }
 
 .assessment-block{
-  width: 90%;
+  width: 100%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 15px 30px;
+  margin: 15px 5px;
   position:relative;
   display:inline-block;
 }

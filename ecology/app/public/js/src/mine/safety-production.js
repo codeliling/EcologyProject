@@ -218,11 +218,20 @@ var app = new Vue({
         ['自卸汽车', that.currentDumperData.work, that.currentDumperData.leisure, that.currentDumperData.repaire]
     ];
     this.horBarOption1 = {
-        legend: {},
+        legend: {
+          textStyle: {
+              fontSize: 12,
+              color: '#A5D9E1'
+          }
+        },
         tooltip: {},
         color:['#E6951D','#5FA731','#3074B1','#7D57A1'],
         dataset: {
             source: horBarSource
+        },
+        grid:{
+          right:'10px',
+          containLabel: true
         },
         xAxis: {
             type: 'category',
@@ -333,10 +342,10 @@ var app = new Vue({
             trigger: 'axis'
         },
         grid: {
-            left: '3%',
-            right: '4%',
+            left: '10%',
+            right: '10%',
             bottom: '3%',
-            top: '20px',
+            top: '25px',
             containLabel: true
         },
         xAxis: {
@@ -399,10 +408,10 @@ var app = new Vue({
             trigger: 'axis'
         },
         grid: {
-            left: '3%',
-            right: '4%',
+            left: '10%',
+            right: '10%',
             bottom: '3%',
-            top: '20px',
+            top: '25px',
             containLabel: true
         },
         xAxis: {
@@ -509,17 +518,19 @@ var app = new Vue({
         that.seriesWaterData.push(that.waterElecData[weDataInterval + 1].water);
         that.seriesWaterData.push(that.waterElecData[weDataInterval + 2].water);
         that.seriesWaterData.push(that.waterElecData[weDataInterval + 3].water);
+        that.seriesWaterData.push(that.waterElecData[weDataInterval + 4].water);
         that.seriesElecData.push(that.waterElecData[weDataInterval].electricity);
         that.seriesElecData.push(that.waterElecData[weDataInterval + 1].electricity);
         that.seriesElecData.push(that.waterElecData[weDataInterval + 2].electricity);
         that.seriesElecData.push(that.waterElecData[weDataInterval + 3].electricity);
+        that.seriesElecData.push(that.waterElecData[weDataInterval + 4].electricity);
         that.waterOption.xAxis.data = that.waterElecXAxisData;
         that.elecOption.xAxis.data = that.waterElecXAxisData;
         that.waterOption.series[0].data = that.seriesWaterData;
         that.elecOption.series[0].data = that.seriesElecData;
         that.waterLineGraphic.setOption(that.waterOption);
         that.elecLineGraphic.setOption(that.elecOption);
-        weDataInterval = weDataInterval + 4;
+        weDataInterval = weDataInterval + 5;
 
         if(weDataInterval == 7200){
           weDataInterval = 0;

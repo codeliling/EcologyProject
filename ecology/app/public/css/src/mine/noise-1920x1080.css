@@ -196,7 +196,6 @@ body{
 table{
   color:#A5D9E1;
   margin: 5px auto;
-  border:1px dashed;
   min-height: 180px;
 }
 .table-td{
@@ -205,12 +204,13 @@ table{
   vertical-align:middle;
 }
 .assessment-block{
-  width: 95%;
+  width: 97%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 5px 10px;
+  margin: 5px 5px;
   position:relative;
   display:inline-block;
+  cursor:pointer;
 }
 
 .assessment-block::before{

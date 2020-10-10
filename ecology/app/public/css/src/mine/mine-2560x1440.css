@@ -37,14 +37,15 @@ body{
   cursor:pointer;
 }
 
+
 .assessment-block{
-  width: 90%;
+  width: 95%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 15px 30px;
+  margin: 5px 10px;
   position:relative;
   display:inline-block;
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .assessment-block::after{

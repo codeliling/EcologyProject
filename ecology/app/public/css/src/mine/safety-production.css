@@ -124,10 +124,10 @@ body{
 
 
 .assessment-block{
-  width: 95%;
+  width: 100%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 5px 15px;
+  margin: 5px 5px;
   position:relative;
   display:inline-block;
 }
@@ -190,6 +190,7 @@ body{
 .duty-item span{
   color:#E6951D;
   font-size: 12px;
+  font-weight: bold;
 }
 
 .right-box{
@@ -265,12 +266,23 @@ body{
 table{
   color:#A5D9E1;
   margin: 5px auto;
-  border:1px dashed;
   min-height: 300px;
   padding-top: 15px;
 }
 .table-td{
   width:80px;
+  text-align:left;
+  vertical-align:middle;
+}
+
+.table-th{
+  width:80px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.table-th4{
+  width:200px;
   text-align:center;
   vertical-align:middle;
 }
@@ -283,7 +295,7 @@ table{
 
 .table-td4{
   width:200px;
-  text-align:center;
+  text-align:left;
   vertical-align:middle;
 }
 

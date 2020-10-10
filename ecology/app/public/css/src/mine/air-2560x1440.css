@@ -212,10 +212,10 @@ body{
 }
 
 .assessment-block{
-  width: 95%;
+  width: 97%;
   height:30px;
   background: linear-gradient(to right,#0E3774, #3074B1);
-  margin: 5px 10px;
+  margin: 5px 5px;
   position:relative;
   display:inline-block;
 }
