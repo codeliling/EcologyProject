@@ -5,7 +5,7 @@ var app = new Vue({
   },
   methods:{
     backClick:function(){
-      window.location.href = '/energy';
+      window.location.href = '/energy/hotgraphic';
     },
     areaMapClick:function(){
       window.location.href = '/energy/hotgraphic';

@@ -5,9 +5,6 @@
 body{
   width:100%;
   margin: 0;
-  background-image: url('/public/images/energy/bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -18,12 +15,12 @@ body{
 }
 
 .main-content{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   width:100%;
-  height: 100vh;
+  height: calc(100vh - 115px);
   position: relative;
+  background-image: url('/public/images/energy/area-buildings-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .content_left{
@@ -116,4 +113,40 @@ body{
   position: absolute;
   top:65px;
   right:19%;
+}
+
+.pic1{
+  position: absolute;
+  top:20px;
+  left:30px;
+}
+
+.pic2{
+  position: absolute;
+  top:20px;
+  right:30px;
+}
+
+.pic3{
+  position: absolute;
+  left:30px;
+  bottom:30px;
+}
+
+.pic4{
+  position: absolute;
+  top:80px;
+  right:30px;
+}
+
+.pic5{
+  position: absolute;
+  top:360px;
+  right:30px;
+}
+
+.pic6{
+  position: absolute;
+  top:640px;
+  right:30px;
 }
