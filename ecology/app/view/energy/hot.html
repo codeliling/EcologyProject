@@ -7,67 +7,73 @@
     <link rel="stylesheet" href="/public/css/src/energy/hot.css" />
 </head>
 <body>
-  <div class="header">怀化市能源可视化平台</div>
-  <div class="content">
-    <div class="content_left"></div>
-    <div id="main" class="content_center"></div>
-    <div class="content_right"></div>
+  <div id="content">
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>怀化智慧能源综合管理平台</p>
+      </div>
+      <div class="left-menu">
+        <div class="menu" @click="areaMapClick">区域能耗地图</div>
+        <div class="menu" @click="buildingMapClick">建筑能耗地图</div>
+        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
+      </div>
+      <div class="right-menu">
+        <div class="menu" @click="buildingClick">房屋能耗</div>
+        <div class="menu" @click="analysisClick">能耗分析方法</div>
+      </div>
+
+    <div class="main-content">
+      <div id="main" class="content_center"></div>
+      <div class="tips-block">
+        <div class="box">
+          <div class="image-border image-border1"></div>
+          <div class="image-border image-border2"></div>
+          <div class="image-border image-border3"></div>
+          <div class="image-border image-border4"></div>
+          <div class="tips-block-content">
+            <div style="text-align:center">
+              <p style="font-size:16px;color:#192B55;width:170px">单位:kwh</p>
+            </div>
+            <div style="position:relative">
+              <div class="box-number">
+                <span>490</span>
+                <span>430</span>
+                <span>370</span>
+                <span>310</span>
+                <span>250</span>
+                <span>190</span>
+                <span>130</span>
+                <span>70</span>
+                <span>10</span>
+                <span>-50</span>
+              </div>
+              <div class="box-block">
+                <div class="box-block1"></div>
+                <div class="box-block2"></div>
+                <div class="box-block3"></div>
+                <div class="box-block4"></div>
+                <div class="box-block5"></div>
+                <div class="box-block6"></div>
+                <div class="box-block7"></div>
+                <div class="box-block8"></div>
+                <div class="box-block9"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=DD279b2a90afdf0ae7a3796787a0742e"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=VifdHexZT4WOMrFYCQUZGorpRNjiRHer"></script>
 <script src="/public/js/lib/extension/bmap.min.js"></script>
 <script src="/public/js/lib/extension/dataTool.min.js"></script>
 <script src="/public/js/src/util.js"></script>
-<script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
-    myChart.showLoading();
-
-    $.get('/public/assets/hot3.json', function (data) {
-
-      var points = [].concat.apply([], data.map(function (track) {
-          return track.map(function (seg) {
-              return seg.coord.concat(seg.elevation);
-          });
-      }));
-      myChart.setOption(option = {
-          animation: false,
-          bmap: {
-              center: [109.97212399999996, 27.537940352363537],
-              zoom: 13,
-              roam: true
-          },
-          visualMap: {
-              show: false,
-              top: 'top',
-              min: -20,
-              max: 100,
-              seriesIndex: 0,
-              calculable: true,
-              inRange: {
-                  color: ['blue', 'blue', 'green', 'yellow', 'red']
-              }
-          },
-          series: [{
-              type: 'heatmap',
-              coordinateSystem: 'bmap',
-              data: points,
-              pointSize: 5,
-              blurSize: 6
-          }]
-      });
-      // 添加百度地图插件
-      var bmap = myChart.getModel().getComponent('bmap').getBMap();
-      bmap.addControl(new BMap.MapTypeControl());
-      myChart.hideLoading();
-
-      myChart.on('click', function (params) {
-         console.log(params);
-         //逻辑控制
-      });
-  });
-</script>
+<script src="/public/js/lib/vue.min.js"></script>
+<script src="/public/js/src/util.js"></script>
+<script src="/public/js/src/energy/hot.js"></script>
 </html>

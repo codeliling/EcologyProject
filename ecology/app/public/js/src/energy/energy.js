@@ -10,13 +10,13 @@ var app = new Vue({
       window.location.href = '/';
     },
     areaMapClick:function(){
-
+      window.location.href = '/energy/hotgraphic';
     },
     buildingMapClick:function(){
 
     },
     buildingClick:function(){
-
+      window.location.href = '/energy/buildings';
     },
     analysisClick:function(){
 
@@ -37,17 +37,6 @@ var app = new Vue({
             tooltip: {
                 trigger: 'item',
                 formatter: '{b}<br/>{c} (kWh/d)'
-            },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
             },
             visualMap: {
                 min: 100000000,

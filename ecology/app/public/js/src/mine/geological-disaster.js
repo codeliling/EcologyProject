@@ -703,7 +703,7 @@ var app = new Vue({
                    normal: {
                      borderWidth: .5, //区域边框宽度
                      borderColor: '#009fe8', //区域边框颜色
-                     areaColor: "#ffefd5", //区域颜色
+                     areaColor: "#DFC73D", //区域颜色
                    },
                    emphasis: {
                      borderWidth: .5,

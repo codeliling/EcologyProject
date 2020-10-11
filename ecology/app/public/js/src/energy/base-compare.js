@@ -33,7 +33,21 @@ var app = new Vue({
     bubbleXdata:['2019-08-04','2019-08-05','2019-08-06','2019-08-07','2019-08-08'],
   },
   methods:{
+    backClick:function(){
+      window.location.href = '/energy/buildings';
+    },
+    areaMapClick:function(){
+      window.location.href = '/energy/hotgraphic';
+    },
+    buildingMapClick:function(){
 
+    },
+    buildingClick:function(){
+      window.location.href = '/energy/buildings';
+    },
+    analysisClick:function(){
+
+    }
   },
   mounted() {
     var bubbleGraphic = echarts.init(document.getElementById('bubble-graphic'));

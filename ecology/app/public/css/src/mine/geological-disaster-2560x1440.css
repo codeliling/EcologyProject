@@ -1,62 +1,16 @@
-*{
-  margin: 0;
-  padding: 0;
-}
 body{
   width:100%;
   margin: 0;
-  background-image: url('/public/images/energy/bg.png');
+  background-image: url('/public/images/mine/dynamic-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-#content{
-    width:100%;
-    height: 100vh;
-}
-
-.main-content{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width:100%;
-  height: 100vh;
-  position: relative;
-}
-
-.content_left{
-  flex-grow: 0;
-  width:30%;
-  min-height: 800px;
-}
-
-.content_right{
-  flex-grow: 0;
-  width: 30%;
-  min-height: 800px;
-  margin-right: 15px;
-}
-
-.content_center{
-  flex-grow: 1;
-  min-height: 900px;
-  justify-content: center;
-  position: relative;
-}
-
-#main{
-  width: 100%;
-  min-height: 900px;
-  position: absolute;
-  top:0px;
-  left:0px;
-}
-
 .header{
   width:100%;
-  height: 115px;
+  height: 80px;
   color:#A5D9E1;
   font-size: 32px;
   font-weight: bold;
@@ -66,77 +20,31 @@ body{
   position: relative;
 }
 
+.header-title{
+  width: 100%;
+  height: 80px;
+  text-align: center;
+}
+.header-title p{
+  line-height: 80px;
+}
+
 .header-back{
   position: absolute;
   left:15px;
   width: 60px;
   height: 60px;
-  top:25px;
+  top:10px;
   background-image: url('/public/images/mine/back.png');
   background-size: cover;
   cursor:pointer;
 }
-.header-title{
-  width: 100%;
-  height: 115px;
-  text-align: center;
-}
 
-.header-title p{
-  line-height: 115px;
-}
-
-.left-menu{
-  position: absolute;
-  top:65px;
-  left:18%;
-  width: 25%;
-}
-
-.menu{
-  display: inline-block;
-  width: 140px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #A5D9E1;
-  margin: 0px 30px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.menu-bottom{
-  position: absolute;
-  top:40px;
-  left:30px;
-  width:140px;
-  height:4px;
-}
-
-.right-menu{
-  position: absolute;
-  top:65px;
-  right:19%;
-}
-
-.block{
-  width:100%;
-  height:auto;
-  margin: 20px 20px;
-}
-
-.moniter-header{
-  width: 100%;
-  height: 46px;
-  background-image: url('/public/images/energy/block-header-bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-right: 30px;
-}
 
 .assessment-block{
-  width: 97%;
+  width: 95%;
   height:30px;
-  background: linear-gradient(to right,#182A53, #3070A6);
+  background: linear-gradient(to right,#0E3774, #3074B1);
   margin: 5px 5px;
   position:relative;
   display:inline-block;
@@ -155,7 +63,7 @@ body{
 }
 
 .assessment-block p{
-  margin: 0 15px;
+  margin-left: 15px;
   line-height: 30px;
   vertical-align: middle;
   font-size: 16px;
@@ -164,6 +72,74 @@ body{
   display: inline-block;
 }
 
+.main-content{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.content_left{
+  flex-grow: 0;
+  width: 25%;
+  min-height: 800px;
+}
+
+.content_right{
+  flex-grow: 0;
+  width: 25%;
+  min-height: 800px;
+}
+
+.content_center{
+  flex-grow: 1;
+  min-height: 800px;
+  height: 900px;
+  justify-content: center;
+}
+
+.production{
+  margin:5px 10px;
+}
+
+#line-graphic{
+  width:90%;
+  height: 280px;
+  margin: 0 auto;
+}
+
+#debris-flow{
+  width:90%;
+  height: 280px;
+  margin: 0 auto;
+}
+
+#sedimentation-settlement{
+  width:90%;
+  height: 280px;
+  margin: 0 auto;
+}
+
+#safety-gauge{
+  width:90%;
+  height: 280px;
+  margin: 0 auto;
+}
+
+
+#confidence-band{
+  width:90%;
+  height: 300px;
+}
+
+#rain-bar{
+  width:90%;
+  height: 280px;
+}
+
+#map{
+  width: 100%;
+  height: calc(100vh - 130px);
+}
 
 .box{
   position: relative;
@@ -175,29 +151,31 @@ body{
   position: absolute;
   top:0px;
   background: rgba(14, 55, 116, 0.7);
-  z-index:-10;
 }
 
 .box-bg-1{
-  height:260px;
+  height:280px;
 }
 
 .box-bg-2{
-  height:570px;
+  height:280px;
 }
 
 .box-bg-3{
-  height:350px;
+  height:280px;
 }
 
 .box-bg-4{
-  height:360px;
+  height:280px;
 }
 
 .box-bg-5{
-  height:200px;
+  height:300px;
 }
 
+.box-bg-6{
+  height:280px;
+}
 
 .image-border{
   position: absolute;

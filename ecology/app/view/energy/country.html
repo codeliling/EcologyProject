@@ -7,133 +7,33 @@
     <link rel="stylesheet" href="/public/css/src/energy/country.css" />
 </head>
 <body>
-  <div class="header">怀化市能源可视化平台</div>
-  <div class="content">
-    <div class="content_left"></div>
-    <div id="main" class="content_center"></div>
-    <div class="content_right"></div>
-  </div>
+  <div id="content">
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>怀化智慧能源综合管理平台</p>
+      </div>
+      <div class="left-menu">
+        <div class="menu" @click="areaMapClick">区域能耗地图</div>
+        <div class="menu" @click="buildingMapClick">建筑能耗地图</div>
+        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
+      </div>
+      <div class="right-menu">
+        <div class="menu" @click="buildingClick">房屋能耗</div>
+        <div class="menu" @click="analysisClick">能耗分析方法</div>
+      </div>
+
+    </div>
+    <div class="main-content">
+      <div class="content_left"></div>
+      <div id="main" class="content_center"></div>
+      <div class="content_right"></div>
+    </div>
+</div>
 </body>
-<script src="/public/js/lib/jquery.min.js"></script>
-<script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/lib/jquery.min.js" type="text/javascript"></script>
+<script src="/public/js/lib/echarts.min.js"  type="text/javascript"></script>
+<script src="/public/js/lib/vue.min.js"></script>
 <script src="/public/js/src/util.js"></script>
-<script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    var country = getUrlKey('name');
-    myChart.showLoading();
-
-    var data = [
-      {name: '河东', value: 9},
-      {name: '河西', value: 12},
-      {name: '市中心', value: 12},
-    ];
-
-    var geoCoordMap = {
-      '河东':[109.868288,27.736322],
-      '河西':[110.060601,27.731307],
-      '市中心':[110.06164,27.527858],
-    };
-
-    var convertData = function (data) {
-        var res = [];
-        for (var i = 0; i < data.length; i++) {
-            var geoCoord = geoCoordMap[data[i].name];
-            if (geoCoord) {
-                res.push({
-                    name: data[i].name,
-                    value: geoCoord.concat(data[i].value)
-                });
-            }
-        }
-        return res;
-    };
-
-    var jsonUrl = '/public/assets/hechengqu.json';
-    if(country == '鹤城区'){
-      jsonUrl = '/public/assets/hechengqu.json';
-    }
-
-    $.get(jsonUrl, function (geoJson) {
-        myChart.hideLoading();
-        echarts.registerMap('HC', geoJson);
-        myChart.setOption(option = {
-            title: {
-                text: '',
-                subtext: country + '能耗图',
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '{b}<br/>{c} (p / km2)'
-            },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
-            geo: {
-               show: true,
-               map: 'HC',
-               label: {
-                 normal: {
-                   show: false
-                 },
-                 emphasis: {
-                   show: true
-                 }
-               },
-               roam: true,
-               itemStyle: {
-                 normal: {
-                   areaColor: '#FFFFFF',
-                   borderColor: '#3B5077'
-                 },
-                 emphasis: {
-                   areaColor: '#FFFFFF'
-                 }
-               },
-               zoom: 0.8
-             },
-            series: [
-                {
-                  name: '能耗',
-                  type: 'scatter',
-                  coordinateSystem: 'geo',
-                  data: convertData(data),
-                  symbolSize: function (val) {
-                      return val[2] * 5;
-                  },
-                  encode: {
-                      value: 2
-                  },
-                  label: {
-                      formatter: '{b}',
-                      position: 'right',
-                      show: false
-                  },
-                  itemStyle: {
-                      color: 'purple'
-                  },
-                  emphasis: {
-                      label: {
-                          show: true
-                      }
-                  },
-                  roam: true,
-              },
-            ]
-        });
-        
-        myChart.on('click', function (params) {
-           window.location.href = '/energy/hotgraphic';
-        });
-    });
-
-</script>
+<script src="/public/js/src/energy/country.js"></script>
 </html>

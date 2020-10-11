@@ -28,6 +28,21 @@ class HomeController extends Controller {
     await ctx.render('/energy/base-compare.html',{});
   }
 
+  async flour() {
+    const { ctx } = this;
+    await ctx.render('/energy/flour.html',{});
+  }
+
+  async buildings(){
+    const { ctx } = this;
+    await ctx.render('/energy/buildings.html',{});
+  }
+
+  async face(){
+    const { ctx } = this;
+    await ctx.render('/energy/face.html',{});
+  }
+
   async mine() {
     const { ctx } = this;
     await ctx.render('/mine/mine.html',{});
