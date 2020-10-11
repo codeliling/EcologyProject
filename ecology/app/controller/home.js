@@ -38,6 +38,11 @@ class HomeController extends Controller {
     await ctx.render('/energy/buildings.html',{});
   }
 
+  async areabuildings(){
+    const { ctx } = this;
+    await ctx.render('/energy/area-buildings.html',{});
+  }
+
   async face(){
     const { ctx } = this;
     await ctx.render('/energy/face.html',{});

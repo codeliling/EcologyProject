@@ -14,6 +14,7 @@ module.exports = app => {
   router.get('/energy/flour', controller.home.flour);
   router.get('/energy/buildings', controller.home.buildings);
   router.get('/energy/face', controller.home.face);
+  router.get('/energy/areabuildings', controller.home.areabuildings);
 
   router.get('/mine', controller.home.mine);
   router.get('/mine/water', controller.home.water);

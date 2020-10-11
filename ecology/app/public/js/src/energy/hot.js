@@ -19,6 +19,9 @@ var app = new Vue({
     },
     analysisClick:function(){
 
+    },
+    hotClick:function(){
+
     }
   },
   mounted() {
@@ -38,7 +41,8 @@ var app = new Vue({
             bmap: {
                 center: [109.97212399999996, 27.537940352363537],
                 zoom: 13,
-                roam: true
+                roam: true,
+                enableMapClick:true,
             },
             visualMap: {
                 show: false,
@@ -65,18 +69,18 @@ var app = new Vue({
                 coordinateSystem: 'bmap',
                 data: points,
                 pointSize: 5,
-                blurSize: 6
+                blurSize: 6,
+                selectedMode:'single'
             }]
         });
         // 添加百度地图插件
         var bmap = myChart.getModel().getComponent('bmap').getBMap();
         bmap.addControl(new BMap.MapTypeControl());
+        bmap.addEventListener("click",function(e){
+            window.location.href = '/energy/areabuildings';
+        });
         myChart.hideLoading();
 
-        myChart.on('click', function (params) {
-           console.log(params);
-           //逻辑控制
-        });
     });
   },
   created() {

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>区域建筑能耗</title>
+  <link rel="stylesheet" href="/public/css/lib/iview.css" />
+  <link rel="stylesheet" href="/public/css/src/energy/area-buildings.css" />
+</head>
+<body>
+  <div id="content">
+    <div class="header">
+      <div class="header-back" @click="backClick"></div>
+      <div class="header-title">
+        <p>怀化智慧能源综合管理平台</p>
+      </div>
+      <div class="left-menu">
+        <div class="menu" @click="areaMapClick">区域能耗地图</div>
+        <div class="menu" @click="buildingMapClick">建筑能耗地图</div>
+      </div>
+      <div class="right-menu">
+        <div class="menu" @click="buildingClick">房屋能耗</div>
+        <div class="menu" @click="analysisClick">能耗分析方法</div>
+        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
+      </div>
+
+    </div>
+    <div class="main-content">
+      <div class="content_left"></div>
+      <div id="main" class="content_center"></div>
+      <div class="content_right"></div>
+    </div>
+</div>
+</body>
+<script src="/public/js/lib/jquery.min.js"></script>
+<script src="/public/js/lib/echarts.min.js"></script>
+<script src="/public/js/lib/vue.min.js"></script>
+<script src="/public/js/lib/iview.min.js"></script>
+<script src="/public/js/src/util.js"></script>
+<script src="/public/js/src/energy/area-buildings.js"></script>
+</html>
