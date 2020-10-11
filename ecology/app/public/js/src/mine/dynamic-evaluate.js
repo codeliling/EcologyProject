@@ -299,7 +299,7 @@ var vueApp = new Vue({
     this.horBarGraphic1 = echarts.init(document.getElementById('hor-bar-graphic1'));
     this.horBarOption1 = {
         title: {
-            text: '安全生产',
+            text: '',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 15, // 字体大小
@@ -393,7 +393,7 @@ var vueApp = new Vue({
     this.horBarGraphic2 = echarts.init(document.getElementById('hor-bar-graphic2'));
     this.horBarOption2 = {
         title: {
-            text: '环境质量',
+            text: '',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 15, // 字体大小
@@ -590,9 +590,9 @@ var vueApp = new Vue({
     setInterval(function(){
       if(that.safetyProductBarData.length > 0){
         that.currentSafetyProductBarData = that.safetyProductBarData[spbDataInterval];
-        that.horBarOption1.series[0].data = [that.currentSafetyProductBarData.worker];
-        that.horBarOption1.series[1].data = [that.currentSafetyProductBarData.fault];
-        that.horBarOption1.series[2].data = [that.currentSafetyProductBarData.repaire];
+        that.horBarOption1.series[0].data = [that.currentSafetyProductBarData.worker / 1000];
+        that.horBarOption1.series[1].data = [that.currentSafetyProductBarData.fault /1000];
+        that.horBarOption1.series[2].data = [that.currentSafetyProductBarData.repaire /1000];
         that.horBarGraphic1.setOption(that.horBarOption1);
         spbDataInterval = spbDataInterval + 1;
         if(spbDataInterval == that.safetyProductBarData.length){

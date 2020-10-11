@@ -26,6 +26,10 @@ body{
   text-align: center;
 }
 
+.header p{
+  line-height: 80px;
+}
+
 .header-back{
   position: absolute;
   left:15px;
@@ -52,7 +56,6 @@ body{
   margin: 10px 20px;
 }
 .content_right{
-  background-color: lightgray;
   width:65%;
   height: 500px;
   display: inline-block;
@@ -60,6 +63,11 @@ body{
   right:0px;
   top:10px;
   margin: 10px 20px;
+}
+
+#map{
+  width:100%;
+  height:500px;
 }
 
 #sunburst-graphic{
@@ -82,7 +90,7 @@ body{
 
 #air-monitor{
   width:100%;
-  height: 400px;
+  height: 550px;
   position: relative;
 }
 
@@ -111,12 +119,12 @@ body{
 
 #air-monitor-graphic2{
   width:100%;
-  height: 200px;
+  height: 350px;
 }
 
 #water-monitor{
   width:100%;
-  height: 400px;
+  height: 550px;
   position: relative;
 }
 
@@ -145,12 +153,12 @@ body{
 
 #water-monitor-graphic2{
   width:100%;
-  height: 200px;
+  height: 350px;
 }
 
 #noise-monitor{
   width:100%;
-  height: 400px;
+  height: 550px;
   position: relative;
 }
 
@@ -199,12 +207,12 @@ body{
 
 #noise-monitor-graphic2{
   width:100%;
-  height: 200px;
+  height: 350px;
 }
 
 #dust-monitor{
   width:100%;
-  height: 400px;
+  height: 550px;
   position: relative;
 }
 
@@ -234,7 +242,7 @@ body{
 
 #dust-monitor-graphic2{
   width:100%;
-  height: 200px;
+  height: 350px;
 }
 
 .assessment-block{
@@ -295,7 +303,7 @@ body{
 }
 
 .box-bg-1{
-  height:400px;
+  height:550px;
 }
 
 .box-bg-2{
@@ -307,7 +315,7 @@ body{
 }
 
 .box-bg-4{
-  height:230px;
+  height:400px;
 }
 
 .image-border{
