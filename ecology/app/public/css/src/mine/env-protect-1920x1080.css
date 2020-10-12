@@ -169,10 +169,11 @@ body{
 
 #dust-content-value{
   position: absolute;
-  top:80px;
-  left:100px;
-  width:200px;
+  width:300px;
   height:100px;
+  margin-top: 30px;
+  text-align: center;
+  top: 40px;
 }
 #dust-content-value div{
   font-size: 14px;
@@ -184,7 +185,7 @@ body{
   font-size: 14px;
   font-weight: bold;
   color:#DFC73D;
-  margin-left: 60px;
+  margin-left: 30px;
 }
 
 #noise-monitor span{
@@ -213,19 +214,19 @@ body{
   text-align: center;
 }
 
-#dust-monitor p{
+#dust-content-value p{
   position: absolute;
-  top:100px;
-  right:20px;
+  top:5px;
+  right:10px;
   font-size: 30px;
   font-weight: bold;
   color:#DFC73D;
 }
 
-#dust-monitor span{
+#dust-content-value span{
   position: absolute;
-  top:80px;
-  right:30px;
+  top:45px;
+  right:20px;
   font-size: 14px;
   font-weight: bold;
   color:#DFC73D;
@@ -235,6 +236,7 @@ body{
   width:100%;
   height: 200px;
   position:relative;
+  text-align: center;
 }
 
 #dust-monitor-graphic2{
@@ -312,7 +314,7 @@ body{
 }
 
 .box-bg-4{
-  height:230px;
+  height:400px;
 }
 
 .image-border{

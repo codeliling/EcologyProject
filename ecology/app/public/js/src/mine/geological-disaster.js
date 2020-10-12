@@ -795,7 +795,7 @@ var app = new Vue({
         lineDataInterval = 0;
       }
 
-    },1000);
+    },2000);
 
     let debrisFlowInterval = 0;
     setInterval(function(){
@@ -819,7 +819,7 @@ var app = new Vue({
       if(debrisFlowInterval == that.debrisFlowxAxisData.length){
         debrisFlowInterval = 0;
       }
-    },1000);
+    },5000);
 
     let ssInterval = 0;
     setInterval(function(){
@@ -842,7 +842,7 @@ var app = new Vue({
       if(ssInterval == that.ssxAxisData.length){
         ssInterval = 0;
       }
-    },1000);
+    },3000);
 
     let tendencyInterval = 0;
     setInterval(function(){
@@ -859,7 +859,7 @@ var app = new Vue({
       if(tendencyInterval == that.tendencyTimeData.length){
         tendencyInterval = 0;
       }
-    },1000);
+    },4000);
 
     let rainInterval = 0;
     setInterval(function(){
@@ -884,7 +884,7 @@ var app = new Vue({
       if(rainInterval == that.rainTimeData.length){
         rainInterval = 0;
       }
-    },1000);
+    },5000);
   },
 
 });

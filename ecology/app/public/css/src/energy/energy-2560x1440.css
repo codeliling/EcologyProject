@@ -8,13 +8,13 @@ body{
   background-image: url('/public/images/energy/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
 #content{
     width:100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .main-content{
@@ -22,7 +22,7 @@ body{
   flex-direction: row;
   flex-wrap: nowrap;
   width:100%;
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 

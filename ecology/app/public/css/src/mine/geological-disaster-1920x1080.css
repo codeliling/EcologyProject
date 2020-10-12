@@ -50,6 +50,10 @@ body{
   display:inline-block;
 }
 
+.assessment-block2{
+  width: 97%;
+}
+
 .assessment-block::before{
   content: "";
   display: inline-block;
@@ -121,7 +125,7 @@ body{
 
 #safety-gauge{
   width:90%;
-  height: 260px;
+  height: 240px;
   margin: 0 auto;
 }
 
@@ -140,7 +144,7 @@ body{
 
 #map{
   width: 100%;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 300px);
 }
 
 .box{
@@ -168,7 +172,7 @@ body{
 }
 
 .box-bg-4{
-  height:260px;
+  height:240px;
 }
 
 .box-bg-5{
@@ -176,6 +180,10 @@ body{
 }
 
 .box-bg-6{
+  height:260px;
+}
+
+.box-bg-7{
   height:260px;
 }
 

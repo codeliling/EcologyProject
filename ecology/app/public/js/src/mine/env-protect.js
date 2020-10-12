@@ -113,6 +113,7 @@ var app = new Vue({
             formatter: '{a} <br/>{b} : {c} '
         },
         legend: {
+            icon:'circle',
             orient: 'vertical',
             x:'10px',
             y:'300px',
@@ -157,6 +158,7 @@ var app = new Vue({
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
+            icon:'circle',
             orient: 'vertical',
             left: 10,
             data: ['I类', 'II类','III类', 'IV类', 'V类', 'VI类'],
@@ -165,12 +167,13 @@ var app = new Vue({
                 color: '#A5D9E1'
             }
         },
+
         color:['#A5D9E1','#3074B1','#5FA731','#85C154','#B691C1','#7D57A1'],
         graphic:[
             {
                 type:"text",
                     left:"center",
-                    top:"40%",
+                    top:"50%",
                     style:{
                         text:"总监测点",
                         textAlign:"center",
@@ -181,7 +184,7 @@ var app = new Vue({
             {
                 type:"text",
                     left:"center",
-                    top:"52%",
+                    top:"62%",
                     style:{
                         text:"204",
                         textAlign:"center",
@@ -197,7 +200,7 @@ var app = new Vue({
                 type: 'pie',
                 radius: ['50%', '80%'],
                 avoidLabelOverlap: false,
-
+                center: ['50%', '60%'],
                 labelLine: {
                     show: false
                 },
@@ -232,6 +235,9 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        grid:[{
+             bottom: '30px',
+         }],
         xAxis: {
             type: 'category',
             boundaryGap: false,
@@ -267,7 +273,7 @@ var app = new Vue({
         },
         series: [
             {
-                name: '邮件营销',
+                name: '',
                 type: 'line',
                 stack: '总量',
                 data: [88,91,90,89,89,91,90]
@@ -286,6 +292,7 @@ var app = new Vue({
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
+            icon:'circle',
             orient: 'vertical',
             left: 10,
             data: ['I-II类','III类', 'IV类', 'V类', 'VI类'],
@@ -299,7 +306,7 @@ var app = new Vue({
             {
                 type:"text",
                     left:"center",
-                    top:"40%",
+                    top:"50%",
                     style:{
                         text:"总监测点",
                         textAlign:"center",
@@ -310,7 +317,7 @@ var app = new Vue({
             {
                 type:"text",
                     left:"center",
-                    top:"52%",
+                    top:"62%",
                     style:{
                         text:"204",
                         textAlign:"center",
@@ -326,7 +333,7 @@ var app = new Vue({
                 type: 'pie',
                 radius: ['50%', '80%'],
                 avoidLabelOverlap: false,
-
+                center: ['50%', '60%'],
                 labelLine: {
                     show: false
                 },
@@ -360,6 +367,9 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        grid:[{
+             bottom: '30px',
+         }],
         xAxis: {
             type: 'category',
             boundaryGap: false,
@@ -413,6 +423,7 @@ var app = new Vue({
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
+          icon:'circle',
             orient: 'vertical',
             left: 10,
             data: ['一级', '二级', '三级', '四级', '五级'],
@@ -426,7 +437,7 @@ var app = new Vue({
             {
                 type:"text",
                     left:"center",
-                    top:"40%",
+                    top:"50%",
                     style:{
                         text:"总监测点",
                         textAlign:"center",
@@ -437,7 +448,7 @@ var app = new Vue({
             {
                 type:"text",
                     left:"center",
-                    top:"52%",
+                    top:"62%",
                     style:{
                         text:"100",
                         textAlign:"center",
@@ -453,7 +464,7 @@ var app = new Vue({
                 type: 'pie',
                 radius: ['50%', '80%'],
                 avoidLabelOverlap: false,
-
+                center: ['50%', '60%'],
                 labelLine: {
                     show: false
                 },
@@ -484,6 +495,9 @@ var app = new Vue({
         },
         color:['#A5D9E1','#7D57A1'],
         calculable: true,
+        grid:[{
+             bottom: '30px',
+         }],
         xAxis: [
             {
                 type: 'category',
@@ -575,6 +589,9 @@ var app = new Vue({
         },
         color:['#A5D9E1','#7D57A1'],
         calculable: true,
+        grid:[{
+             bottom: '30px',
+         }],
         xAxis: [
             {
                 type: 'category',
