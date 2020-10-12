@@ -87,7 +87,7 @@ body{
 
 .menu-bottom{
   position: absolute;
-  top:40px;
+  top:45px;
   left:30px;
   width:140px;
   height:4px;
@@ -222,7 +222,7 @@ body{
 
 .box-number span{
   height: 30px;
-  color:#192B55;
+  color: white;
   display: block;
   font-size: 14px;
   line-height: 30px;

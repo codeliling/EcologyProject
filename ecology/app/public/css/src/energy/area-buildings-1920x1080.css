@@ -1,0 +1,162 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width:100%;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#content{
+    width:100%;
+    height: 100vh;
+}
+
+.main-content{
+  width:100%;
+  height: calc(100vh - 115px);
+  position: relative;
+  background-image: url('/public/images/energy/area-buildings-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content_left{
+  flex-grow: 0;
+  width:30%;
+  min-height: 800px;
+}
+
+.content_right{
+  flex-grow: 0;
+  width: 30%;
+  min-height: 800px;
+  margin-right: 15px;
+}
+
+.content_center{
+  flex-grow: 1;
+  min-height: 900px;
+  justify-content: center;
+  position: relative;
+}
+
+#main{
+  width: 100%;
+  min-height: 900px;
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+
+.header{
+  width:100%;
+  height: 115px;
+  color:#A5D9E1;
+  font-size: 32px;
+  font-weight: bold;
+  background-image: url('/public/images/mine/header-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.header-back{
+  position: absolute;
+  left:15px;
+  width: 60px;
+  height: 60px;
+  top:25px;
+  background-image: url('/public/images/mine/back.png');
+  background-size: contain;
+  cursor:pointer;
+}
+.header-title{
+  width: 100%;
+  height: 115px;
+  text-align: center;
+}
+
+.header-title p{
+  line-height: 115px;
+}
+
+.left-menu{
+  position: absolute;
+  top:65px;
+  left:18%;
+  width: 25%;
+}
+
+.menu{
+  display: inline-block;
+  width: 140px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #A5D9E1;
+  margin: 0px 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-bottom{
+  position: absolute;
+  top:45px;
+  left:30px;
+  width:140px;
+  height:4px;
+}
+
+.right-menu{
+  position: absolute;
+  top:65px;
+  right:19%;
+}
+
+.pic1{
+  position: absolute;
+  top:20px;
+  left:30px;
+  width:20%;
+  height: auto;
+}
+
+.pic2{
+  position: absolute;
+  top:20px;
+  right:30px;
+  width:20%;
+  height: auto;
+}
+
+.pic3{
+  position: absolute;
+  left:30px;
+  bottom:30px;
+}
+
+.pic4{
+  position: absolute;
+  top:100px;
+  right:30px;
+  width:20%;
+  height: auto;
+}
+
+.pic5{
+  position: absolute;
+  top:350px;
+  right:30px;
+  width:20%;
+  height: auto;
+}
+
+.pic6{
+  position: absolute;
+  bottom:30px;
+  right:30px;
+  width:20%;
+  height: auto;
+}

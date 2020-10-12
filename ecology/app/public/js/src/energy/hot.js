@@ -77,7 +77,19 @@ var app = new Vue({
         var bmap = myChart.getModel().getComponent('bmap').getBMap();
         bmap.addControl(new BMap.MapTypeControl());
         bmap.addEventListener("click",function(e){
-            window.location.href = '/energy/areabuildings';
+            console.log(e);
+            console.log(e.point);
+            let lng = e.point.lng.toFixed(7);
+            let lat = e.point.lat.toFixed(7);
+
+            let dataArray = data[0];
+            for (let i = 0; i < dataArray.length; i++){
+
+              if(Math.abs(lng - dataArray[i].coord[0]) < 0.001 && Math.abs(lat - dataArray[i].coord[1]) < 0.001){
+                window.location.href = '/energy/areabuildings';
+                break;
+              }
+            }
         });
         myChart.hideLoading();
 

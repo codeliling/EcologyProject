@@ -8,8 +8,8 @@ body{
   background-image: url('/public/images/energy/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
-  overflow-x: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #content{
@@ -136,7 +136,7 @@ body{
 }
 
 .assessment-block{
-  width: 97%;
+  width: 96%;
   height:30px;
   background: linear-gradient(to right,#182A53, #3070A6);
   margin: 5px 5px;
@@ -185,7 +185,7 @@ body{
 }
 
 .box-bg-2{
-  height:570px;
+  height:510px;
 }
 
 .box-bg-3{
@@ -408,7 +408,7 @@ body{
 
 #graphic2{
   width:100%;
-  height: 300px;
+  height: 240px;
 }
 
 .box2-block1{
@@ -530,4 +530,8 @@ body{
   line-height:32px;
   font-size:26px;
   color:#A5D9E1
+}
+
+.box2-block-area{
+  height:200px; margin: 10px 20px; width:100%;
 }

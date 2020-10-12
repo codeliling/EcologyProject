@@ -489,7 +489,9 @@ var app = new Vue({
                 color: '#A5D9E1'
             }
         },
-
+        grid:{
+                    bottom:'25px',
+                },
         xAxis: [
             {
                 type: 'category',
@@ -525,7 +527,10 @@ var app = new Vue({
                   textStyle:{
                     color: '#ffffff'
                   }
-                }
+                },
+                min: 98,
+                max: 100,
+                interval: 0.2,
             }
         ],
         series: [
