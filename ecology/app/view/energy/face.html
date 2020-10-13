@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>分项能耗基准比较</title>
   <link rel="stylesheet" href="/public/css/lib/iview.css" />
-  <link rel="stylesheet" href="/public/css/src/energy/face.css" />
+  <link rel="stylesheet" href="/public/css/src/energy/face-1920x1080.css" media="(max-width:1920px)"/>
+  <link rel="stylesheet" href="/public/css/src/energy/face-2560x1440.css" media="screen and (max-width:2560px) and (min-width:1930px)"/>
 </head>
 <body>
   <div id="content">
@@ -20,7 +21,7 @@
         <div class="menu" @click="buildingMapClick">建筑能耗地图</div>
       </div>
       <div class="right-menu">
-        <div class="menu" @click="buildingClick">房屋能耗</div>
+        <div class="menu" @click="flourClick">房屋能耗</div>
         <div class="menu" @click="analysisClick">能耗分析方法</div>
         <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
       </div>

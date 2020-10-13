@@ -12,7 +12,7 @@ module.exports = app => {
   router.get('/energy/hotgraphic', controller.home.hotgraphic);
   router.get('/energy/basecompare', controller.home.basecompare);
   router.get('/energy/flour', controller.home.flour);
-  router.get('/energy/buildings', controller.home.buildings);
+  router.get('/energy/itemcompare', controller.home.itemcompare);
   router.get('/energy/face', controller.home.face);
   router.get('/energy/areabuildings', controller.home.areabuildings);
 

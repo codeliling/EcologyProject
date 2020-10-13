@@ -329,6 +329,12 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        grid: [{
+           left: '10%',
+           bottom: '30px',
+           top: '30px',
+           right: '10%'
+       }],
         xAxis: [{
             data: dateList,
             splitLine:{

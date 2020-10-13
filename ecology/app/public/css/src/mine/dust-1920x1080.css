@@ -184,12 +184,12 @@ body{
 
 #dust-bar{
   width:100%;
-  height: 260px;
+  height: 265px;
 }
 
 #dust-line{
   width:100%;
-  height: 230px;
+  height: 180px;
 }
 
 .date-box{
@@ -267,7 +267,7 @@ table{
 }
 
 .box-bg-1{
-  height:130px;
+  height:180px;
 }
 
 .box-bg-2{
@@ -275,11 +275,11 @@ table{
 }
 
 .box-bg-3{
-  height:260px;
+  height:265px;
 }
 
 .box-bg-4{
-  height:230px;
+  height:180px;
 }
 
 .image-border{

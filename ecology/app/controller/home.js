@@ -33,9 +33,9 @@ class HomeController extends Controller {
     await ctx.render('/energy/flour.html',{});
   }
 
-  async buildings(){
+  async itemcompare(){
     const { ctx } = this;
-    await ctx.render('/energy/buildings.html',{});
+    await ctx.render('/energy/item-compare.html',{});
   }
 
   async areabuildings(){

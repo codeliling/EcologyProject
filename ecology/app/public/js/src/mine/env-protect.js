@@ -29,6 +29,7 @@ var app = new Vue({
   },
   mounted() {
     //---------------------------------------------------------------------
+    /*
     var myChart = echarts.init(document.getElementById('map'));
 
     myChart.showLoading();
@@ -103,7 +104,7 @@ var app = new Vue({
         myChart.on('click', function (params) {
 
         });
-    });
+    });*/
     //-----------------------------------------------------------------------
     var sunburstGraphic = echarts.init(document.getElementById('sunburst-graphic'));
 
@@ -116,14 +117,14 @@ var app = new Vue({
             icon:'circle',
             orient: 'vertical',
             x:'10px',
-            y:'300px',
+            y:'240px',
             data: ['大气', '水质', '粉尘', '噪声'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#5FA731','#3074B1','#E6951D','#7D57A1',],
+        color:['#5FA731','#3074B1','#85C154','#7D57A1',],
         series: [
             {
                 name: '数据',

@@ -203,7 +203,7 @@ var app = new Vue({
                         text:"总监测点",
                         textAlign:"center",
                         fill:"#E6951D",
-                        fontSize:26
+                        fontSize:22
                     }
             },
             {
@@ -214,7 +214,7 @@ var app = new Vue({
                         text:"204",
                         textAlign:"center",
                         fill:"#3074B1",
-                        fontSize:20
+                        fontSize:18
                     }
             }
         ],
@@ -351,6 +351,12 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        grid: [{
+           left: '10%',
+           bottom: '30px',
+           top: '30px',
+           right: '10%'
+       }],
         xAxis: [{
             data: dateList,
             splitLine:{

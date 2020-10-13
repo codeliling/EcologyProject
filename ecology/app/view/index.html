@@ -52,12 +52,49 @@
       margin: 50px 60px;
     }
 
+
+    @media screen and (max-width:2560px) and (min-width:1930px) {
+      .header{
+        width:100%;
+        height: 110px;
+        color:#A5D9E1;
+        font-size: 32px;
+        font-weight: bold;
+        background-image: url('/public/images/mine/header-bg-2560.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        top:0px;
+        left：0px;
+        text-align: center;
+      }
+    }
+    @media screen and (max-width:1920px) {
+      .header{
+        width:100%;
+        height: 110px;
+        color:#A5D9E1;
+        font-size: 32px;
+        font-weight: bold;
+        background-image: url('/public/images/mine/header-bg.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: fixed;
+        top:0px;
+        left：0px;
+        text-align: center;
+      }
+    }
+
   </style>
 </head>
 <body>
+  <div class="header">
+    <p>生态资源数据监控系统</p>
+  </div>
   <div class="center-block">
     <div class="title">
-      <p>怀化市资源能源智慧管理数据平台</p>
+      <p>怀化市资源数据平台<br>(生态资源数据监控系统)</p>
     </div>
     <div style="oper-box">
       <a href="/mine"><img class="btn" src="/public/images/resource-btn.png"></a>

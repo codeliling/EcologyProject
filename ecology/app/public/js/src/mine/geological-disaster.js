@@ -106,6 +106,7 @@ var app = new Vue({
                 fontSize: 12,
                 color: '#A5D9E1'
             },
+            icon:'circle',
             data: ['CNSS-1', 'CNSS-2', 'CNSS-3', 'CNSS-4', 'CNSS-5', 'CNSS-6', 'CNSS-7']
         },
         color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
@@ -216,6 +217,7 @@ var app = new Vue({
             }
         },
         legend: {
+            icon:'circle',
             data: ['水平位移变化量', '平面变形量'],
             textStyle: {
                 fontSize: 12,
@@ -299,6 +301,7 @@ var app = new Vue({
               fontSize: 12,
               color: '#A5D9E1'
           },
+          icon:'circle',
           data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6']
         },
         color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#5FA731'],
@@ -436,6 +439,7 @@ var app = new Vue({
             inRange: {
                 color: ['#e6951d','#dfc73d','#85c154', '#5FA731']
             },
+
             right:"10px",
             bottom:"50px",
             align:"left",
@@ -483,6 +487,7 @@ var app = new Vue({
             }
         },
         legend: {
+            icon:'circle',
             data: ['滑坡(%)', '泥石流(%)', '地面沉降(%)'],
             textStyle: {
                 fontSize: 12,
@@ -563,6 +568,7 @@ var app = new Vue({
             trigger: 'axis'
         },
         legend: {
+            icon:'circle',
             data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6', '监测点7'],
             textStyle: {
                 fontSize: 12,
@@ -659,6 +665,7 @@ var app = new Vue({
     this.rainBar.setOption(this.rainOption);
 
     //----------------------------------------------------------------------------
+    /*
     var myChart = echarts.init(document.getElementById('map'));
     $.getJSON('/public/assets/7-8.json',function(data){
       that.mapData = data;
@@ -753,7 +760,7 @@ var app = new Vue({
           });
       });
     });
-
+    */
 
   },
   created(){

@@ -12,10 +12,10 @@ var app = new Vue({
       window.location.href = '/energy/hotgraphic';
     },
     buildingMapClick:function(){
-
+      window.location.href = '/energy/areabuildings';
     },
-    buildingClick:function(){
-
+    flourClick:function(){
+      window.location.href = '/energy/flour';
     },
     analysisClick:function(){
 

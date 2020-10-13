@@ -144,7 +144,10 @@ body{
 
 #map{
   width: 100%;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 330px);
+  background-image: url('/public/images/mine/7-zhutu.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .box{
@@ -157,6 +160,7 @@ body{
   position: absolute;
   top:0px;
   background: rgba(14, 55, 116, 0.7);
+  z-index: -10;
 }
 
 .box-bg-1{
@@ -219,4 +223,88 @@ body{
 	right: -2px;
 	border-right: 1px solid #A5D9E1;
 	border-bottom: 1px solid #A5D9E1;
+}
+
+
+table{
+  color:#A5D9E1;
+  margin: 5px auto;
+  font-size: 12px;
+  min-height: 180px;
+}
+
+th{
+  width: 185px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.table-td{
+  text-align:center;
+  vertical-align:middle;
+}
+
+
+.info-block-p2{
+  color:#DFC73D;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+
+.info-block-p2 span{
+  color:#E6951D;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#dot4::before{
+  content: '';
+  display: inline-block;
+  height: 30px;
+  width: 20px;
+  background: url(/public/images/mine/yellow-dot.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  left: -20px;
+  top: 6px;
+}
+
+#dot5::before{
+  content: '';
+  display: inline-block;
+  height: 30px;
+  width: 20px;
+  background: url(/public/images/mine/yellow-dot.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  left: -20px;
+  top: 106px;
+}
+
+
+.info-area2{
+  position: absolute;
+  width: 30%;
+  top:30px;
+  left:60px;
+}
+
+.info-block{
+  display:inline-block;
+  width:100px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.info-block-width{
+  width:260px;
+}
+
+.info-block-p1{
+  color:#E6951D;
+  font-size: 22px;
+  font-weight: bold;
+
 }

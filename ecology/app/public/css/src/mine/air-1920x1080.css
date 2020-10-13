@@ -92,7 +92,7 @@ body{
 
 #map{
   width:100%;
-  height: 700px;
+  height: 735px;
 }
 
 
@@ -189,13 +189,13 @@ body{
 
 #air-line{
   width:100%;
-  height: 230px;
+  height: 180px;
 }
 
 .date-box{
   position: absolute;
   right:30px;
-  top:30px;
+  top:10px;
 }
 .period{
   width: 40px;
@@ -288,7 +288,7 @@ th{
 }
 
 .box-bg-4{
-  height:230px;
+  height:180px;
 }
 
 .image-border{

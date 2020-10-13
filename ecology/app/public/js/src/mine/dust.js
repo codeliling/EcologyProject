@@ -124,17 +124,6 @@ var app = new Vue({
                 trigger: 'item',
                 formatter: '{b}<br/>{c} (kWh/d)'
             },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
             visualMap: {
                 min: 10000,
                 max: 100000,
@@ -366,6 +355,12 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        grid: [{
+           left: '10%',
+           bottom: '30px',
+           top: '30px',
+           right: '10%'
+       }],
         xAxis: [{
             data: this.yearxAxis,
             splitLine:{

@@ -10,11 +10,11 @@ body{
 
 .header{
   width:100%;
-  height: 80px;
+  height: 110px;
   color:#A5D9E1;
   font-size: 32px;
   font-weight: bold;
-  background-image: url('/public/images/mine/header-bg.png');
+  background-image: url('/public/images/mine/header-bg-2560.png');
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -25,7 +25,7 @@ body{
   left:15px;
   width: 60px;
   height: 60px;
-  top:10px;
+  top:20px;
   background-image: url('/public/images/mine/back.png');
   background-size: cover;
   cursor:pointer;
@@ -33,17 +33,17 @@ body{
 
 .header-title{
   width: 100%;
-  height: 80px;
+  height: 110px;
   text-align: center;
 }
 
 .header-title p{
-  line-height: 80px;
+  line-height: 110px;
 }
 
 .left-menu{
   position: absolute;
-  top:35px;
+  top:65px;
   left:20%;
   width: 20%;
 }
@@ -69,7 +69,7 @@ body{
 
 .right-menu{
   position: absolute;
-  top:35px;
+  top:65px;
   right:20%;
 }
 

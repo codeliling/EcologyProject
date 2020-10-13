@@ -6,6 +6,9 @@ body{
   width:100%;
   margin: 0;
   min-height: 100vh;
+  background-image: url('/public/images/energy/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow-x: hidden;
 }
 
@@ -21,6 +24,7 @@ body{
   background-image: url('/public/images/energy/area-buildings-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position-y: -30px;
 }
 
 .content_left{
@@ -53,13 +57,13 @@ body{
 
 .header{
   width:100%;
-  height: 115px;
+  height: 80px;
   color:#A5D9E1;
-  font-size: 32px;
+  font-size: 25px;
   font-weight: bold;
   background-image: url('/public/images/mine/header-bg.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 
@@ -68,25 +72,25 @@ body{
   left:15px;
   width: 60px;
   height: 60px;
-  top:25px;
+  top:10px;
   background-image: url('/public/images/mine/back.png');
   background-size: contain;
   cursor:pointer;
 }
 .header-title{
   width: 100%;
-  height: 115px;
+  height: 80px;
   text-align: center;
 }
 
 .header-title p{
-  line-height: 115px;
+  line-height: 80px;
 }
 
 .left-menu{
   position: absolute;
-  top:65px;
-  left:18%;
+  top:40px;
+  left:14%;
   width: 25%;
 }
 
@@ -103,16 +107,16 @@ body{
 
 .menu-bottom{
   position: absolute;
-  top:45px;
-  left:30px;
+  top:35px;
+  right:100px;
   width:140px;
   height:4px;
 }
 
 .right-menu{
   position: absolute;
-  top:65px;
-  right:19%;
+  top:40px;
+  right:15%;
 }
 
 .pic1{
