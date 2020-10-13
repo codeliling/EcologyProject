@@ -179,12 +179,12 @@ var app = new Vue({
     var airPieGraphic = echarts.init(document.getElementById('air-pie'));
     var airPieOption = {
         title: {
-            text: '噪音情况',
+            text: '大气情况',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 15, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
                  lineHeight:"12",
              },
@@ -196,7 +196,11 @@ var app = new Vue({
         legend: {
             orient: 'vertical',
             right: 10,
-            data: ['I类', 'II类', 'III类', 'IV类', 'V类','VI类']
+            data: ['I类', 'II类', 'III类', 'IV类', 'V类','VI类'],
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            }
         },
         color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D'],
         graphic:[

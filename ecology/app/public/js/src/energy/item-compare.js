@@ -24,7 +24,16 @@ var app = new Vue({
     },
     analysisClick:function(){
 
-    }
+    },
+    flourBtnClick:function(){
+      window.location.href = '/energy/flour';
+    },
+    itemBtnClick:function(){
+      window.location.href = '/energy/itemcompare';
+    },
+    baseBtnClick:function(){
+      window.location.href = '/energy/basecompare';
+    },
   },
   mounted() {
     var lineGraphic = echarts.init(document.getElementById('line-graphic'));

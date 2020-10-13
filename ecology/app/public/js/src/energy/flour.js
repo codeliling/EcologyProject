@@ -18,7 +18,16 @@ var app = new Vue({
     },
     analysisClick:function(){
 
-    }
+    },
+    flourBtnClick:function(){
+      window.location.href = '/energy/flour';
+    },
+    itemBtnClick:function(){
+      window.location.href = '/energy/itemcompare';
+    },
+    baseBtnClick:function(){
+      window.location.href = '/energy/basecompare';
+    },
   },
   mounted() {
     var countGraphic = echarts.init(document.getElementById('count-graphic'));

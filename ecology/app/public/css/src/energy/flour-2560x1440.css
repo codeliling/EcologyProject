@@ -238,6 +238,7 @@ body{
   height: 300px;
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .box img{
