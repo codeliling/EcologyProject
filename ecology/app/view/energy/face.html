@@ -14,23 +14,165 @@
     <div class="header">
       <div class="header-back" @click="backClick"></div>
       <div class="header-title">
-        <p>怀化智慧能源综合管理平台</p>
+        <p>房屋能耗诊断图</p>
       </div>
-      <div class="left-menu">
-        <div class="menu" @click="areaMapClick">区域能耗地图</div>
-        <div class="menu" @click="buildingMapClick">建筑能耗地图</div>
-      </div>
-      <div class="right-menu">
-        <div class="menu" @click="flourClick">房屋能耗</div>
-        <div class="menu" @click="analysisClick">能耗分析方法</div>
-        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
-      </div>
-
     </div>
     <div class="main-content">
-      <div class="content_left"></div>
-      <div id="main" class="content_center"></div>
-      <div class="content_right"></div>
+      <div class="top-content">
+        <div class="content-box">
+          <div class="box">
+            <div class="box-bg box-bg-1"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div style="height:360px;">
+              <p class="content-box-title">洁卫</p>
+              <img src="/public/images/energy/face4.png" />
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">7052.28 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">月</p>
+                <p class="value-box-span2">55307.04 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">217625.71 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-box">
+          <div class="box">
+            <div class="box-bg box-bg-1"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div style="height:360px;">
+              <p class="content-box-title">洁卫</p>
+              <img src="/public/images/energy/face2.png" />
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">7052.28 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">月</p>
+                <p class="value-box-span2">55307.04 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">217625.71 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-box">
+          <div class="box">
+            <div class="box-bg box-bg-1"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div style="height:360px;">
+              <p class="content-box-title">洁卫</p>
+              <img src="/public/images/energy/face1.png" />
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">7052.28 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">月</p>
+                <p class="value-box-span2">55307.04 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">217625.71 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-box">
+          <div class="box">
+            <div class="box-bg box-bg-1"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div style="height:360px;">
+              <p class="content-box-title">洁卫</p>
+              <img src="/public/images/energy/face3.png" />
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">7052.28 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">月</p>
+                <p class="value-box-span2">55307.04 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+              <div class="value-box">
+                <p class="value-box-span1">日</p>
+                <p class="value-box-span2">217625.71 </p>
+                <p class="value-box-span3">kwh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-content">
+        <div class="graphic-box">
+          <p>日能耗占比</p>
+          <div class="graphic-box-block">
+            <div class="graphic1-bar1"></div>
+            <div class="graphic1-bar2"></div>
+            <div class="graphic1-bar3"></div>
+            <div class="graphic1-bar4"></div>
+            <p class="graphic-bar-p graphic1-bar1-p1">15.7%</p>
+            <p class="graphic-bar-p graphic1-bar2-p2">42.1%</p>
+            <p class="graphic-bar-p graphic1-bar3-p3">17.5%</p>
+            <p class="graphic-bar-p graphic1-bar4-p4">24.7%</p>
+          </div>
+        </div>
+        <div class="graphic-box">
+          <p>月能耗占比</p>
+          <div class="graphic-box-block">
+            <div class="graphic2-bar1"></div>
+            <div class="graphic2-bar2"></div>
+            <div class="graphic2-bar3"></div>
+            <div class="graphic2-bar4"></div>
+            <p class="graphic-bar-p graphic2-bar1-p1">17.6%</p>
+            <p class="graphic-bar-p graphic2-bar2-p2">47.8%</p>
+            <p class="graphic-bar-p graphic2-bar3-p3">7.7%</p>
+            <p class="graphic-bar-p graphic2-bar4-p4">26.9%</p>
+          </div>
+        </div>
+        <div class="graphic-box">
+          <p>年能耗占比</p>
+          <div class="graphic-box-block">
+            <div class="graphic3-bar1"></div>
+            <div class="graphic3-bar2"></div>
+            <div class="graphic3-bar3"></div>
+            <div class="graphic3-bar4"></div>
+            <p class="graphic-bar-p graphic3-bar1-p1">14.2%</p>
+            <p class="graphic-bar-p graphic3-bar2-p2">30.7%</p>
+            <p class="graphic-bar-p graphic3-bar3-p3">35.8%</p>
+            <p class="graphic-bar-p graphic3-bar4-p4">19.3%</p>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 </body>

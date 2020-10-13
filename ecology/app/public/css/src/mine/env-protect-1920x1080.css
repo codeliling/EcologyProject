@@ -94,7 +94,7 @@ body{
   right:20px;
   font-size: 30px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #air-monitor span{
@@ -103,7 +103,7 @@ body{
   right:30px;
   font-size: 14px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #air-monitor-graphic1{
@@ -129,7 +129,7 @@ body{
   right:20px;
   font-size: 30px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #water-monitor span{
@@ -138,7 +138,7 @@ body{
   right:30px;
   font-size: 14px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #water-monitor-graphic1{
@@ -164,7 +164,7 @@ body{
   right:20px;
   font-size: 30px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #dust-content-value{
@@ -184,7 +184,7 @@ body{
 #dust-content-value em{
   font-size: 14px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
   margin-left: 30px;
 }
 
@@ -194,7 +194,7 @@ body{
   right:30px;
   font-size: 14px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #noise-monitor-graphic1{
@@ -220,7 +220,7 @@ body{
   right:10px;
   font-size: 30px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #dust-content-value span{
@@ -229,7 +229,7 @@ body{
   right:20px;
   font-size: 14px;
   font-weight: bold;
-  color:#DFC73D;
+  color:#5FA731;
 }
 
 #dust-monitor-graphic1{

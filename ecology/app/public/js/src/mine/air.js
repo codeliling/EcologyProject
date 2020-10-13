@@ -327,6 +327,21 @@ var app = new Vue({
                 axisLabel: {
                     formatter: '{value} 分',
                     color: '#ffffff'
+                },axisPointer: {
+                    type: 'shadow'
+                },
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
                 }
             },
             {
@@ -338,6 +353,21 @@ var app = new Vue({
                 axisLabel: {
                     formatter: '{value} 位',
                     color: '#ffffff'
+                },axisPointer: {
+                    type: 'shadow'
+                },
+                splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
                 }
             }
         ],

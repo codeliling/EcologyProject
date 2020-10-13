@@ -5,20 +5,9 @@ var app = new Vue({
   },
   methods:{
     backClick:function(){
-      window.location.href = '/energy/buildings';
+      window.location.href = '/energy/itemcompare';
     },
-    areaMapClick:function(){
-      window.location.href = '/energy/hotgraphic';
-    },
-    buildingMapClick:function(){
-      window.location.href = '/energy/areabuildings';
-    },
-    flourClick:function(){
-      window.location.href = '/energy/flour';
-    },
-    analysisClick:function(){
 
-    }
   },
   mounted() {
 

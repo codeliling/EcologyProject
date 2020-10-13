@@ -92,7 +92,7 @@ var app = new Vue({
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
                  lineHeight:"12",
              },
@@ -111,8 +111,8 @@ var app = new Vue({
             }
         },
         grid: {
-            left: '3%',
-            right: '4%',
+            left: '1%',
+            right: '6%',
             bottom: '3%',
             containLabel: true
         },
@@ -207,7 +207,7 @@ var app = new Vue({
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
                  lineHeight:"12",
              },
@@ -302,9 +302,9 @@ var app = new Vue({
                 fontFamily: "sans-serif", // 主标题文字的字体系列。
                 fontSize: 14, // 字体大小
                 fontStyle: 'normal',
-                fontWeight: 'normal',
+                fontWeight: 'bold',
                 color:'#A5D9E1',
-                lineHeight:"12",
+                lineHeight:"14",
             },
             subtextStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
@@ -352,14 +352,14 @@ var app = new Vue({
     var disasterLine= echarts.init(document.getElementById('disaster-line'));
     disasterLineOption = {
         title: {
-            text: '评分趋势',
+            text: '分类评分趋势',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
-                 lineHeight:"12",
+                 lineHeight:"14",
              },
         },
         tooltip: {
@@ -470,9 +470,9 @@ var app = new Vue({
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
-                 lineHeight:"12",
+                 lineHeight:"14",
              },
         },
         tooltip: {
@@ -574,9 +574,9 @@ var app = new Vue({
                 fontFamily: "sans-serif", // 主标题文字的字体系列。
                 fontSize: 14, // 字体大小
                 fontStyle: 'normal',
-                fontWeight: 'normal',
+                fontWeight: 'bold',
                 color:'#A5D9E1',
-                lineHeight:"12",
+                lineHeight:"16",
             },
             subtextStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
@@ -634,15 +634,15 @@ var app = new Vue({
     var restoreBar = echarts.init(document.getElementById('restore-bar'));
     restoreOption  = {
         title: {
-           text: '环保概览',
+           text: '环境保护概览',
            subtext:'',
            textStyle: {
                 fontFamily: "sans-serif", // 主标题文字的字体系列。
                 fontSize: 14, // 字体大小
                 fontStyle: 'normal',
-                fontWeight: 'normal',
+                fontWeight: 'bold',
                 color:'#A5D9E1',
-                lineHeight:"12",
+                lineHeight:"14",
             },
             subtextStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
@@ -662,7 +662,7 @@ var app = new Vue({
             right: 5,
             x:'right',
             y:'top',
-            padding:[0,30,0,0],
+            padding:[15,30,0,0],
             data: ['大气', '水质', '噪音', '粉尘'],
             textStyle: {
                 fontSize: 12,
@@ -713,7 +713,7 @@ var app = new Vue({
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
                  fontStyle: 'normal',
-                 fontWeight: 'normal',
+                 fontWeight: 'bold',
                  color:'#A5D9E1',
                  lineHeight:"12",
              },
@@ -810,18 +810,18 @@ var app = new Vue({
     setInterval(function () {
         let score = that.scoreData[scoreInterval];
         that.disasterGaugeOption.series[0].data[0].value = score;
-        if(score >= 90){
-          that.disasterGaugeOption.title.subtext = '优秀';
-        }
-        else if(score >= 80 && score < 90){
-          that.disasterGaugeOption.title.subtext = '良好';
-        }
-        else if(score >=60 && score <80){
-          that.disasterGaugeOption.title.subtext = '达标';
-        }
-        else{
-          that.disasterGaugeOption.title.subtext = '有待提升';
-        }
+        // if(score >= 90){
+        //   that.disasterGaugeOption.title.subtext = '优秀';
+        // }
+        // else if(score >= 80 && score < 90){
+        //   that.disasterGaugeOption.title.subtext = '良好';
+        // }
+        // else if(score >=60 && score <80){
+        //   that.disasterGaugeOption.title.subtext = '达标';
+        // }
+        // else{
+        //   that.disasterGaugeOption.title.subtext = '有待提升';
+        // }
         scoreInterval = scoreInterval + 1;
         if(scoreInterval == that.scoreData.length)
         {

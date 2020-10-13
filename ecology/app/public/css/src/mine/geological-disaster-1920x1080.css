@@ -308,3 +308,7 @@ th{
   font-weight: bold;
 
 }
+
+.table-block{
+  width:100%;height:260px;padding-top:15px;
+}

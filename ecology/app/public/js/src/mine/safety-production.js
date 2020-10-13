@@ -225,7 +225,7 @@ var app = new Vue({
           }
         },
         tooltip: {},
-        color:['#E6951D','#5FA731','#3074B1','#7D57A1'],
+        color:['#5FA731','#85C154','#B691C1','#7D57A1'],
         dataset: {
             source: horBarSource
         },
@@ -296,7 +296,7 @@ var app = new Vue({
                 }
               }
       },
-      color:['#E6951D','#5FA731','#3074B1'],
+      color:['#85C154','#5FA731','#B691C1'],
       yAxis: {
           type: 'value',
           splitLine:{
@@ -341,6 +341,7 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        color:['#5FA731'],
         grid: {
             left: '10%',
             right: '10%',
@@ -407,6 +408,7 @@ var app = new Vue({
         tooltip: {
             trigger: 'axis'
         },
+        color:['#5FA731'],
         grid: {
             left: '10%',
             right: '10%',

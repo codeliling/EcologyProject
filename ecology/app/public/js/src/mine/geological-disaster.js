@@ -479,7 +479,7 @@ var app = new Vue({
     var dom = document.getElementById("confidence-band");
     this.tendencyLine = echarts.init(dom);
     this.tendencyOption = {
-        color: ['#e6951d','#dfc73d','#85c154'],
+        color: ['#5FA731','#B691C1','#85c154'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
