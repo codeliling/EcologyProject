@@ -237,7 +237,14 @@ var app = new Vue({
               { name: '10', max: 500},
               { name: '11', max: 500},
               { name: '12', max: 500},
-            ]
+            ],
+            splitArea : {
+                 show : true,
+                  areaStyle : {
+                       color: ['#d72941', '#f1c35b','#99c736', '#75813b', '#4e3829',]
+                       // 图表背景网格的颜色
+                   }
+         },
         },
         series: [{
 

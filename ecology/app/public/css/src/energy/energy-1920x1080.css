@@ -91,13 +91,13 @@ body{
 .left-menu{
   position: absolute;
   top:40px;
-  left:14%;
-  width: 25%;
+  left:11%;
+  width: 26%;
 }
 
 .menu{
   display: inline-block;
-  width: 140px;
+  width: 180px;
   font-size: 22px;
   font-weight: bold;
   color: #A5D9E1;
@@ -109,15 +109,15 @@ body{
 .menu-bottom{
   position: absolute;
   top:35px;
-  right:100px;
-  width:140px;
+  left:30px;
+  width:180px;
   height:4px;
 }
 
 .right-menu{
   position: absolute;
   top:40px;
-  right:15%;
+  right:11%;
 }
 
 .block{

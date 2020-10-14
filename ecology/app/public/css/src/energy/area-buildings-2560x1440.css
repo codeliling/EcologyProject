@@ -96,7 +96,7 @@ body{
 
 .menu{
   display: inline-block;
-  width: 140px;
+  width: 180px;
   font-size: 22px;
   font-weight: bold;
   color: #A5D9E1;
@@ -108,15 +108,15 @@ body{
 .menu-bottom{
   position: absolute;
   top:45px;
-  right:260px;
-  width:140px;
+  right:175px;
+  width:180px;
   height:4px;
 }
 
 .right-menu{
   position: absolute;
   top:65px;
-  right:19%;
+  right:18%;
 }
 
 .pic1{

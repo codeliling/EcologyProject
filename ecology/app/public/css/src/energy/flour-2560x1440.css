@@ -88,7 +88,7 @@ body{
 
 .menu{
   display: inline-block;
-  width: 140px;
+  width: 180px;
   font-size: 22px;
   font-weight: bold;
   color: #A5D9E1;
@@ -101,14 +101,14 @@ body{
   position: absolute;
   top:40px;
   left:30px;
-  width:140px;
+  width:180px;
   height:4px;
 }
 
 .right-menu{
   position: absolute;
   top:65px;
-  right:19%;
+  right:18%;
 }
 
 
