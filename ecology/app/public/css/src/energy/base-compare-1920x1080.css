@@ -107,7 +107,7 @@ body{
 .menu-bottom{
   position: absolute;
   top:35px;
-  right:100px;
+  right:230px;
   width:140px;
   height:4px;
 }
@@ -289,17 +289,17 @@ body{
 }
 
 #graphic-base2-1{
-  width:300;
+  width:330px;
   height: 500px;
 }
 
 #graphic-base2-2{
-  width:300;
+  width:330px;
   height: 500px;
 }
 
 #graphic-base2-3{
-  width:300;
+  width:330px;
   height: 500px;
 }
 

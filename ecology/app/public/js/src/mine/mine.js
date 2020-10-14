@@ -62,6 +62,74 @@ var app = new Vue({
     huapoData:[98.1,98.6,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7,99.6,99.8,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7,99.6,99.8,99.6,99.8,99.8,99.7,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7],
     nishiliuData:[97.2,98.4,99.8,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8,99.7,99.6,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8,99.7,99.6,99.8,99.7,99.6,99.8,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8],
     chengjiangData:[97.3,99.7,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.8,99.6,99.6,99.2,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2],
+
+    //--------------------------------------
+    machine1:[
+      [1118,70,10,2],
+      [1119,69,10,2],
+      [1113,75,10,2],
+      [1113,74,11,2],
+      [1114,73,11,2],
+      [1116,71,11,2],
+      [1117,70,11,2],
+      [1115,71,12,2],
+      [1110,76,12,2],
+      [1116,70,12,2],
+      [1111,75,12,2],
+      [1118,68,12,2],
+      [1110,77,11,2]
+    ],
+
+    machine2:[
+      [284,16,0,0],
+      [285,14,1,0],
+      [285,14,1,0],
+      [286,13,1,0],
+      [285,13,2,0],
+      [286,12,2,0],
+      [287,11,2,0],
+      [287,11,2,0],
+      [288,10,2,0],
+      [289,8,3,0],
+      [289,8,3,0],
+      [290,7,3,0],
+      [287,10,3,0]
+    ],
+
+    machine3:[
+      [268,32,0,0],
+      [267,33,0,0],
+      [269,31,0,0],
+      [268,32,0,0],
+      [267,32,1,0],
+      [266,33,1,0],
+      [265,34,1,0],
+      [269,29,2,0],
+      [270,28,2,0],
+      [268,30,2,0],
+      [272,26,2,0],
+      [271,26,3,0],
+      [269,28,3,0]
+    ],
+
+    machine4:[
+      [455,125,18,2],
+      [456,124,18,2],
+      [450,119,29,2],
+      [458,121,19,2],
+      [452,117,29,2],
+      [454,115,29,2],
+      [459,109,30,2],
+      [457,121,20,2],
+      [453,115,30,2],
+      [455,113,30,2],
+      [454,114,30,2],
+      [450,107,21,22],
+      [455,102,21,22]
+    ],
+    productLine:{},
+    productLineOption:{},
+    //--------------------------------------
   },
   methods:{
     backClick:function(){
@@ -84,10 +152,10 @@ var app = new Vue({
     let that = this;
     //-----------------------------------------------------------------------------------
     var dom = document.getElementById("confidence-band");
-    var productLine = echarts.init(dom);
-    productLineOption = {
+    this.productLine = echarts.init(dom);
+    this.productLineOption = {
         title: {
-            text: '今日报警',
+            text: '今日工况',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
@@ -97,103 +165,81 @@ var app = new Vue({
                  lineHeight:"12",
              },
         },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            }
-        },
         legend: {
-            data: ['烟雾', '排水','粉尘','瓦斯'],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
+          icon:'circle',
+          data: ['工作中', '空闲中','修理中','缺工'],
+          textStyle: {
+              fontSize: 12,
+              color: '#A5D9E1'
+          }
         },
+        color:['#85c154','#5FA731','#B691C1','#7D51A1'],
+        tooltip: {},
         grid: {
-            left: '1%',
-            right: '6%',
+            left: '3%',
+            right: '4%',
             bottom: '3%',
             containLabel: true
         },
-        xAxis: {
-            type: 'value',
-            boundaryGap: [0, 0.01],
-            splitLine:{
-　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            }
+        dataset: {
+            source: [
+                ['product', '挖掘机', '钻机', '破碎机', '自卸汽车'],
+                ['工作中', 1180, 284, 268, 455],
+                ['空闲中', 70, 16, 32, 125],
+                ['修理中', 10, 0, 0, 18],
+                ['缺工', 2, 0, 0, 2]
+            ]
         },
-        yAxis: {
-            type: 'category',
-            data: ['怀化'],
-            splitLine:{
-　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
+        xAxis: [
+            {
+              type: 'category',
+              gridIndex: 0,
+              splitLine:{
+    　　　　        show:false
+              },
+              axisLine:{
+                lineStyle:{
+                  color: '#A5D9E1'
+                }
+              },
+              axisLabel:{
+                textStyle:{
+                  color: '#ffffff'
+                }
               }
             },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
+
+        ],
+        yAxis: [
+            {
+              gridIndex: 0,
+              splitLine:{
+    　　　　        show:false
+              },
+              interval:400,
+              axisLine:{
+                lineStyle:{
+                  color: '#A5D9E1'
+                }
+              },
+              axisLabel:{
+                textStyle:{
+                  color: '#ffffff'
+                }
               }
-            }
-        },
+            },
+
+        ],
         series: [
-            {
-                name: '烟雾',
-                type: 'bar',
-                data: [0],
-                itemStyle:{
-                    normal:{
-                        color:'#7D57A1'
-                    }
-                },
-            },
-            {
-                name: '排水',
-                type: 'bar',
-                data: [40],
-                itemStyle:{
-                    normal:{
-                        color:'#B691C1'
-                    }
-                },
-            },
-            {
-                name: '粉尘',
-                type: 'bar',
-                data: [40],
-                itemStyle:{
-                    normal:{
-                        color:'#3074B1'
-                    }
-                },
-            },
-            {
-                name: '瓦斯',
-                type: 'bar',
-                data: [20],
-                itemStyle:{
-                    normal:{
-                        color:'#A5D9E1'
-                    }
-                },
-            }
+            // These series are in the first grid.
+            {type: 'bar', seriesLayoutBy: 'row'},
+            {type: 'bar', seriesLayoutBy: 'row'},
+            {type: 'bar', seriesLayoutBy: 'row'},
+            {type: 'bar', seriesLayoutBy: 'row'},
         ]
     };
-    productLine.setOption(productLineOption);
+
+    this.productLine.setOption(this.productLineOption);
 
 
     //----------------------------------------------------------------------
@@ -335,7 +381,7 @@ var app = new Vue({
         },
         series: [
             {
-                name: '实时评分',
+                name: '',
                 type: 'gauge',
                 detail: {formatter: '{value}'},
                 axisLine: {            // 坐标轴线
@@ -343,7 +389,8 @@ var app = new Vue({
                            color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
                        }
                 },
-                data: [{value: 50, name: '评分'}]
+                radius: '95%',
+                data: [{value: 50, name: ''}]
             }
         ]
     };
@@ -355,7 +402,7 @@ var app = new Vue({
             text: '分类评分趋势',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
-                 fontSize: 14, // 字体大小
+                 fontSize: 13, // 字体大小
                  fontStyle: 'normal',
                  fontWeight: 'bold',
                  color:'#A5D9E1',
@@ -367,7 +414,7 @@ var app = new Vue({
         },
         color: ['#dfc73d','#E6951D','#A5D9E1','#3074B1','#B691C1', '#7D57A1'],
         legend: {
-          icon: 'rectangle',
+          icon: 'circle',
           data: ['安全生产', '环境质量', '灾害管理', '废料利用', '绿化覆盖','建筑围护'],
           right: '4%',
           textStyle: {
@@ -607,15 +654,16 @@ var app = new Vue({
         },
         series: [
             {
-                name: '实时评分',
+                name: '',
                 type: 'gauge',
+                radius: '95%',
                 detail: {formatter: '{value}'},
                 axisLine: {            // 坐标轴线
                        lineStyle: {       // 属性lineStyle控制线条样式
                            color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
                        }
                 },
-                data: [{value: 50, name: '完成率'}]
+                data: [{value: 50, name: ''}]
             }
         ]
     };
@@ -907,5 +955,43 @@ var app = new Vue({
         },1000);
       }
     });
+
+    let machineInfoInterval = 1;
+    setInterval(function(){
+      let arr1 = ['工作中'];
+      let arr2 = ['空闲中'];
+      let arr3 = ['修理中'];
+      let arr4 = ['缺工'];
+      arr1.push(that.machine1[machineInfoInterval][0]);
+      arr2.push(that.machine1[machineInfoInterval][1]);
+      arr3.push(that.machine1[machineInfoInterval][2]);
+      arr4.push(that.machine1[machineInfoInterval][3]);
+
+      arr1.push(that.machine1[machineInfoInterval][0]);
+      arr2.push(that.machine2[machineInfoInterval][1]);
+      arr3.push(that.machine3[machineInfoInterval][2]);
+      arr4.push(that.machine4[machineInfoInterval][3]);
+
+      arr1.push(that.machine1[machineInfoInterval][0]);
+      arr2.push(that.machine2[machineInfoInterval][1]);
+      arr3.push(that.machine3[machineInfoInterval][2]);
+      arr4.push(that.machine4[machineInfoInterval][3]);
+
+      arr1.push(that.machine1[machineInfoInterval][0]);
+      arr2.push(that.machine2[machineInfoInterval][1]);
+      arr3.push(that.machine3[machineInfoInterval][2]);
+      arr4.push(that.machine4[machineInfoInterval][3]);
+
+      that.productLineOption.dataset.source[1] = arr1;
+      that.productLineOption.dataset.source[2] = arr2;
+      that.productLineOption.dataset.source[3] = arr3;
+      that.productLineOption.dataset.source[4] = arr4;
+      that.productLine.setOption(that.productLineOption);
+      machineInfoInterval = machineInfoInterval + 1;
+      if(machineInfoInterval == that.machine1.length)
+      {
+        machineInfoInterval = 0;
+      }
+    },2000);
   }
 });

@@ -140,7 +140,7 @@ body{
 }
 
 .box-bg-2{
-  height:500px;
+  height:370px;
 }
 
 .box-bg-3{
@@ -196,6 +196,17 @@ body{
   bottom: 15px;
 }
 
+.face-area{
+  width:80px;
+  height: 80px;
+  position: absolute;
+  right:30px;
+  top: 15px;
+  cursor: pointer;
+  background-image: url('/public/images/energy/face1.png');
+  background-size: cover;
+}
+
 .assessment-block{
   width: 96%;
   height:30px;
@@ -234,7 +245,7 @@ body{
 
 #count-graphic{
   width: 100%;
-  height:500px;
+  height:370px;
 }
 
 .main-menu-block{

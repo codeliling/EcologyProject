@@ -49,7 +49,7 @@ body{
 
 #line-graphic{
   width: 100%;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 390px);
 }
 .header{
   width:100%;
@@ -103,7 +103,7 @@ body{
 
 .menu-bottom{
   position: absolute;
-  top:45px;
+  top:40px;
   left:30px;
   width:140px;
   height:4px;
@@ -134,7 +134,7 @@ body{
 }
 
 .box-bg-1{
-  height: calc(100vh - 160px);
+  height: calc(100vh - 390px);
 }
 
 .box-bg-2{
@@ -192,6 +192,17 @@ body{
   position: absolute;
   right:30px;
   bottom: 15px;
+}
+
+.face-area{
+  width:80px;
+  height: 80px;
+  position: absolute;
+  right:30px;
+  top: 15px;
+  cursor: pointer;
+  background-image: url('/public/images/energy/face4.png');
+  background-size: cover;
 }
 
 .assessment-block{

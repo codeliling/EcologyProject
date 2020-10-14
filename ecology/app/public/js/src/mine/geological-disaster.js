@@ -3,19 +3,19 @@ var app = new Vue({
   delimiters: ['${', '}'],
   data: {
     lineGraphicxAxisData:[
-      "2020/1/1","2020/1/2","2020/1/3","2020/1/4","2020/1/5","2020/1/6","2020/1/7","2020/1/8","2020/1/9","2020/1/10","2020/1/11","2020/1/12","2020/1/13","2020/1/14","2020/1/15","2020/1/16","2020/1/17","2020/1/18","2020/1/19","2020/1/20","2020/1/21","2020/1/22","2020/1/23","2020/1/24","2020/1/25","2020/1/26","2020/1/27","2020/1/28","2020/1/29","2020/1/30"
+      "2020/1/6","2020/1/7","2020/1/8","2020/1/9","2020/1/10","2020/1/11","2020/1/12","2020/1/13","2020/1/14","2020/1/15","2020/1/16","2020/1/17","2020/1/18","2020/1/19","2020/1/20","2020/1/21","2020/1/22","2020/1/23","2020/1/24","2020/1/25","2020/1/26","2020/1/27","2020/1/28","2020/1/29","2020/1/30"
     ],
     //30条数据
     lineGraphic:{},
     lineOption:{},
     currentLineXAxisData:[],
-    cnss1:[1.22,0.14,0.56,2.33,1.45,1.43,0.57,0.88,3.46,1.67,1.22,0.14,4.23,2.33,1.45,3.56,5.33,4.45,4.43,3.57,3.88,5.66,7.13,2.33,1.45,1.43,0.57,0.88,2.66,4.13],
-    cnss2:[2.57,2.88,5.46,4.43,3.22,2.11,1.57,1.88,4.46,2.22,1.14,1.56,3.33,2.45,2.45,3.14,1.57,1.88,1.23,5.12,2.22,1.11,1.56,2.88,5.14,3.57,3.88,6.46,5.43,4.22],
-    cnss3:[1.408,-0.171,1.375,1.003,5.401,2.701,-2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43],
-    cnss4:[0.826,-0.967,0.92,0.296,1.897,2.487,2.731,1.659,4.556,1.226,-0.128,-0.048,2.838,-0.666,1.847,2.45,2.43,1.57,1.88,1.77,2.13,0.46,0.88,1.46,2.43,1.22,0.11,0.56,2.33,1.45],
-    cnss5:[0.244,-1.763,0.465,-0.411,1.393,2.273,-6.474,2.176,3.949,1.029,-0.497,-0.602,2.642,-1.549,4.658,3.335,1.99,0.625,1.83,1.71,4.905,2.915,-1.245,4.625,4.77,1.62,0.61,1.06,3.23,1.1],
-    cnss6:[2.45,2.43,1.57,1.88,1.77,2.727,3.683,7.537,8.46,5.62,1.035,2.705,4.68,3.68,7.76,2.765,-0.92,-3.355,-0.445,-1.825,7.385,1.845,4.45,5.46,3.67,3.22,2.14,6.23,3.14,3.56],
-    cnss7:[3.335,1.99,0.625,1.83,1.71,7.674,11.526,8.859,9.46,6.032,12.176,10.756,4.73,3.821,8.435,2.651,-1.502,-4.151,-0.9,-2.532,7.881,1.631,4.43,6.46,2.56,4.33,3.45,3.43,2.57,3.33],
+    cnss1:[1.43,0.57,0.88,3.46,1.67,1.22,0.14,4.23,2.33,1.45,3.56,5.33,4.45,4.43,3.57,3.88,5.66,7.13,2.33,1.45,1.43,0.57,0.88,2.66,4.13],
+    cnss2:[2.11,1.57,1.88,4.46,2.22,1.14,1.56,3.33,2.45,2.45,3.14,1.57,1.88,1.23,5.12,2.22,1.11,1.56,2.88,5.14,3.57,3.88,6.46,5.43,4.22],
+    cnss3:[2.701,-2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43],
+    cnss4:[2.487,2.731,1.659,4.556,1.226,-0.128,-0.048,2.838,-0.666,1.847,2.45,2.43,1.57,1.88,1.77,2.13,0.46,0.88,1.46,2.43,1.22,0.11,0.56,2.33,1.45],
+    cnss5:[2.273,-6.474,2.176,3.949,1.029,-0.497,-0.602,2.642,-1.549,4.658,3.335,1.99,0.625,1.83,1.71,4.905,2.915,-1.245,4.625,4.77,1.62,0.61,1.06,3.23,1.1],
+    cnss6:[2.727,3.683,7.537,8.46,5.62,1.035,2.705,4.68,3.68,7.76,2.765,-0.92,-3.355,-0.445,-1.825,7.385,1.845,4.45,5.46,3.67,3.22,2.14,6.23,3.14,3.56],
+    cnss7:[7.674,11.526,8.859,9.46,6.032,12.176,10.756,4.73,3.821,8.435,2.651,-1.502,-4.151,-0.9,-2.532,7.881,1.631,4.43,6.46,2.56,4.33,3.45,3.43,2.57,3.33],
     currentCnss1:[],
     currentCnss2:[],
     currentCnss3:[],
@@ -119,7 +119,7 @@ var app = new Vue({
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: this.currentLineXAxisData,
+            data: ["2020/1/1","2020/1/2","2020/1/3","2020/1/4","2020/1/5"],
             axisPointer: {
                 type: 'shadow'
             },
@@ -161,43 +161,43 @@ var app = new Vue({
                 name: 'CNSS-1',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss1
+                data: [1.22,0.14,0.56,2.33,1.45]
             },
             {
                 name: 'CNSS-2',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss2
+                data: [2.57,2.88,5.46,4.43,3.22]
             },
             {
                 name: 'CNSS-3',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss3
+                data: [1.408,-0.171,1.375,1.003,5.401]
             },
             {
                 name: 'CNSS-4',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss4
+                data: [0.826,-0.967,0.92,0.296,1.897]
             },
             {
                 name: 'CNSS-5',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss5
+                data: [0.244,-1.763,0.465,-0.411,1.393]
             },
             {
                 name: 'CNSS-6',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss6
+                data: [2.45,2.43,1.57,1.88,1.77]
             },
             {
                 name: 'CNSS-7',
                 type: 'line',
                 stack: '总量',
-                data: this.currentCnss7
+                data: [3.335,1.99,0.625,1.83,1.71]
             }
         ]
     };
@@ -440,8 +440,8 @@ var app = new Vue({
                 color: ['#e6951d','#dfc73d','#85c154', '#5FA731']
             },
 
-            right:"10px",
-            bottom:"50px",
+            right:"0px",
+            bottom:"10px",
             align:"left",
             textStyle: {
              color: '#A5D9E1'
@@ -454,11 +454,21 @@ var app = new Vue({
             {
                 name: '业务指标',
                 type: 'gauge',
+                radius: '85%',
                 detail: {formatter: '{value}'},
                 axisLine: {            // 坐标轴线
                        lineStyle: {       // 属性lineStyle控制线条样式
                            color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
                        }
+                },
+                title : {
+                    textStyle: {
+                        fontWeight: 'bold',
+                        fontSize: 18,
+                        fontStyle: 'normal',
+                        color:"#A5D9E1"
+                    },
+                    padding: [10,10,10,10],
                 },
                 data: [{value: 50, name: '评分'}]
             }
@@ -768,41 +778,48 @@ var app = new Vue({
 
     let lineDataInterval = 0;
     setInterval(function(){
-      that.currentLineXAxisData = [];
-      that.currentCnss1 = [];
-      that.currentCnss2 = [];
-      that.currentCnss3 = [];
-      that.currentCnss4 = [];
-      that.currentCnss5 = [];
-      that.currentCnss6 = [];
-      that.currentCnss7 = [];
 
-      for(let i = lineDataInterval; i < lineDataInterval + 5; i++){
-        that.currentLineXAxisData.push(that.lineGraphicxAxisData[i]);
-        that.currentCnss1.push(that.cnss1[i]);
-        that.currentCnss2.push(that.cnss1[i]);
-        that.currentCnss3.push(that.cnss1[i]);
-        that.currentCnss4.push(that.cnss1[i]);
-        that.currentCnss5.push(that.cnss1[i]);
-        that.currentCnss6.push(that.cnss1[i]);
-        that.currentCnss7.push(that.cnss1[i]);
+      if(that.lineOption.xAxis.data.length >= 5){
+        that.lineOption.xAxis.data.shift();
+      }
+      if(that.lineOption.series[0].data.length >= 5){
+        that.lineOption.series[0].data.shift();
+      }
+      if(that.lineOption.series[1].data.length >= 5){
+        that.lineOption.series[1].data.shift();
+      }
+      if(that.lineOption.series[2].data.length >= 5){
+        that.lineOption.series[2].data.shift();
+      }
+      if(that.lineOption.series[3].data.length >= 5){
+        that.lineOption.series[3].data.shift();
+      }
+      if(that.lineOption.series[4].data.length >= 5){
+        that.lineOption.series[4].data.shift();
+      }
+      if(that.lineOption.series[5].data.length >= 5){
+        that.lineOption.series[5].data.shift();
+      }
+      if(that.lineOption.series[6].data.length >= 5){
+        that.lineOption.series[6].data.shift();
       }
 
-      that.lineOption.xAxis.data = that.currentLineXAxisData;
-      that.lineOption.series[0].data = that.currentCnss1;
-      that.lineOption.series[1].data = that.currentCnss2;
-      that.lineOption.series[2].data = that.currentCnss3;
-      that.lineOption.series[3].data = that.currentCnss4;
-      that.lineOption.series[4].data = that.currentCnss5;
-      that.lineOption.series[5].data = that.currentCnss6;
-      that.lineOption.series[6].data = that.currentCnss7;
+      that.lineOption.xAxis.data.push(that.lineGraphicxAxisData[lineDataInterval]);
+      that.lineOption.series[0].data.push(that.cnss1[lineDataInterval]);
+      that.lineOption.series[1].data.push(that.cnss2[lineDataInterval]);
+      that.lineOption.series[2].data.push(that.cnss3[lineDataInterval]);
+      that.lineOption.series[3].data.push(that.cnss4[lineDataInterval]);
+      that.lineOption.series[4].data.push(that.cnss5[lineDataInterval]);
+      that.lineOption.series[5].data.push(that.cnss6[lineDataInterval]);
+      that.lineOption.series[6].data.push(that.cnss7[lineDataInterval]);
+
       that.lineGraphic.setOption(that.lineOption);
-      lineDataInterval = lineDataInterval + 5;
+      lineDataInterval = lineDataInterval + 1;
       if(lineDataInterval == that.lineGraphicxAxisData.length){
         lineDataInterval = 0;
       }
 
-    },2000);
+    },5000);
 
     let debrisFlowInterval = 0;
     setInterval(function(){

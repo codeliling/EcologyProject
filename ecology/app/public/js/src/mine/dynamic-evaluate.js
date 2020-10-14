@@ -118,13 +118,14 @@ var vueApp = new Vue({
         },
         tooltip: {},
         legend: {
+            icon:'circle',
             data: ['数据指标'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color: ['#dfc73d','#E6951D','#A5D9E1','#3074B1','#B691C1', '#7D57A1'],
+        color: ['#3074B1','#dfc73d','#E6951D','#A5D9E1','#B691C1', '#7D57A1'],
         radar: {
             // shape: 'circle',
             name: {
@@ -183,14 +184,24 @@ var vueApp = new Vue({
         },
         series: [
             {
-                name: '业务指标',
+                name: '指标',
                 type: 'gauge',
+                radius: '95%',
                 detail: {formatter: '{value}'},
                 axisLine: {            // 坐标轴线
                        lineStyle: {       // 属性lineStyle控制线条样式
                            color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
                        }
                 },
+                title : {
+                          textStyle: {
+                              fontWeight: 'bold',
+                              fontSize: 18,
+                              fontStyle: 'normal',
+                              color:"#A5D9E1"
+                          },
+                          padding: [10,10,10,10],
+                      },
                 data: [{value: 50, name: '评分'}]
             }
         ]

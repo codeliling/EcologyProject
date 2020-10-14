@@ -2,12 +2,12 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
-
-    xdata:['2019-08-04','2019-08-05','2019-08-06','2019-08-07','2019-08-08'],
-    valueArray1:[7641.426167,7052.283333,7470.5625,7254.19,8788.668833],
-    valueArray2:[19051.95446,18899.1135,20339.35,15665.77117,21303.58317],
-    valueArray3:[12218.06671,7872.456667,3275.6585,18309.533,19414.61867],
-    valueArray4:[11202.42437,11068.225,11450.49383,9887.81,12403.16867],
+    lineData:[],
+    countGraphic:{},
+    countOption:{},
+    orilGraphicData:[],
+    lineGraphic:{},
+    lineOption:{},
   },
   methods:{
     backClick:function(){
@@ -34,10 +34,13 @@ var app = new Vue({
     baseBtnClick:function(){
       window.location.href = '/energy/basecompare';
     },
+    faceClick:function(){
+      window.location.href = '/energy/face';
+    },
   },
   mounted() {
-    var lineGraphic = echarts.init(document.getElementById('line-graphic'));
-    lineOption = {
+    this.lineGraphic = echarts.init(document.getElementById('line-graphic'));
+    this.lineOption = {
         title: {
             text: ''
         },
@@ -61,12 +64,13 @@ var app = new Vue({
             left: '3%',
             right: '4%',
             top: '18%',
+            bottom:'40px',
             containLabel: true
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: this.xdata,
+            data: [],
             splitLine:{
 　　　　        show:false
             },
@@ -102,68 +106,130 @@ var app = new Vue({
                 name: '洁卫',
                 type: 'line',
                 stack: '总量',
-                data: this.valueArray1
+                data: []
             },
             {
                 name: '餐饮',
                 type: 'line',
                 stack: '总量',
-                data: this.valueArray2
+                data: []
             },
             {
                 name: '空调',
                 type: 'line',
                 stack: '总量',
-                data: this.valueArray3
+                data: []
             },
             {
                 name: '其他',
                 type: 'line',
                 stack: '总量',
-                data: this.valueArray4
+                data: []
             }
         ]
     };
 
-    lineGraphic.setOption(lineOption);
+    this.lineGraphic.setOption(this.lineOption);
 
-    var countGraphic = echarts.init(document.getElementById('count-graphic'));
-    countOption = {
+    this.countGraphic = echarts.init(document.getElementById('count-graphic'));
+    this.countOption = {
       tooltip: {
-          formatter: '{a} <br/>{b} : {c}%'
-      },
-      visualMap: {
-          type: 'piecewise',
-          categories: [
-               '有待提升','达标', '良好', '优秀',
-          ],
-          inRange: {
-              color: ['#e6951d','#dfc73d','#85c154', '#5FA731']
-          },
-          right:"10px",
-          bottom:"50px",
-          align:"left",
-          textStyle: {
-           color: '#A5D9E1'
-          }
+          formatter: '{a} <br/>{b} : {c}'
       },
       series: [
           {
-              name: '业务指标',
+              name: '总能耗',
               type: 'gauge',
+              min:50000,
+              max: 65000,
               detail: {formatter: '{value}'},
               axisLine: {            // 坐标轴线
                      lineStyle: {       // 属性lineStyle控制线条样式
                          color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
                      }
               },
-              data: [{value: 50, name: '评分'}]
+              title : {
+                 textStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                    fontStyle: 'normal',
+                    color:"#A5D9E1"
+                  },
+                  padding: [460,10,10,10],
+              },
+              data: [{value: 50, name: '总能耗Kwh'}]
           }
       ]
     }
-    countGraphic.setOption(countOption);
+    this.countGraphic.setOption(this.countOption);
   },
   created() {
+    let that = this;
+    $.getJSON('/public/assets/energy/9-1.json',function(data){
+      that.orilGraphicData = data;
+      that.countOption.series[0].data[0].value = data[0].value;
+      that.countGraphic.setOption(that.countOption);
+    });
+    let orilInterval = 1;
+    setInterval(function(){
+      that.countOption.series[0].data[0].value = that.orilGraphicData[orilInterval].value;
+      that.countGraphic.setOption(that.countOption);
+      orilInterval = orilInterval + 1;
+      if(orilInterval == that.orilGraphicData.length){
+        orilInterval = 0;
+      }
+    },1000);
 
+
+    let graphicBarLength  = 8;
+    $.getJSON('/public/assets/energy/9-2.json',function(data){
+      that.lineData = data;
+      for (let i = 0; i < 8; i++){
+        that.lineOption.xAxis.data.push(data[i].time);
+        that.lineOption.series[0].data.push(data[i].value1);
+        that.lineOption.series[1].data.push(data[i].value2);
+        that.lineOption.series[2].data.push(data[i].value3);
+        that.lineOption.series[3].data.push(data[i].value4);
+      }
+      that.lineGraphic.setOption(that.lineOption);
+    });
+    let realtimeDataInterval = 8;
+    setInterval(function(){
+      if(that.lineData.length > 8){
+        let obj = that.lineData[realtimeDataInterval];
+        realtimeDataInterval = realtimeDataInterval + 1;
+        let xData = that.lineOption.xAxis.data
+        if(xData.length > graphicBarLength){
+          that.lineOption.xAxis.data.shift();
+        }
+        that.lineOption.xAxis.data.push(obj.time);
+
+        if(that.lineOption.series[0].data.length > graphicBarLength){
+          that.lineOption.series[0].data.shift();
+        }
+        that.lineOption.series[0].data.push(obj.value1);
+
+        if(that.lineOption.series[1].data.length > graphicBarLength){
+          that.lineOption.series[1].data.shift();
+        }
+        that.lineOption.series[1].data.push(obj.value2);
+
+        if(that.lineOption.series[2].data.length > graphicBarLength){
+          that.lineOption.series[2].data.shift();
+        }
+        that.lineOption.series[2].data.push(obj.value3);
+
+        if(that.lineOption.series[3].data.length > graphicBarLength){
+          that.lineOption.series[3].data.shift();
+        }
+        that.lineOption.series[3].data.push(obj.value4);
+
+        if(realtimeDataInterval == that.lineData.length){
+          realtimeDataInterval = 0;
+        }
+        that.lineGraphic.setOption(that.lineOption);
+      }
+
+    },10000);
   }
 });

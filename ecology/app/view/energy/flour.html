@@ -89,7 +89,10 @@
           <div class="image-border image-border3"></div>
           <div class="image-border image-border4"></div>
             <div id="graphic" >
-              <div class="main-board"></div>
+              <div style="width:968px;height:502px;margin:0 auto;position:relative;top:50%;transform:translateY(-50%);">
+                <img class="room"  v-for="elem in rommBgData" :src="elem"/>
+                <img class="main-board" src="/public/images/room/flour.png"/>
+              </div>
             </div>
 
         </div>

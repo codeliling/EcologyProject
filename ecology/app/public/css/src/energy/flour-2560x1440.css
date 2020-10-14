@@ -241,10 +241,6 @@ body{
   cursor: pointer;
 }
 
-.box img{
-  width:100%;
-  height: auto;
-}
 
 #graphic{
   position: relative;
@@ -253,11 +249,19 @@ body{
 }
 
 .main-board{
-  width: 100%;
-  height:100%;
-  background-image: url('/public/images/energy/flour.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  width: 968px;
+  height:502px;
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+
+.room{
+  width: 968px;
+  height:502px;
+  position: absolute;
+  top:0px;
+  left:0px;
 }
 
 .menu-inner-block{
