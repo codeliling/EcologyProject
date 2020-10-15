@@ -2,11 +2,56 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
-    noiseAddressData:['湖南西奥矿业有限公司官庄金矿','沅陵县沃溪金锑钨矿','中国黄金集团柳林汊矿区桐树面金矿','沅陵县盘古乡石家寨矿区磷矿',
-    '沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','米贝金矿','中方黄岩铀矿限制开采区','中方县泸阳镇八活岩矿区石灰石',
-    '辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿','新晃县贡溪重晶石矿区','溆浦思蒙国家湿地公园保护区','怀化中坡保护区',
-    '靖州飞山苗乡侗寨风景名胜区','排牙山省级森林公园保护区','芷江县西晃山省级森林公园','鹰嘴界国家级自然保护区','雪峰山金锰矿'],
-    noiseData:[-14,29,-13,28,-19,26,-11,-15,-13,24,-18,0,19,-46,29,-37,-25,-14,18,-25,0],
+    dustData:[
+      {"name":"石家寨磷矿","value":"-16"},
+      {"name":"董家河硫铁矿","value":19},
+      {"name":"辰溪田湾磷矿","value":"-6"},
+      {"name":"麻阳九曲湾铜矿","value":12},
+      {"name":"怀化中坡","value":5},
+      {"name":"中力黄岩铀矿","value":"-11"},
+      {"name":"思蒙湿地公园","value":"-14"},
+      {"name":"八活岩矿区","value":13},
+      {"name":"雪峰山金锰矿","value":21},
+      {"name":"西晃山森林公园","value":"-19"},
+      {"name":"贡溪重晶石矿区","value":"-16"},
+      {"name":"米贝金矿","value":"-12"},
+      {"name":"摩天岭矿区","value":"-17"},
+      {"name":"淘金冲矿区","value":"-15"},
+      {"name":"鹰嘴界自然保护区","value":"-19"},
+      {"name":"苗乡侗寨名胜区","value":"-28"},
+      {"name":"排牙山森林公园","value":15},
+      {"name":"通道锅冲硅石矿","value":23},
+      {"name":"西澳官庄金矿","value":"-16"},
+      {"name":"沃溪金锑钨矿","value":"-12"},
+      {"name":"汊桐树面金矿","value":6},
+    ],
+
+    noiseData : [
+      {"name":"石家寨磷矿","value":28},
+      {"name":"董家河硫铁矿","value":"-19"},
+      {"name":"辰溪田湾磷矿","value":26},
+      {"name":"麻阳九曲湾铜矿","value":"-11"},
+      {"name":"怀化中坡","value":"-15"},
+      {"name":"中力黄岩铀矿","value":"-13"},
+      {"name":"思蒙湿地公园","value":24},
+      {"name":"八活岩矿区","value":"-18"},
+      {"name":"雪峰山金锰矿","value":0},
+      {"name":"西晃山森林公园","value":19},
+      {"name":"贡溪重晶石矿区","value":"-16"},
+      {"name":"米贝金矿","value":29.00},
+      {"name":"摩天岭矿区","value":"-17"},
+      {"name":"淘金冲矿区","value":"-15"},
+      {"name":"鹰嘴界自然保护区","value":"-14"},
+      {"name":"苗乡侗寨名胜区","value":18},
+      {"name":"排牙山森林公园","value":"-15"},
+      {"name":"通道锅冲硅石矿","value":0},
+      {"name":"西澳官庄金矿","value":"-14.00"},
+      {"name":"沃溪金锑钨矿","value":29},
+      {"name":"汊桐树面金矿","value":"-13"},
+    ],
+
+    noiseMonitorGraphic2:{},
+    noiseMonitorOption2:{},
     dustMonitorGraphic2:{},
     dustMonitorOption2:{},
   },
@@ -124,7 +169,7 @@ var app = new Vue({
                 color: '#A5D9E1'
             }
         },
-        color:['#5FA731','#3074B1','#85C154','#7D57A1',],
+        color:['#5FA731','#3074B1','#A5D9E1','#7D57A1',],
         series: [
             {
                 name: '数据',
@@ -242,7 +287,7 @@ var app = new Vue({
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['星期天(11号)','星期一(12号)','星期二(13号)','星期三(14号)','星期四(15号)','星期五(16号)','星期六(17号)'],
+            data: ['10/9','10/10','10/11','10/12','10/13','10/14','10/15'],
             splitLine:{
 　　　　        show:false
             },
@@ -258,6 +303,8 @@ var app = new Vue({
             }
         },
         yAxis: {
+            min:80,
+            max:100,
             type: 'value',splitLine:{
 　　　　        show:false
             },
@@ -374,7 +421,7 @@ var app = new Vue({
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['星期天(11号)','星期一(12号)','星期二(13号)','星期三(14号)','星期四(15号)','星期五(16号)','星期六(17号)'],
+            data: ['10/9','10/10','10/11','10/12','10/13','10/14','10/15'],
             splitLine:{
 　　　　        show:false
             },
@@ -390,6 +437,8 @@ var app = new Vue({
             }
         },
         yAxis: {
+            min:80,
+            max:100,
             type: 'value',splitLine:{
 　　　　        show:false
             },
@@ -482,27 +531,29 @@ var app = new Vue({
     noiseMonitorGraphic1.setOption(noiseMonitorOption1);
 
     //-----------------------------------------------------------------------
-    var noiseMonitorGraphic2 = echarts.init(document.getElementById('noise-monitor-graphic2'));
-    var noiseMonitorOption2 = {
+    this.noiseMonitorGraphic2 = echarts.init(document.getElementById('noise-monitor-graphic2'));
+    this.noiseMonitorOption2 = {
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            formatter: '{b}<br/>{c} %'
         },
         legend: {
-            data: ['同比', '环比'],
+            data: ['增长率'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#A5D9E1'],
         calculable: true,
         grid:[{
-             bottom: '30px',
+             top:'40px',
+             bottom: '25px',
          }],
         xAxis: [
             {
                 type: 'category',
-                data: ['沅陵县盘古乡石家寨矿区磷矿','沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿','新晃县贡溪重晶石矿区'],
+                data: ['西澳官庄金矿','沃溪金锑钨矿','汊桐树面金矿'],
                 splitLine:{
     　　　　        show:false
                 },
@@ -520,7 +571,17 @@ var app = new Vue({
         ],
         yAxis: [
             {
+                name:'%',
                 type: 'value',
+                min:-50,
+                max:50,
+                interval  : 25,
+                        axisLabel: {
+                            show: true,
+                            interval: 'auto',
+                            formatter: '{value} %'
+                            },
+                        show: true,
                 splitLine:{
     　　　　        show:false
                 },
@@ -538,40 +599,15 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '同比',
+                name: '增长率',
                 type: 'bar',
-                data: [-46,19,-6,12,13,21,-19,-46],
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
+                data: [-16,-12,6],
+
             },
-            {
-                name: '环比',
-                type: 'bar',
-                data: [0,0,0,0,0,0,0],
-                markPoint: {
-                    data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            }
+
         ]
     };
-    noiseMonitorGraphic2.setOption(noiseMonitorOption2);
+    this.noiseMonitorGraphic2.setOption(this.noiseMonitorOption2);
 
     //-----------------------------------------------------------------------
 
@@ -579,24 +615,26 @@ var app = new Vue({
     this.dustMonitorGraphic2 = echarts.init(document.getElementById('dust-monitor-graphic2'));
     this.dustMonitorOption2 = {
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            formatter: '{b}<br/>{c} %'
         },
         legend: {
-            data: ['同比', '环比'],
+            data: ['增长率'],
             textStyle: {
                 fontSize: 12,
-                color: '#A5D9E1'
+                color: '#7D57A1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#7D57A1'],
         calculable: true,
         grid:[{
-             bottom: '30px',
+          top:'40px',
+          bottom: '25px',
          }],
         xAxis: [
             {
                 type: 'category',
-                data: ['沅陵县盘古乡石家寨矿区磷矿','沅陵县董家河矿铅锌硫铁矿矿区','会同县淘金冲矿区','麻阳九曲湾铜矿矿区','辰溪田湾磷矿矿区','洪江市摩天岭花岗岩','通道侗族自治县锅冲矿区硅石矿'],
+                data: ['西澳官庄金矿','沃溪金锑钨矿','汊桐树面金矿'],
                 splitLine:{
     　　　　        show:false
                 },
@@ -614,7 +652,17 @@ var app = new Vue({
         ],
         yAxis: [
             {
+                name:'%',
                 type: 'value',
+                min:-50,
+                max:50,
+                interval  : 25,
+                        axisLabel: {
+                            show: true,
+                            interval: 'auto',
+                            formatter: '{value} %'
+                            },
+                        show: true,
                 splitLine:{
     　　　　        show:false
                 },
@@ -632,36 +680,10 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '同比',
+                name: '增长率',
                 type: 'bar',
-                data: [-14,29,-13,28,-19,26,-11],
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name: '环比',
-                type: 'bar',
-                data: [0,0,0,0,0,0,0],
-                markPoint: {
-                    data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
+                data: [-14,29,-13],
+
             }
         ]
     };
@@ -672,15 +694,41 @@ var app = new Vue({
     let that = this;
     let dustDataInterval = 0;
     setInterval(function(){
-      if(that.noiseAddressData.length > 0){
-        that.dustMonitorOption2.xAxis[0].data = that.noiseAddressData.slice(dustDataInterval,dustDataInterval + 7);
-        that.dustMonitorOption2.series[0].data = that.noiseData.slice(dustDataInterval,dustDataInterval + 7);
+      if(that.dustData.length > 0){
+        that.dustMonitorOption2.xAxis[0].data = [];
+        that.dustMonitorOption2.series[0].data = [];
+        let list = that.dustData.slice(dustDataInterval,dustDataInterval + 3);
+        for (let i = dustDataInterval; i < dustDataInterval + 3; i++){
+          let obj = that.dustData[i];
+          that.dustMonitorOption2.xAxis[0].data.push(obj.name);
+          that.dustMonitorOption2.series[0].data.push(obj.value);
+        }
         that.dustMonitorGraphic2.setOption(that.dustMonitorOption2);
-        dustDataInterval = dustDataInterval + 7;
-        if(dustDataInterval == that.noiseAddressData.length){
+        dustDataInterval = dustDataInterval + 3;
+        if(dustDataInterval == that.dustData.length){
           dustDataInterval = 0;
         }
       }
-    },5000);
+    },30000);
+
+    let noiseDataInterval = 0;
+    setInterval(function(){
+      if(that.noiseData.length > 0){
+        that.noiseMonitorOption2.xAxis[0].data = [];
+        that.noiseMonitorOption2.series[0].data = [];
+        let list = that.noiseData.slice(noiseDataInterval,noiseDataInterval + 3);
+        for (let i = noiseDataInterval; i < noiseDataInterval + 3; i++){
+          let obj = that.noiseData[i];
+          that.noiseMonitorOption2.xAxis[0].data.push(obj.name);
+          that.noiseMonitorOption2.series[0].data.push(obj.value);
+        }
+        that.noiseMonitorGraphic2.setOption(that.noiseMonitorOption2);
+        noiseDataInterval = noiseDataInterval + 3;
+        if(noiseDataInterval == that.noiseData.length){
+          noiseDataInterval = 0;
+        }
+      }
+    },30000);
+    this.noiseMonitorGraphic2.setOption(this.noiseMonitorOption2);
   }
 });
