@@ -46,7 +46,6 @@
                         <th>NO2(μg/m3)</th>
                         <th>CO(μg/m3)</th>
                         <th>O3(μg/m3)</th>
-                        <th>酸碱度(pH)</th>
                         <th>温度(°C)</th>
                         <th>湿度(%rh)</th>
                         <th>风向</th>
@@ -55,15 +54,15 @@
                 </thead>
                 <tbody>
                   <tr v-for="elem in data1">
-                      <td class="table-td">${elem.name}</td>
-                      <td class="table-td">${elem.indicator1}</td>
-                      <td class="table-td">${elem.indicator2}</td>
-                      <td class="table-td">${elem.indicator3}</td>
-                      <td class="table-td">${elem.indicator4}</td>
-                      <td class="table-td">${elem.indicator5}</td>
-                      <td class="table-td">${elem.indicator6}</td>
-                      <td class="table-td">${elem.indicator7}</td>
-                      <td class="table-td">${elem.indicator8}</td>
+                      <td class="table-td">${elem.var1}</td>
+                      <td class="table-td">${elem.var2}</td>
+                      <td class="table-td">${elem.var3}</td>
+                      <td class="table-td">${elem.var4}</td>
+                      <td class="table-td">${elem.var5}</td>
+                      <td class="table-td">${elem.var6}</td>
+                      <td class="table-td">${elem.var7}</td>
+                      <td class="table-td">${elem.var8}</td>
+                      <td class="table-td">${elem.var9}</td>
                   </tr>
                 </tbody>
               </table>
@@ -98,7 +97,7 @@
 
           </div>
           <div style="position:relative">
-            <div class="assessment-block"><p>大气质量排名</p></div>
+            <div class="assessment-block"><p>大气质量评分</p></div>
             <div class="box">
               <div class="box-bg box-bg-3"></div>
               <div class="image-border image-border1"></div>
@@ -107,10 +106,10 @@
               <div class="image-border image-border4"></div>
               <div id="air-bar"></div>
               <div class="date-box">
-                <div class="period" type="default" @click="dayBtnclick">日</div>
-                <div class="period" @click="weekBtnclick">周</div>
-                <div class="period" @click="monthBtnClick">月</div>
                 <div class="period" @click="yearBtnClick">年</div>
+                <div class="period" @click="monthBtnClick">月</div>
+                <div class="period" @click="weekBtnclick">周</div>
+                <div class="period" type="default" @click="dayBtnclick">日</div>
               </div>
             </div>
           </div>
@@ -124,9 +123,9 @@
               <div class="image-border image-border4"></div>
               <div id="air-line"></div>
               <div class="date-box">
-                <div class="period"  @click="lineWeekBtnclick">周</div>
-                <div class="period" @click="lineMonthBtnClick">月</div>
                 <div class="period" @click="lineYearBtnClick">年</div>
+                <div class="period" @click="lineMonthBtnClick">月</div>
+                <div class="period"  @click="lineWeekBtnclick">周</div>
               </div>
             </div>
           </div>

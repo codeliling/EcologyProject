@@ -7,90 +7,91 @@ var app = new Vue({
 
     dustBarGraphic:{},
     dustBarOption:{},
-    dustBarData:{},
+    dustBarData:[
+      {"name":"西澳官庄金矿","value":"-16"},
+      {"name":"沃溪金锑钨矿","value":"-12"},
+      {"name":"汊桐树面金矿","value":6},
+      {"name":"石家寨磷矿","value":"-16"},
+      {"name":"董家河硫铁矿","value":19},
+      {"name":"辰溪田湾磷矿","value":"-6"},
+      {"name":"麻阳九曲湾铜矿","value":12},
+      {"name":"怀化中坡","value":5},
+      {"name":"中力黄岩铀矿","value":"-11"},
+      {"name":"思蒙湿地公园","value":"-14"},
+      {"name":"八活岩矿区","value":13},
+      {"name":"雪峰山金锰矿","value":21},
+      {"name":"西晃山森林公园","value":"-19"},
+      {"name":"贡溪重晶石矿区","value":"-16"},
+      {"name":"米贝金矿","value":"-12"},
+      {"name":"摩天岭矿区","value":"-17"},
+      {"name":"淘金冲矿区","value":"-15"},
+      {"name":"鹰嘴界自然保护区","value":"-19"},
+      {"name":"苗乡侗寨名胜区","value":"-28"},
+      {"name":"排牙山森林公园","value":15},
+      {"name":"通道锅冲硅石矿","value":23}
+    ],
     dustBarAddressData:[],
     dustBarSeriesSameData:[],
     dustBarSeriesChainData:[],
 
-    yearxAxis:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月'],
-    yearData:[
-      {"name":"PM1","value":[33,28,37,32,29,22,41,35,28,26]},
-      {"name":"PM2.5","value":[39,31,35,54,69,42,40,74,52,41]},
-      {"name":"PM10","value":[62,59,48,52,70,88,62,63,76,70]},
-      {"name":"TSP","value":[121,132,116,147,185,162,150,141,183,109]},
-      {"name":"AQI","value":[50,63,80,82,93,78,56,48,50,47]}
-    ],
-    monthxAxis:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
-    monthData:[
-      {"name":"PM1","value":[33,28,37,32,29,22,41,35,28,26,22,32,29,28,26,28,35]},
-      {"name":"PM2.5","value":[39,31,35,54,69,42,40,74,52,41,42,54,69,31,41,31,74]},
-      {"name":"PM10","value":[62,59,48,52,70,88,62,63,76,70,88,52,70,59,70,59,63]},
-      {"name":"TSP","value":[121,132,116,147,185,162,150,141,183,109,162,147,185,132,109,132,141]},
-      {"name":"AQI","value":[50,63,80,82,93,78,56,48,50,47,78,82,93,63,47,63,48]},
-    ],
-    weekxAxis:[1,2,3,4,5,6,7],
-    weekData:[
-      {"name":"PM1","value":[26,41,35,32,28,29,28]},
-      {"name":"PM2.5","value":[41,40,74,54,52,69,52]},
-      {"name":"PM10","value":[70,62,63,52,76,70,76]},
-      {"name":"TSP","value":[109,150,141,147,183,185,183]},
-      {"name":"AQI","value":[47,56,48,82,50,93,50]},
-    ],
+    yearxAxis:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月'],
+    yearData:[33,32,35,32,31,34,32,31,34,32],
+    monthxAxis:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,],
+    monthData:[33,32,35,32,31,34,32,31,34,32,33,32,35,32,31],
+    weekxAxis:['2020/10/9','2020/10/10','2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15'],
+    weekData:[33,32,35,32,31,34,32],
     lineInterval:null,
+    dustLineData:[
+      {'time':this.yearxAxis,'data':this.yearData},
+      {'time':this.monthxAxis,'data':this.monthData},
+      {'time':this.weekxAxis,'data':this.weekData},
+    ],
     dustLineGraphic:{},
     dustLineOption:{},
   },
   methods:{
+    startLineData:function(){
+      let dustLineDataInterval = 0;
+      let that = this;
+      this.lineInterval = setInterval(function(){
+        let obj = that.dustLineData[dustLineDataInterval];
+        that.dustLineOption.xAxis[0].data = obj.time;
+        that.dustLineOption.series[0].data = obj.data;
+        that.dustLineGraphic.setOption(that.dustLineOption);
+        dustLineDataInterval = dustLineDataInterval + 1;
+        if(dustLineDataInterval == that.dustLineData.length){
+            dustLineDataInterval = 0;
+        }
+      },30000);
+    },
     yearBtnclick:function(){
       if(this.lineInterval != null){
         clearInterval(this.lineInterval);
       }
-
-      let dustLineDataInterval = 0;
-      this.lineInterval = setInterval(function(){
-        that.dustLineOption.xAxis[0].data = that.yearxAxis;
-        that.dustLineOption.series[0].data = that.yearData[dustLineDataInterval].value;
-        that.dustLineOption.title[0].subtext = that.yearData[dustLineDataInterval].name;
-        that.dustLineGraphic.setOption(that.dustLineOption);
-        dustLineDataInterval = dustLineDataInterval + 1;
-        if(dustLineDataInterval == that.yearData.length){
-            dustLineDataInterval = 0;
-        }
-      },1000);
+      this.dustLineOption.xAxis[0].data = this.yearxAxis;
+      this.dustLineOption.series[0].data = this.yearData;
+      this.dustLineGraphic.setOption(this.dustLineOption);
+      this.startLineData();
     },
     monthBtnclick:function(){
       if(this.lineInterval != null){
         clearInterval(this.lineInterval);
       }
 
-      let dustLineDataInterval = 0;
-      this.lineInterval = setInterval(function(){
-        that.dustLineOption.xAxis[0].data = that.weekxAxis;
-        that.dustLineOption.series[0].data = that.monthData[dustLineDataInterval].value;
-        that.dustLineOption.title[0].subtext = that.monthData[dustLineDataInterval].name;
-        that.dustLineGraphic.setOption(that.dustLineOption);
-        dustLineDataInterval = dustLineDataInterval + 1;
-        if(dustLineDataInterval == that.monthData.length){
-          dustLineDataInterval = 0;
-        }
-      },1000);
+      this.dustLineOption.xAxis[0].data = this.monthxAxis;
+      this.dustLineOption.series[0].data = this.monthData;
+      this.dustLineGraphic.setOption(this.dustLineOption);
+      this.startLineData();
     },
     weekBtnClick:function(){
       if(this.lineInterval != null){
         clearInterval(this.lineInterval);
       }
 
-      let dustLineDataInterval = 0;
-      this.lineInterval = setInterval(function(){
-        that.dustLineOption.xAxis[0].data = that.yearxAxis;
-        that.dustLineOption.series[0].data = that.weekData[dustLineDataInterval].value;
-        that.dustLineOption.title[0].subtext = that.weekData[dustLineDataInterval].name;
-        that.dustLineGraphic.setOption(that.dustLineOption);
-        dustLineDataInterval = dustLineDataInterval + 1;
-        if(dustLineDataInterval == that.weekData.length){
-          dustLineDataInterval = 0;
-        }
-      },1000);
+      this.dustLineOption.xAxis[0].data = this.weekxAxis;
+      this.dustLineOption.series[0].data = this.weekData;
+      this.dustLineGraphic.setOption(this.dustLineOption);
+      this.startLineData();
     },
     backClick:function(){
       window.location.href = "/mine/envprotect";
@@ -257,18 +258,18 @@ var app = new Vue({
             trigger: 'axis'
         },
         legend: {
-            data: ['同比', '环比'],
+            data: ['增长率'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#7D57A1'],
         calculable: true,
         xAxis: [
             {
                 type: 'category',
-                data: this.dustBarAddressData,
+                data: ["西澳官庄金矿","沃溪金锑钨矿","汊桐树面金矿"],
                 splitLine:{
     　　　　        show:false
                 },
@@ -286,7 +287,17 @@ var app = new Vue({
         ],
         yAxis: [
             {
-                type: 'value',
+              name:'%',
+              type: 'value',
+              min:-50,
+              max:50,
+              interval  : 25,
+                      axisLabel: {
+                          show: true,
+                          interval: 'auto',
+                          formatter: '{value} %'
+                          },
+                      show: true,
                 splitLine:{
     　　　　        show:false
                 },
@@ -304,34 +315,13 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '同比',
+                name: '增长率',
                 type: 'bar',
-                data: this.dustBarSeriesSameData,
+                data: [-16,-12,6],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
                         {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name: '环比',
-                type: 'bar',
-                data: this.dustBarSeriesChainData,
-                markPoint: {
-                    data: [
-                        {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                        {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
                     ]
                 }
             }
@@ -378,6 +368,9 @@ var app = new Vue({
             }
         }],
         yAxis: [{
+            min:0,
+            max:60,
+            interval:15,
             splitLine: {show: false},
             axisLine:{
               lineStyle:{
@@ -393,7 +386,12 @@ var app = new Vue({
         series: [{
             type: 'line',
             showSymbol: false,
-            data: this.yearData[0].value,
+            data: this.yearData,
+            markLine: {
+               data: [
+                   {type: 'average', name: '平均值'}
+               ]
+           },
             itemStyle: {
       				normal: {
       					color: '#7D57A1', //改变折线点的颜色
@@ -412,10 +410,13 @@ var app = new Vue({
     let that = this;
     $.getJSON('/public/assets/6-1.json',function(data){
       that.dustTableData = data;
+      that.data1.push(that.dustTableData[dustTableDataInterval]);
+      that.data1.push(that.dustTableData[dustTableDataInterval + 1]);
+      that.data1.push(that.dustTableData[dustTableDataInterval + 2]);
     });
-    let dustTableDataInterval = 0;
+    let dustTableDataInterval = 3;
     setInterval(function(){
-      if(that.dustTableData.length > 0){
+      if(that.dustTableData.length > 3){
         that.data1 = [];
         that.data1.push(that.dustTableData[dustTableDataInterval]);
         that.data1.push(that.dustTableData[dustTableDataInterval + 1]);
@@ -426,45 +427,33 @@ var app = new Vue({
         }
       }
 
-    },1000);
+    },30000);
 
-    $.getJSON('/public/assets/6-3.json',function(data){
-      that.dustBarData = data;
-    });
-    let dustBarDataInterval = 0;
+    // $.getJSON('/public/assets/6-3.json',function(data){
+    //   that.dustBarData = data;
+    // });
+
+    let dustBarDataInterval = 3;
     setInterval(function(){
       if(that.dustBarData.length > 0){
-        that.dustBarAddressData = [];
-        that.dustBarSeriesSameData = [];
-        that.dustBarSeriesChainData = [];
-        for(let index = dustBarDataInterval; index < dustBarDataInterval + 7; index++){
-          that.dustBarAddressData.push(that.dustBarData[index].name);
-          that.dustBarSeriesSameData.push(0);
-          that.dustBarSeriesChainData.push(that.dustBarData[index].value);
+        that.dustBarOption.xAxis[0].data = [];
+        that.dustBarOption.series[0].data = [];
+        let list = that.dustBarData.slice(dustBarDataInterval,dustBarDataInterval + 3);
+        for (let i = dustBarDataInterval; i < dustBarDataInterval + 3; i++){
+          let obj = that.dustBarData[i];
+          that.dustBarOption.xAxis[0].data.push(obj.name);
+          that.dustBarOption.series[0].data.push(obj.value);
         }
-        that.dustBarOption.xAxis[0].data = that.dustBarAddressData;
-        that.dustBarOption.series[0].data = that.dustBarSeriesSameData;
-        that.dustBarOption.series[1].data = that.dustBarSeriesChainData;
         that.dustBarGraphic.setOption(that.dustBarOption);
-        dustBarDataInterval = dustBarDataInterval + 7;
+        dustBarDataInterval = dustBarDataInterval + 3;
         if(dustBarDataInterval == that.dustBarData.length){
           dustBarDataInterval = 0;
         }
       }
 
-    },1000);
+    },30000);
 
-    let dustLineDataInterval = 0;
-    this.lineInterval = setInterval(function(){
-      that.dustLineOption.xAxis[0].data = that.yearxAxis;
-      that.dustLineOption.series[0].data = that.yearData[dustLineDataInterval].value;
-      that.dustLineOption.title[0].subtext = that.yearData[dustLineDataInterval].name;
-      that.dustLineGraphic.setOption(that.dustLineOption);
-      dustLineDataInterval = dustLineDataInterval + 1;
-      if(dustLineDataInterval == that.yearData.length){
-        dustLineDataInterval = 0;
-      }
 
-    },1000);
+    this.startLineData();
   }
 })

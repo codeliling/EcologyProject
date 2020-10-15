@@ -6,13 +6,35 @@ var app = new Vue({
     waterTableData:[],
     waterLineGraphic:{},
     waterLineOption:{},
-    dayTimeDataArray:[["星期天(11号)",83],["星期一(12号)",81],["星期二(13号)",86],["星期三(14号)",88],["星期四(15号)",90],["星期五(16号)",83],["星期六(17号)",85]],
+    dayTimeDataArray:[["2020/10/9",83],["2020/10/10",81],["2020/10/11",86],["2020/10/12",88],["2020/10/13",90],["2020/10/14",83],["2020/10/15",85]],
     monthTimeDataArray:[["1号",83],["2号",84],["3号",88],["4号",87],["5号",86],["6号",87],["7号",90],["8号",89],["9号",84],["10号",84],["11号",83],["12号",81],["13号",86],["14号",88],["15号",90],["16号",83],["17号",85]],
     yearTimeDataArray:[["1月",82],["2月",81],["3月",82],["4月",82],["5月",84],["6月",83],["7月",84],["8月",84],["9月",85],["10月",86]],
     waterBarGraphic:{},
     waterBarOption:{},
-    waterBarAddressData:[],
-    waterBarChainData:[],
+    waterBarData:[
+
+        {"name":"石家寨磷矿","value":22.22},
+        {"name":"董家河硫铁矿","value":10},
+        {"name":"辰溪田湾磷矿","value":10},
+        {"name":"麻阳九曲湾铜矿","value":10},
+        {"name":"怀化中坡","value":0},
+        {"name":"中力黄岩铀矿","value":"-14.28"},
+        {"name":"思蒙湿地公园","value":10},
+        {"name":"八活岩矿区","value":0},
+        {"name":"雪峰山金锰矿","value":10},
+        {"name":"西晃山森林公园","value":10},
+        {"name":"贡溪重晶石矿区","value":10},
+        {"name":"米贝金矿","value":11.11},
+        {"name":"摩天岭矿区","value":10},
+        {"name":"淘金冲矿区","value":20},
+        {"name":"鹰嘴界自然保护区","value":10},
+        {"name":"苗乡侗寨名胜区","value":20},
+        {"name":"排牙山森林公园","value":10},
+        {"name":"通道锅冲硅石矿","value":10},
+        {"name":"西澳官庄金矿","value":11.10},
+        {"name":"沃溪金锑钨矿","value":10},
+        {"name":"汊桐树面金矿","value":10},
+    ],
     currentWaterBarChainData:[],
   },
   methods:{
@@ -221,18 +243,18 @@ var app = new Vue({
             trigger: 'axis'
         },
         legend: {
-            data: ['同比', '环比'],
+            data: ['增长率'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#A5D9E1'],
         calculable: true,
         xAxis: [
             {
                 type: 'category',
-                data: this.waterBarAddressData,
+                data: ["西澳官庄金矿","沃溪金锑钨矿","汊桐树面金矿"],
                 splitLine:{
     　　　　        show:false
                 },
@@ -250,7 +272,17 @@ var app = new Vue({
         ],
         yAxis: [
             {
-                type: 'value',
+              name:'%',
+              type: 'value',
+              min:-50,
+              max:50,
+              interval  : 25,
+                      axisLabel: {
+                          show: true,
+                          interval: 'auto',
+                          formatter: '{value} %'
+                          },
+                      show: true,
                 splitLine:{
     　　　　        show:false
                 },
@@ -268,34 +300,13 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '同比',
+                name: '增长率',
                 type: 'bar',
-                data: [0,0,0,0,0,0,0],
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name: '环比',
-                type: 'bar',
-                data: this.currentBarChainData,
+                data: [11.1,10,10],
                 markPoint: {
                     data: [
                       {type: 'max', name: '最大值'},
                       {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
                     ]
                 }
             }
@@ -352,6 +363,8 @@ var app = new Vue({
             }
         }],
         yAxis: [{
+          min:80,
+          max:100,
           splitLine:{
 　　　　        show:false
           },
@@ -389,9 +402,12 @@ var app = new Vue({
     let that = this;
     $.getJSON('/public/assets/4-1.json',function(data){
       that.waterTableData = data;
+      that.data1.push(that.waterTableData[0]);
+      that.data1.push(that.waterTableData[1]);
+      that.data1.push(that.waterTableData[2]);
     });
 
-    let waterTableDataInterval = 0;
+    let waterTableDataInterval = 3;
     setInterval(function(){
       if(that.waterTableData.length > 0){
         that.data1 = [];
@@ -404,41 +420,26 @@ var app = new Vue({
         }
       }
 
-    },1000);
+    },30000);
 
-    $.getJSON('/public/assets/4-3.json',function(data){
-      that.waterBarChainData = data;
-    });
 
-    let waterBarChainDataInterval = 0;
+    let waterDataInterval = 0;
     setInterval(function(){
-      if(that.waterBarChainData.length > 0){
-        that.currentBarChainData = [];
-        that.waterBarAddressData = [];
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 1].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 1].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 2].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 2].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 3].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 3].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 4].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 4].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 5].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 5].percent);
-        that.waterBarAddressData.push(that.waterBarChainData[waterBarChainDataInterval + 6].name);
-        that.currentBarChainData.push(that.waterBarChainData[waterBarChainDataInterval + 6].percent);
-        console.log(that.currentBarChainData);
-        that.waterBarOption.xAxis[0].data = that.waterBarAddressData;
-        that.waterBarOption.series[1].data = that.currentBarChainData;
+      if(that.waterBarData.length > 0){
+        that.waterBarOption.xAxis[0].data = [];
+        that.waterBarOption.series[0].data = [];
+        let list = that.waterBarData.slice(waterDataInterval,waterDataInterval + 3);
+        for (let i = waterDataInterval; i < waterDataInterval + 3; i++){
+          let obj = that.waterBarData[i];
+          that.waterBarOption.xAxis[0].data.push(obj.name);
+          that.waterBarOption.series[0].data.push(obj.value);
+        }
         that.waterBarGraphic.setOption(that.waterBarOption);
-        waterBarChainDataInterval = waterBarChainDataInterval + 7;
-        if(waterBarChainDataInterval == that.waterBarChainData.length){
-          waterBarChainDataInterval = 0;
+        waterDataInterval = waterDataInterval + 3;
+        if(waterDataInterval == that.waterBarData.length){
+          waterDataInterval = 0;
         }
       }
-
-    },1000);
+    },30000);
   }
 })

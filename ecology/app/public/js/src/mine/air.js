@@ -2,8 +2,33 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
-    data1:[],
-    airTableData:[],
+    data1:[{"var1":"西澳官庄金矿","var2":5,"var3":8,"var4":0.6,"var5":110,"var6":18,"var7":97,"var8":"北风","var9":"2级"},
+    {"var1":"沃溪金锑钨矿","var2":6,"var3":7,"var4":0.6,"var5":117,"var6":19,"var7":97,"var8":"北风","var9":"2级"},
+    {"var1":"柳树汊桐树面金矿","var2":5,"var3":9,"var4":0.7,"var5":116,"var6":18,"var7":98,"var8":"北风","var9":"2级"}],
+    airTableData:[
+
+      {"var1":"盘古乡石家寨磷矿","var2":8,"var3":10,"var4":0.9,"var5":119,"var6":20,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"董家河铅锌硫铁矿","var2":8,"var3":12,"var4":1,"var5":110,"var6":21,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"辰溪田湾磷矿","var2":9,"var3":11,"var4":0.9,"var5":117,"var6":20,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"麻阳九曲湾铜矿","var2":7,"var3":7,"var4":0.6,"var5":106,"var6":18,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"怀化中坡保护区","var2":2,"var3":4,"var4":0.4,"var5":112,"var6":23,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"中力黄岩铀矿开采区","var2":11,"var3":16,"var4":1.2,"var5":121,"var6":22,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"思蒙国家湿地公园保护区","var2":2,"var3":3,"var4":0.3,"var5":102,"var6":19,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"泸阳镇八活岩矿区","var2":5,"var3":9,"var4":0.7,"var5":106,"var6":21,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"雪峰山金锰矿","var2":6,"var3":8,"var4":0.6,"var5":105,"var6":19,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"西晃山森林公园保护区","var2":3,"var3":4,"var4":0.4,"var5":101,"var6":22,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"贡溪重晶石矿区","var2":9,"var3":11,"var4":1,"var5":116,"var6":23,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"米贝金矿","var2":5,"var3":8,"var4":0.8,"var5":106,"var6":20,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"摩天岭花岗岩矿区","var2":6,"var3":8,"var4":0.7,"var5":105,"var6":19,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"会同县淘金冲矿区","var2":5,"var3":7,"var4":0.7,"var5":116,"var6":21,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"鹰嘴界自然保护区","var2":3,"var3":4,"var4":0.4,"var5":102,"var6":21,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"靖州苗乡侗寨名胜区","var2":4,"var3":3,"var4":0.5,"var5":103,"var6":21,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"排牙山森林公园保护区","var2":3,"var3":5,"var4":0.4,"var5":102,"var6":22,"var7":98,"var8":"北风","var9":"2级"},
+      {"var1":"通道侗族锅冲硅石矿","var2":6,"var3":7,"var4":0.7,"var5":115,"var6":19,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"西澳官庄金矿","var2":5,"var3":8,"var4":0.6,"var5":110,"var6":18,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"沃溪金锑钨矿","var2":6,"var3":7,"var4":0.6,"var5":117,"var6":19,"var7":97,"var8":"北风","var9":"2级"},
+      {"var1":"柳树汊桐树面金矿","var2":5,"var3":9,"var4":0.7,"var5":116,"var6":18,"var7":98,"var8":"北风","var9":"2级"},
+    ],
     airBarGraphic:{},
     airBarOption:{},
 
@@ -12,7 +37,7 @@ var app = new Vue({
     monthAirBarData:[],
     yearAirBarData:[],
 
-    lineWeekTimeData:["星期天(11号)","星期一(12号)","星期二(13号)","星期三(14号)","星期四(15号)","星期五(16号)","星期六(17号)"],
+    lineWeekTimeData:["2020/10/9","2020/10/10","2020/10/11","2020/10/12","2020/10/13","2020/10/14","2020/10/15"],
     lineWeekData:[88,91,90,89,89,91,90],
     lineMonthTimeData:["1号","2号","3号","4号","5号","6号","7号","8号","9号","10号","11号","12号","13号","14号","15号","16号","17号"],
     lineMonthData:[90,91,90,89,87,88,91,89,90,90,88,91,90,89,89,91,90],
@@ -29,7 +54,6 @@ var app = new Vue({
       for(let i = 0; i < this.dayAirBarData.length; i++){
         this.airBarOption.xAxis[0].data.push(this.dayAirBarData[i].name);
         this.airBarOption.series[0].data.push(this.dayAirBarData[i].score);
-        this.airBarOption.series[1].data.push(this.dayAirBarData[i].rank);
       }
 
       this.airBarGraphic.setOption(this.airBarOption);
@@ -41,7 +65,6 @@ var app = new Vue({
       for(let i = 0; i < this.weekAirBarData.length; i++){
         this.airBarOption.xAxis[0].data.push(this.weekAirBarData[i].name);
         this.airBarOption.series[0].data.push(this.weekAirBarData[i].score);
-        this.airBarOption.series[1].data.push(this.weekAirBarData[i].rank);
       }
       this.airBarGraphic.setOption(this.airBarOption);
     },
@@ -52,7 +75,6 @@ var app = new Vue({
       for(let i = 0; i < this.monthAirBarData.length; i++){
         this.airBarOption.xAxis[0].data.push(this.monthAirBarData[i].name);
         this.airBarOption.series[0].data.push(this.monthAirBarData[i].score);
-        this.airBarOption.series[1].data.push(this.monthAirBarData[i].rank);
       }
       this.airBarGraphic.setOption(this.airBarOption);
     },
@@ -63,7 +85,6 @@ var app = new Vue({
       for(let i = 0; i < this.yearAirBarData.length; i++){
         this.airBarOption.xAxis[0].data.push(this.yearAirBarData[i].name);
         this.airBarOption.series[0].data.push(this.yearAirBarData[i].score);
-        this.airBarOption.series[1].data.push(this.yearAirBarData[i].rank);
       }
       this.airBarGraphic.setOption(this.airBarOption);
     },
@@ -265,13 +286,13 @@ var app = new Vue({
             }
         },
         legend: {
-            data: ['当日总评分', '排名'],
+            data: ['当日总评分'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#A5D9E1'],
         xAxis: [
             {
                 type: 'category',
@@ -347,42 +368,11 @@ var app = new Vue({
                     color: '#ffffff'
                   }
                 }
-            },
-            {
-                type: 'value',
-                name: '排名',
-                min: 0,
-                max: 25,
-                interval: 5,
-                axisLabel: {
-                    formatter: '{value} 位',
-                    color: '#ffffff'
-                },axisPointer: {
-                    type: 'shadow'
-                },
-                splitLine:{
-    　　　　        show:false
-                },
-                axisLine:{
-                  lineStyle:{
-                    color: '#A5D9E1'
-                  }
-                },
-                axisLabel:{
-                  textStyle:{
-                    color: '#ffffff'
-                  }
-                }
             }
         ],
         series: [
             {
                 name: '当日总评分',
-                type: 'bar',
-                data: []
-            },
-            {
-                name: '排名',
                 type: 'bar',
                 data: []
             }
@@ -431,6 +421,8 @@ var app = new Vue({
             }
         }],
         yAxis: [{
+          min:80,
+          max:100,
           splitLine:{
 　　　　        show:false
           },
@@ -464,11 +456,9 @@ var app = new Vue({
 
   },
   created() {
+
     //do something after creating vue instance
     let that = this;
-    $.getJSON('/public/assets/8-1.json',function(data){
-      that.airTableData = data;
-    });
 
     let airTableDataInterval = 0;
     setInterval(function(){
@@ -477,20 +467,20 @@ var app = new Vue({
         that.data1.push(that.airTableData[airTableDataInterval]);
         that.data1.push(that.airTableData[airTableDataInterval + 1]);
         that.data1.push(that.airTableData[airTableDataInterval + 2]);
+        console.log(that.data1);
         airTableDataInterval = airTableDataInterval + 3;
         if(airTableDataInterval == that.airTableData.length){
           airTableDataInterval = 0;
         }
       }
 
-    },1000);
+    },30000);
 
     $.getJSON('/public/assets/8-3-1.json',function(data){
       that.yearAirBarData = data;
       for(let i = 0; i < that.yearAirBarData.length; i++){
         that.airBarOption.xAxis[0].data.push(that.yearAirBarData[i].name);
         that.airBarOption.series[0].data.push(that.yearAirBarData[i].score);
-        that.airBarOption.series[1].data.push(that.yearAirBarData[i].rank);
       }
 
       that.airBarGraphic.setOption(that.airBarOption);

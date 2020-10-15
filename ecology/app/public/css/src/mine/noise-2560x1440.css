@@ -300,3 +300,22 @@ table{
 .table-block{
   padding: 20px 0px;
 }
+
+.date-box{
+  position: absolute;
+  right:30px;
+  top:30px;
+}
+
+.period{
+  width: 40px;
+  height: 30px;
+  background-image: url('/public/images/mine/3-btn-bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: 172952;
+  display: inline-block;
+  margin-left: 15px;
+  cursor:pointer;
+}

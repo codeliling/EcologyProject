@@ -8,78 +8,84 @@ var app = new Vue({
     noiseLineOption:{},
     noiseBarGraphic:{},
     noiseBarOption:{},
-    noiseBarDayData:[],
-    noiseBarWeekData:[],
-    noiseBarxAxisData:[],
-    noiseBarxSameData:[],
-    noiseBarxChainData:[],
-    noiseBarInterval:null,
+    noiseLineInterval:null,
     noisePieData:[],
     currentNoisePieData:[],
     legendNoisePieData:[],
-    dayTimeDataArray:[["2020/6/1",135],["2020/6/8",156],["2020/6/15",158],["2020/6/22",209],["2020/6/29",231],["2020/7/6",288],["2020/7/13",187],["2020/7/20",130],
-      ["2020/7/27",121],["2020/8/3",100],["2020/8/10",98],["2020/8/17",79],["2020/8/24",65],["2020/8/31",57],["2020/9/7",46],["2020/9/14",43],["2020/9/21",56],
-      ["2020/9/28",42],["2020/10/5",43],["2020/10/12",32]],
-    currentDayTimeDataArray:[],
+    noiseBarData:[
+      {"name":"石家寨磷矿","value":28},
+      {"name":"董家河硫铁矿","value":"-19"},
+      {"name":"辰溪田湾磷矿","value":26},
+      {"name":"麻阳九曲湾铜矿","value":"-11"},
+      {"name":"怀化中坡","value":"-15"},
+      {"name":"中力黄岩铀矿","value":"-13"},
+      {"name":"思蒙湿地公园","value":24},
+      {"name":"八活岩矿区","value":"-18"},
+      {"name":"雪峰山金锰矿","value":0},
+      {"name":"西晃山森林公园","value":19},
+      {"name":"贡溪重晶石矿区","value":"-16"},
+      {"name":"米贝金矿","value":29.00},
+      {"name":"摩天岭矿区","value":"-17"},
+      {"name":"淘金冲矿区","value":"-15"},
+      {"name":"鹰嘴界自然保护区","value":"-14"},
+      {"name":"苗乡侗寨名胜区","value":18},
+      {"name":"排牙山森林公园","value":"-15"},
+      {"name":"通道锅冲硅石矿","value":0},
+      {"name":"西澳官庄金矿","value":"-14.00"},
+      {"name":"沃溪金锑钨矿","value":29},
+      {"name":"汊桐树面金矿","value":"-13"},
+    ],
+
+    yearxAxis:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月'],
+    yearData:[89,90,91,92,90,89,89,90,90,91],
+    monthxAxis:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    monthData:[90,90,89,93,94,90,91,89,89,90,89,93,94,90,89],
+    weekxAxis:['2020/10/9','2020/10/10','2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15'],
+    weekData:[90,89,93,94,90,89,91],
+    noiseLineData:[
+      {'time':this.yearxAxis,'data':this.yearData},
+      {'time':this.monthxAxis,'data':this.monthData},
+      {'time':this.weekxAxis,'data':this.weekData},
+    ],
   },
   methods:{
-    dayBtnclick:function(){
-      if(this.noiseBarInterval != null){
-        clearInterval(this.noiseBarInterval);
-      }
-      let interval = 0;
+    startLineData:function(){
+      let noiseLineDataInterval = 0;
       let that = this;
-      if(this.noiseBarDayData.length > 0){
-        this.noiseBarInterval = setInterval(function(){
-          that.noiseBarxAxisData = [];
-          that.noiseBarxSameData = [];
-          that.noiseBarxChainData = [];
-          for (let index = interval; index < interval + 10; index++){
-            let obj = that.noiseBarDayData[index];
-            that.noiseBarxAxisData.push(obj.time);
-            that.noiseBarxSameData.push(obj.same);
-            that.noiseBarxChainData.push(obj.chain);
-          }
-
-          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
-          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
-          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
-          that.noiseBarGraphic.setOption(that.noiseBarOption);
-          interval = interval + 10;
-          if(interval == that.noiseBarDayData.length){
-            interval = 0;
-          }
-        },1000);
-      }
+      this.noiseLineInterval = setInterval(function(){
+        let obj = that.noiseLineData[noiseLineDataInterval];
+        that.noiseLineOption.xAxis[0].data = obj.time;
+        that.noiseLineOption.series[0].data = obj.data;
+        that.noiseLineGraphic.setOption(that.noiseLineOption);
+        noiseLineDataInterval = noiseLineDataInterval + 1;
+        if(noiseLineDataInterval == that.noiseLineData.length){
+            noiseLineDataInterval = 0;
+        }
+      },30000);
     },
-    weekBtnClick:function(){
-      if(this.noiseBarInterval != null){
-        clearInterval(this.noiseBarInterval);
+    dayBtnClick:function(){
+      if(this.noiseLineInterval != null){
+        clearInterval(this.noiseLineInterval);
       }
-      let interval = 0;
-      let that = this;
-      if(this.noiseBarWeekData.length > 0){
-        this.noiseBarInterval = setInterval(function(){
-          that.noiseBarxAxisData = [];
-          that.noiseBarxSameData = [];
-          that.noiseBarxChainData = [];
-          for (let index = interval; index < interval + 10; index++){
-            let obj = that.noiseBarWeekData[index];
-            that.noiseBarxAxisData.push(obj.time);
-            that.noiseBarxSameData.push(obj.same);
-            that.noiseBarxChainData.push(obj.chain);
-          }
-
-          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
-          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
-          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
-          that.noiseBarGraphic.setOption(that.noiseBarOption);
-          interval = interval + 10;
-          if(interval == that.noiseBarWeekData.length){
-            interval = 0;
-          }
-        },1000);
+      this.noiseLineOption.xAxis[0].data = this.weekxAxis;
+      this.noiseLineOption.series[0].data = this.weekData;
+      this.noiseLineGraphic.setOption(this.noiseLineOption);
+    },
+    monthBtnClick:function(){
+      if(this.noiseLineInterval != null){
+        clearInterval(this.noiseLineInterval);
       }
+      this.noiseLineOption.xAxis[0].data = this.monthxAxis;
+      this.noiseLineOption.series[0].data = this.monthData;
+      this.noiseLineGraphic.setOption(this.noiseLineOption);
+    },
+    yearBtnClick:function(){
+      if(this.noiseLineInterval != null){
+        clearInterval(this.noiseLineInterval);
+      }
+      this.noiseLineOption.xAxis[0].data = this.yearxAxis;
+      this.noiseLineOption.series[0].data = this.yearData;
+      this.noiseLineGraphic.setOption(this.noiseLineOption);
     },
     backClick:function(){
       window.location.href = "/mine/envprotect";
@@ -245,18 +251,18 @@ var app = new Vue({
             trigger: 'axis'
         },
         legend: {
-            data: ['同比', '环比'],
+            data: ['增长率'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#A5D9E1','#7D57A1'],
+        color:['#7D57A1'],
         calculable: true,
         xAxis: [
             {
                 type: 'category',
-                data: this.noiseBarxAxisData,
+                data: ["西澳官庄金矿","沃溪金锑钨矿","汊桐树面金矿"],
                 splitLine:{
     　　　　        show:false
                 },
@@ -274,7 +280,17 @@ var app = new Vue({
         ],
         yAxis: [
             {
-                type: 'value',
+              name:'%',
+              type: 'value',
+              min:-50,
+              max:50,
+              interval  : 25,
+                      axisLabel: {
+                          show: true,
+                          interval: 'auto',
+                          formatter: '{value} %'
+                          },
+                      show: true,
                 splitLine:{
     　　　　        show:false
                 },
@@ -292,36 +308,15 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '同比',
-                type: 'bar',
-                data: this.noiseBarxSameData,
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
-            },
-            {
-                name: '环比',
-                type: 'bar',
-                data: this.noiseBarxChainData,
-                markPoint: {
+              name: '增长率',
+              type: 'bar',
+              data: [-14,-29, -13],
+              markPoint: {
                   data: [
                       {type: 'max', name: '最大值'},
                       {type: 'min', name: '最小值'}
                   ]
-                },
-                markLine: {
-                    data: [
-                        {type: 'average', name: '平均值'}
-                    ]
-                }
+              }
             }
         ]
     };
@@ -330,13 +325,6 @@ var app = new Vue({
 
     //------------------------------------------------------------------------------------
     this.noiseLineGraphic = echarts.init(document.getElementById('noise-line'));
-
-    var dateList = this.currentDayTimeDataArray.map(function (item) {
-        return item[0];
-    });
-    var valueList = this.currentDayTimeDataArray.map(function (item) {
-        return item[1];
-    });
 
     this.noiseLineOption = {
 
@@ -358,7 +346,7 @@ var app = new Vue({
            right: '10%'
        }],
         xAxis: [{
-            data: dateList,
+            data: this.yearxAxis,
             splitLine:{
 　　　　        show:false
             },
@@ -374,6 +362,9 @@ var app = new Vue({
             }
         }],
         yAxis: [{
+          min:80,
+          max:100,
+          interval:5,
             splitLine: {show: false},
             axisLine:{
               lineStyle:{
@@ -389,7 +380,12 @@ var app = new Vue({
         series: [{
             type: 'line',
             showSymbol: false,
-            data: valueList,
+            data: this.yearData,
+            markLine: {
+               data: [
+                   {type: 'average', name: '平均值'}
+               ]
+           },
             itemStyle: {
       				normal: {
       					color: '#7D57A1', //改变折线点的颜色
@@ -408,6 +404,9 @@ var app = new Vue({
     let that = this;
     $.getJSON('/public/assets/5-1.json',function(data){
       that.noiseTableData = data;
+      that.data1.push(that.noiseTableData[noiseTableDataInterval]);
+      that.data1.push(that.noiseTableData[noiseTableDataInterval + 1]);
+      that.data1.push(that.noiseTableData[noiseTableDataInterval + 2]);
     });
 
     $.getJSON('/public/assets/5-2.json',function(data){
@@ -422,7 +421,7 @@ var app = new Vue({
       that.noiseBarWeekData = data;
     });
 
-    let noiseTableDataInterval = 0;
+    let noiseTableDataInterval = 3;
     setInterval(function(){
       if(that.noiseTableData.length > 0){
         that.data1 = [];
@@ -435,7 +434,7 @@ var app = new Vue({
         }
       }
 
-    },1000);
+    },30000);
 
     let noisePieDataInterval = 0;
     setInterval(function(){
@@ -460,53 +459,26 @@ var app = new Vue({
 
     let interval = 0;
 
-    this.noiseBarInterval = setInterval(function(){
-        if(that.noiseBarDayData.length > 0){
-          that.noiseBarxAxisData = [];
-          that.noiseBarxSameData = [];
-          that.noiseBarxChainData = [];
-          for (let index = interval; index < interval + 10; index++){
-            let obj = that.noiseBarDayData[index];
-            that.noiseBarxAxisData.push(obj.time);
-            that.noiseBarxSameData.push(obj.same);
-            that.noiseBarxChainData.push(obj.chain);
-          }
-
-          that.noiseBarOption.xAxis[0].data = that.noiseBarxAxisData;
-          that.noiseBarOption.series[0].data = that.noiseBarxSameData;
-          that.noiseBarOption.series[1].data = that.noiseBarxChainData;
-          that.noiseBarGraphic.setOption(that.noiseBarOption);
-          interval = interval + 10;
-          if(interval == that.noiseBarDayData.length){
-            interval = 0;
-          }
-      }
-    },1000);
-
-
-    let noiseLineInterval = 0;
+    let noiseBarInterval = 3;
     setInterval(function(){
-      if(that.dayTimeDataArray.length > 0){
-        that.currentDayTimeDataArray = [];
-        for(let index = noiseLineInterval; index < noiseLineInterval + 10; index++)
-        {
-          that.currentDayTimeDataArray.push(that.dayTimeDataArray[index]);
+      if(that.noiseBarData.length > 0){
+        that.noiseBarOption.xAxis[0].data = [];
+        that.noiseBarOption.series[0].data = [];
+        let list = that.noiseBarData.slice(noiseBarInterval,noiseBarInterval + 3);
+        for (let i = noiseBarInterval; i < noiseBarInterval + 3; i++){
+          let obj = that.noiseBarData[i];
+          that.noiseBarOption.xAxis[0].data.push(obj.name);
+          that.noiseBarOption.series[0].data.push(obj.value);
         }
-        var dateList = that.currentDayTimeDataArray.map(function (item) {
-            return item[0];
-        });
-        var valueList = that.currentDayTimeDataArray.map(function (item) {
-            return item[1];
-        });
-        that.noiseLineOption.xAxis[0].data = dateList;
-        that.noiseLineOption.series[0].data = valueList;
-        that.noiseLineGraphic.setOption(that.noiseLineOption);
-        noiseLineInterval = noiseLineInterval + 10;
-        if(noiseLineInterval == that.dayTimeDataArray.length){
-          noiseLineInterval = 0;
+        that.noiseBarGraphic.setOption(that.noiseBarOption);
+        noiseBarInterval = noiseBarInterval + 3;
+        if(noiseBarInterval == that.noiseBarData.length){
+          noiseBarInterval = 0;
         }
-
       }
-    },1000);
+
+    },30000);
+
+    this.startLineData();
   }
 })
