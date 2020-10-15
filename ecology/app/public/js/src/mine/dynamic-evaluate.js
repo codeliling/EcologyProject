@@ -333,6 +333,7 @@ var vueApp = new Vue({
                 color: '#A5D9E1'
             }
         },
+
         color:['#5FA731','#E6951D','#A5D9EE'],
         xAxis: {
             type: 'value',
@@ -345,10 +346,17 @@ var vueApp = new Vue({
               }
             },
             axisLabel:{
-              textStyle:{
-                color: '#ffffff'
+              formatter:function(){
+                return '';
               }
-            }
+            },
+            axisTick: {
+                 show: false
+             }
+        },
+        grid: {
+          left: '2% ',
+          right:'15% ',
         },
         yAxis: {
             type: 'category',
@@ -420,6 +428,10 @@ var vueApp = new Vue({
                 type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
         },
+        grid: {
+          left: '2% ',
+          right:'15% ',
+        },
         legend: {
             data: ['大气', '水质', '噪音', '粉尘']
         },
@@ -436,10 +448,13 @@ var vueApp = new Vue({
               }
             },
             axisLabel:{
-              textStyle:{
-                color: '#ffffff'
+              formatter:function(){
+                return '';
               }
-            }
+            },
+            axisTick: {
+                 show: false
+             }
         },
         yAxis: {
             type: 'category',
@@ -639,21 +654,21 @@ var vueApp = new Vue({
       }
     },that.frequency2);
 
-    let disasterDataInterval = 0;
-    setInterval(function(){
-      if(that.disasterData.length > 0){
-        that.currentDisasterData = that.disasterData[disasterDataInterval].score;
-        disasterDataInterval = disasterDataInterval + 1;
-        if(disasterDataInterval == that.disasterData.length){
-          disasterDataInterval = 0;
-        }
-      }
-    },that.frequency2);
+    // let disasterDataInterval = 0;
+    // setInterval(function(){
+    //   if(that.disasterData.length > 0){
+    //     that.currentDisasterData = that.disasterData[disasterDataInterval].score;
+    //     disasterDataInterval = disasterDataInterval + 1;
+    //     if(disasterDataInterval == that.disasterData.length){
+    //       disasterDataInterval = 0;
+    //     }
+    //   }
+    // },that.frequency2);
 
     let alarmDataInterval = 0;
     setInterval(function(){
       if(that.alarmData.length > 0){
-        that.currentEnvData = that.alarmData[alarmDataInterval].info;
+        that.currentAlarmData = that.alarmData[alarmDataInterval].info;
         alarmDataInterval = alarmDataInterval + 1;
         if(alarmDataInterval == that.alarmData.length){
           alarmDataInterval = 0;
@@ -661,27 +676,27 @@ var vueApp = new Vue({
       }
     },that.frequency2);
 
-    let wasteDataInterval = 0;
-    setInterval(function(){
-      if(that.wasteData.length > 0){
-        that.currentWasteData = that.wasteData[wasteDataInterval].score;
-        wasteDataInterval = wasteDataInterval + 1;
-        if(wasteDataInterval == that.wasteData.length){
-          wasteDataInterval = 0;
-        }
-      }
-    },that.frequency2);
+    // let wasteDataInterval = 0;
+    // setInterval(function(){
+    //   if(that.wasteData.length > 0){
+    //     that.currentWasteData = that.wasteData[wasteDataInterval].score;
+    //     wasteDataInterval = wasteDataInterval + 1;
+    //     if(wasteDataInterval == that.wasteData.length){
+    //       wasteDataInterval = 0;
+    //     }
+    //   }
+    // },that.frequency2);
 
-    let maintainDataInterval = 0;
-    setInterval(function(){
-      if(that.maintainData.length > 0){
-        that.currentMainData = that.maintainData[maintainDataInterval].score;
-        maintainDataInterval = maintainDataInterval + 1;
-        if(maintainDataInterval == that.maintainData.length){
-          maintainDataInterval = 0;
-        }
-      }
-    },that.frequency2);
+    // let maintainDataInterval = 0;
+    // setInterval(function(){
+    //   if(that.maintainData.length > 0){
+    //     that.currentMainData = that.maintainData[maintainDataInterval].score;
+    //     maintainDataInterval = maintainDataInterval + 1;
+    //     if(maintainDataInterval == that.maintainData.length){
+    //       maintainDataInterval = 0;
+    //     }
+    //   }
+    // },that.frequency2);
 
     let radarDataInterval = 0;
     setInterval(function(){

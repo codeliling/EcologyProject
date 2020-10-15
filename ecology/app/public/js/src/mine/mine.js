@@ -248,7 +248,7 @@ var app = new Vue({
     // 指定图表的配置项和数据
     this.barGraphicOption = {
         title: {
-            text: '总体趋势',
+            text: '水电用量',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
@@ -294,8 +294,10 @@ var app = new Vue({
                   }
                 }
         },
-        yAxis: {
+        yAxis: [{
+            name:'用水量(Vut)',
             type: 'value',
+            max : 200,
             splitLine:{
     　　　　        show:false
                 },
@@ -310,12 +312,31 @@ var app = new Vue({
                   }
                 }
         },
+        {
+            name:'用电量(kW·h)',
+            type: 'value',
+            max : 8000,
+            splitLine:{
+    　　　　        show:false
+                },
+                axisLine:{
+                  lineStyle:{
+                    color: '#A5D9E1'
+                  }
+                },
+                axisLabel:{
+                  textStyle:{
+                    color: '#ffffff'
+                  }
+                }
+        }],
         series: [
             {
                 name: '水',
                 type: 'line',
+                yAxisIndex: 0,
                 stack: '总量',
-                data: [],
+                data: [115,116,117,118,119],
                 itemStyle:{
                     normal:{
                         color:'#7D57A1'
@@ -325,8 +346,9 @@ var app = new Vue({
             {
                 name: '电',
                 type: 'line',
+                yAxisIndex: 1,
                 stack: '总量',
-                data: [],
+                data: [7456,7459,7462,7465,7468],
                 itemStyle:{
                     normal:{
                         color:'#B691C1'
@@ -417,6 +439,7 @@ var app = new Vue({
           icon: 'circle',
           data: ['安全生产', '环境质量', '灾害管理', '废料利用', '绿化覆盖','建筑围护'],
           right: '4%',
+          left: '20%',
           textStyle: {
               fontSize: 12,
               color: '#A5D9E1'
@@ -445,6 +468,9 @@ var app = new Vue({
         },
         yAxis: {
             type: 'value',
+            max : 100,
+            min : 80,
+            splitNumber : 5,
             splitLine:{
 　　　　        show:false
             },
@@ -463,42 +489,36 @@ var app = new Vue({
             {
                 name: '安全生产',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [92,93,94,92,94,93,95]
             },
             {
                 name: '环境质量',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [89,88,90,92,88,90,89]
             },
             {
                 name: '灾害管理',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [86,88,89,86,87,88,89]
             },
             {
                 name: '废料利用',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [82,82,81,82,82,81,80]
             },
             {
                 name: '绿化覆盖',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [87,87,87,87,87,87,87]
             },
             {
                 name: '建筑围护',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [86,84,85,85,86,85,86]
             }
@@ -512,7 +532,7 @@ var app = new Vue({
 
     this.priceOption = {
         title: {
-            text: '总体趋势图',
+            text: '安全评分趋势图',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
@@ -542,7 +562,7 @@ var app = new Vue({
         color:['#3074b1','#b691c1','#7d57a1'],
         grid: {
             left: '3%',
-            right: '4%',
+            right: '7%',
             bottom: '3%',
             containLabel: true
         },
@@ -550,7 +570,7 @@ var app = new Vue({
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['2020/9/1','2020/9/2','2020/9/3','2020/9/4','2020/9/5'],
+                data: ['2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15'],
                 splitLine:{
     　　　　        show:false
                 },
@@ -569,6 +589,9 @@ var app = new Vue({
         yAxis: [
             {
                 type: 'value',
+                max : 100,
+                min : 97,
+                splitNumber : 1.5,
                 splitLine:{
     　　　　        show:false
                 },
@@ -588,21 +611,18 @@ var app = new Vue({
             {
                 name: '滑坡',
                 type: 'line',
-                stack: '总量',
                 areaStyle: {normal: {color:'#3074b1'}},
                 data: [98.1,98.6,99.2,99.8,99.7]
             },
             {
                 name: '泥石流',
                 type: 'line',
-                stack: '总量',
                 areaStyle: {normal: {color:'#b691c1'}},
                 data: [97.2,98.4,99.8,99.7,99.6]
             },
             {
                 name: '地面沉降',
                 type: 'line',
-                stack: '总量',
                 areaStyle: {normal: {color:'#7d57a1'}},
                 data: [97.3,99.7,99.7,99.6,99.8]
             }
@@ -615,7 +635,7 @@ var app = new Vue({
     var evaluateGauge = echarts.init(document.getElementById('evaluate-gauge'));
     evaluateGaugeOption = {
         title: {
-           text: '安全概况',
+           text: '灾害预警',
            subtext:'',
            textStyle: {
                 fontFamily: "sans-serif", // 主标题文字的字体系列。
@@ -802,6 +822,9 @@ var app = new Vue({
         },
         yAxis: {
             type: 'value',
+            max : 100,
+            min : 80,
+            splitNumber : 5,
             splitLine:{
 　　　　        show:false
             },
@@ -820,28 +843,24 @@ var app = new Vue({
             {
                 name: '大气',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [88,91,90,89,89,91,90]
             },
             {
                 name: '水质',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [83,81,86,88,90,83,85]
             },
             {
                 name: '噪音',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [86,87,90,89,84,84,83]
             },
             {
                 name: '粉尘',
                 type: 'line',
-                stack: '总量',
                 symbol: 'none',
                 data: [82,81,82,82,84,83,84]
             }
@@ -884,9 +903,11 @@ var app = new Vue({
       if(data.length > 0){
         setInterval(function(){
           that.barGraphicOption.xAxis.data = getSafetyLineGraphicTimeArray();
+          that.barGraphicOption.series[0].data = [];
+          that.barGraphicOption.series[1].data = [];
           for(let i = lineInterval; i< lineInterval + 5; i++){
             that.barGraphicOption.series[0].data.push(data[lineInterval].water);
-            that.barGraphicOption.series[1].data.push(data[lineInterval].electricity * 100);
+            that.barGraphicOption.series[1].data.push(data[lineInterval].electricity);
           }
 
           that.barGraphic.setOption(that.barGraphicOption);
@@ -895,7 +916,7 @@ var app = new Vue({
           {
             lineInterval = 0;
           }
-        },1000);
+        },240000);
       }
 
     });
@@ -909,18 +930,18 @@ var app = new Vue({
         }
     },5000);
 
-    let hncDataInterval = 0;
-    setInterval(function () {
-        that.priceOption.xAxis[0].data = that.dateData.slice(hncDataInterval, hncDataInterval + 5);
-        that.priceOption.series[0].data = that.huapoData.slice(hncDataInterval, hncDataInterval + 5);
-        that.priceOption.series[1].data = that.nishiliuData.slice(hncDataInterval, hncDataInterval + 5);
-        that.priceOption.series[2].data = that.chengjiangData.slice(hncDataInterval, hncDataInterval + 5);
-        that.priceLine.setOption(that.priceOption);
-        hncDataInterval = hncDataInterval + 5;
-        if(hncDataInterval == that.dateData.length){
-          hncDataInterval = 0;
-        }
-    },5000);
+    // let hncDataInterval = 0;
+    // setInterval(function () {
+    //     that.priceOption.xAxis[0].data = that.dateData.slice(hncDataInterval, hncDataInterval + 5);
+    //     that.priceOption.series[0].data = that.huapoData.slice(hncDataInterval, hncDataInterval + 5);
+    //     that.priceOption.series[1].data = that.nishiliuData.slice(hncDataInterval, hncDataInterval + 5);
+    //     that.priceOption.series[2].data = that.chengjiangData.slice(hncDataInterval, hncDataInterval + 5);
+    //     that.priceLine.setOption(that.priceOption);
+    //     hncDataInterval = hncDataInterval + 5;
+    //     if(hncDataInterval == that.dateData.length){
+    //       hncDataInterval = 0;
+    //     }
+    // },5000);
 
 
     let reportTableInterval = 0;
@@ -952,7 +973,7 @@ var app = new Vue({
           {
             countDataInterval = 0;
           }
-        },1000);
+        },60000);
       }
     });
 

@@ -29,7 +29,7 @@ var app = new Vue({
   },
   mounted() {
     //---------------------------------------------------------------------
-    /*
+
     var myChart = echarts.init(document.getElementById('map'));
 
     myChart.showLoading();
@@ -39,19 +39,19 @@ var app = new Vue({
         myChart.setOption(option = {
             tooltip: {
                 trigger: 'item',
-                formatter: '{b}<br/>{c} (kWh/d)'
+                formatter: '{b}<br/>{c}'
             },
             visualMap: {
-                min: 10000,
-                max: 100000,
+                min: 10,
+                max: 100,
                 text: ['High', 'Low'],
-                realtime: false,
+                realtime: true,
                 calculable: true,
                 orient: 'vertical',
-                left: 'right',
+                left: 'left',
                 top: 'bottom',
                 inRange: {
-                    color: ['#3175B1', '#A5D8E1', '#F5F5F5']
+                    color: ['#F5F5F5','#A5D8E1','#3175B1']
                 },
                 textStyle: {
                   color: '#A5D9E1'
@@ -84,18 +84,18 @@ var app = new Vue({
                     },
                     roam:true,
                     data: [
-                        {name: '沅陵县', value: 53000.00},
-                        {name: '溆浦县', value: 59000.00},
-                        {name: '辰溪县', value: 32000.00},
-                        {name: '麻阳苗族自治县', value: 23500.00},
-                        {name: '鹤城区', value: 68000.00},
-                        {name: '中方县', value: 33000.00 },
-                        {name: '芷江侗族自治县', value: 31500.00},
-                        {name: '新晃侗族自治县', value: 15500.00},
-                        {name: '洪江市', value: 48000.00},
-                        {name: '会同县', value: 22000.00},
-                        {name: '靖州苗族侗族自治县', value:18000.00 },
-                        {name: '通道侗族自治县', value: 15000.00},
+                        {name: '沅陵县', value: '91'},
+                        {name: '溆浦县', value: '92'},
+                        {name: '辰溪县', value: '96'},
+                        {name: '麻阳苗族自治县', value: '99'},
+                        {name: '鹤城区', value: '86'},
+                        {name: '中方县', value: '88' },
+                        {name: '芷江侗族自治县', value: '92'},
+                        {name: '新晃侗族自治县', value: '95'},
+                        {name: '洪江市', value: '90'},
+                        {name: '会同县', value: '83'},
+                        {name: '靖州苗族侗族自治县', value:'96' },
+                        {name: '通道侗族自治县', value:'99'},
                     ],
 
                 }
@@ -104,7 +104,7 @@ var app = new Vue({
         myChart.on('click', function (params) {
 
         });
-    });*/
+    });
     //-----------------------------------------------------------------------
     var sunburstGraphic = echarts.init(document.getElementById('sunburst-graphic'));
 

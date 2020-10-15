@@ -272,11 +272,11 @@ body{
 
 .eva-index{
   color:#5FA731;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: bold;
   position: absolute;
   right:10px;
-  top: 30px
+  top: 42px
 }
 
 .eva-box-title::before{
@@ -445,6 +445,7 @@ body{
   font-size: 16px;
   font-weight: bold;
   margin: 0px 20px;
+  z-index:10;
 }
 
 .dynamic-eva-content{
@@ -481,6 +482,7 @@ body{
   position: absolute;
   top:0px;
   background: rgba(14, 55, 116, 0.7);
+  z-index: -1;
 }
 
 .box-bg-1{
@@ -496,7 +498,7 @@ body{
 }
 
 .box-bg-4{
-  height:90px;
+  height:115px;
 }
 
 .box-bg-5{

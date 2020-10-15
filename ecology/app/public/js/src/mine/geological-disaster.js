@@ -2,73 +2,18 @@ var app = new Vue({
   el: '#content',
   delimiters: ['${', '}'],
   data: {
-    lineGraphicxAxisData:[
-      "2020/1/6","2020/1/7","2020/1/8","2020/1/9","2020/1/10","2020/1/11","2020/1/12","2020/1/13","2020/1/14","2020/1/15","2020/1/16","2020/1/17","2020/1/18","2020/1/19","2020/1/20","2020/1/21","2020/1/22","2020/1/23","2020/1/24","2020/1/25","2020/1/26","2020/1/27","2020/1/28","2020/1/29","2020/1/30"
-    ],
-    //30条数据
+
     lineGraphic:{},
     lineOption:{},
-    currentLineXAxisData:[],
-    cnss1:[1.43,0.57,0.88,3.46,1.67,1.22,0.14,4.23,2.33,1.45,3.56,5.33,4.45,4.43,3.57,3.88,5.66,7.13,2.33,1.45,1.43,0.57,0.88,2.66,4.13],
-    cnss2:[2.11,1.57,1.88,4.46,2.22,1.14,1.56,3.33,2.45,2.45,3.14,1.57,1.88,1.23,5.12,2.22,1.11,1.56,2.88,5.14,3.57,3.88,6.46,5.43,4.22],
-    cnss3:[2.701,-2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43],
-    cnss4:[2.487,2.731,1.659,4.556,1.226,-0.128,-0.048,2.838,-0.666,1.847,2.45,2.43,1.57,1.88,1.77,2.13,0.46,0.88,1.46,2.43,1.22,0.11,0.56,2.33,1.45],
-    cnss5:[2.273,-6.474,2.176,3.949,1.029,-0.497,-0.602,2.642,-1.549,4.658,3.335,1.99,0.625,1.83,1.71,4.905,2.915,-1.245,4.625,4.77,1.62,0.61,1.06,3.23,1.1],
-    cnss6:[2.727,3.683,7.537,8.46,5.62,1.035,2.705,4.68,3.68,7.76,2.765,-0.92,-3.355,-0.445,-1.825,7.385,1.845,4.45,5.46,3.67,3.22,2.14,6.23,3.14,3.56],
-    cnss7:[7.674,11.526,8.859,9.46,6.032,12.176,10.756,4.73,3.821,8.435,2.651,-1.502,-4.151,-0.9,-2.532,7.881,1.631,4.43,6.46,2.56,4.33,3.45,3.43,2.57,3.33],
-    currentCnss1:[],
-    currentCnss2:[],
-    currentCnss3:[],
-    currentCnss4:[],
-    currentCnss5:[],
-    currentCnss6:[],
-    currentCnss7:[],
 
     debrisFlow:{},
     debrisFlowOption:{},
-    debrisFlowxAxisData:["2020/1/1","2020/1/2","2020/1/3","2020/1/4","2020/1/5","2020/1/6","2020/1/7","2020/1/8","2020/1/9","2020/1/10","2020/1/11","2020/1/12","2020/1/13","2020/1/14","2020/1/15","2020/1/16","2020/1/17","2020/1/18","2020/1/19","2020/1/20","2020/1/21","2020/1/22","2020/1/23","2020/1/24","2020/1/25","2020/1/26","2020/1/27","2020/1/28","2020/1/29","2020/1/30"],
-    debrisFlowOffsetMonitor1:[0.826,-0.967,0.92,0.296,1.897,2.487,2.731,1.659,4.556,1.226,-0.128,-0.048,2.838,-0.666,1.847,2.45,2.43,1.57,1.88,1.77,2.13,0.46,0.88,1.46,2.43,1.22,0.11,0.56,2.33,1.45,3.23],
-    debrisFlowHorMonitor1:[3.335,1.99,0.625,1.83,1.71,7.674,11.526,8.859,9.46,6.032,12.176,10.756,4.73,3.821,8.435,2.651,-1.502,-4.151,-0.9,-2.532,7.881,1.631,4.43,6.46,2.56,4.33,3.45,3.43,2.57,3.33,2.45],
-    debrisFlowOffsetMonitor2:[0.244,-1.763,0.465,-0.411,1.393,2.273,-6.474,2.176,3.949,1.029,-0.497,-0.602,2.642,-1.549,4.658,3.335,1.99,0.625,1.83,1.71,4.905,2.915,-1.245,4.625,4.77,1.62,0.61,1.06,3.23,1.1,4.225],
-    debrisFlowHorMonitor2:[1.408,-0.171,1.375,1.003,5.401,2.701,-2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43,11.245],
-    debrisFlowOffsetMonitor3:[1.22,0.14,0.56,2.33,1.45,1.43,0.57,0.88,3.46,1.67,1.22,0.14,4.23,2.33,1.45,3.56,5.33,4.45,4.43,3.57,3.88,5.66,7.13,2.33,1.45,1.43,0.57,0.88,2.66,4.13,0.23],
-    debrisFlowHorMonitor3:[2.57,2.88,5.46,4.43,3.22,2.11,1.57,1.88,4.46,2.22,1.14,1.56,3.33,2.45,2.45,3.14,1.57,1.88,1.23,5.12,2.22,1.11,1.56,2.88,5.14,3.57,3.88,6.46,5.43,4.22,3.11],
-    debrisFlowOffsetMonitor4:[1.408,-0.171,1.375,1.003,5.401,2.701,-2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43,11.245],
-    debrisFlowHorMonitor4:[0.826,-0.967,0.92,0.296,1.897,2.487,2.731,1.659,4.556,1.226,-0.128,-0.048,2.838,-0.666,1.847,2.45,2.43,1.57,1.88,1.77,2.13,0.46,0.88,1.46,2.43,1.22,0.11,0.56,2.33,1.45,3.23],
-    debrisFlowOffsetMonitor5:[0.244,-1.763,0.465,-0.411,1.393,2.273,-6.474,2.176,3.949,1.029,-0.497,-0.602,2.642,-1.549,4.658,3.335,1.99,0.625,1.83,1.71,4.905,2.915,-1.245,4.625,4.77,1.62,0.61,1.06,3.23,1.1,4.225],
-    debrisFlowHorMonitor5:[2.45,2.43,1.57,1.88,1.77,2.727,3.683,7.537,8.46,5.62,1.035,2.705,4.68,3.68,7.76,2.765,-0.92,-3.355,-0.445,-1.825,7.385,1.845,4.45,5.46,3.67,3.22,2.14,6.23,3.14,3.56,5.33],
-    debrisFlowOffsetMonitor6:[3.335,1.99,0.625,1.83,1.71,7.674,11.526,8.859,9.46,6.032,12.176,10.756,4.73,3.821,8.435,2.651,-1.502,-4.151,-0.9,-2.532,7.881,1.631,4.43,6.46,2.56,4.33,3.45,3.43,2.57,3.33,2.45],
-    debrisFlowHorMonitor6:[0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45,3.43,2.57,2.88,4.66,6.13,2.23,1.57,1.88,4.46,3.43,11.245],
-
-    ssxAxisData:["2020/5/1","2020/5/2","2020/5/3","2020/5/4","2020/5/5","2020/5/6","2020/5/7","2020/5/8","2020/5/9","2020/5/10","2020/5/11","2020/5/12","2020/5/13","2020/5/14","2020/5/15","2020/5/16","2020/5/17","2020/5/18","2020/5/19","2020/5/20"],
-    ssMonitor1:[2.45,2.43,1.57,1.88,1.77,2.727,3.683,7.537,8.46,5.62,1.035,2.705,4.68,3.68,7.76,2.765,0.92,3.355,0.445,1.825],
-    ssMonitor2:[3.335,1.99,0.625,1.83,1.71,7.674,1.526,8.859,9.46,6.032,2.176,1.567,4.73,3.821,8.435,2.651,1.502,4.151,0.9,2.532],
-    ssMonitor3:[0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45],
-    ssMonitor4:[1.408,0.171,1.375,1.003,5.401,2.701,2.988,5.142,5.163,1.423,0.241,0.506,3.034,0.217,5.036,5.33,4.45,2.56,4.33,3.45],
-    ssMonitor5:[0.244,1.763,0.465,0.4109,1.393,2.273,6.474,2.176,3.949,1.029,0.497,0.602,2.642,1.549,4.658,3.335,1.99,0.625,1.83,1.71],
-    ssMonitor6:[2.57,2.88,5.46,4.43,3.22,2.11,1.57,1.88,4.46,2.22,1.14,1.56,3.33,2.45,2.45,3.14,1.57,1.88,1.23,5.12],
 
     tendencyLine:{},
     tendencyOption:{},
-    tendencyTimeData:["2020/9/1","2020/9/2","2020/9/3","2020/9/4","2020/9/5","2020/9/6","2020/9/7","2020/9/8","2020/9/9","2020/9/10","2020/9/11","2020/9/12","2020/9/13","2020/9/14","2020/9/15","2020/9/16","2020/9/17","2020/9/18","2020/9/19","2020/9/20","2020/9/21","2020/9/22","2020/9/23","2020/9/24","2020/9/25","2020/9/26","2020/9/27","2020/9/28","2020/9/29","2020/9/30","2020/10/1","2020/10/2","2020/10/3","2020/10/4","2020/10/5","2020/10/6","2020/10/7","2020/10/8","2020/10/9","2020/10/10","2020/10/11","2020/10/12","2020/10/13","2020/10/14","2020/10/15","2020/10/16","2020/10/17","2020/10/18"],
-
-    //安全程度（滑坡）%
-    tendencyData1:[98.1,98.6,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7,99.6,99.8,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7,99.6,99.8,99.6,99.8,99.8,99.7,99.8,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.8,99.7,99.7,99.7],
-    //安全程度（泥石流）%
-    tendencyData2:[97.2,98.4,99.8,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8,99.7,99.6,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8,99.7,99.6,99.8,99.7,99.6,99.8,99.7,99.6,99.2,99.7,99.6,99.8,99.2,99.8,99.7,99.6,99.2,99.8,99.8],
-    //安全程度（地面沉降）%
-    tendencyData3:[97.3,99.7,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.8,99.7,99.8,99.6,99.6,99.2,99.6,99.8,99.2,99.8,99.8,99.7,99.6,99.8,99.6,99.6,99.8,99.2,99.2],
 
     rainBar:{},
     rainOption:{},
-    rainTimeData:["2020/9/10","2020/9/11","2020/9/12","2020/9/13","2020/9/14","2020/9/15","2020/9/16","2020/9/17","2020/9/18","2020/9/19","2020/9/20","2020/9/21","2020/9/22","2020/9/23","2020/9/24","2020/9/25","2020/9/26","2020/9/27","2020/9/28","2020/9/29","2020/9/30","2020/10/1","2020/10/2","2020/10/3","2020/10/4","2020/10/5","2020/10/6","2020/10/7","2020/10/8","2020/10/9","2020/10/10","2020/10/11","2020/10/12","2020/10/13","2020/10/14"],
-    rainMonitor1:[0,0.234,0.56,5.44,3.25,1.89,0.12,2.16,5.44,0.24,0,0.56,0.23,0,0.234,0.56,5.44,3.25,0,0.56,5.44,1.12,3.63,2.16,5.44,1.89,0.24,0,0.56,0.23,0,0.234,0.56,5.44,3.25,1.89,0.12,2.16],
-    rainMonitor2:[0.21,0.54,0.44,4.68,2.61,2.63,0.12,3.63,4.68,0.64,0.21,0.44,0.14,0.21,0.54,0.44,4.68,2.61,0.21,0.44,4.68,2.63,2.61,2.61,4.68,2.63,0.64,0.21,0.44,0.14,0.21,0.54,0.44,4.68,2.61,2.63,0.12,3.63],
-    rainMonitor3:[0.54,0.12,0.54,4.32,3.35,1.67,0.111,1.67,4.32,0.12,0.54,0.54,0.12,0.54,0.12,0.54,4.32,3.35,0.54,0.54,4.32,1.67,3.35,3.35,4.32,1.67,0.12,0.54,0.54,0.12,0.54,0.12,0.54,4.32,3.35,1.67,0.111,1.67],
-    rainMonitor4:[0.12,0.111,0.12,3.63,2.16,3.14,0.21,1.38,3.63,0.21,0.12,0.12,0.111,0.12,0.12,0.12,3.63,2.16,0.12,0.12,3.63,3.14,2.16,2.16,3.63,3.14,0.21,0.12,0.12,0.111,0.12,0.111,0.12,3.63,2.16,3.14,0.21,1.38],
-    rainMonitor5:[0.111,0.21,0.12,3.67,2.55,2.16,0.44,3.14,3.67,0.21,0.111,0.12,0.25,0.12,0.21,0.12,3.67,2.55,0.111,0.12,3.67,1.89,2.55,2.55,3.67,2.16,0.21,0.111,0.12,0.25,0.12,0.21,0.12,3.67,2.55,2.16,0.44,3.14],
-    rainMonitor6:[0.44,0.12,0.111,6.38,3.63,1.67,0,2.16,6.38,0.12,0.44,0.111,0.12,0.44,0.12,0.111,6.38,3.63,0.44,0.111,6.38,1.67,3.63,3.63,6.38,1.67,0.12,0.44,0.111,0.12,0.44,0.12,0.111,6.38,3.63,1.67,0,2.16],
-    rainMonitor7:[0,0.876,0.54,7.14,1.67,1.38,0.44,2.55,7.14,0.876,0,0.54,0.876,0,0.876,0.54,7.14,1.67,0,0.54,7.14,1.38,1.67,4.63,7.14,1.38,0.876,0,0.54,0.876,0,0.876,0.54,7.14,1.67,1.38,0.44,2.55],
 
     mapData:[],
     geoCoordMap:{},
@@ -97,318 +42,592 @@ var app = new Vue({
     let that = this;
     this.lineGraphic = echarts.init(document.getElementById('line-graphic'));
     this.lineOption = {
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            icon:"rectangle",
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            },
-            icon:'circle',
-            data: ['CNSS-1', 'CNSS-2', 'CNSS-3', 'CNSS-4', 'CNSS-5', 'CNSS-6', 'CNSS-7']
-        },
-        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ["2020/1/1","2020/1/2","2020/1/3","2020/1/4","2020/1/5"],
-            axisPointer: {
-                type: 'shadow'
-            },
-            splitLine:{
-　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            },
-        },
-        yAxis: {
-            type: 'value',
-            axisPointer: {
-                type: 'shadow'
-            },
-            splitLine:{
-　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            },
-        },
-        series: [
-            {
-                name: 'CNSS-1',
-                type: 'line',
-                stack: '总量',
-                data: [1.22,0.14,0.56,2.33,1.45]
-            },
-            {
-                name: 'CNSS-2',
-                type: 'line',
-                stack: '总量',
-                data: [2.57,2.88,5.46,4.43,3.22]
-            },
-            {
-                name: 'CNSS-3',
-                type: 'line',
-                stack: '总量',
-                data: [1.408,-0.171,1.375,1.003,5.401]
-            },
-            {
-                name: 'CNSS-4',
-                type: 'line',
-                stack: '总量',
-                data: [0.826,-0.967,0.92,0.296,1.897]
-            },
-            {
-                name: 'CNSS-5',
-                type: 'line',
-                stack: '总量',
-                data: [0.244,-1.763,0.465,-0.411,1.393]
-            },
-            {
-                name: 'CNSS-6',
-                type: 'line',
-                stack: '总量',
-                data: [2.45,2.43,1.57,1.88,1.77]
-            },
-            {
-                name: 'CNSS-7',
-                type: 'line',
-                stack: '总量',
-                data: [3.335,1.99,0.625,1.83,1.71]
-            }
-        ]
-    };
-    this.lineGraphic.setOption(this.lineOption);
-
-    //------------------------------------------------------------------------------
-    this.debrisFlow = echarts.init(document.getElementById('debris-flow'));
-    this.debrisFlowOption = {
-        title: {
-            text: '',
-            subtext: ''
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            }
-        },
-        legend: {
-            icon:'circle',
-            data: ['水平位移变化量', '平面变形量'],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
-        },
-        color:['#A5D9E1','#7D57A1'],
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'value',
-            boundaryGap: [0, 0.01],
-            axisPointer: {
-                type: 'shadow'
-            },
-            splitLine:{
-　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            },
-        },
-        yAxis: {
-            type: 'category',
-            splitLine:{
-  　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            },
-            data: ['深孔监测点1', '深孔监测点2', '深孔监测点3', '深孔监测点4', '深孔监测点5', '深孔监测点6']
-        },
-        series: [
-            {
-                name: '水平位移变化量',
-                type: 'bar',
-                data: []
-            },
-            {
-                name: '平面变形量',
-                type: 'bar',
-                data: []
-            }
-        ]
-    };
-
-    this.debrisFlow.setOption(this.debrisFlowOption);
-
-    //------------------------------------------------------------------------------
-    this.sedimentationSettlement = echarts.init(document.getElementById('sedimentation-settlement'));
-    this.sedimentationSettlementOption = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
-            }
-        },
-        legend: {
+      legend: {
           textStyle: {
               fontSize: 12,
               color: '#A5D9E1'
           },
           icon:'circle',
-          data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6']
+          data: ['上木溪', '杨家岭', '桑树湾', '塘里村', '花林', '高路湾']
+      },
+       tooltip: {
+           trigger: 'axis'
+       },
+       color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
+       grid: {
+           left: '3%',
+           right: '4%',
+           bottom: '3%',
+           containLabel: true
+       },
+       xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: [],
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
+　　　　        show:false
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       yAxis: {
+         type: 'value',
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
+　　　　        show:false
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       dataZoom: [{
+           startValue: '2020/1/1'
+       }, {
+           type: 'inside'
+       }],
+       series: [
+         {
+             name: '上木溪',
+             type: 'line',
+             data: [],
+             markLine: {
+                 silent: true,
+                 data: [{
+                     yAxis: 20
+                 }, {
+                     yAxis: -20
+                 }]
+             }
+         },
+         {
+             name: '杨家岭',
+             type: 'line',
+             data: [],
+         },{
+             name: '桑树湾',
+             type: 'line',
+             data: [],
+         },{
+             name: '塘里村',
+             type: 'line',
+             data: [],
+         },{
+             name: '花林',
+             type: 'line',
+             data: [],
+         },{
+             name: '高路湾',
+             type: 'line',
+             data: [],
+         }
+       ]
+    }
+    this.lineGraphic.setOption(this.lineOption);
+    $.getJSON('/public/assets/7-1.json',function(data){
+      let lineGraphicxAxisData = [];
+      let cnss1 = [];
+      let cnss2 = [];
+      let cnss3 = [];
+      let cnss4 = [];
+      let cnss5 = [];
+      let cnss6 = [];
+      for(let i = 0; i < data.length; i++){
+        lineGraphicxAxisData.push(data[i].time);
+        cnss1.push(data[i].moniter1);
+        cnss2.push(data[i].moniter2);
+        cnss3.push(data[i].moniter3);
+        cnss4.push(data[i].moniter4);
+        cnss5.push(data[i].moniter5);
+        cnss6.push(data[i].moniter6);
+      }
+      that.lineOption.xAxis.data = lineGraphicxAxisData;
+      that.lineOption.series[0].data = cnss1;
+      that.lineOption.series[1].data = cnss2;
+      that.lineOption.series[2].data = cnss3;
+      that.lineOption.series[3].data = cnss4;
+      that.lineOption.series[4].data = cnss5;
+      that.lineOption.series[5].data = cnss6;
+      that.lineGraphic.setOption(that.lineOption);
+    });
+    //------------------------------------------------------------------------------
+    this.debrisFlow = echarts.init(document.getElementById('debris-flow'));
+    this.debrisFlowOption = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                animation: false
+            }
         },
-        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#5FA731'],
+        color:['#7D51A1','#B691C1','#A5D9E1','#E6951D','#85c154','#5FA731'],
+        legend: {
+            icon:'circle',
+            data: ['上木溪', '杨家岭', '桑树湾', '塘里村', '花林', '高路湾'],
+            left: 10,
+            textStyle: {
+                fontSize: 12,
+                color: '#A5D9E1'
+            },
+        },
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
             containLabel: true
         },
+        axisPointer: {
+            link: {xAxisIndex: 'all'}
+        },
+        dataZoom: [
+            {
+                show: true,
+                realtime: true,
+                start: 30,
+                end: 70,
+                xAxisIndex: [0, 1]
+            },
+            {
+                type: 'inside',
+                realtime: true,
+                start: 30,
+                end: 70,
+                xAxisIndex: [0, 1]
+            }
+        ],
+        grid: [{
+            left: 50,
+            right: 50,
+            height: '35%'
+        }, {
+            left: 50,
+            right: 50,
+            top: '55%',
+            height: '35%'
+        }],
         xAxis: [
             {
                 type: 'category',
                 boundaryGap: false,
-                data: [],
+                axisLine: {onZero: true},
                 axisPointer: {
-                    type: 'shadow'
-                },
-                splitLine:{
-    　　　　        show:false
-                },
-                axisLine:{
-                  lineStyle:{
-                    color: '#A5D9E1'
-                  }
-                },
-                axisLabel:{
-                  textStyle:{
-                    color: '#ffffff'
-                  }
-                },
+                      type: 'shadow'
+                  },
+                  splitLine:{
+         　　　　        show:false
+                  },
+                  axisLine:{
+                    lineStyle:{
+                      color: '#A5D9E1'
+                    }
+                  },
+                  axisLabel:{
+                    textStyle:{
+                      color: '#ffffff'
+                    }
+                  },
+                data: []
+            },
+            {
+                gridIndex: 1,
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {onZero: true},
+                axisPointer: {
+                      type: 'shadow'
+                  },
+                  splitLine:{
+         　　　　        show:false
+                  },
+                  axisLine:{
+                    lineStyle:{
+                      color: '#A5D9E1'
+                    }
+                  },
+                  axisLabel:{
+                    textStyle:{
+                      color: '#ffffff'
+                    }
+                  },
+                data: [],
+
             }
         ],
         yAxis: [
             {
+                name: '水平位移变化量(mm)',
+                type: 'value',
+                max: 10,
+                axisPointer: {
+                      type: 'shadow'
+                  },
+                  splitLine:{
+         　　　　        show:false
+                  },
+                  axisLine:{
+                    lineStyle:{
+                      color: '#A5D9E1'
+                    }
+                  },
+                  axisLabel:{
+                    textStyle:{
+                      color: '#ffffff'
+                    }
+                  },
+            },
+            {
+                gridIndex: 1,
+                name: '平面变形量(mm)',
                 type: 'value',
                 axisPointer: {
-                    type: 'shadow'
-                },
-                splitLine:{
-    　　　　        show:false
-                },
-                axisLine:{
-                  lineStyle:{
-                    color: '#A5D9E1'
-                  }
-                },
-                axisLabel:{
-                  textStyle:{
-                    color: '#ffffff'
-                  }
-                },
+                      type: 'shadow'
+                  },
+                  splitLine:{
+         　　　　        show:false
+                  },
+                  axisLine:{
+                    lineStyle:{
+                      color: '#A5D9E1'
+                    }
+                  },
+                  axisLabel:{
+                    textStyle:{
+                      color: '#ffffff'
+                    }
+                  },
             }
         ],
         series: [
             {
-                name: '监测点1',
+                name: '上木溪',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [120, 132, 101, 134, 90, 230, 210]
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ],
+                markLine: {
+                     silent: true,
+                     data: [{
+                         yAxis: 5
+                     }, {
+                         yAxis: -5
+                     }]
+                 }
+            },{
+                name: '杨家岭',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
+            },{
+                name: '桑树湾',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
+            },{
+                name: '塘里村',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
+            },{
+                name: '花林',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
+            },{
+                name: '高路湾',
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
             },
             {
-                name: '监测点2',
+                name: '上木溪',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [220, 182, 191, 234, 290, 330, 310]
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ],
+                markLine: {
+                     silent: true,
+                     data: [{
+                         yAxis: 5
+                     }, {
+                         yAxis: -5
+                     }]
+                 }
             },
             {
-                name: '监测点3',
+                name: '杨家岭',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [150, 232, 201, 154, 190, 330, 410]
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
             },
             {
-                name: '监测点4',
+                name: '桑树湾',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [320, 332, 301, 334, 390, 330, 320]
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
             },
             {
-                name: '监测点5',
+                name: '塘里村',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [320, 332, 301, 334, 390, 330, 320]
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
             },
             {
-                name: '监测点6',
+                name: '花林',
                 type: 'line',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'top'
-                    }
-                },
-                areaStyle: {},
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
+            },
+            {
+                name: '高路湾',
+                type: 'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data: [
+
+                ]
             }
         ]
     };
-    this.sedimentationSettlement.setOption(this.sedimentationSettlementOption);
+
+    this.debrisFlow.setOption(this.debrisFlowOption);
+    $.getJSON('/public/assets/7-2.json',function(data){
+      let xAxisData = [];
+      let hor1Arr = [];
+      let hor2Arr = [];
+      let hor3Arr = [];
+      let hor4Arr = [];
+      let hor5Arr = [];
+      let hor6Arr = [];
+      let var1Arr = [];
+      let var2Arr = [];
+      let var3Arr = [];
+      let var4Arr = [];
+      let var5Arr = [];
+      let var6Arr = [];
+      for(let i = 0; i < data.length; i++){
+        xAxisData.push(data[i].time);
+        hor1Arr.push(data[i].hor1);
+        hor2Arr.push(data[i].hor2);
+        hor3Arr.push(data[i].hor3);
+        hor4Arr.push(data[i].hor4);
+        hor5Arr.push(data[i].hor5);
+        hor6Arr.push(data[i].hor6);
+        var1Arr.push(data[i].var1);
+        var2Arr.push(data[i].var2);
+        var3Arr.push(data[i].var3);
+        var4Arr.push(data[i].var4);
+        var5Arr.push(data[i].var5);
+        var6Arr.push(data[i].var6);
+      }
+      that.debrisFlowOption.xAxis[0].data = xAxisData;
+      that.debrisFlowOption.xAxis[1].data = xAxisData;
+      that.debrisFlowOption.series[0].data = hor1Arr;
+      that.debrisFlowOption.series[1].data = hor2Arr;
+      that.debrisFlowOption.series[2].data = hor3Arr;
+      that.debrisFlowOption.series[3].data = hor4Arr;
+      that.debrisFlowOption.series[4].data = hor5Arr;
+      that.debrisFlowOption.series[5].data = hor6Arr;
+      that.debrisFlowOption.series[6].data = var1Arr;
+      that.debrisFlowOption.series[7].data = var2Arr;
+      that.debrisFlowOption.series[8].data = var3Arr;
+      that.debrisFlowOption.series[9].data = var4Arr;
+      that.debrisFlowOption.series[10].data = var5Arr;
+      that.debrisFlowOption.series[11].data = var6Arr;
+      that.debrisFlow.setOption(that.debrisFlowOption);
+    });
     //------------------------------------------------------------------------------
-    let safetyGaugeData = [97,96,99,98,100,197,102,97,94,98,96,99];
+    this.sedimentationSettlement = echarts.init(document.getElementById('sedimentation-settlement'));
+    this.sedimentationSettlementOption = {
+      legend: {
+          textStyle: {
+              fontSize: 12,
+              color: '#A5D9E1'
+          },
+          icon:'circle',
+          data: ['上木溪', '杨家岭', '桑树湾', '塘里村', '花林', '高路湾']
+      },
+       tooltip: {
+           trigger: 'axis'
+       },
+       color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
+       grid: {
+           left: '3%',
+           right: '4%',
+           bottom: '3%',
+           containLabel: true
+       },
+       xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: [],
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
+　　　　        show:false
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       yAxis: {
+         type: 'value',
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
+　　　　        show:false
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       dataZoom: [{
+           startValue: '2020/5/1'
+       }, {
+           type: 'inside'
+       }],
+       series: [
+         {
+             name: '上木溪',
+             type: 'line',
+             data: [],
+             markLine: {
+                 silent: true,
+                 data: [{
+                     yAxis: 10
+                 }, {
+                     yAxis: -10
+                 }]
+             }
+         },
+         {
+             name: '杨家岭',
+             type: 'line',
+             data: [],
+         },{
+             name: '桑树湾',
+             type: 'line',
+             data: [],
+         },{
+             name: '塘里村',
+             type: 'line',
+             data: [],
+         },{
+             name: '花林',
+             type: 'line',
+             data: [],
+         },{
+             name: '高路湾',
+             type: 'line',
+             data: [],
+         }
+       ]
+    };
+    this.sedimentationSettlement.setOption(this.sedimentationSettlementOption);
+    $.getJSON('/public/assets/7-3.json',function(data){
+      let ssxAxisData = [];
+      let cnssData1 = [];
+      let cnssData2 = [];
+      let cnssData3 = [];
+      let cnssData4 = [];
+      let cnssData5 = [];
+      let cnssData6 = [];
+      for(let i = 0; i < data.length; i++){
+        ssxAxisData.push(data[i].time);
+        cnssData1.push(data[i].monitor1);
+        cnssData2.push(data[i].monitor2);
+        cnssData3.push(data[i].monitor3);
+        cnssData4.push(data[i].monitor4);
+        cnssData5.push(data[i].monitor5);
+        cnssData6.push(data[i].monitor6);
+      }
+      that.sedimentationSettlementOption.xAxis.data = ssxAxisData;
+      that.sedimentationSettlementOption.series[0].data = cnssData1;
+      that.sedimentationSettlementOption.series[1].data = cnssData2;
+      that.sedimentationSettlementOption.series[2].data = cnssData3;
+      that.sedimentationSettlementOption.series[3].data = cnssData4;
+      that.sedimentationSettlementOption.series[4].data = cnssData5;
+      that.sedimentationSettlementOption.series[5].data = cnssData6;
+      that.sedimentationSettlement.setOption(that.sedimentationSettlementOption);
+    });
+    //------------------------------------------------------------------------------
+    let safetyGaugeData = [97,96,99,98,96,97,98,97,94,98,96,99];
     var safetyGauge = echarts.init(document.getElementById('safety-gauge'));
     safetyOption = {
       title: {
@@ -489,191 +708,239 @@ var app = new Vue({
     var dom = document.getElementById("confidence-band");
     this.tendencyLine = echarts.init(dom);
     this.tendencyOption = {
-        color: ['#5FA731','#B691C1','#85c154'],
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            }
+      legend: {
+        textStyle: {
+            fontSize: 12,
+            color: '#A5D9E1'
         },
-        legend: {
-            icon:'circle',
-            data: ['滑坡(%)', '泥石流(%)', '地面沉降(%)'],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
-        },
-        grid:{
-                    bottom:'25px',
-                },
-        xAxis: [
-            {
-                type: 'category',
-                axisTick: {show: false},
-                data: [],
-                splitLine:{
-    　　　　        show:false
-                },
-                axisLine:{
-                  lineStyle:{
-                    color: '#A5D9E1'
-                  }
-                },
-                axisLabel:{
-                  textStyle:{
-                    color: '#ffffff'
-                  }
-                }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                splitLine:{
-    　　　　        show:false
-                },
-                axisLine:{
-                  lineStyle:{
-                    color: '#A5D9E1'
-                  }
-                },
-                axisLabel:{
-                  textStyle:{
-                    color: '#ffffff'
-                  }
-                },
-                min: 98,
-                max: 100,
-                interval: 0.2,
-            }
-        ],
-        series: [
-            {
-                name: '滑坡(%)',
-                type: 'bar',
-                barGap: 0,
-                data: []
-            },
-            {
-                name: '泥石流(%)',
-                type: 'bar',
-                data: []
-            },
-            {
-                name: '地面沉降(%)',
-                type: 'bar',
-                data: []
-            }
-        ]
+        icon:'circle',
+        data: ['滑坡(%)', '泥石流(%)', '地面沉降(%)']
+    },
+     tooltip: {
+         trigger: 'axis'
+     },
+     color:['#5FA731','#B691C1','#85c154'],
+     grid: {
+         left: '3%',
+         right: '4%',
+         bottom: '3%',
+         containLabel: true
+     },
+     xAxis: {
+       type: 'category',
+       boundaryGap: false,
+       data: [],
+       axisPointer: {
+           type: 'shadow'
+       },
+       splitLine:{
+　　　　        show:false
+       },
+       axisLine:{
+         lineStyle:{
+           color: '#A5D9E1'
+         }
+       },
+       axisLabel:{
+         textStyle:{
+           color: '#ffffff'
+         }
+       },
+     },
+     yAxis: {
+       type: 'value',
+       min:99,
+       max:100,
+       axisPointer: {
+           type: 'shadow'
+       },
+       splitLine:{
+　　　　        show:false
+       },
+       axisLine:{
+         lineStyle:{
+           color: '#A5D9E1'
+         }
+       },
+       axisLabel:{
+         textStyle:{
+           color: '#ffffff'
+         }
+       },
+     },
+     dataZoom: [{
+         startValue: '2020/9/1'
+     }, {
+         type: 'inside'
+     }],
+     series: [
+       {
+           name: '滑坡(%)',
+           type: 'line',
+           data: [],
+       },
+       {
+           name: '泥石流(%)',
+           type: 'line',
+           data: [],
+       },{
+           name: '地面沉降(%)',
+           type: 'line',
+           data: [],
+       }
+     ]
     };
     this.tendencyLine.setOption(this.tendencyOption);
-
+    $.getJSON('/public/assets/7-4.json',function(data){
+      let tGraphicxAxisData = [];
+      let t1 = [];
+      let t2 = [];
+      let t3 = [];
+      for(let i = 0; i < data.length; i++){
+        tGraphicxAxisData.push(data[i].time);
+        t1.push(data[i].value1);
+        t2.push(data[i].value2);
+        t3.push(data[i].value3);
+      }
+      console.log(t3);
+      that.tendencyOption.xAxis.data = tGraphicxAxisData;
+      that.tendencyOption.series[0].data = t1;
+      that.tendencyOption.series[1].data = t2;
+      that.tendencyOption.series[2].data = t3;
+      that.tendencyLine.setOption(that.tendencyOption);
+    });
     //----------------------------------------------------------------------------
     this.rainBar = echarts.init(document.getElementById('rain-bar'));
 
     this.rainOption = {
-
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            icon:'circle',
-            data: ['监测点1', '监测点2', '监测点3', '监测点4', '监测点5', '监测点6', '监测点7'],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
-        },
-        color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#5FA731','#85C154'],
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: [],
-            splitLine:{
+      legend: {
+          textStyle: {
+              fontSize: 12,
+              color: '#A5D9E1'
+          },
+          icon:'circle',
+          data: ['上木溪', '杨家岭', '桑树湾', '塘里村', '花林', '高路湾']
+      },
+       tooltip: {
+           trigger: 'axis'
+       },
+       color:['#7D51A1','#B691C1','#A5D9E1','#DFC73D','#E6951D','#85c154','#5FA731'],
+       grid: {
+           left: '3%',
+           right: '4%',
+           bottom: '3%',
+           containLabel: true
+       },
+       xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: [],
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
 　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            }
-        },
-        yAxis: {
-            type: 'value',
-            splitLine:{
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       yAxis: {
+         type: 'value',
+         axisPointer: {
+             type: 'shadow'
+         },
+         splitLine:{
 　　　　        show:false
-            },
-            axisLine:{
-              lineStyle:{
-                color: '#A5D9E1'
-              }
-            },
-            axisLabel:{
-              textStyle:{
-                color: '#ffffff'
-              }
-            }
-        },
-        series: [
-            {
-                name: '监测点1',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点2',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点3',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点4',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点5',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点6',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '监测点7',
-                type: 'line',
-                stack: '总量',
-                data: []
-            }
-        ]
+         },
+         axisLine:{
+           lineStyle:{
+             color: '#A5D9E1'
+           }
+         },
+         axisLabel:{
+           textStyle:{
+             color: '#ffffff'
+           }
+         },
+       },
+       dataZoom: [{
+           startValue: '2020/1/1'
+       }, {
+           type: 'inside'
+       }],
+       series: [
+         {
+             name: '上木溪',
+             type: 'line',
+             data: [],
+             markLine: {
+                 silent: true,
+                 data: [{
+                     yAxis: 20
+                 }, {
+                     yAxis: -20
+                 }]
+             }
+         },
+         {
+             name: '杨家岭',
+             type: 'line',
+             data: [],
+         },{
+             name: '桑树湾',
+             type: 'line',
+             data: [],
+         },{
+             name: '塘里村',
+             type: 'line',
+             data: [],
+         },{
+             name: '花林',
+             type: 'line',
+             data: [],
+         },{
+             name: '高路湾',
+             type: 'line',
+             data: [],
+         }
+       ]
     };
 
     this.rainBar.setOption(this.rainOption);
-
+    $.getJSON('/public/assets/7-5.json',function(data){
+      let rainGraphicxAxisData = [];
+      let raincnss1 = [];
+      let raincnss2 = [];
+      let raincnss3 = [];
+      let raincnss4 = [];
+      let raincnss5 = [];
+      let raincnss6 = [];
+      for(let i = 0; i < data.length; i++){
+        rainGraphicxAxisData.push(data[i].time);
+        raincnss1.push(data[i].monitor1);
+        raincnss2.push(data[i].monitor2);
+        raincnss3.push(data[i].monitor3);
+        raincnss4.push(data[i].monitor4);
+        raincnss5.push(data[i].monitor5);
+        raincnss6.push(data[i].monitor6);
+      }
+      that.rainOption.xAxis.data = rainGraphicxAxisData;
+      that.rainOption.series[0].data = raincnss1;
+      that.rainOption.series[1].data = raincnss2;
+      that.rainOption.series[2].data = raincnss3;
+      that.rainOption.series[3].data = raincnss4;
+      that.rainOption.series[4].data = raincnss5;
+      that.rainOption.series[5].data = raincnss6;
+      that.rainBar.setOption(that.rainOption);
+    });
     //----------------------------------------------------------------------------
     /*
     var myChart = echarts.init(document.getElementById('map'));
@@ -775,140 +1042,6 @@ var app = new Vue({
   },
   created(){
     let that = this;
-
-    let lineDataInterval = 0;
-    setInterval(function(){
-
-      if(that.lineOption.xAxis.data.length >= 5){
-        that.lineOption.xAxis.data.shift();
-      }
-      if(that.lineOption.series[0].data.length >= 5){
-        that.lineOption.series[0].data.shift();
-      }
-      if(that.lineOption.series[1].data.length >= 5){
-        that.lineOption.series[1].data.shift();
-      }
-      if(that.lineOption.series[2].data.length >= 5){
-        that.lineOption.series[2].data.shift();
-      }
-      if(that.lineOption.series[3].data.length >= 5){
-        that.lineOption.series[3].data.shift();
-      }
-      if(that.lineOption.series[4].data.length >= 5){
-        that.lineOption.series[4].data.shift();
-      }
-      if(that.lineOption.series[5].data.length >= 5){
-        that.lineOption.series[5].data.shift();
-      }
-      if(that.lineOption.series[6].data.length >= 5){
-        that.lineOption.series[6].data.shift();
-      }
-
-      that.lineOption.xAxis.data.push(that.lineGraphicxAxisData[lineDataInterval]);
-      that.lineOption.series[0].data.push(that.cnss1[lineDataInterval]);
-      that.lineOption.series[1].data.push(that.cnss2[lineDataInterval]);
-      that.lineOption.series[2].data.push(that.cnss3[lineDataInterval]);
-      that.lineOption.series[3].data.push(that.cnss4[lineDataInterval]);
-      that.lineOption.series[4].data.push(that.cnss5[lineDataInterval]);
-      that.lineOption.series[5].data.push(that.cnss6[lineDataInterval]);
-      that.lineOption.series[6].data.push(that.cnss7[lineDataInterval]);
-
-      that.lineGraphic.setOption(that.lineOption);
-      lineDataInterval = lineDataInterval + 1;
-      if(lineDataInterval == that.lineGraphicxAxisData.length){
-        lineDataInterval = 0;
-      }
-
-    },5000);
-
-    let debrisFlowInterval = 0;
-    setInterval(function(){
-      that.debrisFlowOption.series[0].data = [];
-      that.debrisFlowOption.series[1].data = [];
-
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor1[debrisFlowInterval]);
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor2[debrisFlowInterval]);
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor3[debrisFlowInterval]);
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor4[debrisFlowInterval]);
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor5[debrisFlowInterval]);
-      that.debrisFlowOption.series[0].data.push(that.debrisFlowOffsetMonitor6[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor1[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor2[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor3[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor4[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor5[debrisFlowInterval]);
-      that.debrisFlowOption.series[1].data.push(that.debrisFlowHorMonitor6[debrisFlowInterval]);
-      that.debrisFlow.setOption(that.debrisFlowOption);
-      debrisFlowInterval = debrisFlowInterval + 1;
-      if(debrisFlowInterval == that.debrisFlowxAxisData.length){
-        debrisFlowInterval = 0;
-      }
-    },5000);
-
-    let ssInterval = 0;
-    setInterval(function(){
-      that.sedimentationSettlementOption.xAxis[0].data = [];
-      that.sedimentationSettlementOption.series[0].data = [];
-      that.sedimentationSettlementOption.series[1].data = [];
-      that.sedimentationSettlementOption.series[2].data = [];
-      that.sedimentationSettlementOption.series[3].data = [];
-      that.sedimentationSettlementOption.series[4].data = [];
-      that.sedimentationSettlementOption.series[5].data = [];
-      that.sedimentationSettlementOption.xAxis[0].data = that.ssxAxisData.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[0].data = that.ssMonitor1.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[1].data = that.ssMonitor2.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[2].data = that.ssMonitor3.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[3].data = that.ssMonitor4.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[4].data = that.ssMonitor5.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlementOption.series[5].data = that.ssMonitor6.slice(ssInterval,ssInterval + 5);
-      that.sedimentationSettlement.setOption(that.sedimentationSettlementOption);
-      ssInterval = ssInterval + 5;
-      if(ssInterval == that.ssxAxisData.length){
-        ssInterval = 0;
-      }
-    },3000);
-
-    let tendencyInterval = 0;
-    setInterval(function(){
-      that.tendencyOption.xAxis[0].data = [];
-      that.tendencyOption.series[0].data = [];
-      that.tendencyOption.series[1].data = [];
-      that.tendencyOption.series[2].data = [];
-      that.tendencyOption.xAxis[0].data = that.tendencyTimeData.slice(tendencyInterval,tendencyInterval + 4);
-      that.tendencyOption.series[0].data = that.tendencyData1.slice(tendencyInterval,tendencyInterval + 4);
-      that.tendencyOption.series[1].data = that.tendencyData2.slice(tendencyInterval,tendencyInterval + 4);
-      that.tendencyOption.series[2].data = that.tendencyData3.slice(tendencyInterval,tendencyInterval + 4);
-      that.tendencyLine.setOption(that.tendencyOption);
-      tendencyInterval = tendencyInterval + 4;
-      if(tendencyInterval == that.tendencyTimeData.length){
-        tendencyInterval = 0;
-      }
-    },4000);
-
-    let rainInterval = 0;
-    setInterval(function(){
-      that.rainOption.xAxis.data = [];
-      that.rainOption.series[0].data = [];
-      that.rainOption.series[1].data = [];
-      that.rainOption.series[2].data = [];
-      that.rainOption.series[3].data = [];
-      that.rainOption.series[4].data = [];
-      that.rainOption.series[5].data = [];
-      that.rainOption.series[6].data = [];
-      that.rainOption.xAxis.data = that.rainTimeData.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[0].data = that.rainMonitor1.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[1].data = that.rainMonitor2.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[2].data = that.rainMonitor3.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[3].data = that.rainMonitor4.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[4].data = that.rainMonitor5.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[5].data = that.rainMonitor6.slice(rainInterval,rainInterval + 5);
-      that.rainOption.series[6].data = that.rainMonitor7.slice(rainInterval,rainInterval + 5);
-      that.rainBar.setOption(that.rainOption);
-      rainInterval = rainInterval + 5;
-      if(rainInterval == that.rainTimeData.length){
-        rainInterval = 0;
-      }
-    },5000);
   },
 
 });

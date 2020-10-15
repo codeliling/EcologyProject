@@ -393,9 +393,10 @@ body{
 #map{
   width:100%;
   height:100%;
+  /*
   background-image: url('/public/images/mine/env-protect-bg.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 

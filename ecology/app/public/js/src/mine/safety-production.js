@@ -4,90 +4,70 @@ var app = new Vue({
   data: {
     //值班信息数据
     dutyData:[
-    {"count":126000,"worker":112500,"leader":11232,"researcher":2241,"onwork":125973,"absence":27},
-    {"count":125979,"worker":112458,"leader":11236,"researcher":2245,"onwork":125939,"absence":40},
-    {"count":125919,"worker":112433,"leader":11223,"researcher":2238,"onwork":125894,"absence":25},
-    {"count":125877,"worker":112400,"leader":11210,"researcher":2235,"onwork":125845,"absence":32},
-    {"count":125940,"worker":112442,"leader":11231,"researcher":2237,"onwork":125910,"absence":30},
-    {"count":125961,"worker":112447,"leader":11229,"researcher":2246,"onwork":125922,"absence":39},
-    {"count":126003,"worker":112500,"leader":11231,"researcher":2242,"onwork":125973,"absence":30},
-    {"count":125963,"worker":112448,"leader":11231,"researcher":2247,"onwork":125926,"absence":37},
-    {"count":126023,"worker":112500,"leader":11235,"researcher":2250,"onwork":125985,"absence":38},
-    {"count":125973,"worker":112466,"leader":11243,"researcher":2239,"onwork":125948,"absence":25},
-    {"count":126036,"worker":112489,"leader":11247,"researcher":2250,"onwork":125986,"absence":50},
-    {"count":126063,"worker":112500,"leader":11250,"researcher":2250,"onwork":126000,"absence":63},
-    {"count":126000,"worker":112500,"leader":11235,"researcher":2244,"onwork":125979,"absence":21},
-    {"count":125979,"worker":112458,"leader":11236,"researcher":2245,"onwork":125939,"absence":40},
-    {"count":125919,"worker":112433,"leader":11223,"researcher":2238,"onwork":125894,"absence":25},
-    {"count":125877,"worker":112400,"leader":11210,"researcher":2235,"onwork":125845,"absence":32},
-    {"count":125940,"worker":112442,"leader":11231,"researcher":2237,"onwork":125910,"absence":30},
-    {"count":125961,"worker":112447,"leader":11229,"researcher":2246,"onwork":125922,"absence":39},
-    {"count":126003,"worker":112500,"leader":11231,"researcher":2242,"onwork":125973,"absence":30},
-    {"count":125963,"worker":112448,"leader":11231,"researcher":2247,"onwork":125926,"absence":37},
-    {"count":126023,"worker":112500,"leader":11235,"researcher":2250,"onwork":125985,"absence":38},
-    {"count":125973,"worker":112466,"leader":11243,"researcher":2239,"onwork":125948,"absence":25},
-    {"count":126036,"worker":112489,"leader":11247,"researcher":2250,"onwork":125986,"absence":50},
-    {"count":126063,"worker":112500,"leader":11250,"researcher":2250,"onwork":126000,"absence":63},
-    {"count":126000,"worker":112500,"leader":11235,"researcher":2243,"onwork":125978,"absence":22}
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2396,"leader":221,"researcher":709,"onwork":3326 ,"absence":997,"count":3326 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2396,"leader":221,"researcher":709,"onwork":3326 ,"absence":997,"count":3326 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2396,"leader":221,"researcher":709,"onwork":3326 ,"absence":997,"count":3326 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2396,"leader":221,"researcher":709,"onwork":3326 ,"absence":997,"count":3326 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2396,"leader":221,"researcher":709,"onwork":3326 ,"absence":997,"count":3326 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 },
+    {"worker":2398,"leader":221,"researcher":709,"onwork":3328 ,"absence":995,"count":3328 },
+    {"worker":2397,"leader":221,"researcher":709,"onwork":3327 ,"absence":996,"count":3327 }
     ],
-    currentDutyData:{"count":126000,"worker":112500,"leader":11232,"researcher":2241,"onwork":125973,"absence":27},
+    currentDutyData:{"count":3326,"worker":2396,"leader":221,"researcher":709,"onwork":3326,"absence":997},
     //--------------------------------------------------------------------------------
     //挖掘机运行数据
     diggerData:[
-      {"work":788,"leisure":200,"repaire":10,"count":1000},
-      {"work":789,"leisure":199,"repaire":10,"count":1000},
-      {"work":793,"leisure":195,"repaire":10,"count":1000},
-      {"work":793,"leisure":194,"repaire":11,"count":1000},
-      {"work":794,"leisure":193,"repaire":11,"count":1000},
-      {"work":796,"leisure":191,"repaire":11,"count":1000},
-      {"work":787,"leisure":200,"repaire":11,"count":1000},
-      {"work":785,"leisure":201,"repaire":12,"count":1000},
-      {"work":780,"leisure":206,"repaire":12,"count":1000},
-      {"work":776,"leisure":210,"repaire":12,"count":1000},
-      {"work":791,"leisure":195,"repaire":12,"count":1000},
-      {"work":798,"leisure":188,"repaire":12,"count":1000},
-      {"work":800,"leisure":187,"repaire":11,"count":1000},
+      {"work":151,"leisure":61,"repaire":2,"count":214},
+      {"work":152,"leisure":60,"repaire":2,"count":214},
+      {"work":151,"leisure":61,"repaire":2,"count":214},
+      {"work":150,"leisure":62,"repaire":2,"count":214},
+      {"work":151,"leisure":61,"repaire":2,"count":214},
+      {"work":152,"leisure":60,"repaire":2,"count":214},
+      {"work":151,"leisure":61,"repaire":2,"count":214}
     ],
-    currentDiggerData:{"work":788,"leisure":200,"repaire":10,"count":1000},
+    currentDiggerData:{"work":150,"leisure":62,"repaire":2,"count":214},
     horBarOption1 : {},
     horBarGraphic1 : {},
     //--------------------------------------------------------------------------------
     //钻机运行数据
     drillingData:[
-      {"work":84,"leisure":16,"repaire":0,"count":100},
-      {"work":85,"leisure":14,"repaire":1,"count":100},
-      {"work":85,"leisure":14,"repaire":1,"count":100},
-      {"work":86,"leisure":13,"repaire":1,"count":100},
-      {"work":85,"leisure":13,"repaire":2,"count":100},
-      {"work":86,"leisure":12,"repaire":2,"count":100},
-      {"work":87,"leisure":11,"repaire":2,"count":100},
-      {"work":87,"leisure":11,"repaire":2,"count":100},
-      {"work":88,"leisure":10,"repaire":2,"count":100},
-      {"work":89,"leisure":8,"repaire":3,"count":100},
-      {"work":89,"leisure":8,"repaire":3,"count":100},
-      {"work":90,"leisure":7,"repaire":3,"count":100},
-      {"work":87,"leisure":10,"repaire":3,"count":100},
+      {"work":29,"leisure":13,"repaire":0,"count":42},
+      {"work":28,"leisure":13,"repaire":1,"count":42},
+      {"work":29,"leisure":12,"repaire":1,"count":42},
+      {"work":30,"leisure":11,"repaire":1,"count":42},
+      {"work":29,"leisure":13,"repaire":0,"count":42},
+      {"work":28,"leisure":13,"repaire":1,"count":42},
+      {"work":29,"leisure":12,"repaire":1,"count":42},
     ],
-    currentDrillingData:{"work":84,"leisure":16,"repaire":0,"count":100},
+    currentDrillingData:{"work":30,"leisure":11,"repaire":1,"count":42},
 
     //--------------------------------------------------------------------------------
     //破碎机运行数据
     crusherData:[
-      {"work":168,"leisure":42,"repaire":0,"count":210},
-      {"work":167,"leisure":43,"repaire":0,"count":210},
-      {"work":169,"leisure":41,"repaire":0,"count":210},
-      {"work":168,"leisure":42,"repaire":0,"count":210},
-      {"work":167,"leisure":42,"repaire":1,"count":210},
-      {"work":166,"leisure":43,"repaire":1,"count":210},
-      {"work":165,"leisure":44,"repaire":1,"count":210},
-      {"work":169,"leisure":39,"repaire":2,"count":210},
-      {"work":170,"leisure":38,"repaire":2,"count":210},
-      {"work":168,"leisure":40,"repaire":2,"count":210},
-      {"work":172,"leisure":36,"repaire":2,"count":210},
-      {"work":171,"leisure":36,"repaire":3,"count":210},
-      {"work":169,"leisure":38,"repaire":3,"count":210},
+      {"work":99,"leisure":40,"repaire":3,"count":142},
+      {"work":98,"leisure":41,"repaire":3,"count":142},
+      {"work":99,"leisure":40,"repaire":3,"count":142},
+      {"work":100,"leisure":39,"repaire":3,"count":142},
+      {"work":101,"leisure":38,"repaire":3,"count":142},
+      {"work":102,"leisure":37,"repaire":3,"count":142},
+      {"work":101,"leisure":38,"repaire":3,"count":142},
     ],
-    currentCrusherData:{"work":168,"leisure":42,"repaire":0,"count":210},
+    currentCrusherData:{"work":100,"leisure":39,"repaire":3,"count":142},
 
     //--------------------------------------------------------------------------------
     //自卸汽车运行数据
@@ -121,6 +101,22 @@ var app = new Vue({
     //公告数据
     noticeData:[],
     currentNoticeData:[],
+
+    todayData:[
+      {"var1":99,"var2":97,"var3":97,"var4":97},
+      {"var1":98,"var2":96,"var3":96,"var4":96},
+      {"var1":99,"var2":97,"var3":97,"var4":97},
+      {"var1":98,"var2":96,"var3":96,"var4":96},
+      {"var1":99,"var2":97,"var3":97,"var4":97},
+      {"var1":100,"var2":96,"var3":96,"var4":96},
+      {"var1":99,"var2":97,"var3":97,"var4":97},
+      {"var1":98,"var2":96,"var3":96,"var4":96},
+      {"var1":99,"var2":97,"var3":97,"var4":97},
+      {"var1":98,"var2":96,"var3":96,"var4":96},
+      {"var1":99,"var2":97,"var3":97,"var4":97}
+    ],
+    safetyBarGraphic:{},
+    safetyBarOption:{},
   },
   methods: {
     backClick:function(){
@@ -132,7 +128,7 @@ var app = new Vue({
   },
   mounted() {
     let that = this;
-
+    /*
     var myChart = echarts.init(document.getElementById('map'));
 
     myChart.showLoading();
@@ -208,7 +204,7 @@ var app = new Vue({
 
         });
     });
-
+    */
     this.horBarGraphic1 = echarts.init(document.getElementById('hor-bar-graphic1'));
     let horBarSource = [
         ['product', '工作中', '空闲', '修理中',],
@@ -276,9 +272,13 @@ var app = new Vue({
     this.horBarGraphic1.setOption(this.horBarOption1);
 
     //-------------------------------------------------------------------
-    var safetyBarGraphic = echarts.init(document.getElementById('safety-bar-graphic'));
+    this.safetyBarGraphic = echarts.init(document.getElementById('safety-bar-graphic'));
     // 指定图表的配置项和数据
-    var safetyBarOption = {
+    this.safetyBarOption = {
+      tooltip: {
+          trigger: 'item',
+          formatter: '{b}<br/>{c}'
+      },
       xAxis: {
           type: 'category',
           data: ['烟雾','排水','粉尘','瓦斯'],
@@ -315,20 +315,20 @@ var app = new Vue({
       },
       series: [
         {
-          data: [0, 40, 40, 20],
+          data: [100, 96, 96, 97],
           type: 'bar',
           showBackground: true,
 
       }]
     };
-    safetyBarGraphic.setOption(safetyBarOption);
+    this.safetyBarGraphic.setOption(this.safetyBarOption);
 
     //-------------------------------------------------------------------
     that.waterLineGraphic = echarts.init(document.getElementById('water-line-graphic'));
     that.elecLineGraphic = echarts.init(document.getElementById('elec-line-graphic'));
     that.waterOption = {
         title: {
-            text: '用水量(L)',
+            text: '用水量(Vut)',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
@@ -369,6 +369,8 @@ var app = new Vue({
         },
         yAxis: {
             type: 'value',
+            max : 200,
+            min:100,
             splitLine:{
     　　　　        show:false
                 },
@@ -395,7 +397,7 @@ var app = new Vue({
 
     that.elecOption = {
         title: {
-            text: '用电量(度)',
+            text: '用电量(Kw.h)',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 14, // 字体大小
@@ -436,6 +438,8 @@ var app = new Vue({
         },
         yAxis: {
             type: 'value',
+            max : 8000,
+            min:7000,
             splitLine:{
     　　　　        show:false
                 },
@@ -464,7 +468,7 @@ var app = new Vue({
     that.waterLineGraphic.setOption(that.waterOption);
     that.elecLineGraphic.setOption(that.elecOption);
 
-    $.getJSON('/public/assets/water-elec.json',function(data){
+    $.getJSON('/public/assets/0-2-2.json',function(data){
         that.waterElecData = data;
     });
 
@@ -516,16 +520,11 @@ var app = new Vue({
         that.waterElecXAxisData = getSafetyLineGraphicTimeArray();
         that.seriesWaterData = [];
         that.seriesElecData = [];
-        that.seriesWaterData.push(that.waterElecData[weDataInterval].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval + 1].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval + 2].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval + 3].water);
-        that.seriesWaterData.push(that.waterElecData[weDataInterval + 4].water);
-        that.seriesElecData.push(that.waterElecData[weDataInterval].electricity);
-        that.seriesElecData.push(that.waterElecData[weDataInterval + 1].electricity);
-        that.seriesElecData.push(that.waterElecData[weDataInterval + 2].electricity);
-        that.seriesElecData.push(that.waterElecData[weDataInterval + 3].electricity);
-        that.seriesElecData.push(that.waterElecData[weDataInterval + 4].electricity);
+        for(let i = weDataInterval; i< weDataInterval + 5; i++){
+          that.seriesWaterData.push(that.waterElecData[weDataInterval].water);
+          that.seriesElecData.push(that.waterElecData[weDataInterval].electricity);
+        }
+
         that.waterOption.xAxis.data = that.waterElecXAxisData;
         that.elecOption.xAxis.data = that.waterElecXAxisData;
         that.waterOption.series[0].data = that.seriesWaterData;
@@ -534,7 +533,7 @@ var app = new Vue({
         that.elecLineGraphic.setOption(that.elecOption);
         weDataInterval = weDataInterval + 5;
 
-        if(weDataInterval == 7200){
+        if(weDataInterval == that.waterElecData.length){
           weDataInterval = 0;
         }
       }
@@ -548,6 +547,22 @@ var app = new Vue({
       that.currentNoticeData.push(that.noticeData[noticeDataInterval + 2]);
       noticeDataInterval = noticeDataInterval + 3;
       if(noticeDataInterval == 24){
+        noticeDataInterval = 0;
+      }
+    },2000);
+
+    //------------------------------------------------------------------------
+    let todayDataInterval = 0;
+    setInterval(function(){
+      that.safetyBarOption.series[0].data = [];
+      let obj = that.todayData[todayDataInterval];
+      that.safetyBarOption.series[0].data.push(obj.var1);
+      that.safetyBarOption.series[0].data.push(obj.var2);
+      that.safetyBarOption.series[0].data.push(obj.var3);
+      that.safetyBarOption.series[0].data.push(obj.var4);
+      that.safetyBarGraphic.setOption(that.safetyBarOption);
+      noticeDataInterval = noticeDataInterval + 1;
+      if(noticeDataInterval == that.todayData.length){
         noticeDataInterval = 0;
       }
     },2000);

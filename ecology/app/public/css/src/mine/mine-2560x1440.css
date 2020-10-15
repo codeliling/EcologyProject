@@ -150,14 +150,15 @@ body{
 }
 
 #confidence-band{
-  width:100%;
+  width:98%;
   height:230px;
   margin: 10px 30px;
 }
 
 #bar-graphic{
-  width:100%;
+  width:98%;
   height:230px;
+  margin: 10px 30px;
 }
 
 #disaster-gauge{
@@ -211,7 +212,7 @@ body{
 .info-area2{
   position: relative;
   width: 30%;
-  top:300px;
+  top:700px;
   left:100px;
 }
 .info1{
