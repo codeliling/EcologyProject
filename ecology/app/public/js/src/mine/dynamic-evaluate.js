@@ -252,6 +252,8 @@ var vueApp = new Vue({
         },
         yAxis: {
             type: 'value',
+            min:80,
+            max:100,
             splitLine:{
 　　　　        show:false
             },
@@ -270,37 +272,31 @@ var vueApp = new Vue({
             {
                 name: '安全生产',
                 type: 'line',
-                stack: '总量',
                 data: that.weekSafetyData,
             },
             {
                 name: '环境质量',
                 type: 'line',
-                stack: '总量',
                 data: that.weekEnvData,
             },
             {
                 name: '灾害管理',
                 type: 'line',
-                stack: '总量',
                 data: that.weekDisasterData,
             },
             {
                 name: '废料利用',
                 type: 'line',
-                stack: '总量',
                 data: that.weekWasterData,
             },
             {
                 name: '绿化覆盖',
                 type: 'line',
-                stack: '总量',
                 data: that.weekAfforestData
             },
             {
                 name: '建筑维护',
                 type: 'line',
-                stack: '总量',
                 data: that.weekBuildingData
             }
         ]

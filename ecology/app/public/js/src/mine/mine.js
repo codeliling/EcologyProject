@@ -51,11 +51,11 @@ var app = new Vue({
         {"location":"通道县","name":"通道侗族锅冲硅石矿"}],
 
     currentReportArea:[],
-    var1:64,
+    var1:8,
     var2:21,
     var3:635.09,
-    var4:182926,
-    var5:126006,
+    var4:1136,
+    var5:3326,
     priceLine:{},
     priceOption:{},
     dateData:["2020/9/1","2020/9/2","2020/9/3","2020/9/4","2020/9/5","2020/9/6","2020/9/7","2020/9/8","2020/9/9","2020/9/10","2020/9/11","2020/9/12","2020/9/13","2020/9/14","2020/9/15","2020/9/16","2020/9/17","2020/9/18","2020/9/19","2020/9/20","2020/9/21","2020/9/22","2020/9/23","2020/9/24","2020/9/25","2020/9/26","2020/9/27","2020/9/28","2020/9/29","2020/9/30","2020/10/1","2020/10/2","2020/10/3","2020/10/4","2020/10/5","2020/10/6","2020/10/7","2020/10/8","2020/10/9","2020/10/10","2020/10/11","2020/10/12","2020/10/13","2020/10/14","2020/10/15"],
@@ -65,67 +65,31 @@ var app = new Vue({
 
     //--------------------------------------
     machine1:[
-      [1118,70,10,2],
-      [1119,69,10,2],
-      [1113,75,10,2],
-      [1113,74,11,2],
-      [1114,73,11,2],
-      [1116,71,11,2],
-      [1117,70,11,2],
-      [1115,71,12,2],
-      [1110,76,12,2],
-      [1116,70,12,2],
-      [1111,75,12,2],
-      [1118,68,12,2],
-      [1110,77,11,2]
+      [150,62,2],
+      [151,61,2],
+      [150,62,2],
+      [151,61,2]
     ],
 
     machine2:[
-      [284,16,0,0],
-      [285,14,1,0],
-      [285,14,1,0],
-      [286,13,1,0],
-      [285,13,2,0],
-      [286,12,2,0],
-      [287,11,2,0],
-      [287,11,2,0],
-      [288,10,2,0],
-      [289,8,3,0],
-      [289,8,3,0],
-      [290,7,3,0],
-      [287,10,3,0]
+      [30,11,1],
+      [29,13,0],
+      [30,11,1],
+      [29,13,0],
     ],
 
     machine3:[
-      [268,32,0,0],
-      [267,33,0,0],
-      [269,31,0,0],
-      [268,32,0,0],
-      [267,32,1,0],
-      [266,33,1,0],
-      [265,34,1,0],
-      [269,29,2,0],
-      [270,28,2,0],
-      [268,30,2,0],
-      [272,26,2,0],
-      [271,26,3,0],
-      [269,28,3,0]
+      [100,39,3],
+      [99,40,3],
+      [100,39,3],
+      [99,40,3],
     ],
 
     machine4:[
-      [455,125,18,2],
-      [456,124,18,2],
-      [450,119,29,2],
-      [458,121,19,2],
-      [452,117,29,2],
-      [454,115,29,2],
-      [459,109,30,2],
-      [457,121,20,2],
-      [453,115,30,2],
-      [455,113,30,2],
-      [454,114,30,2],
-      [450,107,21,22],
-      [455,102,21,22]
+      [250,102,5],
+      [250,102,5],
+      [252,102,3],
+      [253,101,3],
     ],
     productLine:{},
     productLineOption:{},
@@ -184,10 +148,9 @@ var app = new Vue({
         dataset: {
             source: [
                 ['product', '挖掘机', '钻机', '破碎机', '自卸汽车'],
-                ['工作中', 1180, 284, 268, 455],
-                ['空闲中', 70, 16, 32, 125],
-                ['修理中', 10, 0, 0, 18],
-                ['缺工', 2, 0, 0, 2]
+                ['工作中', 150, 30, 100, 250],
+                ['空闲中', 62, 11, 39, 102],
+                ['修理中', 2, 1, 3, 5],
             ]
         },
         xAxis: [
@@ -232,7 +195,6 @@ var app = new Vue({
         ],
         series: [
             // These series are in the first grid.
-            {type: 'bar', seriesLayoutBy: 'row'},
             {type: 'bar', seriesLayoutBy: 'row'},
             {type: 'bar', seriesLayoutBy: 'row'},
             {type: 'bar', seriesLayoutBy: 'row'},
@@ -944,9 +906,10 @@ var app = new Vue({
     // },5000);
 
 
-    let reportTableInterval = 0;
+    let reportTableInterval = 4;
     $.getJSON('/public/assets/0-3-2.json',function(data){
       if(data.length > 0){
+        that.currentReportArea = data.slice(reportTableInterval,reportTableInterval + 4);
         setInterval(function(){
           that.currentReportArea = [];
           that.currentReportArea = data.slice(reportTableInterval,reportTableInterval + 4);
@@ -955,7 +918,7 @@ var app = new Vue({
           {
             reportTableInterval = 0;
           }
-        },1000);
+        },30000);
       }
     });
 
@@ -982,37 +945,31 @@ var app = new Vue({
       let arr1 = ['工作中'];
       let arr2 = ['空闲中'];
       let arr3 = ['修理中'];
-      let arr4 = ['缺工'];
       arr1.push(that.machine1[machineInfoInterval][0]);
       arr2.push(that.machine1[machineInfoInterval][1]);
       arr3.push(that.machine1[machineInfoInterval][2]);
-      arr4.push(that.machine1[machineInfoInterval][3]);
 
-      arr1.push(that.machine1[machineInfoInterval][0]);
+      arr1.push(that.machine2[machineInfoInterval][0]);
       arr2.push(that.machine2[machineInfoInterval][1]);
-      arr3.push(that.machine3[machineInfoInterval][2]);
-      arr4.push(that.machine4[machineInfoInterval][3]);
+      arr3.push(that.machine2[machineInfoInterval][2]);
 
-      arr1.push(that.machine1[machineInfoInterval][0]);
-      arr2.push(that.machine2[machineInfoInterval][1]);
+      arr1.push(that.machine3[machineInfoInterval][0]);
+      arr2.push(that.machine3[machineInfoInterval][1]);
       arr3.push(that.machine3[machineInfoInterval][2]);
-      arr4.push(that.machine4[machineInfoInterval][3]);
 
-      arr1.push(that.machine1[machineInfoInterval][0]);
-      arr2.push(that.machine2[machineInfoInterval][1]);
-      arr3.push(that.machine3[machineInfoInterval][2]);
-      arr4.push(that.machine4[machineInfoInterval][3]);
+      arr1.push(that.machine4[machineInfoInterval][0]);
+      arr2.push(that.machine4[machineInfoInterval][1]);
+      arr3.push(that.machine4[machineInfoInterval][2]);
 
       that.productLineOption.dataset.source[1] = arr1;
       that.productLineOption.dataset.source[2] = arr2;
       that.productLineOption.dataset.source[3] = arr3;
-      that.productLineOption.dataset.source[4] = arr4;
       that.productLine.setOption(that.productLineOption);
       machineInfoInterval = machineInfoInterval + 1;
       if(machineInfoInterval == that.machine1.length)
       {
         machineInfoInterval = 0;
       }
-    },2000);
+    },30000);
   }
 });

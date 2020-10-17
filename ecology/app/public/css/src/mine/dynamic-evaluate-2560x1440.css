@@ -270,11 +270,11 @@ body{
 
 .eva-index{
   color:#5FA731;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: bold;
   position: absolute;
   right:10px;
-  top: 30px
+  top: 42px
 }
 
 .eva-box-title::before{
