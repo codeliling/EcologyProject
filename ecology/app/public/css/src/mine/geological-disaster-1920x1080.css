@@ -144,7 +144,7 @@ body{
 
 #map{
   width: 100%;
-  height: calc(100vh - 330px);
+  height: 620px;
   background-image: url('/public/images/mine/7-zhutu.jpg');
   background-size: cover;
   background-repeat: no-repeat;

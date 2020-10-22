@@ -193,7 +193,7 @@ body{
 }
 
 .box-bg-4{
-  height:360px;
+  height:420px;
 }
 
 .box-bg-5{
@@ -302,6 +302,7 @@ body{
   display: flex;
   justify-content: space-around;
   margin:10px 15px;
+  text-align: right;
 }
 
 .g3-desc p{
@@ -310,6 +311,13 @@ body{
   line-height: 40px;
 }
 
+.g3-p1{
+  text-align: left;
+}
+
+.g3-p2{
+  text-align: right;
+}
 #graphic3{
   width: 40%;
   height: 300px;
@@ -403,7 +411,7 @@ body{
 
 #graphic4{
   width:100%;
-  height: 120px;
+  height: 370px;
 }
 
 #graphic2{

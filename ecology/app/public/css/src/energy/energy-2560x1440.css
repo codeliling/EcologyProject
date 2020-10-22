@@ -308,6 +308,15 @@ body{
   width:200px;
   color:#A5D9E1;
   line-height: 40px;
+  text-align: right;
+}
+
+.g3-p1{
+  text-align: left;
+}
+
+.g3-p2{
+  text-align: right;
 }
 
 #graphic3{
