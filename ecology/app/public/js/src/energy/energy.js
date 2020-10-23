@@ -6,6 +6,11 @@ var app = new Vue({
     amount:'',
     graphic1:{},
     graphic1Option:{},
+    elecSurplus1:'',
+    elecSurplus2:'',
+    elecSurplus3:'',
+    elecSurplus4:'',
+    updateDate:'',
     graphic1Data:{
       "鹤城区":[20,71,8,25],
       "沅陵县":[9,45,5,16],
@@ -109,8 +114,8 @@ var app = new Vue({
                 formatter: '{b}<br/>{c} (kWh/d)'
             },
             visualMap: {
-                min: 100000000,
-                max: 1000000000,
+                min: 150,
+                max: 1500000,
                 text: ['High', 'Low'],
                 realtime: false,
                 calculable: true,
@@ -175,11 +180,11 @@ var app = new Vue({
            that.amount = params.value;
            let cName = params.name;
            let graphic1InnerData = that.graphic1Data[cName];
-           console.log(graphic1InnerData);
            that.graphic1Option.series[0].data[0].value = graphic1InnerData[0];
            that.graphic1Option.series[0].data[1].value = graphic1InnerData[1];
            that.graphic1Option.series[0].data[2].value = graphic1InnerData[2];
            that.graphic1Option.series[0].data[3].value = graphic1InnerData[3];
+           that.graphic1Option.graphic.style.text = params.name;
            that.graphic1.setOption(that.graphic1Option);
         });
     });
@@ -204,6 +209,18 @@ var app = new Vue({
             padding:[10, 30, 5, 5],
             itemWidth:30,
         },
+        graphic:{       //图形中间文字
+            type:"text",
+            left:"center",
+            top:"100px",
+            style:{
+                text:"鹤城区",
+                textAlign:"center",
+                fill:"#A5D9E1",
+                fontSize:14,
+                fontWeight: 'bold'
+            }
+        },
         grid: [{
            left: '10%',
            bottom: '50px',
@@ -222,13 +239,6 @@ var app = new Vue({
                     position: 'center'
                 },
                 center: ["50%", "40%"],
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: '20',
-                        fontWeight: 'bold'
-                    }
-                },
                 labelLine: {
                     show: false
                 },
@@ -482,6 +492,54 @@ var app = new Vue({
     graphic4.setOption(graphic4Option);
   },
   created() {
+    var d = new Date();
+    this.updateDate = d.getFullYear() +'-'+(d.getMonth() + 1)+'-'+d.getDate();
+    var day = d.getDate();
+    let data = this.graphic2Data[day - 1];
+    this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×10^8kWh/m)';
+    this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×10^8kWh/m)';
+    this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×10^8kWh/m)';
+    this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×10^8kWh/m)';
+
+    let width1 = data[0] * 400 / 100;
+    let leftWidth1 = 400 - width1 + 90;
+    let width2 = data[2] * 400 / 100;
+    let leftWidth2 = 400 - width2 + 90;
+    let width3 = data[4] * 400 / 100;
+    let leftWidth3 = 400 - width3 + 90;
+    let width4 = data[6] * 400 / 100;
+    let leftWidth4 = 400 - width4 + 90;
+
+    if(leftWidth1 > 310){
+      leftWidth1 = 305;
+    }
+
+    if(leftWidth2 > 310){
+      leftWidth2 = 305;
+    }
+
+    if(leftWidth3 > 310){
+      leftWidth3 = 305;
+    }
+
+    if(leftWidth4 > 310){
+      leftWidth4 = 305;
+    }
+    $(".box2-block-bar2").css('width',width1);
+    $(".box2-block-bar2").css('left', 400 - width1 + 85);
+    $(".box2-block-bar-value1").css('left',leftWidth1);
+
+    $(".box2-block-bar3").css('width',width2);
+    $(".box2-block-bar3").css('left', 400 - width2 + 85);
+    $(".box2-block-bar-value2").css('left',leftWidth2);
+
+    $(".box2-block-bar4").css('width',width3);
+    $(".box2-block-bar4").css('left', 400 - width3 + 85);
+    $(".box2-block-bar-value3").css('left',leftWidth3);
+
+    $(".box2-block-bar5").css('width',width4);
+    $(".box2-block-bar5").css('left', 400 - width4 + 85);
+    $(".box2-block-bar-value4").css('left',leftWidth4);
 
   }
 });
