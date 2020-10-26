@@ -114,9 +114,10 @@ var app = new Vue({
                 formatter: '{b}<br/>{c} (kWh/d)'
             },
             visualMap: {
-                min: 150,
-                max: 1500000,
-                text: ['High', 'Low'],
+                min: 0,
+                max: 1300000,
+                text: ['', '单位: Kwh/d'],//两端的文本
+                textGap:20,
                 realtime: false,
                 calculable: true,
                 orient: 'vertical',

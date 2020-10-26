@@ -504,12 +504,12 @@ var app = new Vue({
 
         $.getJSON('/public/assets/energy/10-2.json',function(data){
           that.orilGraphicData = data;
-          that.countOption.series[0].data[0].value = data[0].value;
+          that.countOption.series[0].data[0].value = Math.round(data[0].value);
           that.countGraphic.setOption(that.countOption);
         });
         let orilInterval = 1;
         setInterval(function(){
-          that.countOption.series[0].data[0].value = that.orilGraphicData[orilInterval].value;
+          that.countOption.series[0].data[0].value = Math.round(that.orilGraphicData[orilInterval].value);
           that.countGraphic.setOption(that.countOption);
           orilInterval = orilInterval + 1;
           if(orilInterval == that.orilGraphicData.length){

@@ -122,8 +122,8 @@ var app = new Vue({
           {
               name: '累计能耗量',
               type: 'gauge',
-              min:50000,
-              max: 65000,
+              min:5,
+              max: 650,
               detail: {formatter: '{value}'},
               axisLine: {            // 坐标轴线
                      lineStyle: {       // 属性lineStyle控制线条样式
@@ -150,11 +150,11 @@ var app = new Vue({
     $.getJSON('/public/assets/energy/8-1.json',function(data){
       that.orilGraphicData = data;
       that.countOption.series[0].data[0].value = data[0].value;
-      that.countGraphic.setOption(that.countOption);
+      that.countGraphic.setOption(Math.round(that.countOption));
     });
     let orilInterval = 1;
     setInterval(function(){
-      that.countOption.series[0].data[0].value = that.orilGraphicData[orilInterval].value;
+      that.countOption.series[0].data[0].value = Math.round(that.orilGraphicData[orilInterval].value);
       that.countGraphic.setOption(that.countOption);
       orilInterval = orilInterval + 1;
       if(orilInterval == that.orilGraphicData.length){
