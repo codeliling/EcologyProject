@@ -52,14 +52,14 @@ var app = new Vue({
             x: '100px',
             y: '35px',
             itemGap: 100,
-            data: ['洁卫', '餐饮','空调','其他'],
+            data: ['空调', '厨房','娱乐','其他'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             },
 
         },
-        color:['#3074B1','#B691C1','#A1D1DA','#7D57A1'],
+        color:['#7D57A1','#A1D1DA','#B691C1','#3074B1'],
         grid: {
             left: '3%',
             right: '4%',
@@ -103,19 +103,19 @@ var app = new Vue({
         },
         series: [
             {
-                name: '洁卫',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
-                name: '餐饮',
-                type: 'line',
-                stack: '总量',
-                data: []
-            },
-            {
                 name: '空调',
+                type: 'line',
+                stack: '总量',
+                data: []
+            },
+            {
+                name: '厨房',
+                type: 'line',
+                stack: '总量',
+                data: []
+            },
+            {
+                name: '娱乐',
                 type: 'line',
                 stack: '总量',
                 data: []
