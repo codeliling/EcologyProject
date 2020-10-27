@@ -251,6 +251,10 @@ var app = new Vue({
                 name: '空调',
                 type: 'radar',
                 lineStyle:{normal: {color:'#7D57A1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#7D57A1']
+                },
                 data: [
                     {
                       value: [145.2692955,199.7338042,171.4048975,167.5163098,161.9796697,131.8499025,135.0657437,147.714416,155.7482997,127.236056,181.7919688,193.7254654],
@@ -261,6 +265,10 @@ var app = new Vue({
                 name: '厨房',
                 type: 'radar',
                 lineStyle:{normal: {color:'#A1D1DA'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#A1D1DA']
+                },
                 data: [{
                         value: [331.90899,413.8905857,396.8813835,436.5695219,459.2484581,481.9273943,470.5879262,453.578724,481.9273943,353.578724,408.2208516,447.90899],
                         name: '厨房'
@@ -270,6 +278,10 @@ var app = new Vue({
                 name: '娱乐',
                 type: 'radar',
                 lineStyle:{normal: {color:'#B691C1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#B691C1']
+                },
                 data: [{
                         value: [113.2886115,143.0976448,6.6128636,5.45561247,55.47720213,114.6878334,182.302479,171.9344536,148.1794348,51.0135192,45.91216728,152.9933229],
                         name: '娱乐'
@@ -279,6 +291,10 @@ var app = new Vue({
                 name: '其他',
                 type: 'radar',
                 lineStyle:{normal: {color:'#3074B1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#3074B1']
+                },
                 data: [{
                         value: [202.3169325,262.3941275,268.432725,255.6759975,268.9578675,262.2397375,275.5988025,265.6374,282.2397375,215.6374,239.07366,262.3169325],
                         name: '其他'
@@ -342,6 +358,10 @@ var app = new Vue({
                 name: '空调',
                 type: 'radar',
                 lineStyle:{normal: {color:'#7D57A1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#7D57A1']
+                },
                 data: [
                     {
                       value: [44.92304483,36.89768417,46.40402433,46.40402433],
@@ -352,6 +372,10 @@ var app = new Vue({
                 name: '厨房',
                 type: 'radar',
                 lineStyle:{normal: {color:'#A1D1DA'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#A1D1DA']
+                },
                 data: [{
                         value: [120.387353,65.67910478,124.3561668,124.3561668],
                         name: '厨房'
@@ -361,6 +385,10 @@ var app = new Vue({
                 name: '娱乐',
                 type: 'radar',
                 lineStyle:{normal: {color:'#B691C1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#B691C1']
+                },
                 data: [{
                         value: [50.14754897,42.35183683,51.80076487,51.80076487],
                         name: '娱乐'
@@ -370,6 +398,10 @@ var app = new Vue({
                 name: '其他',
                 type: 'radar',
                 lineStyle:{normal: {color:'#3074B1'}},
+                areaStyle: {
+                    opacity: 0.5,
+                    color: ['#3074B1']
+                },
                 data: [{
                         value: [70.50459325,53.60369625,72.8289205,72.8289205],
                         name: '其他'
@@ -435,6 +467,10 @@ var app = new Vue({
             name: '空调',
             type: 'radar',
             lineStyle:{normal: {color:'#7D57A1'}},
+            areaStyle: {
+                opacity: 0.5,
+                color: ['#7D57A1']
+            },
             data: [
                 {
                   value: [6.417577833,6.699669167,6.347055,6.488100667,6.417577833,8.5586235,9.5586235],
@@ -445,6 +481,14 @@ var app = new Vue({
             name: '厨房',
             type: 'radar',
             lineStyle:{normal: {color:'#A1D1DA'}},
+            areaStyle: {
+                opacity: 0.5,
+                color: ['#7D57A1']
+            },
+            areaStyle: {
+                opacity: 0.5,
+                color: ['#A1D1DA']
+            },
             data: [{
                     value: [17.19819329,17.95415783,17.00920215,17.38718442,17.19819329,25.57617556,27.34623556],
                     name: '厨房'
@@ -454,6 +498,10 @@ var app = new Vue({
             name: '娱乐',
             type: 'radar',
             lineStyle:{normal: {color:'#B691C1'}},
+            areaStyle: {
+                opacity: 0.5,
+                color: ['#B691C1']
+            },
             data: [{
                     value: [7.163935567,7.478833833,7.085211,7.242660133,7.163935567,15.3213847,16.3213847],
                     name: '娱乐'
@@ -463,6 +511,10 @@ var app = new Vue({
             name: '其他',
             type: 'radar',
             lineStyle:{normal: {color:'#3074B1'}},
+            areaStyle: {
+                opacity: 0.5,
+                color: ['#3074B1']
+            },
             data: [{
                     value: [10.07208475,10.51481375,9.9614025,10.182767,10.07208475,16.29344925,17.29344925],
                     name: '其他'
