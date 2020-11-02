@@ -20,6 +20,7 @@ body{
 .main-content{
   width:100%;
   position: relative;
+  height: calc(100vh - 115px);
 }
 
 
@@ -88,7 +89,7 @@ body{
 .menu-bottom{
   position: absolute;
   top:35px;
-  left:30px;
+  right: 40px;
   width:180px;
   height:4px;
 }
@@ -277,4 +278,12 @@ body{
 
 .box-block9{
   background-color: #195256;
+}
+
+.hot-pic{
+  position: absolute;
+  right:30px;
+  bottom:30px;
+  width:200px;
+
 }

@@ -22,8 +22,8 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
+    cityMapClick:function(){
+      window.location.href = '/energy';
     },
     flourBtnClick:function(){
       window.location.href = '/energy/flour';
@@ -63,7 +63,7 @@ var app = new Vue({
                         },
                         padding: [460,10,10,10],
                     },
-              data: [{value: 50, name: '能量目标余量Kwh'}]
+              data: [{value: 50, name: '能量目标余量 Wh'}]
           }
       ]
     }
@@ -203,17 +203,8 @@ var app = new Vue({
              },
         },
         tooltip: {},
-        legend: {
-          show: true,
-          icon: 'rect',
-            data: ['空调', '厨房','娱乐','其他'],
-            padding: [30,5,5,5],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
-        },
-        color:['#7D57A1','#A1D1DA','#B691C1','#3074B1'],
+
+        color:['#A1D1DA','#3074B1','#B691C1','#7D57A1',],
         radar: {
             name: {
                 textStyle: {
@@ -225,18 +216,18 @@ var app = new Vue({
                 }
             },
             indicator: [
-              { name: '1', max: 500},
-              { name: '2', max: 500},
-              { name: '3', max: 500},
-              { name: '4', max: 500},
-              { name: '5', max: 500},
-              { name: '6', max: 500},
-              { name: '7', max: 500},
-              { name: '8', max: 500},
-              { name: '9', max: 500},
-              { name: '10', max: 500},
-              { name: '11', max: 500},
-              { name: '12', max: 500},
+              { name: '1月', max: 500},
+              { name: '2月', max: 500},
+              { name: '3月', max: 500},
+              { name: '4月', max: 500},
+              { name: '5月', max: 500},
+              { name: '6月', max: 500},
+              { name: '7月', max: 500},
+              { name: '8月', max: 500},
+              { name: '9月', max: 500},
+              { name: '10月', max: 500},
+              { name: '11月', max: 500},
+              { name: '12月', max: 500},
             ],
             splitArea : {
                  show : true,
@@ -318,17 +309,7 @@ var app = new Vue({
              },
         },
         tooltip: {},
-        legend: {
-          show: true,
-          icon: 'rect',
-            data: ['空调', '厨房','娱乐','其他'],
-            padding: [30,5,5,5],
-            textStyle: {
-                fontSize: 12,
-                color: '#A5D9E1'
-            }
-        },
-        color:['#7D57A1','#A1D1DA','#B691C1','#3074B1'],
+        color:['#A1D1DA','#3074B1','#B691C1','#7D57A1',],
         radar: {
             name: {
                 textStyle: {
@@ -340,10 +321,10 @@ var app = new Vue({
                 }
             },
             indicator: [
-              { name: '1', max: 130},
-              { name: '2', max: 130},
-              { name: '3', max: 130},
-              { name: '4', max: 130},
+              { name: '第一周', max: 130},
+              { name: '第二周', max: 130},
+              { name: '第三周', max: 130},
+              { name: '第四周', max: 130},
             ],
             splitArea : {
                  show : true,
@@ -414,7 +395,7 @@ var app = new Vue({
     var baseGraphic2_3 = echarts.init(document.getElementById('graphic-base2-3'));
     var baseGrasphicOption2_3 = {
         title: {
-            text: '日数据图',
+            text: '周数据图',
             textStyle: {
                  fontFamily: "sans-serif", // 主标题文字的字体系列。
                  fontSize: 15, // 字体大小
@@ -428,14 +409,16 @@ var app = new Vue({
         legend: {
           show: true,
           padding: [30,5,5,5],
-          icon: 'rect',
+          bottom:'bottom',
+          icon: 'circle',
             data: ['空调', '厨房','娱乐','其他'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
             }
         },
-        color:['#7D57A1','#A1D1DA','#B691C1','#3074B1'],
+
+        color:['#A1D1DA','#3074B1','#B691C1','#7D57A1',],
         radar: {
             name: {
                 textStyle: {
@@ -447,13 +430,13 @@ var app = new Vue({
                 }
             },
             indicator: [
-                { name: '1', max: 30},
-                { name: '2', max: 30},
-                { name: '3', max: 30},
-                { name: '4', max: 30},
-                { name: '5', max: 30},
-                { name: '6', max: 30},
-                { name: '7', max: 30},
+                { name: '周一', max: 30},
+                { name: '周二', max: 30},
+                { name: '周三', max: 30},
+                { name: '周四', max: 30},
+                { name: '周五', max: 30},
+                { name: '周六', max: 30},
+                { name: '周日', max: 30},
             ],
             splitArea : {
                  show : true,

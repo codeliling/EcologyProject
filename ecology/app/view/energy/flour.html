@@ -17,12 +17,12 @@
         <p>怀化智慧能源综合管理平台</p>
       </div>
       <div class="left-menu">
+        <div class="menu" @click="cityMapClick">城市级能耗监测</div>
         <div class="menu" @click="areaMapClick">社区级能耗监测</div>
-        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
       </div>
       <div class="right-menu">
+        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
         <div class="menu" @click="flourClick">住户级能耗监测</div>
-        <div class="menu" @click="analysisClick">能耗数据挖掘流程</div>
         <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
       </div>
 
@@ -31,7 +31,7 @@
       <div class="content_left">
         <div class="main-menu-block">
           <div class="menu-block" @click="flourBtnClick">
-            <div class="box-bg box-bg-3"></div>
+            <div class="box-bg box-bg-3 box-bg-select"></div>
             <div class="image-border image-border1"></div>
             <div class="image-border image-border2"></div>
             <div class="image-border image-border3"></div>
@@ -93,6 +93,8 @@
                 <img class="room"  v-for="elem in rommBgData" :src="elem"/>
                 <img class="main-board" src="/public/images/room/flour.png"/>
               </div>
+              <div class="face-area" @click="faceClick"></div>
+              <p class="face-title">比较节能</p>
             </div>
 
         </div>

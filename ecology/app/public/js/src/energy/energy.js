@@ -91,9 +91,9 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
-    }
+    cityMapClick:function(){
+      window.location.href = '/energy';
+    },
   },
   mounted() {
     let that = this;
@@ -105,18 +105,18 @@ var app = new Vue({
     $.get('/public/assets/huaihua.json', function (geoJson) {
         myChart.hideLoading();
         echarts.registerMap('HH', geoJson);
-        myChart.setOption(option = {
+        let mapOption = {
             title: {
               text: '',
             },
             tooltip: {
                 trigger: 'item',
-                formatter: '{b}<br/>{c} (kWh/d)'
+                formatter: '{b}<br/>{c} (KWh)'
             },
             visualMap: {
                 min: 0,
                 max: 1300000,
-                text: ['', '单位: Kwh/d'],//两端的文本
+                text: ['', '单位: x10^5 kWh/d'],//两端的文本
                 textGap:20,
                 realtime: false,
                 calculable: true,
@@ -138,22 +138,24 @@ var app = new Vue({
                     type: 'map',
                     mapType: 'HH', // 自定义扩展图表类型
                     label: {
+                      normal: {
+                        show: true,//显示省份标签
+                        textStyle:{color:"#FFFFFF"}//省份标签字体颜色
+                      },
+                      emphasis: {//对应的鼠标悬浮效果
                         show: true,
-                        textStyle:{
-                    			fontSize:12,
-                    			color:'#ffffff'
-                    		}
+                        textStyle:{color:"#FFFFFF"}
+                      }
                     },
                     itemStyle: {
                         normal: {
-                          borderWidth: .5, //区域边框宽度
-                          borderColor: '#009fe8', //区域边框颜色
-                          areaColor: "#ffefd5", //区域颜色
+                           borderWidth: .5,//区域边框宽度
+                           borderColor: '#5FA731',
                         },
                         emphasis: {
-                          borderWidth: .5,
-                          borderColor: '#192A54',
-                          areaColor: "#5FA731",
+                           borderWidth: .25,//区域边框宽度
+                           borderColor: '#5FA731',
+                           areaColor:'',
                         }
                     },
                     roam:true,
@@ -174,9 +176,32 @@ var app = new Vue({
 
                 }
             ]
+        };
+        myChart.setOption(mapOption);
+        myChart.on("mouseover", function (params){
+            mapOption.series[0].itemStyle.emphasis.areaColor = '';
+            myChart.setOption(mapOption);
+            that.countryName = params.name;
+            that.amount = params.value;
+            let cName = params.name;
+            let graphic1InnerData = that.graphic1Data[cName];
+            that.graphic1Option.series[0].data[0].value = graphic1InnerData[0];
+            that.graphic1Option.series[0].data[1].value = graphic1InnerData[1];
+            that.graphic1Option.series[0].data[2].value = graphic1InnerData[2];
+            that.graphic1Option.series[0].data[3].value = graphic1InnerData[3];
+            that.graphic1Option.graphic.style.text = params.name;
+            that.graphic1.setOption(that.graphic1Option);
+
+            // if(params.data.value != undefined){
+            //     myChart.dispatchAction({
+            //         type: 'downplay'
+            //     });
+            // }
         });
+
         myChart.on('click', function (params) {
            //window.location.href = '/energy/country?name=' + params.name;
+
            that.countryName = params.name;
            that.amount = params.value;
            let cName = params.name;
@@ -294,6 +319,7 @@ var app = new Vue({
         },
         yAxis: {
             type: 'value',
+            name:'x10^4 kWh',
             splitLine:{
 　　　　        show:false
             },
@@ -356,7 +382,7 @@ var app = new Vue({
         color:['#3074B1','#B691C1','#A1D1DA'],
         series: [
             {
-                name: '访问来源',
+                name: '',
                 type: 'pie',
                 radius: ['50%', '70%'],
                 avoidLabelOverlap: false,
@@ -409,7 +435,7 @@ var app = new Vue({
       },
       xAxis: {
           type: 'value',
-          name: 'Kwh/m2.a',
+          name: 'kWh/㎡·a',
           splitLine:{
 　　　　        show:false
           },
@@ -497,10 +523,10 @@ var app = new Vue({
     this.updateDate = d.getFullYear() +'-'+(d.getMonth() + 1)+'-'+d.getDate();
     var day = d.getDate();
     let data = this.graphic2Data[day - 1];
-    this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×10^8kWh/m)';
-    this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×10^8kWh/m)';
-    this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×10^8kWh/m)';
-    this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×10^8kWh/m)';
+    this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×10^8kWh)';
+    this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×10^8kWh)';
+    this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×10^8kWh)';
+    this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×10^8kWh)';
 
     let width1 = data[0] * 400 / 100;
     let leftWidth1 = 400 - width1 + 90;

@@ -108,7 +108,7 @@ body{
 .menu-bottom{
   position: absolute;
   top:45px;
-  right:175px;
+  left:30px;
   width:180px;
   height:4px;
 }
@@ -135,6 +135,7 @@ body{
   position: absolute;
   left:30px;
   bottom:30px;
+  width: 240px;
 }
 
 .pic4{

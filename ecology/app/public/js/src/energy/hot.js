@@ -17,8 +17,8 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
+    cityMapClick:function(){
+      window.location.href = '/energy';
     },
     hotClick:function(){
 

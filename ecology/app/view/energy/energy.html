@@ -15,12 +15,13 @@
         <p>怀化智慧能源综合管理平台</p>
       </div>
       <div class="left-menu">
+        <div class="menu" @click="cityMapClick">城市级能耗监测</div>
         <div class="menu" @click="areaMapClick">社区级能耗监测</div>
-        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
+        <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
       </div>
       <div class="right-menu">
+        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
         <div class="menu" @click="flourClick">住户级能耗监测</div>
-        <div class="menu" @click="analysisClick">能耗数据挖掘流程</div>
       </div>
 
     </div>
@@ -43,7 +44,7 @@
 
                 <div class="desc-area1-box1">
                   <p class="desc-area1-box-p1">覆盖区县</p>
-                  <p class="desc-area1-box-p2">6<span style="font-size:14px">个</span></p>
+                  <p class="desc-area1-box-p2">13<span style="font-size:14px">个</span></p>
                 </div>
                 <div class="desc-area1-box2">
                   <p class="desc-area1-box-p1">覆盖社区</p>
@@ -51,7 +52,7 @@
                 </div>
                 <div class="desc-area1-box3">
                   <p class="desc-area1-box-p1">监测能源种类<p>
-                  <p class="desc-area1-box-p2">水 | <span style="color:#A8A8A8">电</span> | <span style="color:#A8A8A8">气</span></p>
+                  <p class="desc-area1-box-p2">电 | <span style="color:#A8A8A8">水</span> | <span style="color:#A8A8A8">气</span></p>
                 </div>
               </div>
             </div>
@@ -60,7 +61,7 @@
         </div>
         <div class="block">
           <div class="assessment-block">
-            <p>重点区县实时能耗</p>
+            <p>重点区县节能减排指标</p>
           </div>
           <div class="box">
             <div class="box-bg box-bg-2"></div>
@@ -70,8 +71,7 @@
             <div class="image-border image-border4"></div>
             <div>
               <div class="g3-desc">
-                <p>2020年10月 主要城区目标能耗余量</p>
-                <p>更新时间：${updateDate}</p>
+                <p>2020年11月 主要城区目标能耗余量</p>
               </div>
               <div class="box2-block-area">
                 <div class="box2-block1">
@@ -121,10 +121,14 @@
                 <p style="line-height:26px;color:#A5D9E1">数据更新频率：1小时/次</p>
               </div>
               <div class="tips-area-content-box">
-                <p class="tips-area-content">${countryName}今日能源消耗量</p>
+                <p class="tips-area-content1">${countryName}电能实时消耗量</p>
               </div>
               <div class="tips-area-content-box">
-                <p class="tips-area-content">${amount}Kwh</p>
+                <p class="tips-area-content2">${amount}KWh</p>
+              </div>
+              <div class="tips-area-content-box" style="margin-top:10px">
+                <p class="tips-area-content1">总体用能评价:良好</p>
+                <p class="tips-area-content1">异常用能情况:无</p>
               </div>
             </div>
         </div>
@@ -133,7 +137,7 @@
       <div class="content_right">
         <div class="block">
           <div class="assessment-block">
-            <p>重点区县能耗指标比较</p>
+            <p>重点区县能耗指标</p>
           </div>
           <div class="box">
             <div class="box-bg box-bg-4"></div>
@@ -144,7 +148,6 @@
             <div>
               <div class="g3-desc">
                 <p></p>
-                <p>更新时间：${updateDate}</p>
               </div>
 
               <div id="graphic4"></div>
@@ -154,7 +157,7 @@
         </div>
         <div class="block">
           <div class="assessment-block">
-            <p>区域建筑</p>
+            <p>重点社区能耗评估</p>
           </div>
           <div class="box">
             <div class="box-bg box-bg-3"></div>
@@ -165,7 +168,6 @@
             <div>
               <div class="g3-desc">
                 <p class="g3-p1">某智能小区</p>
-                <p class="g3-p2">更新时间：${updateDate}</p>
               </div>
 
               <div class="inner-block">
@@ -173,15 +175,15 @@
                 <div id="desc-area2">
                   <div class="g3-area g3-area1">
                     <p>高能耗型建筑  |  3栋</p>
-                    <p>平均能耗  |  329.62kw.h/㎡</p>
+                    <p>平均能耗  |  329.62 kWh/㎡</p>
                   </div>
                   <div class="g3-area g3-area2">
                     <p>中能耗型建筑  |  20栋</p>
-                    <p>平均能耗  |  341.85kw.h/㎡</p>
+                    <p>平均能耗  |  341.85 kWh/㎡</p>
                   </div>
                   <div class="g3-area g3-area3">
                     <p>低能耗型建筑  |  4栋</p>
-                    <p>平均能耗  |  163.72kw.h/㎡</p>
+                    <p>平均能耗  |  163.72 kWh/㎡</p>
                   </div>
                 </div>
               </div>
@@ -189,6 +191,7 @@
           </div>
 
         </div>
+        <p class="g3-p2">更新时间：${updateDate}</p>
         <!--
         <div class="block">
           <div class="assessment-block">

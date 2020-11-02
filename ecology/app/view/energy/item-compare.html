@@ -16,12 +16,12 @@
         <p>怀化智慧能源综合管理平台</p>
       </div>
       <div class="left-menu">
+        <div class="menu" @click="cityMapClick">城市级能耗监测</div>
         <div class="menu" @click="areaMapClick">社区级能耗监测</div>
-        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
       </div>
       <div class="right-menu">
+        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
         <div class="menu" @click="flourClick">住户级能耗监测</div>
-        <div class="menu" @click="analysisClick">能耗数据挖掘流程</div>
         <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
       </div>
 
@@ -37,19 +37,19 @@
             <div class="image-border image-border4"></div>
             <div class="menu-inner-block">
               <img class="menu-icon" src="/public/images/energy/icon3.png" />
-              <p>住户能耗</br>实时监测</p>
+              <p>房屋</br>能耗</p>
             </div>
           </div>
 
           <div class="menu-block" @click="itemBtnClick">
-            <div class="box-bg box-bg-3"></div>
+            <div class="box-bg box-bg-3 box-bg-select"></div>
             <div class="image-border image-border1"></div>
             <div class="image-border image-border2"></div>
             <div class="image-border image-border3"></div>
             <div class="image-border image-border4"></div>
             <div  class="menu-inner-block">
               <img class="menu-icon" src="/public/images/energy/icon2.png" />
-              <p>分项能耗</br>实时监测</p>
+              <p>分项</br>能耗</p>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
             <div class="image-border image-border4"></div>
             <div class="menu-inner-block">
               <img class="menu-icon" src="/public/images/energy/icon1.png" />
-              <p>实时分项</br>能耗基准</p>
+              <p>分项能耗</br>基准比较</p>
             </div>
           </div>
 
@@ -89,7 +89,7 @@
           <div class="image-border image-border4"></div>
             <div id="line-graphic" ></div>
             <div class="update-time">更新时间 2020-10-17</div>
-            <div class="face-area" @click="faceClick"></div>
+            
         </div>
       </div>
 

@@ -17,9 +17,9 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
-    }
+    cityMapClick:function(){
+      window.location.href = '/energy';
+    },
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例

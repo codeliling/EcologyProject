@@ -22,8 +22,8 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
+    cityMapClick:function(){
+      window.location.href = '/energy';
     },
     flourBtnClick:function(){
       window.location.href = '/energy/flour';
@@ -34,9 +34,7 @@ var app = new Vue({
     baseBtnClick:function(){
       window.location.href = '/energy/basecompare';
     },
-    faceClick:function(){
-      window.location.href = '/energy/face';
-    },
+    
   },
   mounted() {
     this.lineGraphic = echarts.init(document.getElementById('line-graphic'));
@@ -59,16 +57,18 @@ var app = new Vue({
             },
 
         },
-        color:['#7D57A1','#A1D1DA','#B691C1','#3074B1'],
+        color:['#A1D1DA','#3074B1','#B691C1','#7D57A1',],
         grid: {
-            left: '3%',
+            left: '5%',
             right: '4%',
             top: '18%',
-            bottom:'40px',
+            bottom:'60px',
             containLabel: true
         },
         xAxis: {
             type: 'category',
+            name:'时间',
+            nameTextStyle:{"fontSize":16},
             boundaryGap: false,
             data: [],
             splitLine:{
@@ -81,12 +81,15 @@ var app = new Vue({
             },
             axisLabel:{
               textStyle:{
-                color: '#ffffff'
+                color: '#ffffff',
+                fontSize:16
               }
             }
         },
         yAxis: {
             type: 'value',
+            name:'能耗值/Wh',
+            nameTextStyle:{"fontSize":16},
             splitLine:{
 　　　　        show:false
             },
@@ -97,7 +100,8 @@ var app = new Vue({
             },
             axisLabel:{
               textStyle:{
-                color: '#ffffff'
+                color: '#ffffff',
+                fontSize:16
               }
             }
         },
@@ -145,7 +149,7 @@ var app = new Vue({
               detail: {formatter: '{value}'},
               axisLine: {            // 坐标轴线
                      lineStyle: {       // 属性lineStyle控制线条样式
-                         color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
+                         color: [[0.3, '#5FA731'],[0.5, '#85c154'], [0.8, '#dfc73d'], [1, '#e6951d']]
                      }
               },
               title : {
@@ -157,7 +161,7 @@ var app = new Vue({
                   },
                   padding: [460,10,10,10],
               },
-              data: [{value: 50, name: '总能耗Kwh'}]
+              data: [{value: 50, name: '总能耗Wh'}]
           }
       ]
     }

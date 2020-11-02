@@ -20,8 +20,8 @@ var app = new Vue({
     flourClick:function(){
       window.location.href = '/energy/flour';
     },
-    analysisClick:function(){
-
+    cityMapClick:function(){
+      window.location.href = '/energy';
     },
     flourBtnClick:function(){
       window.location.href = '/energy/flour';
@@ -31,6 +31,9 @@ var app = new Vue({
     },
     baseBtnClick:function(){
       window.location.href = '/energy/basecompare';
+    },
+    faceClick:function(){
+      window.location.href = '/energy/face';
     },
     getRoomBg:function(roomValue, roomNum){
       let colorValue = '';
@@ -123,11 +126,11 @@ var app = new Vue({
               name: '累计能耗量',
               type: 'gauge',
               min:5,
-              max: 650,
+              max: 65000,
               detail: {formatter: '{value}'},
               axisLine: {            // 坐标轴线
                      lineStyle: {       // 属性lineStyle控制线条样式
-                         color: [[0.3, '#e6951d'],[0.5, '#dfc73d'], [0.8, '#85c154'], [1, '#5FA731']]
+                         color: [[0.3, '#5FA731'],[0.5, '#85c154'], [0.8, '#dfc73d'], [1, '#e6951d']]
                      }
               },
               title : {
@@ -139,7 +142,7 @@ var app = new Vue({
                   },
                   padding: [460,10,10,10],
               },
-              data: [{value: 50, name: '累计能耗量Kwh'}]
+              data: [{value: 50, name: '累计能耗量 Wh'}]
           }
       ]
     }

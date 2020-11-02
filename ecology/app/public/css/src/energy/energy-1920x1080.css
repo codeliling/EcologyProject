@@ -169,7 +169,7 @@ body{
 
 .box{
   position: relative;
-  margin: 20px;
+  margin: 0px 20px;
 }
 
 .box-bg{
@@ -193,7 +193,7 @@ body{
 }
 
 .box-bg-4{
-  height:420px;
+  height:380px;
 }
 
 .box-bg-5{
@@ -317,6 +317,7 @@ body{
 
 .g3-p2{
   text-align: right;
+  color:#A5D9E1;
 }
 #graphic3{
   width: 40%;
@@ -526,24 +527,30 @@ body{
 }
 
 .tips-area{
-  width:360px;
+  width:300px;
   height:200px;
   position: absolute;
-  top:30px;
+  top:20px;
   left:30px;
 }
 
 .tips-area-content-box{
-  width:95%;
+  width:90%;
   text-align:center;
-  margin-top:25px;
+  margin:5px auto;
 }
-.tips-area-content{
+.tips-area-content1{
   line-height:32px;
-  font-size:20px;
+  font-size:14px;
+  font-weight: bold;
   color:#A5D9E1
 }
 
+.tips-area-content2{
+  line-height:32px;
+  font-size:26px;
+  color:#A5D9E1
+}
 .box2-block-area{
   height:200px; margin: 10px 20px; width:100%;
 }

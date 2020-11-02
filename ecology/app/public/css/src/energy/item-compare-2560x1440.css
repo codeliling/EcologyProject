@@ -104,7 +104,7 @@ body{
 .menu-bottom{
   position: absolute;
   top:40px;
-  left:30px;
+  right:30px;
   width:180px;
   height:4px;
 }
@@ -131,6 +131,10 @@ body{
   top:0px;
   background: rgba(14, 55, 116, 0.7);
   z-index: -10;
+}
+
+.box-bg-select{
+  background: rgba(49, 117, 177, 0.7);
 }
 
 .box-bg-1{
@@ -185,7 +189,7 @@ body{
 
 .update-time{
   width:200px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   color: #A5D9E1;
   text-align: right;

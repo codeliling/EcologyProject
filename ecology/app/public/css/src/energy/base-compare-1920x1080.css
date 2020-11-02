@@ -107,7 +107,7 @@ body{
 .menu-bottom{
   position: absolute;
   top:35px;
-  left:30px;
+  right:30px;
   width:180px;
   height:4px;
 }
@@ -132,6 +132,9 @@ body{
   z-index: -10;
 }
 
+.box-bg-select{
+  background: rgba(49, 117, 177, 0.7);
+}
 .box-bg-1{
   height: 245px;
 }
@@ -291,17 +294,20 @@ body{
 
 #graphic-base2-1{
   width:330px;
-  height: 500px;
+  height: 480px;
+  margin:10px 0px;
 }
 
 #graphic-base2-2{
   width:330px;
-  height: 500px;
+  height: 480px;
+  margin:10px 0px;
 }
 
 #graphic-base2-3{
   width:330px;
-  height: 500px;
+  height: 480px;
+  margin:10px 0px;
 }
 
 .panel{

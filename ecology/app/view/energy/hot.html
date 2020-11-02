@@ -15,17 +15,19 @@
         <p>怀化智慧能源综合管理平台</p>
       </div>
       <div class="left-menu">
+        <div class="menu" @click="cityMapClick">城市级能耗监测</div>
         <div class="menu" @click="areaMapClick">社区级能耗监测</div>
-        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
         <img class="menu-bottom" src="/public/images/mine/menu-bottom-line.png"/>
       </div>
       <div class="right-menu">
+        <div class="menu" @click="buildingMapClick">楼宇级能耗监测</div>
         <div class="menu" @click="flourClick">住户级能耗监测</div>
-        <div class="menu" @click="analysisClick">能耗数据挖掘流程</div>
       </div>
-
+    </div>
     <div class="main-content">
       <div id="main" class="content_center" @click="hotClick"></div>
+
+        <!--
       <div class="tips-block">
         <div class="box">
           <div class="image-border image-border1"></div>
@@ -33,9 +35,13 @@
           <div class="image-border image-border3"></div>
           <div class="image-border image-border4"></div>
           <div class="tips-block-content">
+
+
             <div style="text-align:center">
               <p style="font-size:16px;color:white;width:170px">单位:kwh</p>
             </div>
+
+
             <div style="position:relative">
               <div class="box-number">
                 <span>490</span>
@@ -62,11 +68,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
+      <img src="/public/images/energy/hot-01.png" class="hot-pic"/>
     </div>
   </div>
-</div>
 </body>
 <script src="/public/js/lib/jquery.min.js"></script>
 <script src="/public/js/lib/echarts.min.js"></script>
