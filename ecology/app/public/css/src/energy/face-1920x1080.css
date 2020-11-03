@@ -189,7 +189,7 @@ body{
 }
 
 .graphic1-bar1{
-  width:15.7%;
+  width:42.1%;
   background-color: #5B9F2C;
   height:30px;
   position: absolute;
@@ -199,27 +199,27 @@ body{
 }
 
 .graphic1-bar2{
-  width:42.1%;
+  width:17.5%;
   background-color: #DE9108;
   height:30px;
   position: absolute;
-  left: 15.7%;
+  left: 42.1%;
 }
 
 .graphic1-bar3{
-  width:17.5%;
+  width:24.7%;
   background-color: #D6C032;
   height:30px;
   position: absolute;
-  left: 57.8%;
+  left: 59.6%;
 }
 
 .graphic1-bar4{
-  width:24.7%;
+  width:15.7%;
   background-color: #7FB84E;
   height:30px;
   position: absolute;
-  left: 75.3%;
+  left: 84.3%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -237,7 +237,7 @@ body{
 }
 
 .graphic1-bar2-p2{
-  left:36%;
+  left:46%;
 }
 
 .graphic1-bar3-p3{
@@ -250,7 +250,7 @@ body{
 
 
 .graphic2-bar1{
-  width:17.6%;
+  width:47.8%;
   background-color: #5B9F2C;
   height:30px;
   position: absolute;
@@ -260,27 +260,27 @@ body{
 }
 
 .graphic2-bar2{
-  width:47.8%;
+  width:7.7%;
   background-color: #DE9108;
   height:30px;
   position: absolute;
-  left: 17.6%;
+  left: 47.8%;
 }
 
 .graphic2-bar3{
-  width:7.7%;
+  width:26.9%;
   background-color: #D6C032;
   height:30px;
   position: absolute;
-  left: 65.4%;
+  left: 55.5%;
 }
 
 .graphic2-bar4{
-  width:26.9%;
+  width:17.6%;
   background-color: #7FB84E;
   height:30px;
   position: absolute;
-  left: 73.1%;
+  left: 81.4%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -298,7 +298,7 @@ body{
 }
 
 .graphic2-bar2-p2{
-  left:40%;
+  left:50%;
 }
 
 .graphic2-bar3-p3{
@@ -312,7 +312,7 @@ body{
 
 
 .graphic3-bar1{
-  width:14.2%;
+  width:30.6%;
   background-color: #5B9F2C;
   height:30px;
   position: absolute;
@@ -322,27 +322,27 @@ body{
 }
 
 .graphic3-bar2{
-  width:30.7%;
+  width:35.8%;
   background-color: #DE9108;
   height:30px;
   position: absolute;
-  left: 14.2%;
+  left: 30.6%;
 }
 
 .graphic3-bar3{
-  width:35.8%;
+  width:19.3%;
   background-color: #D6C032;
   height:30px;
   position: absolute;
-  left: 44.9%;
+  left: 66.4%;
 }
 
 .graphic3-bar4{
-  width:19.3%;
+  width:14.2%;
   background-color: #7FB84E;
   height:30px;
   position: absolute;
-  left: 80.7%;
+  left: 85.7%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -360,13 +360,13 @@ body{
 }
 
 .graphic3-bar2-p2{
-  left:30%;
+  left:40%;
 }
 
 .graphic3-bar3-p3{
-  left:60%;
+  left:70%;
 }
 
 .graphic3-bar4-p4{
-  left:85%;
+  left:90%;
 }

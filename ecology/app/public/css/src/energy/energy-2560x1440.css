@@ -555,3 +555,39 @@ body{
 .box2-block-area{
   height:200px; margin: 10px 100px; width:100%;
 }
+
+.select-box{
+  width:130px;
+  border-radius:15px;
+  height:30px;
+  display:inline-block;
+  background-color:#192B55;
+  margin: 10px 15px;
+}
+
+.block-select{
+  width:63px;
+  border-radius:15px;
+  height:30px;
+  display:inline-block;
+  color:#A5D9E1;
+  line-height:30px;
+  font-size:14px;
+  font-weight:bold;
+  text-align:center;
+  background-color:#567F93;
+  cursor: pointer;
+}
+
+.block-normal{
+  width:63px;
+  border-radius:15px;
+  height:30px;
+  display:inline-block;
+  color:#A5D9E1;
+  line-height:30px;
+  font-size:14px;
+  font-weight:bold;
+  text-align:center;
+  cursor: pointer;
+}

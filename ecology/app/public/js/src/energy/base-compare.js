@@ -83,7 +83,7 @@ var app = new Vue({
             }
         },
         legend: {
-            data:['基准数据', '基准线'],
+            data:['实时能耗', '基准能耗'],
             textStyle: {
                 fontSize: 12,
                 color: '#A5D9E1'
@@ -131,7 +131,10 @@ var app = new Vue({
             {
                 type: 'value',
                 scale: true,
-                name: '基准数据',
+                name: '实时能耗',
+                max : 2500,
+                min : 0,
+                interval: 500,
                 boundaryGap: [0.2, 0.2],
                 splitLine:{
     　　　　        show:false
@@ -150,7 +153,10 @@ var app = new Vue({
             {
                 type: 'value',
                 scale: true,
-                name: '基准线',
+                name: '基准能耗',
+                max : 2500,
+                min : 0,
+                interval: 500,
                 boundaryGap: [0.2, 0.2],
                 splitLine:{
     　　　　        show:false
@@ -169,7 +175,7 @@ var app = new Vue({
         ],
         series: [
             {
-                name: '基准数据',
+                name: '实时能耗',
                 type: 'bar',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
@@ -177,7 +183,7 @@ var app = new Vue({
                 data: []
             },
             {
-                name: '基准线',
+                name: '基准能耗',
                 type: 'line',
                 data: [],
                 color:['#FFFFFF']
@@ -209,7 +215,7 @@ var app = new Vue({
             name: {
                 textStyle: {
                     color: '#A5D9E1',
-                    fontSize: 16, // 字体大小
+                    fontSize: 12, // 字体大小
                     fontStyle: 'normal',
                     fontWeight: 'bold',
                     padding: [3, 5]
@@ -314,7 +320,7 @@ var app = new Vue({
             name: {
                 textStyle: {
                     color: '#A5D9E1',
-                    fontSize: 16, // 字体大小
+                    fontSize: 12, // 字体大小
                     fontStyle: 'normal',
                     fontWeight: 'bold',
                     padding: [3, 5]
@@ -423,7 +429,7 @@ var app = new Vue({
             name: {
                 textStyle: {
                     color: '#A5D9E1',
-                    fontSize: 16, // 字体大小
+                    fontSize: 12, // 字体大小
                     fontStyle: 'normal',
                     fontWeight: 'bold',
                     padding: [3, 5]
@@ -446,6 +452,7 @@ var app = new Vue({
                    }
             },
         },
+      
         series: [{
             name: '空调',
             type: 'radar',

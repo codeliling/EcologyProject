@@ -77,6 +77,39 @@ var app = new Vue({
         [21,0.79,29,0.55,19,0.32,29,0.34],
       ],
 
+      graphic3Data:[
+        [100,366400,100,184700,100,165100,100,114300],
+        [98,359000,98,181000,97,160200,98,112000],
+        [95,348100,96,177300,94,155200,97,110900],
+        [93,340700,94,173600,92,151900,95,108600],
+        [91,333400,92,169900,90,148600,93,106300],
+        [88,322400,90,166200,87,143600,91,104000],
+        [85,311400,87,160600,84,138700,88,100600],
+        [81,296800,85,157000,80,132100,86,98300],
+        [79,289400,83,153300,78,128800,84,96000],
+        [76,278400,81,149600,75,123800,82,93700],
+        [73,267500,78,144000,72,118900,79,90300],
+        [71,260100,75,138500,70,115600,76,86900],
+        [69,252800,72,133000,68,112300,73,83400],
+        [63,230800,70,129300,62,102400,71,81200],
+        [60,219800,67,123700,59,97400,68,77700],
+        [58,212500,65,120000,57,94100,66,75400],
+        [55,201500,62,114500,54,89200,63,72000],
+        [52,190500,60,110800,51,84200,61,69700],
+        [50,183200,57,105300,49,80900,58,66300],
+        [48,175900,55,101600,47,77600,56,64000],
+        [45,165100,53,97900,44,72300,54,61700],
+        [43,157300,50,92300,42,69400,52,59400],
+        [40,146600,47,86800,39,64500,49,56000],
+        [38,139700,45,83100,36,59600,46,52600],
+        [35,128000,43,79400,33,54700,43,49200],
+        [32,117200,40,73900,31,50800,41,46900],
+        [29,106500,38,70200,28,45900,38,43400],
+        [27,98700,35,64600,26,43000,36,41200],
+        [25,91800,33,60900,24,40100,34,38900],
+        [23,84000,31,57200,22,36100,32,36600],
+        [21,77200,29,53500,19,31300,29,33100],
+      ],
   },
   methods:{
     backClick:function(){
@@ -94,6 +127,88 @@ var app = new Vue({
     cityMapClick:function(){
       window.location.href = '/energy';
     },
+    energyConsumptionClick:function(){
+      $("#carbonEmission").removeClass('block-select');
+      $("#carbonEmission").addClass('block-normal');
+      $("#energyConsumption").removeClass('block-normal');
+      $("#energyConsumption").addClass('block-select');
+      this.loadEnergyConsumptionData(1);
+    },
+    carbonEmissionClick:function(){
+      $("#energyConsumption").removeClass('block-select');
+      $("#energyConsumption").addClass('block-normal');
+      $("#carbonEmission").removeClass('block-normal');
+      $("#carbonEmission").addClass('block-select');
+      this.loadEnergyConsumptionData(2);
+    },
+    loadEnergyConsumptionData:function(type){
+      var d = new Date();
+      this.updateDate = d.getFullYear() +'-'+(d.getMonth() + 1)+'-'+d.getDate();
+      var day = d.getDate();
+      let data = [];
+      if(type == 1){
+        data = this.graphic2Data[day - 1];
+        this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×10^8kWh)';
+        this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×10^8kWh)';
+        this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×10^8kWh)';
+        this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×10^8kWh)';
+      }
+      else{
+        data = this.graphic3Data[day - 1];
+        this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×t)';
+        this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×t)';
+        this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×t)';
+        this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×t)';
+      }
+
+
+
+      let width1 = data[0] * 400 / 100;
+      let leftWidth1 = 400 - width1 + 90;
+      let width2 = data[2] * 400 / 100;
+      let leftWidth2 = 400 - width2 + 90;
+      let width3 = data[4] * 400 / 100;
+      let leftWidth3 = 400 - width3 + 90;
+      let width4 = data[6] * 400 / 100;
+      let leftWidth4 = 400 - width4 + 90;
+
+
+      $(".box2-block-bar2").css('width',width1);
+      $(".box2-block-bar2").css('left', 400 - width1 + 85);
+      if(width1 > 200){
+        $(".box2-block-bar-value1").css('left',leftWidth1);
+      }
+      else{
+        $(".box2-block-bar-value1").css('left',leftWidth1 - 170);
+      }
+
+      $(".box2-block-bar3").css('width',width2);
+      $(".box2-block-bar3").css('left', 400 - width2 + 85);
+      if(width2 > 200){
+        $(".box2-block-bar-value2").css('left',leftWidth2);
+      }
+      else{
+        $(".box2-block-bar-value2").css('left',leftWidth2 - 170);
+      }
+
+      $(".box2-block-bar4").css('width',width3);
+      $(".box2-block-bar4").css('left', 400 - width3 + 85);
+      if(width3 > 200){
+        $(".box2-block-bar-value3").css('left',leftWidth3);
+      }
+      else{
+        $(".box2-block-bar-value3").css('left',leftWidth3 - 170);
+      }
+
+      $(".box2-block-bar5").css('width',width4);
+      $(".box2-block-bar5").css('left', 400 - width4 + 85);
+      if(width4 > 200){
+        $(".box2-block-bar-value4").css('left',leftWidth4);
+      }
+      else{
+        $(".box2-block-bar-value4").css('left',leftWidth4 -170);
+      }
+    }
   },
   mounted() {
     let that = this;
@@ -523,62 +638,6 @@ var app = new Vue({
     graphic4.setOption(graphic4Option);
   },
   created() {
-    var d = new Date();
-    this.updateDate = d.getFullYear() +'-'+(d.getMonth() + 1)+'-'+d.getDate();
-    var day = d.getDate();
-    let data = this.graphic2Data[day - 1];
-    
-    this.elecSurplus1 = '剩余：'+data[0]+'% ('+ data[1]+'×10^8kWh)';
-    this.elecSurplus2 = '剩余：'+data[2]+'% ('+ data[3]+'×10^8kWh)';
-    this.elecSurplus3 = '剩余：'+data[4]+'% ('+ data[5]+'×10^8kWh)';
-    this.elecSurplus4 = '剩余：'+data[6]+'% ('+ data[7]+'×10^8kWh)';
-
-    let width1 = data[0] * 400 / 100;
-    let leftWidth1 = 400 - width1 + 90;
-    let width2 = data[2] * 400 / 100;
-    let leftWidth2 = 400 - width2 + 90;
-    let width3 = data[4] * 400 / 100;
-    let leftWidth3 = 400 - width3 + 90;
-    let width4 = data[6] * 400 / 100;
-    let leftWidth4 = 400 - width4 + 90;
-
-
-    $(".box2-block-bar2").css('width',width1);
-    $(".box2-block-bar2").css('left', 400 - width1 + 85);
-    if(width1 > 200){
-      $(".box2-block-bar-value1").css('left',leftWidth1);
-    }
-    else{
-      $(".box2-block-bar-value1").css('left',leftWidth1 - 170);
-    }
-
-    $(".box2-block-bar3").css('width',width2);
-    $(".box2-block-bar3").css('left', 400 - width2 + 85);
-    if(width2 > 200){
-      $(".box2-block-bar-value2").css('left',leftWidth2);
-    }
-    else{
-      $(".box2-block-bar-value2").css('left',leftWidth2 - 170);
-    }
-
-    $(".box2-block-bar4").css('width',width3);
-    $(".box2-block-bar4").css('left', 400 - width3 + 85);
-    if(width3 > 200){
-      $(".box2-block-bar-value3").css('left',leftWidth3);
-    }
-    else{
-      $(".box2-block-bar-value3").css('left',leftWidth3 - 170);
-    }
-
-    $(".box2-block-bar5").css('width',width4);
-    $(".box2-block-bar5").css('left', 400 - width4 + 85);
-    if(width4 > 200){
-      $(".box2-block-bar-value4").css('left',leftWidth4);
-    }
-    else{
-      $(".box2-block-bar-value4").css('left',leftWidth4 -170);
-    }
-
-
+    this.loadEnergyConsumptionData(1);
   }
 });
