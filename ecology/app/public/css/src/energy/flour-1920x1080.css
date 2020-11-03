@@ -316,3 +316,9 @@ body{
   height:auto;
   margin-top: 60px;
 }
+
+.flour-ex{
+  position: absolute;
+  right:50px;
+  bottom:30px;
+}
