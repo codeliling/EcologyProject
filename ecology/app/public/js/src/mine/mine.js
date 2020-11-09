@@ -110,7 +110,23 @@ var app = new Vue({
     },
     safetyProductClick:function(){
         window.location.href = "/mine/safetyproduction";
-    }
+    },
+    getFormatDateBefore:function(num){
+      var date = new Date();
+      date.setDate(date.getDate() - num);
+      var seperator1 = "/";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
   },
   mounted() {
     let that = this;
@@ -413,7 +429,7 @@ var app = new Vue({
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['2020/10/10','2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15','2020/10/16'],
+            data:[this.getFormatDateBefore(6),this.getFormatDateBefore(5),this.getFormatDateBefore(4),this.getFormatDateBefore(3),this.getFormatDateBefore(2),this.getFormatDateBefore(1),this.getFormatDateBefore(0)],
             splitLine:{
 　　　　        show:false
             },
@@ -532,7 +548,7 @@ var app = new Vue({
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15'],
+                data:[this.getFormatDateBefore(4),this.getFormatDateBefore(3),this.getFormatDateBefore(2),this.getFormatDateBefore(1),this.getFormatDateBefore(0)],
                 splitLine:{
     　　　　        show:false
                 },
@@ -767,7 +783,7 @@ var app = new Vue({
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['10月10日','10月11日','10月12日','10月13日','10月14日','10月15日','10月16日'],
+            data:[this.getFormatDateBefore(6),this.getFormatDateBefore(5),this.getFormatDateBefore(4),this.getFormatDateBefore(3),this.getFormatDateBefore(2),this.getFormatDateBefore(1),this.getFormatDateBefore(0)],
             splitLine:{
 　　　　        show:false
             },

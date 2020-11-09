@@ -37,7 +37,7 @@ var app = new Vue({
     monthAirBarData:[],
     yearAirBarData:[],
 
-    lineWeekTimeData:["2020/10/9","2020/10/10","2020/10/11","2020/10/12","2020/10/13","2020/10/14","2020/10/15"],
+    lineWeekTimeData:[],
     lineWeekData:[88,91,90,89,89,91,90],
     lineMonthTimeData:["1号","2号","3号","4号","5号","6号","7号","8号","9号","10号","11号","12号","13号","14号","15号","16号","17号"],
     lineMonthData:[90,91,90,89,87,88,91,89,90,90,88,91,90,89,89,91,90],
@@ -117,9 +117,29 @@ var app = new Vue({
     },
     dustMonitorClick:function(){
       window.location.href = "/mine/dust";
-    }
+    },
+    getFormatDateBefore:function(num){
+      var date = new Date();
+      date.setDate(date.getDate() - num);
+      var seperator1 = "/";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
   },
   mounted() {
+    for (let i = 6; i >= 0; i--){
+      this.lineWeekTimeData.push(this.getFormatDateBefore(i));
+    }
+
     var myChart = echarts.init(document.getElementById('map'));
 
     myChart.showLoading();

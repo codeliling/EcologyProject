@@ -6,7 +6,7 @@ var app = new Vue({
     waterTableData:[],
     waterLineGraphic:{},
     waterLineOption:{},
-    dayTimeDataArray:[["2020/10/9",83],["2020/10/10",81],["2020/10/11",86],["2020/10/12",88],["2020/10/13",90],["2020/10/14",83],["2020/10/15",85]],
+    dayTimeDataArray:[],
     monthTimeDataArray:[["1号",83],["2号",84],["3号",88],["4号",87],["5号",86],["6号",87],["7号",90],["8号",89],["9号",84],["10号",84],["11号",83],["12号",81],["13号",86],["14号",88],["15号",90],["16号",83],["17号",85]],
     yearTimeDataArray:[["1月",82],["2月",81],["3月",82],["4月",82],["5月",84],["6月",83],["7月",84],["8月",84],["9月",85],["10月",86]],
     waterBarGraphic:{},
@@ -85,9 +85,33 @@ var app = new Vue({
     },
     dustMonitorClick:function(){
       window.location.href = "/mine/dust";
-    }
+    },
+    getFormatDateBefore:function(num){
+      var date = new Date();
+      date.setDate(date.getDate() - num);
+      var seperator1 = "/";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
   },
   mounted() {
+    this.dayTimeDataArray.push([this.getFormatDateBefore(6),83]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(5),81]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(4),86]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(3),88]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(2),90]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(1),83]);
+    this.dayTimeDataArray.push([this.getFormatDateBefore(0),85]);
+
     var myChart = echarts.init(document.getElementById('map'));
 
     myChart.showLoading();

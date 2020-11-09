@@ -33,7 +33,7 @@ var vueApp = new Vue({
     radarData:[],
     currentRadarData:[93,90,88,81,87,85],
 
-    weekData:['2020/10/10','2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15','2020/10/16'],
+    weekData:[],
     weekSafetyData:[92,93,94,92,94,93,95],
     weekEnvData:[89,88,90,92,88,90,89],
     weekDisasterData:[86,88,89,86,87,88,89],
@@ -41,7 +41,7 @@ var vueApp = new Vue({
     weekAfforestData:[87,87,87,87,87,87,87],
 	  weekBuildingData:[86,84,85,85,86,85,86],
 
-    monthData:['2020/10/1','2020/10/2','2020/10/3','2020/10/4','2020/10/5','2020/10/6','2020/10/7','2020/10/8','2020/10/9','2020/10/10','2020/10/11','2020/10/12','2020/10/13','2020/10/14','2020/10/15','2020/10/16'],
+    monthData:[],
     monthSafetyData:[93,94,92,93,94,92,93,94,92,93,92,94,92,93,94,92],
     monthEnvData:[90,89,91,88,91,89,91,88,90,89,91,88,91,89,91,88],
     monthDisasterData:[88,87,86,89,88,87,86,88,87,86,89,88,87,86,88,87],
@@ -108,9 +108,34 @@ var vueApp = new Vue({
     backClick:function(){
       window.location.href = "/mine/";
     },
+    getFormatDateBefore:function(num){
+      var date = new Date();
+      date.setDate(date.getDate() - num);
+      var seperator1 = "/";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
   },
   mounted() {
     let that = this;
+
+    for(let i = 6; i >= 0; i--){
+      this.weekData.push(this.getFormatDateBefore(i));
+    }
+
+    for(let i = 15; i >=0; i-- ){
+      this.monthData.push(this.getFormatDateBefore(i));
+    }
+
     that.radarGraphic = echarts.init(document.getElementById('radar'));
     that.radarOption = {
         title: {
