@@ -94,7 +94,7 @@ var app = new Vue({
     productLine:{},
     productLineOption:{},
     cityid:'101251201',
-    city:'',
+    city:'怀化市',
     weatherDate:'',
     wea:'',
     temperature:'',
@@ -147,12 +147,11 @@ var app = new Vue({
     loadWeather:function(){
       let that = this;
       $.ajax({
-        url: 'https://v0.yiketianqi.com/api?version=v61&appid=45528555&appsecret=qBIe9Win&cityid='+that.cityid,
+        url: 'https://v0.yiketianqi.com/api?version=v61&appid=45528555&appsecret=rup72KtM&cityid='+that.cityid,
         type: 'get',
         dataType: 'json',
       })
       .done(function(responseData) {
-        that.city = responseData.city;
         that.weatherDate = responseData.date +' '+responseData.update_time+' '+ responseData.week;
         that.wea = responseData.wea;
         that.temperature = responseData.tem;
@@ -249,6 +248,7 @@ var app = new Vue({
         });
         myChart.on('click', function (params) {
           let name = params.name;
+          that.city = name;
           if(name == '沅陵县'){
             that.cityid = '101251203';
           }

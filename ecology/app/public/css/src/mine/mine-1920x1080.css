@@ -312,8 +312,8 @@ table{
   background: url(/public/images/mine/yellow-dot.png) no-repeat;
   background-size: 100%;
   position: absolute;
-  left: 160px;
-    top: 6px;
+  left: 100px;
+  top: 6px;
 }
 .info-block-p2{
   color:#DFC73D;

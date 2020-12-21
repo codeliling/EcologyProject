@@ -372,6 +372,7 @@ table{
   position: absolute;
   top:0px;
   background: rgba(14, 55, 116, 0.7);
+  z-index: -10;
 }
 
 .box-bg-1{
@@ -430,4 +431,123 @@ table{
 	right: -2px;
 	border-right: 1px solid #A5D9E1;
 	border-bottom: 1px solid #A5D9E1;
+}
+
+
+#map{
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+
+.weather-block1{
+  height: 35px;
+  width:100%;
+  margin-top:8px;
+}
+
+.weather-country{
+  width:42%;
+  text-align: left;
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  display: inline-block;
+}
+
+.weather-time{
+  width:52%;
+  text-align: right;
+  margin-right: 5px;
+  font-size: 10px;
+  color:#FFFFFF;
+  display: inline-block;
+}
+
+.weather-title{
+  width:45%;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  color:#A5D9E1;
+  display: inline-block;
+}
+
+.temperature-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.air-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.weather-detail-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.air-detail-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.detail-box{
+  height: 20px;
+}
+.detail-title{
+  width:30px;
+  color:#A5D9E1;
+  display: inline-block;
+  text-align: left;
+}
+
+.detail-value{
+  width:80px;
+  color:#A5D9E1;
+  display: inline-block;
+  text-align: center;
+}
+
+.current-temperature{
+  font-size: 40px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.temperature-range{
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.current-air{
+  font-size: 40px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.current-class{
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
 }
