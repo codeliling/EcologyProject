@@ -51,9 +51,9 @@
 
         </div>
         <div id="main" class="content_center">
+          <div id="map"></div>
           <div class="info-area1">
             <div class="info1">
-              <div>
                 <div class="info-block">
                   <p class="info-block-p1" id="dot1">矿物种类</p>
                   <p class="info-block-p2">${var1}<span>&nbsp;种</span></p>
@@ -62,41 +62,113 @@
                   <p class="info-block-p1" id="dot2">监测矿点</p>
                   <p class="info-block-p2">${var2}<span>&nbsp;个</span></p>
                 </div>
-              </div>
-              <div class="info-block info-block-width">
-                <p class="info-block-p1" id="dot3">开采规模</p>
-                <p class="info-block-p2">${var3}<span>&nbsp;万吨/年</span></p>
-              </div>
+                <div class="info-block info-block-width">
+                  <p class="info-block-p1" id="dot3">开采规模</p>
+                  <p class="info-block-p2">${var3}<span>&nbsp;万吨/年</span></p>
+                </div>
             </div>
 
           </div>
           <div class="info-area2">
-            <div class="info-block info-block-width">
+            <div class="info-block info-block-width2">
               <p class="info-block-p1" id="dot4">运作设备</p>
               <p class="info-block-p2">${var4}<span>&nbsp;台</span></p>
             </div>
-            <div class="info-block info-block-width">
+            <div class="info-block info-block-width2">
               <p class="info-block-p1" id="dot5">在矿人数</p>
               <p class="info-block-p2">${var5}<span>&nbsp;人</span></p>
             </div>
           </div>
-          <div id="monitor-mine">
-            <p>监测矿点</p>
-            <table>
-              <thead>
-                  <tr>
-                      <th>位置</th>
-                      <th>名称</th>
+          <div class="box-table">
+            <div class="box-bg box-bg-5"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div id="monitor-mine">
+              <p>监测矿点</p>
+              <table>
+                <thead>
+                    <tr>
+                        <th>位置</th>
+                        <th>名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="elem in currentMoniterTableData">
+                      <td style="width:100px;text-align:center;vertical-align:middle;">${elem.location}</td>
+                      <td style="width:200px;text-align:center;vertical-align:middle;">${elem.name}</td>
                   </tr>
-              </thead>
-              <tbody>
-                <tr v-for="elem in currentMoniterTableData">
-                    <td style="width:100px;text-align:center;vertical-align:middle;">${elem.location}</td>
-                    <td style="width:200px;text-align:center;vertical-align:middle;">${elem.name}</td>
-                </tr>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
+          <div class="box-weather">
+            <div class="box-bg box-bg-6"></div>
+            <div class="image-border image-border1"></div>
+            <div class="image-border image-border2"></div>
+            <div class="image-border image-border3"></div>
+            <div class="image-border image-border4"></div>
+            <div>
+              <div class="weather-block1">
+                <p class="weather-country">${city}</p>
+                <p class="weather-time">${weatherDate}</p>
+              </div>
+              <div>
+                <p class="weather-title">天气情况</p>
+                <p class="weather-title">空气质量</p>
+              </div>
+              <div>
+                <div class="temperature-block">
+                  <p class="current-temperature">${temperature}</p>
+                  <p class="temperature-range">${tempRange}</p>
+                </div>
+                <div class="air-block">
+                  <p class="current-air">${air}</p>
+                  <p class="current-class">${air_level}</p>
+                </div>
+              </div>
+
+              <div>
+                <div class="weather-detail-block">
+                  <div class="detail-box">
+                    <p class="detail-title">天气</p><p class="detail-value">${wea}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">湿度</p><p class="detail-value">${humidity}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">风速</p><p class="detail-value">${win_meter}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">风向</p><p class="detail-value">${win}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">风力</p><p class="detail-value">${win_speed}</p>
+                  </div>
+                </div>
+                <div class="air-detail-block">
+                  <div class="detail-box">
+                    <p class="detail-title">PM2.5</p><p class="detail-value">${pm25_desc}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">PM10</p><p class="detail-value">${pm10_desc}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">NO₂</p><p class="detail-value">${no2_desc}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">SO₂</p><p class="detail-value">${so2_desc}</p>
+                  </div>
+                  <div class="detail-box">
+                    <p class="detail-title">O₃</p><p class="detail-value">${o3_desc}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <div class="report-area">
             <div class="assessment-block"><p>评估报告</p></div>
             <table style="margin:0px 30px;width:100%;text-align:center">

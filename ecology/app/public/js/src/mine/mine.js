@@ -93,6 +93,23 @@ var app = new Vue({
     ],
     productLine:{},
     productLineOption:{},
+    cityid:'101251201',
+    city:'',
+    weatherDate:'',
+    wea:'',
+    temperature:'',
+    tempRange:'',
+    air:'',
+    air_level:'',
+    humidity:'',
+    win:'',
+    win_meter:'',
+    win_speed:'',
+    pm25_desc:'',
+    pm10_desc:'',
+    o3_desc:'',
+    no2_desc:'',
+    so2_desc:'',
     //--------------------------------------
   },
   methods:{
@@ -127,9 +144,154 @@ var app = new Vue({
       var currentdate = year + seperator1 + month + seperator1 + strDate;
       return currentdate;
     },
+    loadWeather:function(){
+      let that = this;
+      $.ajax({
+        url: 'https://v0.yiketianqi.com/api?version=v61&appid=45528555&appsecret=qBIe9Win&cityid='+that.cityid,
+        type: 'get',
+        dataType: 'json',
+      })
+      .done(function(responseData) {
+        that.city = responseData.city;
+        that.weatherDate = responseData.date +' '+responseData.update_time+' '+ responseData.week;
+        that.wea = responseData.wea;
+        that.temperature = responseData.tem;
+        that.tempRange = responseData.tem1 + '/' +responseData.tem2;
+        that.air = responseData.air;
+        that.air_level = responseData.air_level;
+        that.humidity = responseData.humidity;
+        that.win = responseData.win;
+        that.win_meter = responseData.win_meter;
+        that.win_speed = responseData.win_speed;
+        that.pm25_desc = responseData.aqi.pm25_desc;
+        that.pm10_desc = responseData.aqi.pm10_desc;
+        that.o3_desc = responseData.aqi.o3_desc;
+        that.no2_desc = responseData.aqi.no2_desc;
+        that.so2_desc = responseData.aqi.so2_desc;
+      })
+    }
   },
   mounted() {
     let that = this;
+    //---------------------------------------------------------------------
+
+    var myChart = echarts.init(document.getElementById('map'));
+
+    myChart.showLoading();
+    $.get('/public/assets/huaihua.json', function (geoJson) {
+        myChart.hideLoading();
+        echarts.registerMap('HH', geoJson);
+        myChart.setOption(option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}<br/>{c}'
+            },
+            visualMap: {
+                min: 10,
+                max: 100,
+                show:false,
+                text: ['High', 'Low'],
+                realtime: true,
+                calculable: true,
+                orient: 'vertical',
+                left: 'left',
+                top: 'bottom',
+                inRange: {
+                    color: ['#F5F5F5','#A5D8E1','#3175B1']
+                },
+                textStyle: {
+                  color: '#A5D9E1'
+                },
+            },
+
+            series: [
+                {
+                    name: '怀化市生态矿山',
+                    type: 'map',
+                    mapType: 'HH', // 自定义扩展图表类型
+                    label: {
+                        show: true,
+                        textStyle:{
+                    			fontSize:12,
+                    			color:'#ffffff'
+                    		}
+                    },
+                    itemStyle: {
+                        normal: {
+                          borderWidth: .5, //区域边框宽度
+                          borderColor: '#009fe8', //区域边框颜色
+                          areaColor: "#ffefd5", //区域颜色
+                        },
+                        emphasis: {
+                          borderWidth: .5,
+                          borderColor: '#192A54',
+                          areaColor: "#5FA731",
+                        }
+                    },
+                    roam:true,
+                    data: [
+                        {name: '沅陵县', value: '91'},
+                        {name: '溆浦县', value: '92'},
+                        {name: '辰溪县', value: '96'},
+                        {name: '麻阳苗族自治县', value: '99'},
+                        {name: '鹤城区', value: '86'},
+                        {name: '中方县', value: '88' },
+                        {name: '芷江侗族自治县', value: '92'},
+                        {name: '新晃侗族自治县', value: '95'},
+                        {name: '洪江市', value: '90'},
+                        {name: '会同县', value: '83'},
+                        {name: '靖州苗族侗族自治县', value:'96' },
+                        {name: '通道侗族自治县', value:'99'},
+                    ],
+
+                }
+            ]
+        });
+        myChart.on('click', function (params) {
+          let name = params.name;
+          if(name == '沅陵县'){
+            that.cityid = '101251203';
+          }
+          else if(name == '溆浦县'){
+            that.cityid = '101251211';
+          }
+          else if(name == '辰溪县'){
+            that.cityid = '101251204';
+          }
+          else if(name == '麻阳苗族自治县'){
+            that.cityid = '101251208';
+          }
+          else if(name == '鹤城区'){
+            that.cityid = '101251202';
+          }
+          else if(name == '中方县'){
+            that.cityid = '101251212';
+          }
+          else if(name == '芷江侗族自治县'){
+            that.cityid = '101251210';
+          }
+          else if(name == '新晃侗族自治县'){
+            that.cityid = '101251209';
+          }
+          else if(name == '会同县'){
+            that.cityid = '101251206';
+          }
+          else if(name == '靖州苗族侗族自治县'){
+            that.cityid = '101251205';
+          }
+          else if(name == '通道侗族自治县'){
+            that.cityid = '101251207';
+          }
+          else if(name == '洪江市'){
+            that.cityid = '101251213';
+          }
+          else{
+            that.cityid = '101251201';
+          }
+          that.loadWeather();
+        });
+    });
+
     //-----------------------------------------------------------------------------------
     var dom = document.getElementById("confidence-band");
     this.productLine = echarts.init(dom);
@@ -987,5 +1149,8 @@ var app = new Vue({
         machineInfoInterval = 0;
       }
     },30000);
+
+    this.loadWeather();
+
   }
 });

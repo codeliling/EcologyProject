@@ -1,7 +1,7 @@
 body{
   width:100%;
   margin: 0;
-  background-image: url('/public/images/mine/mine-bg.png');
+  background-image: url('/public/images/mine/dynamic-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -205,13 +205,13 @@ body{
 
 .info-area1{
   position: relative;
-  width: 50%;
+  width: 100%;
 }
 
 .info-area2{
   position: relative;
-  width: 30%;
-  top:490px;
+  width: 100%;
+  top:170px;
   left:50px;
 }
 .info1{
@@ -241,15 +241,14 @@ body{
 #monitor-mine{
   width:260px;
   height:200px;
-  position: absolute;
-  bottom: 130px;
-  right:10px;
 }
 
 #monitor-mine p{
   color:#A5D9E1;
   font-size:14px;
   font-weight: bold;
+  width:260px;
+  text-align: center;
 }
 
 table{
@@ -289,8 +288,8 @@ table{
   background: url(/public/images/mine/yellow-dot.png) no-repeat;
   background-size: 100%;
   position: absolute;
-  left: -20px;
-  top: 86px;
+  left: 230px;
+  top: 6px;
 }
 
 #dot4::before{
@@ -313,8 +312,8 @@ table{
   background: url(/public/images/mine/yellow-dot.png) no-repeat;
   background-size: 100%;
   position: absolute;
-  left: -20px;
-  top: 86px;
+  left: 160px;
+    top: 6px;
 }
 .info-block-p2{
   color:#DFC73D;
@@ -347,6 +346,23 @@ table{
   position: relative;
   margin: 10px 20px;
 }
+
+.box-table{
+  width:260px;
+  position: absolute;
+  right:10px;
+  bottom: 130px;
+  height: 220px;
+}
+
+.box-weather{
+  width:300px;
+  position: absolute;
+  left:10px;
+  bottom: 120px;
+  height: 240px;
+}
+
 .box-bg{
   width: 100%;
   position: absolute;
@@ -369,6 +385,14 @@ table{
 
 .box-bg-4{
   height:435px;
+}
+
+.box-bg-5{
+  height:220px;
+}
+
+.box-bg-6{
+  height:240px;
 }
 
 .image-border{
@@ -403,4 +427,122 @@ table{
 	right: -2px;
 	border-right: 1px solid #A5D9E1;
 	border-bottom: 1px solid #A5D9E1;
+}
+
+#map{
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+
+.weather-block1{
+  height: 35px;
+  width:100%;
+  margin-top:8px;
+}
+
+.weather-country{
+  width:42%;
+  text-align: left;
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  display: inline-block;
+}
+
+.weather-time{
+  width:52%;
+  text-align: right;
+  margin-right: 5px;
+  font-size: 10px;
+  color:#FFFFFF;
+  display: inline-block;
+}
+
+.weather-title{
+  width:45%;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  color:#A5D9E1;
+  display: inline-block;
+}
+
+.temperature-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.air-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.weather-detail-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.air-detail-block{
+  width:45%;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.detail-box{
+  height: 20px;
+}
+.detail-title{
+  width:30px;
+  color:#A5D9E1;
+  display: inline-block;
+  text-align: left;
+}
+
+.detail-value{
+  width:80px;
+  color:#A5D9E1;
+  display: inline-block;
+  text-align: center;
+}
+
+.current-temperature{
+  font-size: 40px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.temperature-range{
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.current-air{
+  font-size: 40px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
+}
+
+.current-class{
+  font-size: 14px;
+  font-weight: bold;
+  color:#A5D9E1;
+  width: 100%;
+  text-align: center;
 }
